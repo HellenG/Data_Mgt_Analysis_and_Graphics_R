@@ -9,6 +9,6 @@ output: html_document
 
 ###Level One
 
-1. [Session One](Introduction_to_R__Level_One__-_Session_One.html) Slides
+1. [Session One](Slides/Introduction_to_R__Level_One__-_Session_One.html) Slides
     + Demo One: Downloading and Installing Base R [PDF](1.Downloading and Installing R.pdf)  [Video]()
     + Demo two: Getting to know Base R  [PDF]()  [Video]()
