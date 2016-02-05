@@ -1,0 +1,48 @@
+---
+title: "ABOUT DATA MANIA INC.,"
+author: "Hellen Gakuruh"
+date: "February 4, 2016"
+output: html_document
+---
+
+### GOAL
+
+Data Mania Inc., is an organization on the process of getting registered. The idea behind this upcoming organization was borne from a desire to share knowledge and specifically the love for data and programming.
+
+For some time now, I have heard quite a number of people say they do not either like or understand data analysis, more so as a result of years of disliking or avoiding anything mathematical or statistical. This viewpoint on matters data has seen a number of people shy away from the great impact their data can produce if well analyzed.  
+
+With this in mind, the training blogs are written with an aim of appreciating what statistical literacy can do in providing evidence based programming. The approach used in these discussions is not the classical textbook approach, but rather a laid-back-teaching approach. The idea is to maximize on the concepts and practicality rather than the strict classroom-exam-led approach which can easily be attained in any of the statistical degree courses. 
+
+It is therefore the vision of Data Mania to empower all development professionals with hands-on-skills that can be used to manage and develop evidence based sustainable development programs and projects. For us, it is not a question of what position you are in, or educational background, it's about the appreciation of what sound evidence can bring to your career development as well as the impact in your organization which ultimately transcends to the community you serve!
+
+### Training blogs
+
+I will introduce R and proceed to discuss quantitative analysis from an introductory level leading to an advance level. In the future, other data analysis discussions like qualitative data analysis will be added.
+
+The site will also host guest bloggers as either trainers or people interested in sharing applications or challenges needing further discussions.
+
+### About me
+
+Let me begin by saying I have come to love all things data and I like learning new methods in data analysis and programming. It is this very love for continuous learning and data analysis that I wish to share through the training blogs.
+
+### Some bit of history about me.
+
+Well, I am a trained demographer having attained an Msc in Population studies way back in 2008. Why demography or more appropriately population studies? Quite simply I ventured into this field having worked for sometime as a research assistant, coordinator and consultant for a number of project evaluations and operations research. Through these assignments, a growing need arose for me to gain further knowledge. I was quite keen on applied techniques that would enable me to analyze population and health related issues. And so it was that, for a minimum of two years, I was able to gain knowledge in population dynamics as well as research methods and an intensive session on applied statistics. I was also privileged to manage a longitudinal dataset for which I used to write my thesis.   
+
+### What is in my future?
+
+Sharing my knowledge and skills which keep growing everyday! I see a portfolio of grateful students. 
+
+My succession plan will begin early by mentoring budding teachers who teach analysis and programming in the unconventional way; they simply teach. Given the numerous online trainings I have had at no cost, and the believe one mentor had in me; this would be my way to pay forward.
+
+### Added bonus.
+
+My love for data has propelled me to both statistical as well as computer programming. Actually, having learnt R, some HTML, CSS and a bit of JavaScript in the recent past, this website, as basic as it might be, is it's fruition. 
+
+This should serve as a motivation that one is able to learn and apply whatever they put their minds to! 
+
+### Contact me
+
+For now, you can reach me through the following [email address](datamani@datamaniainc.com).
+
+I shall be adding a forum where you meet other professionals interested in learning and sharing experiences, so, look out for that one!
