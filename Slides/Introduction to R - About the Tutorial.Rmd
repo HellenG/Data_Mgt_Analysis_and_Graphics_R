@@ -1,0 +1,83 @@
+---
+title: "Introduction to the tutorial series"
+author: "By Hellen Gakuruh"
+date: "Friday, February 5, 2016"
+output: html_document
+---
+
+## Who is the training for?
+
+This training is aimed at anyone interested in transforming readily available data into insightful information as well as those interested in reproducible analysis.
+
+It is most suitable for those new to data analysis and R.
+
+## What will you need?
+
+All you need for this tutorial series is a working computer with about 150mb of disk space for the installation of R. You will of course need internet to download the slides.
+
+## What will you learn?
+
+The main goal of this tutorial is to enable you to use R for data analysis. The tutorial is divided into two levels. The first level will give you the foundation into R, level two delves right into R's core which is programming. Level two is optional but highly recommended for effective and efficient coding in R. 
+
+Each level is divided into a series of sessions each aimed at giving a gradual learning structure. Both levels have four sessions with the following outline: 
+
+####Level 1: Main goal is to introduce R and R's graphics
+
+Here you will learn:
+
+Session One
+  * About `base R` and `RStudio` 
+  * How to download and install the programs
+  * Their layout (Windows and Panes)
+  * How to interactively work with their console
+  * What the global environment/working space and history files are
+  * How to code using scripts
+  * How to install R Packages
+
+Session two
+  * R's built-in functions
+        + What they are
+        + Calling functions
+  * Know how R handles data
+    + Data objects/structures in R
+    + Subset different data objects
+    + How to transform/manipulate data
+
+Session three
+  * Working with R's date and time
+  * How to import data into R 
+  * Know how and where to get help
+
+Session four
+  * Producing Graphs in R using 
+    + Base R
+    + Lattice and 
+    + ggplot 2
+
+####Level 2: Main goal is to learn how to Programming in R
+
+By the end of this level, you should be able to:
+
+Session One
+* Understand 
+    + Relational or Binary Operators
+    + Control Structures
+
+Sesion two
+* Loop through data objects
+
+Session three
+* Grasp the concept of environments in R
+* Develop own functions
+
+Session four
+* Appreciate
+    + Scoping Rules in R
+    + The parsing process in R
+    + R Expressions
+    + The evaluation process
+    + Debugging and profiling
+    + Some basic programming terms for non programmers
+    + Regular Expressions in R
+
+
