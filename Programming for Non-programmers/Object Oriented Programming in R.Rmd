@@ -1,0 +1,708 @@
+---
+title: "Object Oriented Programming in R"
+author: "By Hellen Gakuruh"
+date: "February 11, 2016"
+output: html_document
+---
+
+#### Prerequiste{#assumptions}
+
+* Introduction to R
+* Know how to make a function call in R
+
+More suitable for users (non-programmers) 
+
+* See how to set the stage for comparison of usual R coding and OO programming. This should suffice as advantage and involvement of using OOP in R.
+
+**for me - approach:**
+  * Example/Situation setting then description/definition
+  * As of Friday (12th February 2016) my write-up was taking shape and the concepts were correct), but does not --What is it lacking?-- (in approach).
+  *Thought process in getting the right apporach: Creating the interest in target audience (users): delivering the programming concepts in a non programmers language, so the question is:
+    + why should a user go to all this length to learn about OOP or more specifically `base`, `S3`, `S4`, and `RC` class systems in R? All they want to do is make a function call (analyse)
+    + 
+  * Key terms: Objects, classes, methods, attributes, instatiation,inheritance, s3, s4, rc, encapsulation, polymorphism
+
+
+* Importance of OOP in R
+  + The "if you do not read the whole writeup, at read this": the executive or popular version
+* What is OOP and its relation to procedural oriented programming
+  + moving from procedural to OOP
+* What is an object
+* What are classes(attributes and methods)
+  + what classes exist in R
+  + How to determine an objects class
+* Implementation of OOP in R
+  + \*Base: Only for the R core group
+  + S3: generic function(difference with other functions), encapsulation, less formal?, single deployment
+  + S4: more formal, multiple deployment
+  + Reference Classes(RC)
+    * inheritance
+? useMethod and nextMethod
+? syntax: setClass and setGeneric
+
+### Executive summary{#oop.summary}
+
+R can be quite a challenge if you do not understand it. It breaks a lot of convections as far as statistical packages are concerned: This is more so due to its programming and [extensibility](#extensibility) nature. For example, R is an open source program and therefore one can inspect the [source code](#source,code) for any function. This is important in analysis as one would need to know the computational steps taken to arrive at an output. In R, all one needs to do is to type the function name without parenthesis and the source code will be shown. But there are quite a number of functions that do not show their source code. So the question is, why does R hide its source code and how can you get it? 
+
+~inheritance is to methods. Either a class inheriting methods from parent class or an object inheriting methods from another object~
+
+One other outstanding aspect about R is its "multi-purpose" functions that produce different outputs depending on the input they are given. These functions go by the name `generic functions` as opposed to regular functions. Their uniqueness comes from the fact that they are extensible.
+
+These two *scenerios*; hidden source code and functions that perform different actions depending on their input, are programming issues known as `encapsulation` and `polymorphism`. In R, polymorphism (the ability of a function to take different forms) heavily involves `inheritance`.  Collectively, these programming terms form the three core principles of `Object Oriented Programming (OOP)`. 
+
+For anyone coming to R without any programming knowledge, these terms might be a bit of a stretch. For those coming from other statistical packages (including other statistical programming language), this might need a mind shift to make the transition and effectively work with R. 
+
+Now let's demystify these programming terms as they relate to R. [First](#assumptions), we know that for anything to happen in R it must be as a result of a [function call](#call). This means that, to perform any analysis a function call must be made. The function evaluates its inputs which are known as arguments and produces the results. How these results are produced depends on what arguments are provided. From Rs point of view, arguments are objects; objects here are not any different from the normal usage of the word. That is because an object could be anything that has a name and can be *described in terms of what it is and what it can do*; in R, they are either [functions](#functions), [variables](#variables) or data. Now do you see whay R is refered to as an `Object Oriented Programming (OOP)` language?
+
+Okay, lets have a small discuss about OOP before seeing how it is implemented in R and how it impacts your R experience. To start off, view OOP as a  programming model that works through objects, that is, actions or tasks are performed on objects. Prior to OOP was the `procedural programming` language which was based on a set of instructions (procedures) to carry out tasks. Procedural programming looked at the sequence of steps needed to accomplish the task. it started for the issue or problem and developed a sequence of procedures to address it. Unfortunately if somewhere down the line (of code) edits are necessary, then it would affect the whole program. OOP on the other hand looks for the objects needed to accomplish the task by defining their methods (the `how` of the object). R prefers OOP due to its ability to handle edits and updates as well being able to [hide the complexities](#encapsulation) of a functions, its [inheritance](#inheritance) property and the ability of an object to take [different forms](#polymorphism).
+
+There are different [types of OOP](https://en.wikipedia.org/wiki/Object-oriented_programming); R implements the `class-based system` as opposed to `prototype-based systems`. In the class system, objects are developed or constructed  from *blue prints* known as `classes`. In general, classes describe objects in terms of [what they are](#properties) and [what it can do](#methods); however, as we shall soon see, in some OOP systems in R, methods are defined by the generic functions and not the classes. For the prototype-based systems, the properties and methods are directly described in the objects: prototype is the default object. 
+
+To better understand the class-based system, we need to look at its implemetation in R. First off, R has three object oriented (OO) systems with [base objects](#baseObj) as their foundation. In essence objects (which is virtually every entity in R) is either a purely base R object or belong to either of these other three systems. These other OO systems are `the S3`, `the S4` and `the Reference classes(RC)` systems. [In introduction to R](#assumptions), you must have learnt that R is an implementation of the `S` language created by `John Chambers`, it is therefore natural that R uses the methodology of the S language like S3 and S4 OO systems where [S3 corresponds to version 3 of the language and S4 to the forth version](#http://ect.bell-labs.com/sl/S/history.html). RC is the kid in the block, **Question, why was it added and who created it: its history/background?**.   
+
+Key to all these systems are the `classes` and `methods`; each system with its own little twist as to how it applies them. So lets get to know these critical terms before we delve into the discussion about the systems. 
+
+`class` should not be a [new term](#assumptions) to you, as they form part of an introductory session in R. But to refreshen your mind, classes are part of an objects `attribute`. Attributes decribe or give more information about an object: they provide its `properties`. These attributes help to hide the details of an objects implementation; they comprise of: Names, Dimensions, Dimnames, Classes, Ts and copying attributes. Classes are particularly important as they are specifically used in the evaluation of a (generic) function call. Base R classes are composed of all basic types of an objects component/mode like numeric, logical, character, complex, list, expressions, and names as well as matrix, array, factor and data.frame. When learning about [object creation](#assumptions), you must have learnt the assignment operator and how to assign attributes to objects for example `class(myObj) <- "myClass`. This is all well and good, but care should be taken as they tend to have great ramifications during the evaluation process. This all ties to the next term we will look at; `methods`.
+
+As classes provide the details of an object (the what), `method` give the `how` or the behaviour of the object; that is, what the object will or should do. Methods are functions that act differently depending on the class of an argument (which is an object). So now we ask ourselves how R attaches the correct method to a class? Let's visualise this question and discuss its solution. Suppose you are running an epidemiologic project that is following the outbreak of a disease; you know one of its crucial data is the start of the outbreak. This is data that in practical sense can not be exact for many highly transmittable diseases. So you get a range of dates based on the information on the ground and the incubation period and a consultative decision is that the start date will be the average of these dates. The dates are between 3rd Jan 2016 and 13th January 2016. To get the average is an easy task in R, but you will get amazed at how R did it (if you do not know how R works).  
+
+Lets go step by step here so you appreciate Rs way of making analysis simple. First we are dealing with dates not numerical data that is [integers](#integers) and [continuous data](#double) and we want to create a sequence or series of values to compute the average. Now, if we were dealing with numeric data like `1 to 10`, then this would not have been hard to compute, just call `mean(1:10)`: Recall how to [generate a sequence of numbers](#assumptions) from your introduction to R? If not, check out the snippet [below](#sequence). Moving along, in our case we are interested in dates and we want R to compute for us the average in dates form. So this time the object we will put in the sequence generator is of the class `date`,but hold on, is it really a date? Lets test the first date in our proposed sequence, `class("3rd Jan 2016")`, opps, its a character. What of `class(3rd Jan 2016)`, sorry, thats an error as R does not know the object. This is where knowldge on creating `date objects` comes in; something out of scope of this article. However, in general, the way to inform R that your data is in date form is to call the function `as.Date()` (see `?as.Date`). So, to create the sequence we call the `seq` function as follows:
+
+```{r}
+# I have rearranged the date manually to avoid introducing the "format" argument
+(expDates <- seq(from = as.Date("2016-01-3"), to = as.Date("2016-01-13"), by = 1))
+# Now do we have a date object?
+class(expDates)
+```
+
+Can we pose here and reflect on what just happened: R only understand the class of an object. The function `seq` was able to determing the class of the object and produced an object with a sequence of data which has the same class as its input. We can now use this object to compute the mean.  
+
+```{r}
+# And the mean is
+mean(expDates)
+```
+
+Super, we have gotten the average, but how did R figure out that this is a date and we want our output as a date object as well? An the honor goes to - the `generic function`. Both `seq` and `mean` are generic functions capable of producing different outputs based on the class of the argument(s). Generic functions are dispatches; they dispatch assess the class of an argument and dispatches the correct method. So a generic function does not do the actual computation, it just gets the correct function that produces the results. Therefore both sequence generation and computation of the average are actually not done by`seq` and `mean`, but by other functions we now know as `methods`.  
+
+We now know what is meant by classes, methods and generic functions. We further know that for anything to happen in R like carrying out analysis, a function call must be made. In our discussion we also noted that all entities in R are objects and R only operates through objects. This is what lead us to the fact that R is an Object Oriented program and specifically class-based OOP. So with this foundation, we want to know more about R OO system which we mention comprise of three implementations (excluding the base type). More specifcally, we want to know and understand which objects belong to a given system, how they can be created in each of the systems,  the dispatch (of methods) mechanism used in each of the system and finally of great interest to you, *why knowing OO in R is important*.
+
+Okay, lets get more aquinted with the different objects in R.
+
+### Distinguishing objects Types and their OO system
+
+So everything in R is an object, from the functions, to [language objects](#lang.obj) like [environments](#environment), and [names or symbols](#symbols). Actually, the `R Language Definition` manual lists about twelve basic types of objects, these are: vectors, lists, language, expressions, functions, NULL, promise, dot-dot-dot, environment, pairlist, any-type, builtin and special form objects.
+
+Internally all these objects are written in C detailing their content, memory requirements and their type. The C struct would have either base R, S3, S4 or RC listed in the objects type. Base R objects were defined during Rs development, while S3 and S4 correspond to similar objects types in the S language; RC is a new OO system in R.
+
+At this point we might wan to ask ourselves why it is important to know an objects type, that is, why should I know if it is a base, S3, S4 or a RC object. For simple reason, R works through objects, and knowing their type would enable us to effectively use them and manipulate them if need be.
+
+Highlights: encapsulation
+
+##### Base types
+
+R was originally not a class-based system and therefore all the base objects have no class attribute. By this fact you can determine base objects by running `is.object` function. The function returns TRUE if an object has a class attribute and FALSE if not. So expect base objects to return FALSE. You can also run the funtion `objects` inputing the base environment. This will list all base objects.
+
+So lets get to know these objects. Below I start by getting all base objects and looking through each object to find out if they have a class. I have also tried to check if they are all functions.
+
+```{r}
+# All objects in base R
+baseObj <- objects(envir = baseenv())
+# Do they have a class atrribute?
+baseType <- sapply(baseObj, is.object)
+all(baseType == FALSE)
+# Are they all functions?
+all(sapply(baseObj, is.function) == FALSE)
+```
+
+The package [pryr](https://github.com/hadley/pryr) by `Hadley Wickham` is an excellent package to snoop around Rs internal working. Here I use it to loop through the list of base R objects and find out their type and whether they are all functions.
+
+```{r, eval=FALSE}
+# Load the package
+library(pryr)
+# Find out if they are all base objects
+all(sapply(baseObj, otype) == "base")
+# TRUE
+# Find if they are all functions
+all(sapply(baseObj, ftype) == "function")
+# TRUE
+```
+
+Few pointers (reason we need to know object type), you can not add base objects, that priviledge goes to the `Rs core group`, but you can add [S3](#s3methods) OR [S4](#s4methods) methods to existing generic functions (objects) otherwise known as `internal generic function`. Internal objects are base objects written in C and built into Rs [interpreter](#comp.inter). They are only accessible through a C interface; in other words they are not easily accesible**(sp)**. Some of these functions include the mean, and grep **(other examples?)**. `grep()` might not be a function you have use if you have not done `a pattern search`. However, we shall use it as an example for code inspection since it prints its source code. Now print the source code with the name of the function without the parenthesis. 
+```{r}
+grep
+```    
+
+The first expression within the body of the function checks to see if the input data is a character, if it is not, converts it into a named character object. The second expression is now of interest to us, it should have shown us how a pattern search would be done by R, instead, it calls another function called `.Internal` with the original call to grep. The `.Internal` function means that grep is an internal function written in `C`. We are in R, so how do we read `C`? Unfortunately this is not a walk in the park kind of thing. One proposed way it to call `show_c_source` function from the `pryr` which opens a [GitHub] page with the source code. However, this might not be too friendly for non-programmers, hopefuly someone will convert these `C` codes to R codes if it has not been done.   
+
+There are other internal functions that are directly accessible, these are known as `primitive` functions. The `.S3PrimitiveGenerics` vector lists the primitive (internal) generic functions. Lets look at the first one, `anyNA`, first, lets pull up its help documentation with `?anyNA`. We see that this one of the generic functions testing for missing data. From our preceeding discussion we know that generic functions are methods dispatches. So we expect to have some methods for the `anyNA` function. We can see these methods with a call to the `methods` function, that is, `methods(anyNA)`. This gives us three methods or functions that can be used to produce an output. How the methods are selected is discussed below under [dispatch](#dispatch). 
+
+
+##### S3 types
+
+Next in line after the base objects are the S3 OO system. At least in this system one is able to create new objects. As you shall soon see, they are rather easy to create, actually, if you have created a data.frame then you have already created a S3 object: S3 does not need a lot of details as  S4. We shall soon see how to create them below but for now, lets figure out a way to know an object is a S3 objects.
+
+Unfortunately establishing that is not as easy as we saw in the base objects. R does not have a function that can give us this information. One suggestion is to call the `is.object` and `isS4` functions. This will tell us if the object has a class attribute or not and if it is a S4 object. If it has a class attribute then we know it is not a base object and if it is not S4 object, then our best bet is that it is a S3 objects. Clearly this is not the best way to get the information we need, but let's test it with the `baseObj` vector we created earlier.
+
+```{r}
+# So does it have a class attribute? Is it an S4 object?
+is.object(baseObj); isS4(baseObj)
+# Is there a class attribute?
+attr(baseObj, "class")
+```
+
+Interestingly our object has no class attribute and it is not a S4 object either, this means that it is a base object. Why is that so, use the `typeof` function to see that it is a "character" vector which is a base object. So that did not pan out, we still do not have an example of an S3 object. Let's go fishing for one, base R has numerous. How about one of Rs datasets, say `airmiles`:
+
+```{r}
+# Does the object have a class attribute and is it a S4 object? 
+is.object(airmiles); isS4(airmiles)
+# Is there a class attribute?
+attr(airmiles, "class")
+```
+
+Okay, we have a winner, `airmiles` has a class attribute ("ts - timeseries") and it is not a S4 object. Lets confirm this with our helpful (pryer) package `prye`.
+
+```{r}
+# Pryr, what say you?
+otype(airmiles)
+```
+
+Super, it has confirmed for us that `airmiles` with a `ts` class is a S3 object.
+
+Q. How does knowing that an object is an S3 object help me?
+Q. Any chance I can get a listing of s3 objects
+
+#### S4 types
+
+S4 is a much later OO system therefore do not expect to get S4 objects in base R, unless the R-core group is so moved to do so. This system is like the strict teacher or lecturer you once had. Its like S3 but with the exception that it wants details, order and organization. You will see this in action as we start creating objects.  
+
+Unlike S3, testing whether an object is S4 is just one call away; `isS4()`. Ofcourse `pryr` can also give use good information. 
+
+**Example of S4 obj here**
+
+* RC type
+
+Reference class is a new OO system in R. It deviates from S3 and S4 OO systems as methods belong to objects and not classes. This distiction is what sets RC to be similar to other programming languages that have objects with methods. Since this method is new in R, we would not expect to find RC objects, so we will create one below.
+
+### Generic Functions
+
+4 s3 and s4
+
+### Class definition and Object creation
+
+#### Creating S3 objects
+
+
+
+```{r}
+nume <- 1:10
+ otype(nume)
+char <- "char"
+ otype(char)
+bool <- c(T, F)
+ otype(bool)
+fact <- factor("y", "n")
+ otype(fact)
+matr <- matrix(1:9, nrow = 3)
+ otype(matr)
+otype(dat)
+li <- list(a = 1:10, b = letters[1:10])
+otype(li)
+```
+
+
+```{r}
+# Create object with usual assignment
+obj <- data.frame or factor()
+# Find out its class
+class(obj)
+# Change class of "obj"
+
+# Create new object with structure() and let it inherit class of "obj"
+
+
+```
+
+```{r}
+# Creating s3 generic function
+
+# Adding a method to the generic
+
+# Adding a method to an existing generic
+
+  # Class constructor
+
+# Group generics
+
+```
+
+
+
+#### Creating S4 objects
+
+
+
+
+
+* Key issues to highlight:
+  + instance
+  + Encapsulation
+  + inheritance 
+  + polymorphism
+
+```{r}
+
+response <- readline(prompt = "")
+```
+
+We want to generate a hypothetical surveillance system for highly infectious diseases. The system will first simulate the data, then it would do the necessary computation and finally produce a report. The final report produced can either be the full report of some computation output. 
+
+Data Simulator:
+  Representation:
+    Total number of patients - "numeric"
+    cycle - "character"
+      Validation: - a character vector with two values 
+                  - when converted into a date range the first should be the begining and the last should be the end
+    percentage exposed (out of total patients) - "numeric"
+      Validation: numeric has to be a value between 0 and 100  
+    percentage of those sick (out of those exposed) - "numeric"
+    * All initial observed cases will be also prevalence (check epi correctness)
+    percentage of the sick that succumb "numeric"
+    average treatment cost per exposed & patients "numeric"
+  Methods:
+    ID
+    Date(observation dates)
+    Exposed
+    Infected
+    New (generate; yes, no from ID and Infected)
+    Alive
+    Costs
+    
+  
+
+Ultimately we want to construct the following object
+
+```
+epiDat <- new(Class = "simulator", patients = "No. seen", dates = c("start", "end"), period = "no. data collections", exposed = "% of patients", incidence = "% of exposed", prevalence = "% of all patients", mortality = "% of prevalence", cost = "$") 
+```
+    
+```{r}
+# Class constructor
+setClass(Class = "simulator",
+         representation = representation(
+           site = "numeric",
+           patients = "numeric", 
+           dates = "character",
+           period = "numeric",
+           exposed = "numeric", 
+           prevalence = "numeric", 
+           incidence = "numeric",
+           mortality = "numeric", 
+           cost = "numeric"
+         ))
+
+# Creating an object (Instatiation)
+epiDataObject <- new(Class = "simulator",
+                 site = 1,
+                 patients = 200,
+                 dates = c("01-01-2016", "31-01-2016"),
+                 period = 1,
+                 exposed = 55,
+                 prevalence = 45,
+                 incidence = 20,
+                 mortality = 25,
+                 cost = 15
+         )
+epiDataObject
+
+# Declaring a generic
+setGeneric(name = "generator",
+           def = function(object){
+             standardGeneric("generator")
+           })
+
+# Defining Methods
+setMethod(f = "generator",
+          signature = "simulator",
+          definition = function(object){
+            Site <- rep(object@site, object@patients)
+            Id = paste0(object@site, "/", object@period, "/", 1:object@patients)
+            Dates = as.Date(object@dates, format = "%d-%m-%Y")
+            CollectionCycle = rep(paste0(Dates[1], "_", Dates[2]), object@patients)
+            Round = rep(object@period, object@patients)
+            nExposed = object@patients * object@exposed/100
+            response = c("Yes", "No")
+            # Vector with number of exposed patients
+            Exposed = sample(response, object@patients, replace = TRUE, prob = c(object@exposed/100, 1 - object@exposed/100))
+            # Out of all the patients seen, how many have the disease?
+            nPrevalence = round(object@patients * object@prevalence/100)
+            # Out of all the patients with the disease how many are new cases?
+            nNewCases = round(nPrevalence * object@incidence/100)
+            # Out of the exposed, randomly have 18 as new cases  
+            newCases = sample(which(Exposed == "Yes"), nNewCases)
+            # A vector with "Yes" for indices of newCases and "No" otherwise 
+            Incidences = ifelse(1:object@patients%in%newCases, "Yes", "No")
+            # A vector for all cases (incidence plus previous patients)
+            allCases = c(newCases, sample(which(Exposed == "No"), nPrevalence - nNewCases)) 
+            Prevalence = ifelse(1:object@patients%in%allCases, "Yes", "No")
+            nDead = round(nPrevalence * object@mortality/100)
+            indDead = sample(allCases, nDead)
+            Status =  ifelse(1:object@patients%in%indDead, "Dead", "Alive")
+            Costs = round(rnorm(object@patients, mean = object@cost, sd = 2), 2)
+            return(data.frame(Site = Site, ID = Id, Dates = CollectionCycle, Round = Round, Exposed = Exposed, Incidences = Incidences, Prevalence = Prevalence, Status = Status, MedicalCosts = Costs))
+            })
+epiData <- generator(epiDataObject)
+head(epiData)
+```
+
+           
+
+
+System:
+  Representation:
+    Metadata:
+     Site ID - "character"  
+     Population under surveillance (geographic area) - "character"
+     Name of Report generator - "character"
+     Date of report generation: "numeric"
+     Collection cycle - "numeric"
+    Data (either an existing data or a call to the simulator) - "data.frame"
+
+
+```{r}
+# Define a class "epiSystem"
+setClass(Class = "epiSystem",
+         representation = representation(
+           siteName = "character",
+           siteId = "character",
+           population = "character",
+           name = "character",
+           reportingCycle = "numeric"
+         ))
+# Create an object
+sysValues <- new(Class = "epiSystem", 
+                 siteName = "Site_1",
+                 siteId = "1",
+                 population = "Region A",
+                 name = "HG",
+                 reportingCycle = 1
+                )
+sysValues
+```
+
+
+
+
+Report
+  Representation:
+    Data - "data.frame" 
+  Contains:
+    epiSystem
+Computations:
+  Total number of exposed and unexposed
+  Total number of new cases (incidence)
+  All cases (prevalence)
+  Total Number of Deaths
+  Medical costs (facility)
+  
+Reporter class is for simulated data
+
+```{r}
+########### Class construction - Reporter: part of the generator classes  #####
+setClass(Class = "reporter",
+          contains = c("simulator", "epiSystem")
+         )
+
+################# Class Instantiation - objects: #########################
+dataObject <- new(Class = "reporter", site = 1, patients = 200, dates = c("01-01-2016", "31-01-2016"), period = 1, exposed = 55, prevalence = 45, incidence = 20, mortality = 25, cost = 15, siteName = "Site_1", siteId = "1", population = "Region A", name = "HG", reportingCycle = 1)
+
+################# Method Definition  #############################
+
+setMethod(f = generator,
+          signature = "reporter",
+          definition = function(object){
+## Diverting output to file #####################################
+            sink(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
+## Computing Exposure Indicators ##
+            # Total Number of exposed
+            totalExp = length(which(object@data$Exposed == "Yes"))
+            # Proportion of the exposed to patients seen
+            propTotExposure = totalExp/nrow(object@data)
+            # Total Number of unexposed
+            totalUnExp = length(which(object@data$Exposed == "No"))
+            # Proportion of unexposed to total patients
+            propTotUnExposure = totalUnExp/nrow(object@data)
+#################### Computing Incidence Indicators ###############
+             # Total Number of New cases
+              totNew = length(which(object@data$Incidences == "Yes"))
+             # Proportion of new cases to total exposure
+               propNewExp = totNew/totalExp
+             # Incidence Rate (Absolute Risk):
+               uninfectedExposed = totalExp - totNew
+               incidenceRateExposed = totNew/(totNew + uninfectedExposed)
+               unexposedInfected = length(which(object@data$Exposed == "No" & object@data$Prevalence == "Yes")) 
+               unexposedUnInfected = length(which(object@data$Exposed == "No" & object@data$Prevalence == "No"))
+               incidenceRateUnExposed = unexposedInfected/(unexposedInfected + unexposedUnInfected)
+##################### Computing Prevalence Indicators ##############
+             # Total cases (new and previous)
+              totCases = length(which(object@data$Prevalence == "Yes"))
+             #  Prevalence rate - is it feasible? What are the inputs?
+              periodPrevalence = totCases/nrow(object@data)
+###################### Computing Mortality Indicators ###############
+             # Total Number of dead patients due to disease
+              totMortality = length(which(object@data$Status == "Dead"))
+             # Proportion of new cases that died
+              propNewDead = length(which(object@data$Status == "Dead" & object@data$Incidences == "Yes"))/totMortality
+             # Proportion of all cases that died
+              propCaseDead = length(which(object@data$Status == "Dead" & object@data$Prevalence == "Yes"))/totMortality
+#######################   Computing Disease Burden ###############
+             # Total medical costs from the disease
+              caseCosts = object@data[object@data$Prevalence == "Yes", "MedicalCosts"] 
+              totCosts = sum(caseCosts)
+              # Average medical cost to the facility due to the disease
+              averageCosts = median(caseCosts, na.rm = TRUE)
+#######################   Print findings #########################
+            cat("****************   Summary Report   *********\n")# Need to add the metadata?
+            cat("                  =================\n")
+            cat(" \n")
+            cat("Disease Exposure\n")
+            cat("================\n")
+            cat(paste("Total number of patients exposed to the disease was", totalExp, paste0("(", propTotExposure*100, "%),"), "the unexposed were", totalUnExp, paste0("(", propTotUnExposure*100, "%).")))
+            cat(" \n")
+            cat("Incidence\n")
+            cat("==========\n")
+            cat(paste("There were", totNew, "new cases which accounted for about", paste0(round(propNewExp*100), "%"), "of the total disease exposure for this period. Those exposed and did not have the disease were", paste0(uninfectedExposed, "."), "Incidence expressed as a proportion of the exposed was about", paste0(round(incidenceRateExposed, 2), ".")))
+            cat(" \n")
+            cat("Prevalence\n")
+            cat("===========\n")
+            cat(paste("From the unxeposed patients,", unexposedInfected, "had the disease (preexisting cases) and", unexposedUnInfected, "did not have the disease. Period prevalence computed as the total number of cases", paste0("(", totCases, ")"), "over the total number of patients seen", paste0("(", nrow(object@data), "),"), "was", paste0(round(periodPrevalence, 2)*100, "%.")))
+            cat(" \n")
+            cat("Mortality\n")
+            cat("=========\n")
+            cat(paste("Total deaths in the facility for this period was", paste0(totMortality, " patients. This accounted for ", paste0(round(propNewDead, 2)*100, "%"), " of all the patients seen. From the new cases, the proportion dead was ", paste0(round(propCaseDead, 2), "."))))
+            cat(" \n") 
+            cat("Disease Burden\n")
+            cat("==============\n")
+            cat(paste("During this period,", paste0("$", totCosts), "was incured by the facility in terms of medical cost; an average of", paste0("$", averageCosts), "per patient."))
+#################### Closing diversion and previewing file  ##############
+            sink(file = NULL)
+            file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
+##################  OUtput  ##############################################
+        list(TotalExposed = totalExp,
+            ProportionTotExposed = propTotExposure,
+            TotalUnExposed = totalUnExp,
+            ProportionTotUnExposed = propTotUnExposure,
+            TotalNewCases = totNew,
+            ProportionNewCasesExposed = propNewExp,
+            UninfectedExposed = uninfectedExposed, 
+            IncidenceRateExposed = incidenceRateExposed, 
+            UnexposedInfected = unexposedInfected, 
+            UnexposedUnInfected = unexposedUnInfected,
+            IncidenceRateUnExposed = incidenceRateUnExposed,
+            TotalCases = totCases, 
+            PeriodPrevalence = periodPrevalence,
+            TotalMortality = totMortality,
+            ProportionIncidenceDead = propNewDead, 
+            ProportioCaseDead = propCaseDead,
+            TotalCosts = totCosts,
+            AverageCosts = averageCosts)
+          })#Later, implement DRY
+epiSurveillanceOutput <- generator(fullReport)
+```
+
+
+
+
+* Can the report be sent to a word document or html throught rmarkdown/knitr?
+
+```{r}
+# Ultimately:
+report <- new(Class = "reporter", include = "full or exposure and/or incidence and/or prevalence and/or mortality and/or costs)"
+```
+
+Assumptions:
+* Only new cases are reported as exposed, therefore not-new-patients with the disease would not be captured in the exposed (reduce double counting)
+* Incidence: New cases to the facility that have not been seen in any other facility. The disease under surveillance in highly transmittable therefore once it is diagnosed it is highly unlikely that a patient would change the facility
+
+Case study 
+
+Following the epi example, we want to develop a program that monitors disease progress and auto-generates a report (we will keep this simple). First off, all documentations and computations will have a unique ID for all new cases, each reporting period will be a `round` indicating the period of data collection (time duration between each round will depend with the disease (progress, ?)), and the reporting date.
+
+For purposes of testing the program, a data simulator will be used to generate data. At site level, it will first contain the mandatory ID, round number and date (inherit). It will also generate a list of the exposed and non exposed, incidence, prevalence, mortality and direct treatment costs.  
+
+The computations will include, incidence rate, prevalence rate, mortality rate, and the economic burden of the disease (to a facility). Finally a report will be generated with specified computation, default will be to include all.
+
+Note, each entry will be treated as incidence and subsequently as prevalence, incidence will be determined by new ID to the system.
+
+Disease burden? Direct medical cost? Economic implication ---> method?
+
+Parent: Epi 
+          Methods:  ID
+                    Date  
+  Children: Simulator
+            Methods:  Exposed/Non Exposed
+                      Incidence
+                      Prevalence
+                      Mortality
+                      Treatment Cost (facility)
+            Computation
+            Methods:  Incidence
+                      Prevalence
+                      Mortality
+                      Costs
+    Grand-child:  Report Generator
+    
+    
+  
+
+Highlights: instantiation, inheritance, polymorphism
+
+### Dispatch Mechanism
+
+Could add a method to an existing generic
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+## [1] "2016-02-10"
+mean.default(myDates)# Not a good idea to call the method directly
+## [1] NA
+## Warning message:
+## In mean.default(myDates) : argument is not numeric or logical: returning NA
+
+```
+
+
+Delete me
+[instatiation](#instatiation)
+*right track, but the "tool" aspect has to be crystallized, hence user needs to know how to effectively use it
+
+```{r encapsulation}
+mean
+```
+
+In addition, there are functions that produce different outputs based on their input or arguments, for example the `plot` function.
+
+```{r generic.funs}
+plot(x = rnorm(50), y = rnorm(50, 5, 0.5), main = "A scatter plot", pch = 20, col = 4)
+#Time Series
+plot(as.ts(x = rnorm(50)), col = 4)
+```
+
+
+This can be a source of mystery if one does not 
+
+To make these codes visible, it necessary to know how R work. In essence, R operates on objects. Object being anything that has a name (a noun) and can be described in terms of what it is and what it can do. So in R, everything is considered an object as they have names and can be described. Take for example a function, it would have a name such as the `mean`, and it can be described in terms of what it is (an average) and what it can do (produce the mean of some data). So a function is an objects, so is the data used, and packages (add-on programs). The type of object determined the analytical process used. To set or determine the type of object, R uses the class system which is a programming paradigm from the `Object Oriented Programming (OOP)` model.
+
+Basically OOP ___. The class system in R 
+
+* highlights that a non-programmer can understand
+* Is summary going to be a pointer or a synopsis? The latter
+
+#### Why should you know Object Oriented Programming (OPP) - in R{#oop.intro}
+
+To be good in doing something, you must understand it: what it is and how it works. So to effectively work with R, you need to understand what R is and how it works. As as a user (as opposed to a developer), you might not need to go into great depth in the understanding the [source code](#source.code) of R, but it is important to have a general idea of how things work in R. This will certainly help in making function calls; it will also give you an understand how R generates its output based on the function call. 
+
+2 audiences: complete novice in data analysis and those coming from other non-programming packages
+
+* Main: Understand how R works especially making function calls: Since R is an object oriented programming language
+
+
+#### Programming Paradigm{#paradigm}
+
+* What is it and why is it necessary in a programming language
+
+#### Procedural and Object Oriented Programming(OPP){#procedural.opp}
+
+
+In this section we delve into a bit of computer science, though we shall only be touching the surface and only enough to get you started well in R.
+
+Let's beginning with the first term `object`; in the real world it can be a thing, anything that you can be able to describe in terms of it's `structure/properties`, `name`, and `actions`. So an object can be "*you*" as a person, the computer you are using, house or data. For example, your computer is an object because it has a manufacturers name or some unique name you have given it; it has properties such as size, color, and type; and it can be switched on and off, compute and record sounds.    
+
+In the same line, R objects are composed of `attributes` and `methods`. Attributes can be thought of as the `"what" of the object` and methods as the `"how" or simply what the object can do`. So, in the case of *you* being an object, the attributes would be your age, gender, color, e.t.c (what makes you up) and methods is what you can do like you sleep, walk, run, work e.t.c.{#object}     
+
+With all R objects, there is a `class` which describe the object. They tell you what the object is all about or how it should be developed. It is the blueprint of the object and therefore to produce the object, this blueprint must be processed; something called `instatation`. Using our earlier example, of you as an object, then we could say you are an object of class "person". The class person will contain full details about you. 
+
+Now in R, almost everything is an object and all operations are performed using objects. For example, all functions including the mean are objects and therefore have a class that define them, attributes and methods. 
+
+It is good to have this in mind as you programme in R and can leave the rest of this section (OOP) if need be, but hopefully we will be completing it. 
+
+Now that you know what an object is, it's attributes, methods and classes, there are two other important concepts that are fundamental to object oriented programming, these are `encapsulation` and `inheritance`. 
+
+#### Encapsulation{#encapsulation}
+
+When we discussed how to make function calls, we saw that you can pull up the help documentation for the function using either `help(function)` or `?function`. We also noted that we could get the arguments of a function using the `args()` function. But to see how the function works or its internals, we type in the functions name without the parenthesis.
+
+```{r function.internal}
+# Look for a function that shows its internal
+```
+
+What is Rs internal(documentation)? storage, 
+
+Encapsulation means hiding the complexity of the internal working of the object which is particularly useful for functions. For example, in addition to getting help documentation, you can look up a functions code by typing the name of the function without the parenthesis. Now, if you do this for say the mean, you will see that it has hidden its code or stored it separately. 
+
+```{r }
+mean    
+```
+
+Encapsulating helps to ensure consistency, more so when the internals change. That is, sometimes the function would have some updates to it's internal working but it's core or what is shown does not get affected, in this case the call to the mean remains the same.
+
+#### Inheritance{#inheritance}
+
+The other important concept in OOP is `inheritance`. As most objects have similar descriptions at least partially, then a new class can get attributes or properties from another class. For example, a mango would have a class of fruit thereby having all attributes of a fruit, the fruit class can in-turn be in the trees class thereby inheriting (some of the attributes of the class trees. This helps reduce coding as new classes get attributes and methods from existing classes therefore making coding much more efficient.
+
+Having looked at OOP in R, lets review the concepts by asking ourselves why it was important to learn it in the first place.
+
+### Reasons for learning OOP in R
+
+* You get to know how to access hidden source codes. Source codes can be a great way to improve your programming skills in addition to knowing how a function works
+
+##### Short Definitions
+
+
+**Function Call**: {#call}
+
+**Mutable**: {#mutable}
+
+Prone to change
+
+**Symbols:**{#symbols}
+
+Symbols are names of R objects. They can either be provided when the object is being defined or are created with `as.name` and `quote` function.
+
+```{r}
+#For example, 
+c <- as.name("nams")
+
+#c is a symbol i.e.
+is.name(c)
+
+# Core composition
+mode(c)
+
+# Object type 
+typeof(c)
+```
+
+**Internal and Primitive Functions**{#internal.primitive}
+
+*internal non-primitive functions?
+
+[Compilers and Interpreters]{#comp.inter} 
+
+One of the first things you are taught when learning how to use computers is that a computer only understands `0's and 1's`, representing off and on state. This means that every action you need the computer to perform needs to be in the form of 0 and 1 or what is called `computer language`. 
+
+Now imaging**(sp)** you want to make a summary statistic of a given variable, naturally you would use commands that you can understand like mean(), median(), or summary(). For you, this is easily understandable, but for the computer, it would not be understandable. Therefore, you would need to convert the command to `computer language` or into 0's and 1's. Doing it manually can be quite a task and therefore there are computer programs which help convert the code to a form the computer can understand. These are compilers and interpreters. 
+
+Compilers pick your list of instructions and converts the whole document to computer language. This can be quite slow at first as the program takes time in the conversion process, but runs pretty first once the codes have been converted. One key flaw in this system is that if your code was faulty, and the compilation has began, then it would be too late to amend it.
+
+Interpreters on the other hand picks one instruction, converts it until they are finished. The good thing about it is that the conversion begins immediately and one can amend the instructions as they go on. However, this method is quite slow unlike the compiler.
+
+The instructions or code given to either of the two programs would be in one of the numerous programming language of which R is one of them. R uses an interpreter in it's implementation along side `Lisp programming language`, `Dartmouth BASIC` `Perl`, `Python`, `MATLAB`, `Ruby`, `UCSD`, `Pascal` etc. Read more on this at [Wikipedia]("https://en.wikipedia.org/wiki/Interpreter_(computing)"). Examples of compilers are `c++`, `BASIC`, `COBOL`, `Fortran` and many others.
