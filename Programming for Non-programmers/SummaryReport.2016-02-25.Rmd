@@ -1,0 +1,18 @@
+****************   Summary Report   *********
+                  =================
+ 
+Disease Exposure
+================
+Total number of patients exposed to the disease was 116 (58%), the unexposed were 84 (42%). 
+Incidence
+==========
+There were 18 new cases which accounted for about 16% of the total disease exposure for this period. Those exposed and did not have the disease were 98. Incidence expressed as a proportion of the exposed was about 0.16. 
+Prevalence
+===========
+From the unxeposed patients, 72 had the disease (preexisting cases) and 12 did not have the disease. Period prevalence computed as the total number of cases (90) over the total number of patients seen (200), was 45%. 
+Mortality
+=========
+Total deaths in the facility for this period was 22 patients. This accounted for 18% of all the patients seen. From the new cases, the proportion dead was 1. 
+Disease Burden
+==============
+During this period, $1329.92 was incured by the facility in terms of medical cost; an average of $14.71 per patient.
