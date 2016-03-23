@@ -3,86 +3,59 @@ title: "Object Oriented Programming in R"
 author: "By Hellen Gakuruh"
 date: "February 11, 2016"
 output:
+  word_document: default
   html_document:
     toc: yes
 ---
 
-## About this article
+## About this post{#aboutPost}
 
-This article aims to cover the very basic principles of Object Oriented Programming, it is geared toward its application in R.   
+This article aims to cover the very basic principles of Object Oriented Programming (OOP), in R.   
 
-To start off, we shall discuss the key concepts of object oriented programming (OOP); from a programming stand point (fret not, we are not going into too much details, just enough). Here we shall look at: 
+To start off, we shall discuss the key concepts of OOP and then it's implementation in R. We shall conclude with a case study that automates a monitoring system by implementing R's OO system.  
 
-* The meaning of `OOP` and its relation to `procedural oriented programming`
-* What is meant by the term `object`
-* What a `class` is and its importance in OOP
-* `Methods` and their key role in OO systems
-* The aspect of `inheritance` and why it's the key essence of OOP
-* `Encapsulation` and it benefits in programming and
-* The different variants of an object or `polymorphism`
+This post is most suitable for non-programmers interested in developing effective and efficient analytical programs.  
 
-From Rs stand point (our core interest) we shall discuss how the above programming concepts are implemented and more specifically we shall discuss:
+**Key terms:**{#keyTerms}
 
-* What R considers to be an object
-* Rs OO class system:
-  + classes that exist in R (attributes)
-  + How to determine an objects class
-* R as a functional and OOP programming system
-* Implementation of OOP in R
-  + The foundation of the class based system, `Base`
-  + The three class based systems `S3`, `S4` and `RC`
-    - `S3`: A less formal system with single deployment and use of generic functions as means of encapsulation and polymorphism 
-    - `S4`: Similar to S3 but more formal with class definition and multiple deployment
-    - `Reference Classes(RC)`: A new system in R that emulates other programming languages implementing the OOP; here methods belong to classes and not functions like in `S3` and `S4` 
-* How R implements the aspect of inheritance through `next method` 
+Objects, Classes, Methods, Attributes, Instatiation, Inheritance, S3, S4, RC, Encapsulation, Polymorphism
 
-We shall finally conclude with a small discussion on possible considerations for selecting a suitable system.
-
-This write up is most suitable for non-programmers interested in developing effective and efficient analytical programs.  
-
-** Key terms:** Objects, classes, methods, attributes, instatiation,inheritance, s3, s4, RC, encapsulation, polymorphism
-
-#### Prerequiste{#assumptions}
+### Prerequiste{#prerequiste}
 
 To appreciate and follow though the write up, it is highly recommended that you have a basic understanding of R and more specifically how to create functions and make function calls in R.
 
-### So why Object Oriented Programming (OOP)?{#oop.summary}
+## So why Object Oriented Programming (OOP)?{#why-oop}
 
 Quite simply it makes your code so much easier to use and read. Using an Object Oriented approach gets you to start programming with a well laid out plan rather than coding it first. You also get to visualize the program in terms what it should do, what it requires and the best way to implement it. With OOP, it is not about the language, in fact, you can develop a program and implement it in any OOP language. For example, you can write a program which can be implemented in both R and C++ (with just a few twicks here and there). Selection of the language is all about how conversant you are with the language and its capabilities. Obviously my choice is R, so R it is, our discussion of OOP shall be based on its implementation in R.    
 
-R offers this system as a means for good programming. We can therefore think of it as an Object Oriented Program but in the same line we have to see it as a functional programming language. This make Rs OOP implementation slightly different from other OOP languages. Why so? For one, we know for anything to happen in R it must be as a result of a function call: R responds only to function calls. This makes R a functional programming language. R also implements OOP but uses functions to make it work. 
+R offers this system as a means for good programming, hence it can be referred to as an Object Oriented Program. However, R is also a functional programming language as all actions rely on function calls. This make Rs OOP implementation slightly different from other OOP languages, it is what `John Chambers` calls [functional, object-based system^1^](#references).
 
-We now know the benefits of an OOP program and we also know R implements a unique variant of the system, but what exactly is OOP? To answer this, first think of the functions you have been developing so far. Do you recall having to repeat a section of the code, or have you tried linking some functions together to have a complete program? Are times that you had to change the body of the function which resulted in a change to the call? How about sharing your functions with others, have you ever wanted to give a basic code without the intricacy of its operation? If any of these is known to you, then OOP is the solution as it can address all these situations effectively and efficiently. We can therefore view OOP as a  programming model that enables clear (although, if not well implemented this might not be the case) linkages between functions though a hierarchical system, encapsulates functions, and provides way for objects to assume different forms.  
+Before we go into further details about this unique OO system that R implements, lets get to know OOP first. To do so, consider the following situations; when writing functions, do you recall having to repeat a section of the code, or had a long program that just needed some clarity by segmenting different sections? Or are there times you had to change the body of the function leading to a change in how the function is called? How about sharing your functions with others, have you ever wanted to provide your users with a basic code without the intricacy of its operation? If any of these rings a bell, then OOP is the solution as it can address all these situations effectively and efficiently. Therefore, OOP is a programming model that enables clear linkages between functions through a hierarchical system, encapsulation (hiding core functions), and creation of different forms of a object to meet different objects.  
 
-OOP does all that through `objects` which are similar to real life objects. An entity can be called an object if it can be described in terms if its *name*, *properties* and *what it can do or its behaviours*. But before we start discussing OOP, lets look back at what some languages used before OOP. Prior to OOP was the `procedural programming` language. It was based on a set of instructions (procedures) to carry out tasks. Procedural programming looked at the sequence of steps needed to accomplish the task, that is, it started for the issue or problem and developed a sequence of procedures to address it. Unfortunately if somewhere down the line (of code) edits were necessary, then it affected the whole program. OOP came to salvage this situation by using objects. Therefore programs are written to act on objects and it all begins with defining (give it a name, properties and behavior) objects.
+OOP does all that through `objects`, which are similar to real life objects as they can be described in terms if its *name*, *properties* and *what it can do or its behaviours*. Prior to OOP was the `procedural programming` language that was based on sets of instructions (procedures) to carry out tasks. Procedural programming looked at the sequence of steps needed to accomplish a task starting from the issue or problem. Unfortunately if somewhere down the line (of code) edits were necessary, then it ment changing the whole program. OOP came to salvage this situation by using objects, a `piece meal` approach. In this system, programs are written to act on objects therefore changes were made to the objects rather than the whole program.
 
-R prefers OOP due to its ability to handle edits and updates, its ability to [hide the complexities](#encapsulation) of a function, its hierarchical system or [inheritance](#inheritance) mechanism and the ability of an object to take on [different forms](#polymorphism).
+In addition to OOPs ability to handle edits and updates, there are three principles that guides it, these are, [inheritance](#inheritance), [encapsulation](#encapsulation) and [polymorphism](#polymorphism). we shall look at these principles in greater detail as they apply to R.
 
-There are different [types of OOP](https://en.wikipedia.org/wiki/Object-oriented_programming); R implements the `class-based system` as opposed to `prototype-based systems`. In the class system, objects are developed or constructed  from *blue prints* known as `classes`. This are the same class attributes you must have learnt and used in your introduction to R. But generally, classes describe objects in terms of [what they are](#properties) and [what it can do](#methods). However, as we shall soon see, in some OOP systems R included (but excluding a new system called RC), methods are defined by functions and 
-not the classes. For the prototype-based systems, the properties and methods are directly described in the objects: prototype being the default object. 
+OOP comes in different [varieties](https://en.wikipedia.org/wiki/Object-oriented_programming); R implements the `class-based system` as opposed to `prototype-based systems`. In the class system, objects are developed or constructed  from *blue prints* known as `classes`. Classes in most OO systems describe objects in terms of [what they are](#properties) and [what they can do](#methods). However, as we shall soon see, in R methods are defined in functions (with the exception of the new RC system) and not the classes. For the `prototype-based systems`, the properties and methods are directly described in the objects: prototype being the default object. 
 
-Alright, lets look at how R implements OOP. First we shall have a general discussion on the concepts particularly on classes, methods, Rs functional approach through the use of generic functions and finally the three class based system. We shall then move swiftly to the most interesting part of this article and that is the actual application OO systems in R, we shall do so by using a typical case study. So brace yourself, we are in for some fun times ahead.  
+Alright, lets look at how R implements OOP. First we shall have a general discussion on the concepts particularly on `classes`, `methods`, `Rs functional approach` through the use of `generic functions`,  `methods dispatching mechnism`, `inheritance`, and finally the `three class based systems`. We shall then move swiftly to the most interesting part of this article, actual implemention of the OO systems in R, we shall do so by using a typical case study. So brace yourself, we are in for some fun times ahead.  
 
 
-## How does R implement OOP system?
+## OOP Concepts as applied in R
 
-As mentioned in the foregoing discussion, R does this through a class-based system. This system is currently composed of three Object Oriented systems, these are `S3`, `S4` and `Reference classes(RC)`. But do take note that there is a fourth system that is usually unmentioned as it is not extensible by users, this is the [base type](#baseObj) and it is the foundation on which all other systems are implemented. This means that all  objects (which is virtually every entity in R) are either a purely base R object or belonging to one of the other three systems.  
-
-Lets look at the first two systems (S3 and S4), if you recall your  [introduction to R](#assumptions), you must have learnt that R is an implementation of the `S` language created by `John Chambers`. This means that R uses the methodology of the S language like S3 and S4 OO systems, where [S3 corresponds to version 3 of the language and S4 to the forth version](#http://ect.bell-labs.com/sl/S/history.html). RC is a new OO system in R and deviates from the functional programming aspect of Rs OO system as methods belong to classes. This implementation closely resembles other OOP implementing languages.   
-
-Key to all these systems are the `classes` and `methods` with each system having its own little twist as to how it constructs and defines them. In addition to these two issues are the generic functions that make R a functional program. In the subsequent sections we start by discuss these important concept as applied in R.
+Other than `objects`, there are two more important concepts in OOP, these are `classes` and `methods`. In addition, R being a `functional programming language`, it extends OOP concepts with the concept of `generic functions`. 
 
 ### Classes 
 
-`class` should not be a new term to you, as they form part of an [introductory session](#assumptions) in R. But to refreshen your mind, classes in R are part of an objects `attribute`. In this case attributes describe or give more information about an object: they provide its `properties`. These attributes can be used to hide the details of an objects implementation. They comprise of: `names`, `dimensions`, `dimnames`, `classes`, and `ts` attributes. 
+Classes in R are part of an objects `attribute`. Attributes describe or give the basic information about an object (`properties`). Other than an objects class, other attributes are, `names`, `dimensions`, `dimnames`, `classes`, and `ts`. 
 
-Of all the attributes, classes are particularly important as they are used in evaluating function calls. Base R classes include `numeric`, `logical`, `character`, `complex`, `list`, `expressions`, and `names`. Others are `matrix`, `array`, `factor` and `data.frame`. You can get an objects class by calling the `class` function i.e. `class(mean)`. As we discuss base objects, we shall learn that they do not have a class attribute, so the class (the base class mentioned above) returned by a call to `class` for base objects is known as an `implicit` class.  
-
-Further on in the `S3` session, we shall see how easy it is to change or update the class of an object. However, care should be taken as changes in an objects class tend to have great ramifications during the evaluation process. This all ties together with the next term we will look at; `methods`.
+Of all the attributes, `classes` are particularly important as they are used in evaluating function calls. Base R classes include `numeric`, `logical`, `character`, `complex`, `list`, `expressions`, and `names`: Others are `matrix`,  and `array`. You can get an objects class by calling the `class` function i.e. `class(mean)` or for simple vectors `mode()`. These base R classes are known as `implicit` classes and all objects have one of these classes. An object can further extend its implicit class with other classes thereby having a vector of classes. How these classes are arranged determines the inheritance and methods dispatching mechanism to be implemented.  
 
 ### Methods 
 
-As classes provide the details of an object (the what), `method` give the `how` or the behavior of the object; that is, what it will or should do. In R, methods are defined to perform certain tasks for objects with a particular class. So an object of class say "a" would have a method specifically defined to act on objects with that class.
+As classes provide the details of an object (the what), `method` give the `how` or the behavior of the object; that is, what it will or should do. In essence methods are just functions but functions that act on objects of a certain class.
+
+So an object of class say "a" would have a method specifically defined to act on objects with that class.
 
 ```{r eval=FALSE}
 # Create an object
@@ -91,6 +64,7 @@ obj <- 1:10
 # Add class attribute
 class(obj) <- "a"
 
+#print object
 obj
 ## [1]  1  2  3  4  5  6  7  8  9 10
 ## attr(,"class")
@@ -98,245 +72,127 @@ obj
 
 # Define a method for that class
 methodForA <- function(object){
-  # do something to object
+  # Print maximum and minimum values
+  print(c(min(object), max(object)))
 }
+methodForA(object = obj)
+## [1] 1 10 
 ```
 
 ### Generic functions
 
-In our introduction we mentioned that R is a functional programming language in addition to being an object oriented program. One outstanding fact to this is that in the first two OO systems in R, methods belong to functions called `generic functions`. These functions act as method dispatchers by determining the class of the object and then dispatching the object to its method.
+In our introduction we referred to R as a `functional, object based system`, this is because in the first two OO systems in R, methods belong to functions called `generic functions`. These functions act as methods dispatchers by determining the class of the object and then dispatching appropriate methods to the object.
 
-Generic functions in themselves do nothing other than dispatching methods. Actually, you can view a generic function as smart folders. Smart in the sense that they do more than store files (methods in this case), they can also give you a method depending what object you give it. So a generic function could have numerous methods within it, and the work of the generic function is to dispatch the correct method. As good programming practice, each generic function has a default method that is called when the generic cannot locate an objects class.
+Generic functions in themselves do nothing other than dispatching methods. Actually, you can view generic functions as `smart folders`. Smart in the sense that they do more than store files (methods in this case), they can also give you a method depending the class of the object you give it. So a generic function could have numerous methods within it (as you would have in your folders), and the work of the generic function is to dispatch the correct method.
 
-Base R is loaded with generic functions. One such function that I am sure you must have used is the `plot` function. Have you ever given it different data objects and it gave you different graphs?
+Base R is loaded with generic functions, one such function is the `plot` function, it can take different data objects and still be able to produce an appropriate plot for the object.
 
 ```{r}
-# With numeric input
 x <- 1:10
 plot(x, main = "Plot with one numeric variable x")
-# With two numeric objects
 y <- rnorm(10, 5, 2)
 plot(x, y, main = "Plot with two numeric variables")
-# With a data frame
 class(anscombe)
 plot(anscombe, main = "Plot for a data frame")
-# With a matrix
 class(USPersonalExpenditure)
 plot(USPersonalExpenditure, main = "Plot for a matrix")
-# With a table
 class(UCBAdmissions)
 plot(UCBAdmissions, main = "Plot for a table")
-# With time series data
 plot(AirPassengers, main = "A time series plot")
 ```
 
-That's the magic of a generic function. It checks the class of an object and looks for an method method. A generic could have numerous methods which can be shown by a call to `methods()`.  
+That's the `magic` of a generic function, it checks the class of an object and looks for its method. 
+
+A generic could have numerous methods which can be shown through a call to `methods()`.  
 
 ```{r}
 methods(plot)
 ```
 
-Since the methods are the actual implementers like `plot.ts` for time series data, they can called directly. 
+Since the methods are the actual implementers like `plot.ts` for time series data, they can be called directly and can sometimes be quite efficient. 
 
 ```{r}
 plot.ts(AirPassengers)
 ```
 
-However, this is not a good practice and highly discouraged. This is because the methods in the generic can be changed internally, but the generic call itself say `plot()`, remains the same. We shall discuss more on generics under the `S3` and `S4` systems. We shall also discuss how this aspect implements the `encapsulation` principle in OOP.  
+However, this is not good programming practice and it is not encouraged. This is because calling a method directly would mean dispatching mechanism is not initiated and any changes to the generic internals could affect your call. In addition, if a method calls another method through inheritance, then this would not also be possible as there is no record of the generic function. 
 
-#### Inheritance 
 
-When developing programs, you would often have a sequence of activities, with some starting and others coming along the way. Most of these programs would require certain tasks to have been performed or certain inputs. Without OO, one would develop several function with repetitive code in order to accomplish the task. But in OOP,  an `inheritance` mechanism is used. This inheritance mechanism enables linkages between methods given a class vector of an object.
+### Inheritance Mechanism{#inheritance} 
 
-For example, in our `obj` object we can add class `b` and `c` using the `append` function.   
+Inheritance is a mechanism that allows related objects to be linked together by reusing common code. It is a way of implementing the `DRY` (do not repeate yourself) principle of programming or making code more efficient. This is achieved by classes inheriting methods of other classes. For example, if an object has classes `A`, `B`, and `C`, then the first class `A` can inherit methods for both `B` and `C`. Therefore, implementing an inheritance mechanism wholy depends on an objects class vector. Inaddition, the order in which the classes appear in a class vector would indicate the order of inheritance. For our object, methods for class `B` would be inherited before methods for class `C`. 
 
-```{r eval=FALSE}
-class(obj) <- append(class(obj), c("b", "c"))
+The best way to organise your classes is to think of the class of the end object moving forward, that is, what do you want to achive and what processes and objects do you need to achieve it.
+
+For instance, you are interested in scrapping some web pages for certain mentions or activity; this could be anything really, like reactions to programs being implemented, costs and fundings, new technology, or hits to certain web pages. Your interest is to update your webpage with this information. To do this you must first:
+
+1. Source the data (usually from multiple sites) and cache it
+1. Analyse the data 
+1. Table and plot the data and finally,
+1. Update your site
+
+These four steps can be implemented with four classes; `source`, `analysis`, `display`, and `update`. An object with these four classes should be able to meet our objective, but the key thing here is the order of the classes; what is the first class and what should follow. 
+
+For our case we shall start with the class for our intended output that is `update`, then `display`, then `analysis`, and finaly `source`. The idea here is; `update` will call `display` which will call `analysis` which in turn will call `source`. `Source` will then implement the functions (methods) that are defined for sourcing data and return the data to `analysis`. `Analysis` will then pick the data and invoke methods for analysis. It will then send the analysed data to `display` which will produce the necessary tables and plots. `Display` will finally send the tables and plots to `update` which will implement the necessary changes to the webpage. So if there were any inputs in our objects, they will be sent up the inheritance levels and outputs sent down by the inherited methods.  
+
+![class Ordering](figures/classOrdering.png)
+
+### Methods Dispatch Mechanism in R{#dispatchingMechanism}
+
+In `S3` and `S4` the generic function is responsible for dispatching methods. Dispatch is based on the class of the object supplied to the generic and can either be a `single dispatch` or `multiple dispatch` mechanism. 
+
+`Single dispatch` means the generic will only dispatch methods for the first object to it's call; it overlooks any other object supplied to it. 
+
+```{}
+genericFunction(object1 = x, object2 = y)
+# Method for class(x) will be searched and dispatched, class(y) is irrelevant
+# in method search
 ```
 
-When the generic function is called, it will first look for for a method defined for class `a`, if it is found, then the method is dispatched, however, if it is not found then a method for class `b` is sort and so on until it reaches the last class. If no method is found for the classes given, then a default method is sort, if that is also not found, then R will send you an error telling you it could not find a method. Otherwise the first method found is used. 
+`Multiple dispatch`  occurs when a generic can dispatch methods for class of more than one objects. 
 
-#### Inheritance and Polymorphism
-
-Inheritance is a mechanism in which the class of an object can get access to methods of other classes. The list of class names an object has is used to show inherited methods. That is, the first class of an object or the `subclass` has access to methods for the second or `superclasses`. So given an object `obj` with classes `a`, `b` and `c`, class `a` inherits all the methods of super class `b` and `c`. 
-
-Inheritance is a key feature in any OOP system. In R, inheritance kicks in when a method explicitly makes a call to the next method. For example, `a` could call next method for "b" and "b" could call next method for "c". So "a" would inherit the method for "b" and "c" . How one arranges the classes of a `calling object` matters as `next method` will use this order in sourcing for the next method. When next method is called, it will not use the class of the object it receives but rather the class of the calling object (to the generic).
-
-
-Adding a class to an object means that the first class `inherits` the methods of the second and subsequent classes. We shall discuss this further in the `S3` and `S4` section.
-
-The `inheritance` mechanism demonstrates the aspect of `polymorphism` in the sense that an object can take on different forms. For example, all computers have the same functionality, and therefore they fall under the class "computers". However, there are two types of computers, "desktops" and "laptops". You could also look at desktops as "usual desktops" or "mainframe" computers. All these are different forms of a computer and they each inherit the method specified for the class before also known as a `superclasses` (the current class is called `subclass`). 
-
-```{r eval=FALSE}
-# generic function: "computers"
-computers <- function(object){
-  UseMethod("computers", object)
-}
-# Methods
-computers.computer <- function(object){
-  print("I am a computer")
-  NextMethod()
-}
-computers.Laptop <-function(object){
-  print("specifically a laptop")
-  NextMethod()
-}
-computers.HP <- function(object){
-  print("and HP is my type")
-}
-# Object
-myComputer <- list()
-class(myComputer) <- c("computer", "Laptop", "HP")
-# Call the generic
-computers(myComputer)
+```{}
+genericFunction(object1 = x, object2 = y)
+# Dispatcher will source for defined methods for the combined classes of x and y
 ```
 
-In our example above, we have an object called `myComputer` which is a computer as well as being a laptop and a HP type, these are its various forms. It therefore inherits all the method for a computer and laptop. In this case we would expect the following output once the generic is called.
+In both dispatching mechanism, the dispatcher will first create and cache the class vector of the object(s). The search for an appropriate method will begin with the first listed class(es), if a method is not found then a method for the second class(es) is searched, if this is also not found, the the third is searched and so on until there are no more classes in which case the default method is sourced. If a generic does not have a default method then an error is issued. 
 
-```{r eval=FALSE}
-[1] "I am a computer"
-[1] "specifically a laptop"
-[1] "and HP is my type"
-```
+If on the other hand an object does not have a class attribute (base objects), then it's implicit class is used to dispatch an appropriate method, if there is no method for the implicit class, then the default method is dispatched. In the event there is no default, then an error will be given. Which dispatching method is actually used depends on the `OO System`. 
 
-** Example **
+For [RC](#rc), methods dispatch is clear as objects call methods through references. This is because methods belong to classes rather than functions.
 
-Just to hammer in these concepts, how about an example, a snippet of the case study we shall be discussing later on. In this example we have one goal, to get an `average`. Not so hard isn't it?. But with it we should start to see how OOP works in R.   
+## Implementation of OO system  in R  
 
-Our case study is based on something we would all be aware of, disease outbreaks. They happen all over the world and epidemiological programs are started to monitor their progress in an attempt to learn how to manage it. So visualize yourself running a typical epidemiological project that is following a certain disease. 
+OOP system in R is implemented through a `class-based system` currently composed of three systems; `S3`, `S4` and `Reference classes(RC)`. There is a fourth system that is usually unmentioned as it is not extensible by users, this is the [base type](#baseType) and it is the foundation on which all other systems are implemented. All  objects are either `pure base R`, `S3`, `S4` or `Reference classes(RC)` objects.  
 
-One of the programs crucial data is the start of the outbreak. The outbreak has a short incubation period (time between actual exposure and onset of the disease) and the start date can not be accurately established. In this case a range of dates from `3rd Jan 2016` to `13th January 2016` is received from the ground. Since the start date cannot be a range, the start date is arrived by computing the average.
+`S3` and `S4` are an implementation of the `S` language created by `John Chambers`, where [S3 corresponds to the third version and S4 to the forth version of the language](#http://ect.bell-labs.com/sl/S/history.html). `RC` is a new OO system in R and deviates from the functional programming aspect of Rs OO system as methods belong to classes and not function as is the case in `S3` and `S4`. This implementation closely resembles other OOP implementing languages like `JAVA` and `C++`.   
 
-Getting averages in R is quite easy, all you need to do is make a call to one of the average functions (`mean`, `median`, or `mode`) in R. For reporting purposes and reproducibility, we want R to produce a date as an output not a number. 
+### Distinguishing R objects
 
-```{r}
-# We dont want this
-mean(3:13)
+Everything in R is an object, from the functions, to language objects like environments, and names or symbols. Actually, the [R Language Definition](#references) manual lists about twelve basic types of objects, these are: `vectors`, `lists`, `language`, `expressions`, `functions`, `NULL`, `promise`, `dot-dot-dot`, `environment`, `pairlist`, `any-type`, `builtin and special` form of objects.
 
-# We want it to read 8th January 2016
-```
+Internally all these objects are written in `C` language detailing their `content`, `memory requirements` and their `type`. For all objects, the `C structure` would have either `base R`, `S3`, `S4` or `RC` listed as their type. Base R objects were defined during Rs development, while `S3` and `S4` came later; RC is still a new OO system in R.
 
-So how do we do that with just this function? How do we tell R to produce dates? To understand how to accomplish this small task, lets  go step by step and see how the `mean()` is one of the smart folders we called `generics`.
+It is important to know an objects type to effectively use and manipulate them.
 
-First, we need to appreciate that our interest is in dates and not numerical ([integers](#integers) and [continuous data](#double) ). To compute an average, we will need to input the complete data and in our case it will be a sequence of numbers from 3 to 13 but in date form. Therefore our input to the mean should be an date object (arguments are objects). Two issues stem from this; one, the date object and two, how one function can be used with different data objects and still carry out the necessary computations without adding an argument to tell it what type of input you are giving it or the output you need. Typically your expectations stemming from using and developing functions is to add arguments.
+#### Base types
 
-```{r, eval=FALSE}
-# From functional programming
-mean(x = c("3rd Jan 2016", "13th January 2016"), input = "character", output = "date")
-```
-
-But this is not how the mean whats to be called, it just needs the data and maybe to say if you what the average trimmed or missing values removed (`?mean`). So how does R know what you want?
-
-Let's address the first issue here, that is generating a date object with a series of dates. This is something you might have covered or even done; it's an important topic in `time series` analysis. In R, the `seq` function is used to generate a sequence of value. `seq` (`?seq`) being a generic function as well. What happens if we added our range of dates as they are?
-
-```{r, eval=FALSE}
-seq(from = "3rd Jan 2016", to = "13th January 2016", by = 1)
-## Error in seq.default(from = "3rd Jan 2016", to = "13th January 2016",  : 
-  ## 'from' cannot be NA, NaN or infinite
-```
-
-We receive an error indicating that R does not know how to deal with the data provided. Now what was R looking for for it to return that it could not find it? R was looking for a function which is a method that could handle a character object. Like we said, `seq()` is a generic function, and from our discussion we know that this means it's a dispatching function containing methods for different classes. We can easily see all the methods a generic has by using the function `methods`
-
-```{r}
-methods(seq)
-```
-
-When discussing `S3` we will note that generics in that system have a name starting with the generic and followed by its class. So our `seq` function is a `S3` generic with three methods, `seq.Date`, `seq.default`, and `seq.POSIXt`. These methods work for objects of class "date" and "POSIXt", the default is called upon if an object's class is not found. In our case the call to `seq` did not find a method for class "character, therefore the generic (seq) dispatched the default `seq.default`. If you read the source code (type the function `seq` without it's braces) for this function line number 31 to exact, you will see that only finite objects can have a sequence generated. So a character object being a non finite object will raise an error is it did.
-
-```{r, eval=FALSE}
-seq.default
-# function (from = 1, to = 1, by = ((to - from)/(length.out - 1)), 
-    # length.out = NULL, along.with = NULL, ...) 
-#{
-# Code snipped (starting from line number 31)
-      if (!missing(from) && !is.finite(from)) 
-               stop("'from' cannot be NA, NaN or infinite")
-# Code snipped
-
-# Confirm "from" is infinite
-is.finite("3rd Jan 2016")
-```
-
-Our search for of methods available in the `seq` function lead us to know there is a method for date objects. So now we need to convert our character object to a date object for R to know what to do. In general, a numeric or a character object can be converted into a date object using the `as.Date()` (read `?as.Date`). 
-
-```{r}
-# Date manually rearranged to avoid introducing the "format" argument
-begining <- as.Date("2016-01-3")
-class(begining)
-ending <- as.Date("2016-01-13")
-class(begining)
-```
-
-So, to create the sequence we call the `seq` function as follows:
-
-```{r}
-(exposureDates <- seq(from = begining, to = ending, by = 1))
-# Class of the sequence created
-class(exposureDates)
-```
-
-With that we can now compute the mean, but recall the mean is also a generic function and you can see all the methods available using the `methods` function.  
-
-```{r}
-# All the methods available to the mean
-methods(mean)
-
-# And the mean is 
-mean(exposureDates)
-class(exposureDates)
-```
-
-Super, we have a date to put in our report without manually computing it. In this example we have seen how we can call a generic with just the data object and R will figure out what to produce based on the class of the object. We have also seen how code inspection can be quite useful in understanding error messages or a method works. Now, if we tried to get the source code for a generic what will we see (as they do nothing other than dispatch)?
-
-```{r, eval=FALSE}
-mean
-# function (x, ...) 
-# UseMethod("mean")
-# <bytecode: 0x087a30d8>
-# <environment: namespace:base>
-```
-
-Okay, not exactly what we expected was it? It actually has nothing, just a call to another function `UseMethod`. Whenever you see this call `UseMethod()`, just know it's a generic function and `UseMethod` is the actual dispatcher. Lets source this added function we see how it does the dispatching.
-
-```{r, eval=FALSE}
-UseMethod
-# function (generic, object)  .Primitive("UseMethod")
-```
-
-Again, we do not see the source code, this time we see a call to `.Primitive()`. This is as far as we can go as it means the actual source code is internally written in the `C language`. Key thing to note in all this is that generic functions are extensible and therefore one can add their own methods. For example, you can add a method that computes averages for character objects (if it makes any sense). You can also develop your own generic functions with methods that can produce a program. In your generic, you would want to have a standard call to the generic even when you add new methods or change the internals of the methods. For example, the R core team might decide to include a `mean` method for certain time series data (different from POSIXt), or change how the mean is computed. If this happens, a call to the mean will not change as the generic will use the class of the object and the `...` argument can be used to specify the additions or changes. 
-
-This way of programming, writing methods with source code stored separately  and having other functions that source them helps to ensure that the key components of the functions (invariant) are not changed: It protects the source code. This is what is referred to as `encapsultion` and it also helps to hide the complexities of the code like those implemented in the `c` language.
-
-With the foregoing discussion we now know what is meant by classes, methods, generic functions, inheritance polymorphism and encapsulation. We further know for anything to happen in R like carrying out an analysis, a function call must be made. In our discussion we also noted that all entities in R are objects and R only operates through objects. This is what lead us to the fact that R is an Object Oriented program and specifically a class-based OOP. So with this foundation, we want to know more about R's OO system which we mention comprise of three implementations (excluding the base type). More specifically, we want to know and understand which objects belong to a given system, how they can be created,  the dispatch (of methods) mechanism used in each of the systems and finally of great interest to you, *why knowing OO in R is important*.
-
-Okay, lets get more acquainted with the different objects in R.
-
-### Distinguishing objects Types and their OO system
-
-So everything in R is an object, from the functions, to [language objects](#lang.obj) like [environments](#environment), and [names or symbols](#symbols). Actually, the `R Language Definition` manual lists about twelve basic types of objects, these are: `vectors`, `lists`, `language`, `expressions`, `functions`, `NULL`, `promise`, `dot-dot-dot`, `environment`, `pairlist`, `any-type`, `builtin and special` form of objects.
-
-Internally all these objects are written in `C` language detailing their `content`, `memory requirements` and their `type`. For all objects, the `C structure` would have either base R, S3, S4 or RC listed as their type. Base R objects were defined during Rs development, while S3 and S4 correspond to similar objects types in the S language; RC is a new OO system in R.
-
-With this four types of objects (including base types), we might want to ask ourselves why it is important to know an objects type. The short answer to this is that R works through objects, and knowing their type would enable us to effectively use and manipulate them if need be.
-
-##### Base types
-
-R was originally not a class-based system and therefore all the base objects have no class attribute. By this fact you can determine base objects by running `is.object` function. The function returns `TRUE` if an object has a class attribute and `FALSE` if not as it is with base objects. You can also run the function `objects` inputting the base environment. This will list all base objects.
-
-So lets get to know these objects. Below I start by getting all base objects and looking through each object to find out if they have a class. I have also tried to check if they are all functions.
+R was originally not a class-based system and therefore all the base objects have no class attribute. By this fact you can determine base objects by running `is.object` function. The function returns `TRUE` if an object has a class attribute and `FALSE` if it does not. You can also run the function `objects` inputting the base environment. This will list all base objects.
 
 ```{r}
 # All objects in base R
 baseObj <- objects(envir = baseenv())
+# Number of base R Objects
 length(baseObj)
-# Do they have a class atrribute?
+# Check if they have a class atrribute
 baseType <- sapply(baseObj, is.object)
 all(baseType == FALSE)
-# Are they all functions?
+# Check if they are all functions
 all(sapply(baseObj, is.function) == FALSE)
 ```
 
-The package [pryr](https://github.com/hadley/pryr) by `Hadley Wickham` is an excellent package to snoop around Rs internal working. Here I use it to loop through the list of base R objects and find out their type and whether they are all functions.
+The package [pryr](https://github.com/hadley/pryr) by `Hadley Wickham` is an excellent package to snoop around Rs internal working. 
 
 ```{r}
 # Load the package
@@ -349,206 +205,101 @@ all(sapply(baseObj, otype) == "base")
 all(sapply(baseObj, ftype) == "function")
 ```
 
-Few pointers (one reason we need to know an objects type), you can not add base objects, that privilege goes to the `Rs core group`, but you can add [S3](#s3methods) OR [S4](#s4methods) methods to existing generic functions (objects) otherwise known as `internal generic function`. Internal objects are base objects written in `C` and built into Rs [interpreter](#comp.inter). They are only accessible through a C interface; in other words they are not easily accessible. `grep` is a good example. You might not have used this function but it is used to carry out `pattern search` in character vectors. Lets look at the source code for this function to understand `internal implemeted functions`. 
+Few pointers (one reason we need to know an objects type), you can not add base objects, that privilege goes to the `Rs core group`, but you can add [S3](#s3methods) OR [S4](#s4methods) methods to existing generic functions (objects) otherwise known as `internal generic function`. Internal objects are base objects written in `C` and built into Rs [interpreter](#comp.inter). They are only accessible through a `C interface`; in other words not easily accessible to non-programmer. `grep` is a good example, in case you have not have used this function, it is used to carry out `pattern search` in character vectors. Lets look at the source code for this function to understand `internaly implemented functions`. 
 
 ```{r}
 # Source code for grep
 grep
 ```    
 
-The first expression within the body of the function checks to see if the input data has a  character class. If it does not, then an S3 object is created by first converting the input into a character vector and then adding a name attribute.
+The first expression within the body of the function checks to see if the input data has a  character class. If it does not, then an `S3` object is created by first converting the input into a character vector and then adding a name attribute.
 
-The second expression is now of interest to us, just like generic functions the code showing how a pattern search is done is not there instead, it invokes another function called `.Internal` with the original call to grep. The `.Internal` function is an indicator that grep is an internally implemented function written in `C` language. Now the question is how do we read `C`? Unfortunately this is not a walk in the park kind of thing. One proposed way is to call `show_c_source` function from the `pryr` which opens a [GitHub] page with the source code. However, this might not be too friendly for non-programmers, hopefully someone will convert these `C` codes to R codes if it has not been done.   
+The second expression is now of interest to us, just like generic functions the code showing how a pattern search is done is not there, instead, it invokes another function called `.Internal` with the original call to grep. The `.Internal` function is an indicator that grep is an internally implemented function written in `C` language. The question now is how to read `C` if you have no background in that language. Unfortunately this is not a walk in the park kind of thing, but one proposed way is to call `show_c_source` function from the `pryr` which opens a [GitHub] page with the source code. However, this might not be too friendly for non-programmers, hopefully someone will convert them to a more `reader friendly` version for non-porgrammers.   
 
-There are other internal functions that are directly accessible, these are known as `primitive` functions. The `.S3PrimitiveGenerics` vector lists the primitive (internal) generic functions. Looking at the first function, `anyNA`, from its help documentation (`?anyNA`) we see that it is a generic function testing for missing data. Being a generic function, it would have its own methods (`methods(anyNA)`) and it is extensible. 
+There are other internal functions that are directly accessible, these are known as `primitive` functions. The `S3` types can be accessed through `.S3PrimitiveGenerics` vector which lists all the primitive (internal) generic functions. 
 
 
-##### S3 types
+#### S3 types
 
-Next in line after the base objects is the S3 OO system. At least in this system one is able to create new objects. As you shall soon see, they are rather easy to create, actually, if you have created a data.frame then you have already created a S3 object: S3 does not need a lot of details as  S4. But before we start to create S3 objects, lets get to know how to establish an object is an S3 object.
-
-Unfortunately this is not clear cut using base R and one suggestion is to call `is.object` and `isS4` functions. This will tell us if the object has a class attribute or not and if it is a S4 object. Since we know base objects do not have a class attribute but S3 have then if `is.object` returns FALSE, then we know it is not `S3`. If it does have a class attribute and `isS4` returns FALSE, then we know it is a S3 objects. Clearly this is not the best way to get the information we need, but let's test it with the `baseObj` vector we created earlier.
+Next in line after the base objects is the S3 OO system. In this system one is able to create new objects by adding a class attribute. While it was easy to establish `base objects`, this is not the case in `S3` as there is not function to check them. However, one suggestion is to call `is.object` and `isS4` functions. This will tell us if the object has a class attribute or not and if it is a S4 object. If the object has a class attribute then it is not a base object and if it is not `S4`, then it is highly likely to be `S3`.  
 
 ```{r}
-# So does it have a class attribute? Is it an S4 object?
-is.object(baseObj); isS4(baseObj)
-# Is there a class attribute?
-baseAttr <- sapply(baseObj, attr, "class")
-# Returns all NULL
-```
-
-Interestingly our object has no class attribute and it is not a S4 object either, this means that it is a base object. Why is that so, use the `typeof` function to see that it is a "character" vector (base type). So that did not pan out, we still do not have an example of an S3 object. Let's go fishing for one, base R has numerous. How about one of Rs data sets, say `airmiles`:
-
-```{r}
-# Does the object have a class attribute and is it a S4 object? 
-is.object(airmiles); isS4(airmiles)
+# Does airmiles dataset have a class attribute? 
+is.object(airmiles); 
+# Is it an S4 object?
+isS4(airmiles)
 # Is there a class attribute?
 attr(airmiles, "class")
 ```
-
-Okay, we have a winner, `airmiles` has a class attribute ("ts - time series") and it is not a S4 object. Lets confirm this with our helpful (pryer) package `prye`.
+This can be confirmed with our helpful `pryr` (pryer) package.
 
 ```{r}
+library(pryr)
 # Pryr, what say you?
 otype(airmiles)
 ```
 
-Super, it has confirmed for us that `airmiles` with a `ts` class is a S3 object.
+Super, it has confirmed for us that `airmiles` with a `ts` class is a `S3` object.
 
-#### S4 types
+### S4 types
 
-S4 is a much later OO system therefore do not expect to get S4 objects in base R, unless the R-core group is so moved to do so. This system is like the strict teacher or lecturer you once had. Its implementation is like `S3` but with the exception that it wants details, order and organization. You will see this in action as we start creating objects.  
+S4 is a much later OO system therefore do not expect to get S4 objects in base R, only in `packages` like the `matrix package`. `S4` implementation is like `S3` but with the exception that it is quite detailed, and organized.  
 
-Unlike `S3`, testing whether an object is S4 is just one call away; `isS4()`. Of course `pryr` can also give us this information. To avoid loading packages we might not need later, we can see these `S4` objects as we create them [below](#S4).
+Unlike `S3`, testing whether an object is an `S4` implementation is just one call away; `isS4()`. Of course `pryr` can also give us this information. 
 
-
-#### RC type
-
-Reference class is a new OO system in R. It deviates from `S3` and `S4` OO systems as methods belong to classes and not functions. This distinction is what sets `RC` to be similar to other programming languages that implement OO systems, however, they are detailed as `s4`.
-
-Since this method is new in R, we would not expect to find `RC` objects, so we will create ourselves.
-
-## Implementation of OO system  in R  
-
-So we have covered quite a bit of theory or concepts behind R's OO system. Now lets roll up our sleeves and put it all together and there is no better way to do so than applying it though an example. By the end of this session we should be able to design object oriented analytical programs  implementing either `S3`, `S4` or `RC`. So in our example we will have one objective and design a program for it. We shall implement the design in all the three OO systems in R as a way of understanding them. As we use each system, we should be able to appreciate class construction, methods definition, their inheritance mechanism, object encapsulation, and how generic functions work.
-
-Our example will be a case study and picking up from the epidemiological example we had before. Our interest in this case study is not to understand epidemiology but to implement an OO system for a typical program. We will have one objective; `to implement an automated reporting system`. If you have ever worked in a monitoring project then you know most of the data is standard and produced at regular intervals therefore generating outputs of of the data is sort of the same, the only difference is the results. The motivation behind creation of the program is to reduce the time spent doing computations and have more time reviewing the results. 
-
-As we conclude the session, we shall discuss the "highs" and "lows" of each of the systems and propose strategies for selecting an OO system. All right, enough of the chit chat, lets make it happen and as good programmers, we begin by designing the program.
-
-### Case Study: An automated reporting system
-
-**Design Phase**
-
-First off, [this](""SummaryReport.2016-03-08.Rmd"") is what we want to produce, a summary report of the data generated for one period. In essence we want to take the data and carry out the necessary computation before generating the summary report.
-
-To generate this in OOP we need to take time to think through the design of the program and at the core of OOP are the objects needed and produced. From the summary report, we know the output object, a summary report. We also know the input is a data set, but what we still need to determine are the other objects needed to accomplish the task. Recall everything in R is an object including the functions needed to do the computation.
-
-For purposes of learning `inheritance` and `polymorphism` in R's OO system, I will add a new dimension to our program. I want us to simulate data for testing the program (or building epidemiological and analysis models). Therefore our program should be able to receive real data as well as simulate it.
-
-Okay, other than the data, what other inputs do we need? Lets take a look at the [sample report]("SummaryReport.2016-02-26.html") once again, on top you will see information about the data used to generate the report. Things like the site name, time for data collection, the reporting person and the date of the report. In general this is what we call meta data and it should form part of the inputs for our program. 
-
-So at this stage we have two inputs (data and metaData) for the computations and reporting function. Something like this:   
-
-![1st design](figures/ooProgramDesign1.png)
-
-Now we need to simulate the data by adding a simulator function.
-
-![2nd design](figures/ooProgramDesign2.png)
-
-In our design we have two data objects, either simulated data or real data and the systems meta data. In addition to these two data objects we have two functions, a simulator and a computation and reporting function. That's basically it, a fairly simple program that should make monitoring a bit more interesting as you can spend more time understanding and making necessary recommendations.
-
-So we now have the basic design of how our program should work, but we shall improve on it based on the implementing OO systems, but before then lets note down the variables or data we need and their types (bases of good analysis). We will go step by step, starting off with  `meta data` and then the data sets. 
-
-**Requirements for System Meta Data**
-
-The first object we will have is a meta data object and it will contain the following data:
-
-  Data                                          | Type
-------------------------------------------------|-----------------------
-Site ID                                         | "character"
-Population under surveillance (geographic area) | "character"
-Name of Report generator                        | "character"
-Date of report generation                       | "numeric"
-Collection cycle                                | "numeric"
-
-Since our initial interest is just report generation, this object will only be used to access data. But if interested, you can later include your own functions or methods to the object.  
-
-**Data Sets**
-
-Our two data objects (simulated and real data sets) will be expected to have the following variables:
-
-Variable      |   Type
---------------|------------
-Site          |  "Factor"
-ID            |  "Character"
-Dates         |  "Date"
-Round         |  "Numeric"
-Exposed       |  "Numeric"
-Incidences    |  "Numeric"
-Prevalence    |  "Numeric"
-Status        |  "Numeric"
-MedicalCosts  |  "Numeric"
-
-
-**Simulated data**
-
-A simulator will be used to generate this data set. The following inputs are needed to produce the data set.
-
+```{r}
+# Source one of my objects
+source("Scripts/s4RcObjects.R")
+isS4(f)
 ```
-Data                |  Type
---------------------|----------------------
-Site                |  "Numeric"
-Patients            |  "Numeric"
-Dates               |  "Date"
-Period              |  "Numeric"
-Exposed             |  "Numeric"
-Prevalence          |  "Numeric"
-Incidence           |  "Numeric"
-Mortality           |  "Numeric"
-Cost                |  "Numeric"
 
+
+### RC type
+
+Reference class is new in R, it deviates from `S3` and `S4` OO systems as methods belong to classes and not functions. This distinction is what sets `RC` to be similar to other programming languages that implement OO systems, however, they are as formal as `S4`.
+
+Since this method is new in R, we would not expect to find `RC` objects in base R nor in most package (just some of the new ones), so like `S4` objects we will source one of my `RC` objects.
+
+```{r}
+source("Scripts/s4RcObjects.R")
+library(pryr)
+otype(aObj)
 ```
-The simulator will make certain assumptions in generating the data set (looking forward to constructive discussions on this and possible improvement especially if you have an epi background, but it will do for now).
 
-* Only new cases (patients with the disease of interest) are reported as exposed (in contact with elements known to cause the disease), therefore no existing case (patients who have already been seen before) would be captured as exposed (reduce double counting of exposure)
-* In this case study, incidence is considered as any new case to the facility that have not been seen in another facility. This hypothetical disease is considered to have a short incubation period (period between exposure and onset of the disease) and quick progression from morbidity (sickness) to mortality (death), it is also highly infectious therefore change of facility once diagnosed if highly unlikely. Hence prevalence (patients seen and captured as incidence in previous periods) are facility patients on treatment and observation.
+### Class-based system in R
 
-**Computing and Reporting**
+#### S3 OO System
 
-The computing and reporting function will receive data (either as existing or simulated data). This function will be the core of the program although we shall have different form of it (for simulating data only, for computation only or for computation and reporting.
+`S3` is the first OO system in R and by far the easiest. Base R and other `CRAN` packages have a number of `S3` objects. In this system classes are not defined and methods belong to generic functions.
 
-Well, we have the basics covered, we know what we want to do and how to do it. So now its implementation time. We shall first implement the program in `S3` and then move on to `S4` and lastly `RC`.
+##### Creating S3 Objects
 
-**Validation**
+Objects in `S3` are created like any variable, using the assignment operator (`<-`), the only distiguishing feature is addition of a class attribute. An object can have one or more classes, these classes are not defined, just named.
 
-A key issue when dealing with data is `validation` or the process of ensuring requirements are met. This process is implemented differently in Rs OO systems. So even though we have not factored it on our design, we shall implement it in the three systems.
-    
-## Program implementation in `S3`
+```{r}
+# Creating an S3 object with assignment operator
+s3Obj1 <- 1:10
+# Adding a class attribute
+class(s3Obj1) <- "myNumeric"
+# Adding more classes
+class(s3Obj1) <- append(class(s3Obj1), c("a", "b"))
+class(s3Obj1)
+```
 
-Implementing an `S3` OO system  is by far the easiest in R but prone to major design problems due to its informal nature. This statement shall become evident once we cover `S4`. But all the same, it builds the foundation for the other systems.
+Another way to create an object in S3 is through a call to the `structure` function. 
 
-Going by our proposed design, we need to first create the data objects and then move them for analysis and reporting. We will add a class attribute to the objects which will have methods to achieve our set objects. Included in our methods is a validator function that validate the data sets and meta data.
+```{r}
+s3Obj2 <- structure(1:10, class = c("myNumeric", "a", "b"))
 
-To implement the program we will first start off by creating a generic function and defining its methods.
+# Compare the two objects
+all.equal(s3Obj1, s3Obj2)
 
-### Creating generic functions and defining methods in `S3`
+# Are they S3 objects?
+library(pryr)
+otype(s3Obj1);otype(s3Obj2)
+```
 
-We have a simple task, developing a program to analyse and generate summary reports. But we want some flexibility on this by having methods that can:
-
-* Simulate data only
-* Validate 
-* Produce results only and
-* Generate both results and report
-
-So we need to think of the sequence of events, what begins and what follows, in this case we expect:
-
-* Simulating data (only) would require one call to a simulator function and then to a validator which should result in a data frame
-* To produce results (only) 
-  + From existing data we will require a call an analyst which will call for validation first before doing the analysis.
-  + In the case of simulated data, a call will be made to the analyst which in turn will call a data simulator and then the validator before producing the results.
-* Generating results and summary report will first call a reporting method before going through the preceding step. 
-
-Given the flow of action above, we expect the following class inheritance:
-
-* To simulate data: Validator will inherit simulation methods
-* To produce results only:
-  + For existing data - Analysis method will inherit validation methods
-  + For simulated data - Analysis method will inherit validation methods and validator will in turn inherit simulation methods
-* To generate both results and report: 
-  + For existing data - reporting method will inherit from analysis and analysis will inherit from validator
-  + For simulated data - reporting method will inherit from analysis, analysis will inherit from validator and validator will inherit from the simulator
-
-![Inheritance in S3](figures/ooprogramDesign5.png)
-
-We therefore need to define the following methods:
-
-* Simulation
-* Validation
-* Analysis
-* Reporting
-
-But before we define these methods, we have to create a generic function or methods dispatcher.   
+##### S3 Generic Function{#s3Generics}
 
 Creating a generic function in `S3`, is similar to developing a function with the exception that the body of the function has a call to another function `UseMethod` which is responsible for the actual `methods dispatch`. It does this by searching for an appropriate method within the generic function and invoking it with the same argument (inputs) as the call to the generic: it is as if the call was made to the method directly. 
 
@@ -574,23 +325,11 @@ firstGeneric <- function(object){
 }
 ```
 
-The fourth thing to appreciate is that, `UseMethod()` can only be used within a function. It has two arguments, the names of the generic and the object whose class will be used to dispatch the appropriate method. When `UseMethod` is invoked, it will create some variables which will be used to get the next method. These variables are `.Class` (the class of the object), `.Generic` (the generic being used) and `.method` (the method currently being invoked). If you call a method directly like `plot.ts(tsdata)`, these variables are not created as there was no call to the dispatcher (one of the dangers of calling methods directly).
+<p id = "useMethodVariables">The fourth thing to appreciate is that, `UseMethod()` can only be used within a function. It has two arguments, the names of the generic and the object whose class will be used to dispatch the appropriate method. When `UseMethod` is invoked, it will create some variables which will be used to get the next method. These variables are `.Class` (the class of the object), `.Generic` (the generic being used) and `.method` (the method currently being invoked). If you call a method directly like `plot.ts(tsdata)`, these variables are not created as there was no call to the dispatcher (one of the dangers of calling methods directly).</p>
 
-With that we can create our generic function, we will name it `generatorS3`. 
+##### S3 Methods
 
-```{r s3Generic}
-# S3 generic function for the case study
-generatorS3 <- function(object){
-  UseMethod("generatorS3", object)
-}
-# Confirm its type
-library(pryr)
-ftype(generatorS3)
-```
-
-### S3 Methods
-
-`S3` methods, are created like ordinary function, they only need to have names that are searchable by the generic function. These names are formed by combining the generic name and class name with a period as a separator.  
+`S3` methods, are created like ordinary function, they only need to have names that are searchable by the generic function. These names are formed by combining the generic and class names with a period as a separator.  
 
 ```{r}
 firstGeneric.myNumeric <- function(object){
@@ -599,7 +338,7 @@ firstGeneric.myNumeric <- function(object){
 }
 ```
 
-We can now call the generic with a classed object.
+They are called with a classed object.
 
 ```{r}
 obj <- structure(1:10, class = "myNumeric")
@@ -608,7 +347,7 @@ firstGeneric(obj)
 
 Notice the first message in the generic function `generatorS3` was printed but not the second after the `UseMethod`? 
 
-To get all the methods available to a generic call `methods` function with the name of the generic or you can also get all the methods available to a class.
+To get all the methods available to a generic function, call `methods()` with the name of the generic. This can also be used to get all the methods available to a class.
 
 ```{r}
 # Methods for generic function
@@ -619,133 +358,944 @@ class(obj)
 methods(class = "myNumeric")
 ```
 
-Now, lets create methods for our case study, we have four of them; simulator, validator, outputs, and reporter.  From a programming standing point, the three types of output (simulated data only, results only and both results and report) indicate `polymorphism`. We have also detailed the inheritance mechanism, we just need to implement it by [instatiating](#instatiation) objects. 
 
-As we create the methods, we will separate the main functions for data simulation, analysis and reporting to enable multiple methods to use the same code, this is the aspect of `encapsulation` in `OOP`. Encapsulation also helps to make code easy to read and understand. Class inheritance will be implemented by the `NextMethod` function. 
+##### S3 Methods Dispatch
 
-To use these functions, we will `source` them first. 
+`S3` uses `single dispatch` mechanism{#dispatchMechanism} and only the class of the first objects is used to dispatch methods.  
 
-```{r s3Methods1}
-# source the functions
-source('Scripts/epiProgramOOP_S3.R')
-```
+If an object has class `A`, `B`, and `C`, the dispatcher (`UseMethod`) will first look for a method for the first class which is `A`. If a method for class `A` is not found, then a method for class `B` is sort. If there is no method for class `B`, then a method for class `C` is searched. If it is also not found, then the default is dispatched. All generic functions need to include a `default method` as good programming practice, but if it is not there, then an error will be issued.
 
-Our first method is a data `simulator` which will only simulate data. 
+![Indirect inheritance](figures/simpleInhSingDisp.png)
 
 ```{r}
-generatorS3.simulatorS3 <- function(object){
-  simulatorS3(object)        
+# Creating objects
+a <- structure("A", class = c("A", "B", "C"))
+b <- structure("B", class = c("B", "D", "E"))
+c <- structure("C", class = c("C", "F"))
+f <- structure("F")
+# Creating a generic function
+g <- function(object){
+  UseMethod("g", object)
 }
 ```
-
-Next method is a validator, a call to this method will have one object as `S3` is a `single method dispatcher`. However, this object is expected to be of length two as it will have either `simulation inputs and a meta data object` or `real data and a meta data object`. Validation will ensure object meets set requirements like variable names.  
-
+```{r, eval=FALSE}
+# Calling a generic with missing method and default
+g(a)
+Error in UseMethod("g", object) : 
+  no applicable method for 'g' applied to an object of class "c('A', 'B', 'C')"
+```
 ```{r}
-generatorS3.validatorS3 <- function(object){
-  classes <- class(object)
-  # Validate data frames (existing data) validate 
-  if(class(object[[1]]) == "data.frame"){
-    validatorS3(object)
-  # Validation for simulated data
-  } else { 
-    obj <- NextMethod() # Simulate
-    object <- list(obj, object$metaData) # return list with simulated and meta data
-    class(object) <- classes # Add original class attribute
-    validatorS3(object)
-    # Output for simulated data:
-  if(length(classes) > 2){ 
-    # 1. Output: Results and meta data for either results or report generation 
-    return(object)
-  } else{
-    # 2. Output: Simulated data only 
-    return(object[[1]])
-  }
-  }
+# Adding a default method
+g.default <- function(object){
+  cat("opps no method found\n")
 }
 ```
-
-If the object is validated, then we call the analyst `epidemiologistS3`, the core method.
-
 ```{r}
-# Analysis method to produce results only
-generatorS3.epidemiologistS3 <- function(object){
-  # For real data
-  if(class(object[[1]]) == "data.frame"){
-    NextMethod()# Send data for validation
-    results <- epidemiologistS3(object[[1]])# Analyse validated data
-    # For simulated data
-  } else {  
-    obj <- NextMethod()# Simulate data then validate
-    results <- return(epidemiologistS3(obj[[1]]))# Analyse data
-  }
-  classes <- class(object)
-  # Output for this function:
-  if(classes[1] == "summaryReportS3"){ 
-    # 1. Output: Results and meta data for report generation 
-    obj <- list(output = results, metaData = object[[2]])
-    return(obj)
-  } else{
-    # 2. Output: Results only 
-    return(results)
-  }
-}# Not run: Amended the object set to analyst to be just the first element of the list  
-```
-
-Finally, method to produce summary output and report.  
-
-```{r}
-generatorS3.summaryReportS3 <- function(object){
-  metaData <- object$metaData
-  # For real data
-  if(class(object[[1]]) == "data.frame"){
-    obj <- NextMethod()# Send data for validation and analysis
-    summaryReportS3(obj)# If validated, analyse  
-  # For simulated data
-  } else {  
-    results <- NextMethod() # Simulate, validate and analyse
-    results <- list(results, metaData)
-    summaryReportS3(results)# Analyse data
-  }
+# Calling generic with only a default method
+g(a)
+# Defining a method for class "C"
+g.C <- function(object){
+  cat("Method for C\n")
 }
-```
-
-In line with good programming we add a default method
-
-```{r}
-generatorS3.default <- function(object){
-  cat("No method found")
+# Calling the generic with only methods for class `C` and `default` 
+g(a)
+# Defining method for `B`
+g.B <- function(object){
+  cat("Method for B\n")
 }
+# Calling the generic with only methods for class `C`, `B` and `default`
+g(a)
 ```
 
-We can confirm that these methods are in our generic function `generatorS3`.
+##### S3 Inheritance Mechanism 
+
+`S3` inheritance is implemetned by a call to `NextMethod()` within the body of a method. So if an object has class `A`, `B` and `C`, then class `A` can inherit methods for both `B` and `C` by calling `NextMethod`. 
+
+When `NextMethod()` is invoked, it will search for the next method after the current method from variable with classes created by [`UseMethod()`](#useMethodVariables). If it finds it, it will call the method with the same inputs (object) as the current method.
+
 
 ```{r}
-methods(generic.function = "generatorS3")
+g.A <- function(object){
+  NextMethod() # Calling next available method 
+  cat("Method for A\n")
+}
+g.C <- function(object){
+  cat("Method for C\n")
+}
+# Calling a generic with methods for `A` and `C`
+g(a)
+g.B <- function(object){
+  NextMethod()
+  cat("Method for B\n")
+}
+# Calling a generic with methods for `A`, `B` and `C`
+g(a)
+```
+
+Try and predict their outputs: Take note of functions calling for non existing inherited methods.
+
+```{r, eval=FALSE}
+g(b)
+g(c)
+g(f)
+```
+
+You can check whether an object inherits methods for a certain class with the function `inherits`
+
+```{r}
+inherits(x = a, what = "F")
+inherits(x = a, what = "D")
+inherits(x = a, what = "C")
+inherits(x = a, what = "B")
+```
+
+
+#### S4 OO System
+
+`S4` works the same way as `S3` as they both add a class attribute to objects and methods belong to generic functions. However, their classes are defined with consistency checks and have a different dispatching mechanism. In addition, `S4` are contained in the pre-loaded `methods` package and not the `base` package as `S3`.
+
+##### S4 class definition{#s4ClassDfn}
+
+`Class definition` is a meta data object with information on what an object of that class is: it's an objects `blueprint`. Objects in `S4` can only be created from defined classes unlike in `S3` where objects are created from just the name of a class. In this system, validity is included as part of class definition.
+
+Classes in `S4` are created with a call to `setClass()`.  The first argument to the function is the `name` of the class, the other key arguments are `representation or slots` which define the type of data the object will have, and the `cointains` argument which lists additional classes.  
+
+The slots or the representation argument should be a named list or character vector. The names are essential for extraction methods. The classes in the `contains` argument are called `superclasses`, these are classes that the `named class` (called `subclass`) extends to or inherits. In `S3`, the named class would be the first listed class and the classes in the `contains` argument would be the subsequent classes, hence this argument is crucial in implementing inheritance machanism in `S4`. 
+
+When `setClass` is invoked with just the name of the class, then it will create a `virtual class`. A virtual class is one which no object can be created*, its mostly used to enable classes to share some code like a `class union`.
+
+When a class is defined, it returns a `generator function` which can be used to instatiate (create) objects of that class. This function is usually stored in the `global environment` unless the argument `where` is specified (though you should not).
+
+```{r}
+# A virtual class
+setClass(Class = "A")
+
+# Formal classes for instatiation
+setClass(Class = "B",
+         representation = representation(data = "numeric"))
+setClass(Class = "C",
+         representation = representation(info = "character"),
+         prototype = prototype(info = "Hello")# A default value
+         )
+```
+```{r}
+# To check all the currently defined classes
+getClasses(globalenv())
+# To see the definition of a class
+getClass(Class = "A")
+getClass(Class = "B")
+getClass(Class = "C")
+```
+
+No object can be created if it does not have the defined representation, in addition, a validation argument in the `setClass` function can be used to add a validator function. This function should return `TRUE` in the case of a valid object and an error otherwise describing validity failures.  
+
+
+##### S4 Class Instatiation/Creating Objects{#s4Instatiation}
+
+A class in `S4` is instatiated with a call to `new()`, providing then name of the class and any data that are required for the slots. If a class was defined with default values, then they are first added. 
+
+```{r, eval=FALSE}
+# Virtual classes cannot be instatiated
+a <- new(Class = "A")
+Error in new(Class = "A") : 
+  trying to generate an object from a virtual class ("A")
+```
+
+```{r}
+# An  object of class "B"
+b <- new(Class = "B", data = 1:5)
+b
+# An object of class "C" with default values
+c <- new(Class = "C")
+c
+# Object c with new values
+c <- new(Class = "C", info = as.character(Sys.Date()))
+c
+```
+
+##### Extracting sections of an s4 object
+
+`S4` objects resembles `lists`.
+
+```{r}
+setClass(Class = "D",
+         representation = representation(
+           nams  = "character",
+           org  = "character",
+           codeR = "logical",
+           level = "character",
+           others = "list",
+           interests = "character"
+         ))
+d <- new("D", nams = "HG", org = "Data Mania Inc", codeR = TRUE, level = "Intermediate/Advanced", others = list(canCode = c("HTML5", "CSS"), basicCode = "Javascript"), interests = c("Data Science and analysis, Demography and Public Health"))
+d
+```
+
+However, there are two exceptions:
+
+1. Extraction of a slot is through a call to `slot()` or with an `@` symbol using names but not positions
+1. There is no partial matching as with lists.
+
+```{r s4SlotExtraction1}
+slot(d, "others")
+d@others
+```
+
+These extraction methods will not work
+
+```{r s4SlotExtraction2, eval=FALSE}
+slot(d, 1)
+#Error in slot(d, 1) : invalid type or length for slot name
+
+d[[1]]
+# Error in d[[1]] : this S4 class is not subsettable
+myList <- list(codeR = TRUE, level = "Intermediate/Advanced", others = list(canCode = c("HTML5", "CSS"), basicCode = "Javascript"))
+myList$co
+# [1] TRUE
+d@co
+# Error: no slot of name "co" for this object of class "D"
+```
+
+
+##### S4 Generic Functions{s4GenericFunctions}
+
+`S4` generic functions are created with the `setGeneric()`. This function, can be used to change existing non-generic functions into generic functions by providing only one argument; the name of the non-generic function. By doing so, the non-generic function becomes the default method, but if you do not want it as the default, then the `def` argument can be used to change it.
+
+```{r}
+# A non-generic function
+nonGeneric <- function(object){
+  cat("Am sorry I do not have a method for that class")
+}
+library(pryr)
+# What function is nonGeneric?
+ftype(nonGeneric)
+# Converting it into a generic function
+setGeneric("nonGeneric")
+# Now what type of function is it?
+ftype(nonGeneric)
+```
+
+In addition to converting non-generic functions to generic functions, `setGeneric` is also used to create new generic functions by a call to `standardGeneric`. `standardGeneric()` is similar to `S3` `UseMethod()` and it cannot be called outside a generic function; it is included in the `def` argument. The argument to `standardGeneric` is the name of the generic function being created. 
+
+To create a new generic function, there are two important arguments to provide, these are `name` and `def`. `name` is the generic functions name and `def` is the definition of the generic. The `def` argument should be a function with a call to `standardGeneric` which is responsible for methods dispatch. The arguments to `def` will be the same as those of it methods.
+
+```{r}
+# A generic function that will dispatch on two objects 
+setGeneric(name = "genericName",
+           def = function(object1, object2){
+             standardGeneric("genericName")
+           })
+```
+
+##### S4 Inheritance Mechanism 
+
+```{r eval=FALSE}
+# Checking inheritance (`is()` is equivalent to `inherits()`)
+is(object = A, class2 = "B")
+is(object = A, class2 = "D")
+is(object = A, class2 = "F")
+
+```
+
+When class `A` is defined containing class `B` and `C` then the first class `A` is referred to as a `subclass` while `B`, and `C` are it's `direct superclasses`. `Subclasses` inherits from from it's `direct superclasses`, this relationship is referred to as `simple inheritance`. 
+
+![Simple inheritance](figures/simpleInheritance.png)
+
+A `subclass` can also inherit methods of `superclasses` of it's `superclass`. For example `B` can have `superclasses` `D` and `E` and `C` could have `F` as its superclass.  
+
+![Indirect inheritance](figures/indirectInheritance.png)
+
+Sometimes inheritance can be complicated by objects inheriting methods from more than one superclass. For example, class `A`, can be defined to contain `B`, and `C`, Class `B` could be defined to contain `C` and `D` and class `C` could be defined to extend to class `D`. 
+
+![Indirect inheritance](figures/indirectInheritance2.png)
+
+Which class is actually inherited when there are more than one way a class can be inherited is the work of a methods dispatching mechanism discussed in the section [predicting methods dispatched](#predictingDispatch).
+
+##### S4 Methods{#s4Methods}
+
+To create `S4` methods we use `setMethod` function. This function is used to set methods for an existing generics or change non-generic to generic functions  (however, the latter case is not good programming practice). Methods are stored as metadata to its generic function which is usually at the `global environment` but in other cases this can be a `package`. 
+
+The key arguments in `setMethod` are: `f` the name of the generic function, `signature` a named list of classes, and `definition` which defines the behavior of the method as a function. `Signature` should have the same number of objects as the generic function. If the generic has two, then the method should have two signatures. There are two predefined classes that can used, these are `ANY` and `missing`. 
+
+In addition to your defined classes, there are two predefined classes that are available for use, these are the `ANY` and `missing` classes. The `ANY` class is appropriate when setting default methods as it would match any class that has no method. `missing` is used to indicate a non non existing object, that is, you can call the method without an object.
+
+```{r}
+# Defining S4 method with two objects
+setMethod(f = "genericName",
+          signature = signature(object1 = "B", object2 = "C"),
+          definition = function(object1, object2){
+            cat("Method for class BC\n")
+          })
+# Method with predefined class `missing`
+setMethod(f = "genericName",
+          signature = signature(object1 ="B", object2 = "missing"),
+          definition = function(object1){
+            cat("Method for B\n")
+          })
+# A default method for any other class without a method
+setMethod(f = "genericName",
+          signature = signature(object1 = "ANY", object2 = "ANY"),
+          definition = function(object1, object2){
+            cat("Sorry, no method")
+          })
+# Another default method for calls with no object
+setMethod(f = "genericName",
+          signature = signature(object1 = "missing", object2 = "missing"),
+          definition = function(object1, object2){
+            cat("No object given")
+          })
+```
+
+
+##### Predicting methods for multiple dispatch{#predictingDispatch}
+
+**Single and Multiple Dispatch**
+
+`S4` implements both [`single dispatch` and `multiple dispatch` mechanism](#dispatchingMechanism), therefore it can dispatch methods for one or more objects. Methods dispatched for single object follow the same logic as those of `S3`, what becomes a bit tricky is dispatch for more than one object. For multiple dispatch methods, the key to predicting the methods to be dispatched is to look at the combination of classes defined by the signature argument of the methods. If a generic is dispatching on two objects, then its methods would have paired combination of classes and when the generic function is invoked, `standardMethods` will go in search for the pair of classes issued, if there is a matching signature in its methods, then it will be dispatched,if there is none, then the default is dispatched or error is issued if there is no default.  
+
+For example, in the [class definition](#s4ClassDfn) section, we defined three classes, `A`, `B` and `C` which we [instatiated](#s4Instatiation) with two objects `b` and `c`. In the methods section we created three methods `BC`, `B` and `default`. If we called the generic with two object of class `B` and `C`, then we should expect the method with class `BC` to be dispatched.
+
+```{r}
+genericName(object1 = b, object2 = c)
+```
+
+If we called the generic with an object of class `B` only, then we should expect a method for signature `B` and `missing` to be dispatched.
+
+```{r}
+genericName(b)
+```
+
+If any objects with classes other than these two are given, the the default will be dispatched
+
+```{r}
+# Calling with a class with no defined methods
+genericName(c)
+# A call with no objects
+genericName()
+```
+
+**Direct and Indirect Relationships**
+
+Since `S4` classes are defined, then classes can inherit methods of `superclasses` of their `superclasses`. Therefore when a method is not found for an objects `direct superclasses`, then methods for the `direct superclasses` of `direct superclasses` are dispatched. 
+
+To understand this, consider class `A` with super classes `B` and `C`. Then class `B` has `superclasses` `D` and `E`, while class `C` has `F` as its `superclass`.
+
+Methods for `superclasses` `B` and `C` are directly inherited by `Subclass A`. If these two classes did not have a method, then the dispatcher can dispatch methods for `direct superclasses` of both `B` and `C` which are `D`, `E`, and `F`.
+
+![Indirect inheritance](figures/indirectInherSingDispatch.png)
+
+```{r eval=FALSE}
+# Creating a generic function
+setGeneric("g", 
+           def = function(object){
+             standardGeneric("g")
+           })
+# Defining classes A, B, C, D, E and F
+setClass(Class = "F", contains = "numeric")
+setClass(Class = "E", contains = "numeric")
+setClass(Class = "D", contains =  "numeric")
+setClass(Class = "C", contains = "F")
+setClass(Class = "B", contains = c("D", "E"))
+setClass(Class = "A", contains = c("B", "C"))
+# Method for class F
+setMethod("g", 
+          signature = "F", 
+          definition = function(object){
+            "S4 method for class F"
+})
+# Default Method
+setMethod("g",
+          signature = "ANY",
+          definition = function(object){
+            cat("No method found")
+          })
+# Instatiating class A
+A <- new(Class = "A")
+# Calling the generic with an only a default an indirect method
+g(A)
+```
+
+**Concept of Generations**
+
+When an object's `subclass` has `superclasses` and these `superclasses` have their own `superclasses`, then these hierachial groups of `superclasses` are regarded as `generations`. The `first generation` of `superclasses` is an objects `direct superclasses` their `superclasses`  are the second generation.
+
+The concept of generations is used to dispatch appropriate methods by determing the distance of a class. Distance of `1` means it a `first generation`, a distance of `2` for the `second generation` and so forth. This is particularly important in determining methods for `multiple dispatch` and `indirect relationships`. The method with the least distance is dispatched. Note, the predefined class `ANY` mostly used to set default has the greatest distance from all the other classes.
+
+Suppose we were dispatching with two objects, we can try and predict the possible methods to be dispatched by computing the distances between the generations.
+
+```{r}
+# A generic function dispatching on two objects
+setGeneric("g", 
+           def = function(object1, object2){
+             standardGeneric("g")
+           })
+# Method for class F
+setMethod("g", 
+          signature = signature(object1 = "A", object2 = "F"), 
+          definition = function(object1, object2){
+            "S4 method for class AF"
+})
+# Default Method
+setMethod("g",
+          signature = signature(object1 = "ANY", object2 = "ANY"),
+          definition = function(object1, object2){
+            cat("No method found")
+          })
+```
+
+Here we have a generic function and methods for class `A` and `F`, and another for any other classes (default). What is your prediction as to the method to be dispatched when we call to the generic is made?
+
+If you predicted `default`, then you would be right. First we have a method with the first object `A` that is the method `AF`, what it does not have is the class of the second object `B`. So the only other possibility is the default method.    
+Now lets consider the other possible methods that could have been dispatched if they existed. These would be combination of class `A` and `B`  with  all their superclasses which come to `40` total possiblities.
+
+![Indirect inheritance](figures/predictingMultipleDispatch.png)
+
+
+
+```{r}
+a <-  c("A", "B", "C", "D", "E", "F", "numeric", "ANY")
+b <-  c("B", "D", "E", "numeric", "ANY")
+c <-  c(0, 1, 1, 2, 2, 2, 3, 4)
+d <-  c(0, 1, 1, 2, 3)
+ab <- expand.grid(object1 = a, object2 = b)
+ab[, c(3, 4)] <- expand.grid(DistanceToA = c, DistanceToB = d)
+ab[,5] <- rowSums(ab[,c(3,4)])
+colnames(ab)[5] <- ("TotalDistance")
+ab
+```
+
+
+In case there are some methods available, the dispatcher `standardGeneric()` will dispatch the method with the least amount of distance (ab data, column 5). Where there are ties, then the dispatcher will send you a message and dispatch the method with the first alphabetical order. For example, if methods for `AD` and `AE` are available and they both have the same total distance, then `AD` would be dispatched.
+
+
+```{r eval=FALSE}
+# Calling the generic with only methods AF and default `ANY ANY` 
+g(object1 = new("A"), object2 = new("B"))
+# Adding a method `A ANY`
+setMethod("g",
+          signature = signature(object1 = "A", object2 = "ANY"),
+          definition = function(object1, object2){
+            cat("Method for `A ANY`")
+          })
+# Calling generic with the added method
+g(object1 = new("A"), object2 = new("B"))
+# Adding a method `AE`
+setMethod("g",
+          signature = signature(object1 = "A", object2 = "E"),
+          definition = function(object1, object2){
+            cat("Method for `AE`")
+          })
+# Calling generic with the added method AE
+g(object1 = new("A"), object2 = new("B"))
+# Adding a method `AD`
+setMethod("g",
+          signature = signature(object1 = "A", object2 = "D"),
+          definition = function(object1, object2){
+            cat("Method for `AD`")
+          })
+# Calling generic with the added method AD
+g(object1 = new("A"), object2 = new("B"))
+```
+
+![Indirect inheritance](figures/ooProgramDesign13.png)
+
+
+
+##### callNextMethod function
+
+Inheritance in`S4` is implemented by the function `callNextMethod()`. This function uses the variables created by `standardGeneric` to locate the next appropriate method. This function is just like `NextMethod` in `S3` and can only be called from a method.
+
+When the function is called, it searches the next method after the currently implemented method and invokes it with the same arguments as those of the current method. If there is no `next appropriate method` then the default is called, if it does not exist then an error is issued.
+
+Lets look at this from a multiple dispatch mechanism.
+
+```{r eval=FALSE}
+setGeneric("g2", 
+           def = function(object1, object2){
+             standardGeneric("g2")
+           })
+
+setMethod("g2",
+          signature = signature(object1 = "A", object2 = "B"),
+          definition = function(object1, object2){
+            callNextMethod()
+            cat("Method for `AB`")
+          })
+setMethod("g",
+          signature = signature(object1 = "A", object2 = "D"),
+          definition = function(object1, object2){
+            callNextMethod()
+            cat("Method for `AD`")
+          })
+setMethod("g",
+          signature = signature(object1 = "C", object2 = "E"),
+          definition = function(object1, object2){
+            callNextMethod()
+            cat("Method for `CE`")
+          })
+setMethod("g",
+          signature = signature(object1 = "numeric", object2 = "numeric"),
+          definition = function(object1, object2){
+            callNextMethod()
+            cat("Method for `CE`")
+          })
+g2(object1 = new("A"), object2 = new("B"))
 ```
 
 
 
-### Creating S3 objects
+#### RC OO System
 
-There are three types of inputs (objects) that our methods can receive, these are; 
+Reference classes (RC) as mentioned is still to R. This system is quite similar to `S4` but yet so different, it is similar in terms of class definitions but quite different as regards methods implementation. This is because methods in `RC` belong to classes and not `generic functions` as with`S3` and `S4`.
+
+`RC` system was added to offer a linkage between R's OO system and that of other OO implemething languages like `Java` and `C++`. RC is best suited for mutable programs or dynamic programs like model building.
+
+
+##### RC class definition{#rcClassDef}
+
+`RC` classes are defined with the function `setRefClass` which is similar to `S4 setClass`. Key arguments to `setRefClass()` are `Class`, `fields`, `contains` and `methods`. Having defined classes in `S4`, then `Class`, `contains` and `methods` are familiar terms, the only different term is `Fields` which is the same as representation or slots (named objects).
+
+Suprisingly `RC` is written in `R` language using `S4` OO system whicl `S3` and `S4` are in `C` language. The data part of an `RC` has a class `environment` and fields correspond to named. Other than the terms, what is strikingly different in `RC` class definitions is the inclusion of methods, in addition these methods can change fields.   
+
+Invoking `setRefClass()` returns a `generator function` (not our generator function in `S3` and `S4`) which needs to be assigned to a variable name for referencing. The generator function can be called to instantiate new objects of that class. This function contains methods for:
+
+* Creating new objects (`new`), 
+* Printing brief help topics (`help(topic)`),
+* Getting methods or names of the reference methods for a class (`methods`)
+* Getting list of fields and their classes (`fields`)
+* Detailing names of locked fields
+* Debbuging (`trace`)
+* Accessing fields through getters and setters (`accessors`) 
+
+Methods can be defined within the call to `setRefClass` or after class definition with `$methods`. Including it after class definition is recommended as they make code easier to read (good programming practice).
+
+To appreciate `RC` ability to change it's fields (mutable), lets consider a situation where you are collecting some basic information on `births`, `deaths`, and `migration` of a certain region. `Migration` can either be `inmigration` (someone moves into the region) or `outmigration` (someone moves out of the region). These events are meant to increase or decrease the total population of that region. 
+
+Event         | Increase/Decrease Population
+--------------|-----------------------------
+Birth         | Increase
+Deaths        | Decrease
+Inmigrants    | Increase
+Outmigration  | Decrease
+
+You collect this information on regular basis like monthly and you want to store the information as `RC` objects. First you can define classes to hold information on the base or previous population. The `fields` argument will have two slots for total population as a numeric value and a list which will have `births`, `deaths`, `inmigrants`, and `outmigrants`. 
+
+```{r}
+population <- setRefClass("population", fields = list(population = "numeric",
+                                                      events = "list"))
+population
+```
+
+We can also define a class for new events (post-baseline) which will have a list of the events only. This time we will not include the population as it was captured at baseline and will be amended by the events as detailed in the table. 
+
+```{r}
+events <- setRefClass("events", fields = list(newEvents = "list"))
+```
+
+Finally we define a class that will have both baseline (or previous) information and information on new events. 
+
+ 
+```{r}
+rounds <- setRefClass("rounds", 
+                      fields = list(previousPop = "population",
+                                    newPop = "events"))
+```
+
+
+
+
+list(births = "numeric",
+                                    deaths = "numeric",
+                                    inmigration = "numeric",
+                                    outmigration = "numeric")
+##### RC Class Instatiation/Creating Objects
+
+Class instatiation is fairly simple, it is just a call to the class generator. For our example these are the variables with the our defined class; `population`, `events`, and `rounds`. `Population` will instatiate the baseline poulation, `events` will instatiate events that happened during the collection cycle and `rounds` will instatiate a class with both baseline and new events. 
+
+```{r}
+# Object with baseline population information
+basePopulation <- population(population = 500,
+                             events = list(births = 20,
+                                          deaths = 5,
+                                          inmigration = 32,
+                                          outmigration = 13))
+# Object with new events
+roundOneEvents <- events(newEvents = list(births = 6,
+                                          deaths = 1,
+                                          inmigration = 12,
+                                          outmigration = 3))
+# Object with both baseline and new events
+roundOne <- rounds(previousPop = basePopulation, newPop = roundOneEvents)
+```
+
+**Referencing/extraction methods for RC objects**
+
+If you print an `RC` object you will see that it's like a named list and quite similar to `S4` objects.   
+
+```{r}
+basePopulation
+```
+
+`RC` objects have fields as their names like `population` and `events` for the `baselinePopulation` object. Fields can have named values like `births` in `events`. To reference an `RC` object you use `objName$fieldName` or `objName$fieldName$`.
+
+```{r}
+basePopulation$population
+basePopulation$events$births
+roundOne$previousPop$events$births
+```
+
+
+##### RC Methods
+
+As noted in the preceeding dicsussion, methods belong to classes and therefore we could have added our method as an argument to `setRefClasses`. But since we need need to modify the original population information, then it was important to see how `RC` objects look like and how to extract their fields.
+
+This method is intended to produce an `RC` object with ammended population, by adding and subtracting of the events noted in the table. This method will be added to the rounds class as it has the combined data. 
+
+The computations are as basic as:
+
+```
+New Population  = Base/Previous population + new births + new inmigrants - (new deaths + new outmigrants)
+New births = Base/Previous births + new births
+New deaths = Base/Previous deaths + new deaths
+New inmigrants = Base/Previous inmigrants + new inmigrants
+New outmigrants = Base/Previous outmigrants + new outmigrants
+```
+To add a method to our generator function `rounds`, we will reference it as `rounds$methods`. To modify fields we will use the `non-local` assignment operator `<<-`. To refer to the object that is used in the call a reserved field `.self` is used. 
+
+```{r}
+# Adding a method to a generator function
+rounds$methods(
+  amendPop = function(){
+    # Total population (births + inmigration) - (deaths + outmigration) 
+    previousPop$population <<- previousPop$population + newPop$newEvents$births + newPop$newEvents$inmigration - (newPop$newEvents$deaths + newPop$newEvents$outmigration)
+    # Total births
+    previousPop$events$births <<- previousPop$events$births + newPop$newEvents$births
+    # Total deaths
+    previousPop$events$deaths <<- previousPop$events$deaths + newPop$newEvents$deaths
+    # Total Inmigration
+    previousPop$events$inmigration <<- previousPop$events$inmigration + newPop$newEvents$inmigration
+    # Toata Outmigration
+    previousPop$events$outmigration <<- previousPop$events$outmigration + newPop$newEvents$outmigration
+    # Output: amended part of the object
+    .self$previousPop
+  })
+```
+
+##### Invoking methods on an object
+
+Calling a method in `RC` requires the object to refer to the method
+
+```{r}
+(roundone <- roundOne$amendPop())
+```
+
+With this, one can keep using the amended population object to create new objects everytime there are new events. This is mutability nature of `RC` OO system.
+
+##### RC Inheritance Mechanism 
+
+Inheritance in `RC` follows the same mechanism as the other systems, that is, the subclass will inherit the fields and class-based methods of its `superclasses` which are detailed in the `contains` argument of `setRefClass`.
+
+When a class is defined, it automatically inherits from a predefined class `envRefClass` which has methods to call super classes, copy, extract fields, coercing an object to another class such as it's superclass, access generator object and the formal class definition, import object value, initialize fields with `initialize()`, show or display object, apply debugging tools and name reference methods used by the current method. In addition to these inherited method, objects inherit two fields, `.self` (a reference to the entire object) and `.refClassDef` (class definition). Below we discuss some of the inherited methods.   
+
+**callSuper**
+
+Inheritance i  `RC` is similar to the functional OO systems `S3` and `S4` as the contains argument in `setRefClass()` lists superclasses the subclass inherits from. A subclass can inherit fields and methods of its super classes.
+
+In `RC` `callSuper()` is used to implement  the inheritance mechanism. This function is equivalent to `NextMethod` and `callNextMethod` in `S3` and `S4`, however, it can only be invoked within another method with a similar name.
+
+Lets implement this system with by invoking to `callSuper()`. We shall use our earlier example where we had class `A` with superclasses `B` and `C`, class `B` with super classes `E` and `D` and finally class `C` with superclass `F`.
+
+![1st design](figures/rcClassInheritance.png)
+
+A few pointer, when defining classes, always start with the super classes.
+
+```{r}
+# Class definitions
+f <- setRefClass("F",
+                 methods = list(
+                   fMethod = function(){
+                     cat("Method for class F\n")
+                   }))
+e <- setRefClass("E",
+                 methods = list(
+                   eMethod = function(){
+                     cat("Method for E\n")
+                   }))
+d <- setRefClass("D",
+                 methods = list(
+                   dMethod = function(){
+                     cat("Method for D\n")
+                   }))
+c <- setRefClass("C", contains = "F",
+                 methods = list(
+                   fMethod = function(){
+                     callSuper()
+                  },
+                  cMethod = function(){
+                    fMethod()
+                    cat("Method for class C\n")
+                  }))
+# Instatiating class "C"
+C <- c()
+# Invoking method for object "C"
+C$cMethod()
+
+b <- setRefClass("B", 
+                 contains = list("D", "E"),
+                 methods = list(
+                   dMethod = function(){
+                     callSuper()
+                     },
+                   eMethod = function(){
+                     callSuper()
+                   },
+                   bMethod = function(){
+                     dMethod()
+                     eMethod()
+                     cat("Method for B\n")
+                   })) 
+# Instatiating class "B"
+B <- b()
+# Invoking methods for object "B"
+B$bMethod()
+
+a <- setRefClass("A", contains = list("B", "C"),
+                 methods = list(
+                   bMethod = function(){
+                     callSuper()
+                   },
+                   cMethod = function(){
+                     callSuper()
+                   },
+                   aMethod = function(){
+                     cMethod()
+                     bMethod()
+                     cat("Method for A\n")
+                   }))
+# Instatiating class "A"
+A <- a()
+# Invoking methods for object "A"
+A$aMethod()
+```
+
+
+**Copy**
+
+`RC` behaves in a totally different way from other `R` objects. This is in regards to creating new objects from other `RC` objects (enviroments). Take for instance the population at baseline and at round one from our example in [RC class definition](#rcClassDef). 
+
+```{r}
+basePopulation$population; roundone$population
+```
+
+They are the same which is really not what we wanted. We should have had 500 at baseline and 514 at round one. This means the modifications made were done to the object which is an environment, it did not matter that we gave it another name `roundone`.
+
+To be able to get a different object you need to use the inherited method `copy` with argument shallow equal to true.
+
+```{r}
+# Instatiate object again 
+basePopulation <- population(population = 500,
+                             events = list(births = 20,
+                                          deaths = 5,
+                                          inmigration = 32,
+                                          outmigration = 13))
+roundOne <- rounds(previousPop = basePopulation, newPop = roundOneEvents)
+
+# Make a copy of the baseline object 
+roundone <- basePopulation$copy(shallow = TRUE)
+# Generate round two object from copy
+roundtwo <- roundOne$amendPop()
+# Comparison of values
+roundone$population; roundtwo$population
+```
+
+**Initialize**
+
+If you have some tasks that need to be performed at the begining and before other methods are invoked, then you can create an intialize function.
+
+```{r, eval=FALSE}
+# 
+tutorials <- setRefClass("tutorials",
+                         fields = list(level = "character"),
+                         methods = list(
+                           initialize = function(){
+                             level <<- readline(prompt = "Please choose level ")
+                           },
+                           train = function(){
+                             cat("Classes for level", level, "begin shortly\n")
+                           }
+                         ))
+myTutor <- tutorials()
+## Please choose level 3
+myTutor
+## Reference class object of class "tutorials"
+## Field "level":
+## [1] "3"
+myTutor$train()
+## Classes for level 3 begin shortly
+```
+
+
+
+##### RC Methods Dispatch
+
+
+Methods are invoked on these objects though reference like `object$method`. If a method requires to use elements of the `RC` object used to invoke a method, then `.self` variable is used.
+
+
+## Implementation of Rs OO Systems: Case Study
+
+So we have covered quite a bit of theory or concepts behind R's OO system. Now lets roll up our sleeves and put it all together and there is no better way to do that than applying it though an example. By the end of this session we should be able to design object oriented analytical programs  using either `S3`, `S4` or `RC`. Key issues to address in all the three systems are `classes`, `methods`, `inheritance`, `generic functions`, `object encapsulation`, and `polymorphism`.
+
+Our case study is from hypothetical situation where we take on the role of an analyst trying to study the outbreak of a disease. Our interest in this case study is not to understand the subject at hand (epidemiology) but rather to implement an OO system for the program. Hence our core objective will be `implementation of an automated reporting system`. The motivation behind creation of the program is to reduce the time spent doing routine work and have more time reviewing the results as well as proposing next cause of actions. 
+
+As we conclude this section, we shall discuss the "highs" and "lows" of each of the systems and propose strategies for selecting an OO system.
+
+### An automated reporting system: Design Phase
+
+First off, [this]("SummaryReport.2016-03-18.Rmd") is what we want to produce, a summary report of the data generated for one period. In essence we want to take the data and carry out the necessary computation before generating the summary report.
+
+To implement this in OOP we will first design the program in terms of objects needed (inputs) to objects to be generated. FOr our case looking at the report (the expected output of the program) we need a data set as the input. what might not be too clear right now is the processes involved between input to output.
+
+For purposes of learning `inheritance` and `polymorphism` in R's OO system, I will add a new dimension to our program. I want us to simulate data for testing the program. Therefore our program should be able to receive existing/real data (data sets) as well as simulate it (simulation inputs).
+
+Inaddtion data sets and simluation inputs, we will need information about the reporting site, what is called `meta data`. This data is used as top matter of the summary report. So at this stage we have two inputs (data and metaData) for the analysis and reporting function.    
+
+![1st design](figures/ooProgramDesign1.png)
+
+Now we need to simulate the data by adding a simulator function.
+
+![2nd design](figures/ooProgramDesign2.png)
+
+We have a fairly simple program that should make monitoring a bit more interesting. Before implementing the program in the three systems, lets detail the variables needed and their types (bases of good analysis). We will go step by step, starting off with  `meta data` and then the data sets. 
+
+**Meta Data Requirements**
+
+  Data                                          | Type
+------------------------------------------------|-----------------------
+Site ID                                         | "character"
+Population under surveillance (geographic area) | "character"
+Name of Report generator                        | "character"
+Date of report generation                       | "numeric"
+Collection cycle                                | "numeric"
+
+This object will only be used in report generation.  
+
+**Data Sets**
+
+Our two data objects (simulated and real data sets) should have the following variables:
+
+Variable      |   Type
+--------------|------------
+Site          |  "Factor"
+ID            |  "Character"
+Dates         |  "Date"
+Round         |  "Numeric"
+Exposed       |  "Numeric"
+Incidences    |  "Numeric"
+Prevalence    |  "Numeric"
+Status        |  "Numeric"
+MedicalCosts  |  "Numeric"
+
+
+**Simulated data**
+
+The following inputs are needed to simulate data.
+
+```
+Data                |  Type
+--------------------|----------------------
+Site                |  "Numeric"
+Patients            |  "Numeric"
+Dates               |  "Date"
+Period              |  "Numeric"
+Exposed             |  "Numeric"
+Prevalence          |  "Numeric"
+Incidence           |  "Numeric"
+Mortality           |  "Numeric"
+Cost                |  "Numeric"
+
+```
+
+**Analysis and Reporting**
+
+The analysis and reporting function will receive data either as existing or simulated data. It will be the core function of the program although we shall have different forms of it.
+
+**Validation**
+
+A key issue when dealing with data is `validation` or the process of ensuring requirements are met. This process is implemented differently in Rs OO systems. So even though we have not factored it in our design, we shall implement it in the three systems.
+    
+
+#### Implementing the Case Study in S3  
+
+We have a simple task, developing a program to analyse and generate summary reports. But we want some flexibility on this by having methods that can:
+
+* Simulate data only
+* Validate 
+* Produce results only and
+* Generate both results and report
+
+So we need to think of the sequence of events, what begins and what follows, in this case we expect:
+
+* Simulating data (only) would require one call to a simulator function and then to a validator which should result in a data frame
+* To produce results (only) 
+  + From existing data we will require a call to an analyst which will call for validation first before doing the analysis.
+  + In the case of simulated data, a call will be made to the analyst which in turn will call a data simulator and then the validator before producing the results.
+* Generating results and summary report will first call a reporting method before going through the preceeding step. 
+
+Given the flow of action above, we expect the following class inheritance:
+
+* To simulate data: Validator will inherit simulation methods
+* To produce results only:
+  + For existing data - Analysis method will inherit validation methods
+  + For simulated data - Analysis method will inherit validation and simulation methods
+* To generate both results and report: 
+  + For existing data - reporting method will inherit from analysis and validator
+  + For simulated data - reporting method will inherit from analysis, validator and simulator
+
+![Inheritance in S3](figures/ooprogramDesign5.png)
+
+We therefore need to define the following methods which will have similar class names:
+
+* Simulation
+* Validation
+* Analysis
+* Reporting
+
+But before we define these methods, we have to create the objects and a generic function.   
+
+### S3 Objects and Classes for the Case Study
+
+We have three types of inputs (objects) in this case study, these are; 
 
 * Simulation inputs, 
-* Data set with supposed real data and
+* Data set with existing/real data and a
 * List with meta data. 
 
 From these inputs (arguments to the generic), we expect the following outputs:
 
 For simulated data
 
-1. Simulated data, 
-1. Output, 
-1. Outputs and summary report
+1. Simulated data only or
+1. Analysis output or
+1. Summary Report with Analysis Outputs
 
-Therefore, in creating our objects we need to make sure they have super classes that will maximize on Rs inheritance mechanism. What we want is a chain of events that will see the end result.
+For existing or real data
 
-To produce the three types of outputs for simulated data, we shall create three objects; `simulatorInputsS3.1` (to simulate data only), `simulatorInputsS3.2` (to produce results only), and `simulatorInputsS3.3` (to generate report with outputs).
+1. Analysis output or
+1. Summary Report with Analysis Outputs
 
-Our first object `simulatorInputsS3.1` will have classes, `validatorS3` and `simulatorS3` meaning `UseMethod` will dispatch methods for validation first which in turn will call next method which is data simulation. 
+In addition, we will have a meta data object that will be used in summary report generation.  
+
+Therefore, in total we will create six objects with class vectors with either, `metaDataS3`, `simulatorS3`, `validatorS3`, `epidemiologistS3` and `summaryReportS3`. 
+
+Data   | Object | Output | Class
+-------|--------|--------|-------
+Meta Data | `metaDataS3` | Report front matter | "metaDataS3"
+Simulation Inputs | `simulatorInputsS3.1` | Data Simulation | c("validatorS3",  "simulatorS3") 
+Simulation Inputs | `simulatorInputsS3.2` | Results only  | c("epidemiologistS3", "validatorS3", "simulatorS3")  
+Simulation Inputs | `simulatorInputsS3.3` | Report with outputs | c("summaryReportS3", "epidemiologistS3", "validatorS3", "simulatorS3")
+Data set | realDataS3.1 | Results Only | c("epidemiologistS3", "validatorS3")
+Data set | realDataS3.2 | Report with outputs | c("summaryReportS3", "epidemiologistS3", "validatorS3")
 
 ```{r}
 # Meta data object 
@@ -808,7 +1358,7 @@ otype(simulatorInputsS3.1); otype(simulatorInputsS3.2); otype(simulatorInputsS3.
 otype(realDataS3.1); otype(realDataS3.2) 
 ```
 
-Now we check inheritance.
+We can check their inheritance.
 
 ```{r}
 # Simulation objects
@@ -829,7 +1379,124 @@ inherits(realDataS3.1, c("epidemiologistS3", "validatorS3"))
 inherits(realDataS3.2, c("summaryReportS3", "epidemiologistS3", "validatorS3"))
 ```
 
-### Generating outputs
+
+### Creating generic functions and defining methods in `S3`
+
+We will create our generic function as discussed in the section [S3 Generic Functions](#s3Generics) and name it `generatorS3`. 
+
+```{r s3Generic}
+generatorS3 <- function(object){
+  UseMethod("generatorS3", object)
+}
+# Confirm its type
+library(pryr)
+ftype(generatorS3)
+```
+
+### S3 Methods
+
+Now, lets create methods for our case study, we have four of them; simulator, validator, outputs, and reporter. From a programming standing point, the three types of output (simulated data only, results only and both results and report) indicate `polymorphism` (different forms of an output object). We will also implement the principle of `encapsulation` by separating the functions that actually simulate data, analyse and generate summary report. By doing so we can be able to call the functions from multiple methods. It will also ensure that these core functions are not tampered with as we develop the program. `Inheritance` will be implemented by `NextMethod` according to the order of our class vector. 
+
+```{r s3Methods1}
+# Sourcing encapsulated functions
+source('Scripts/epiProgramOOP_S3.R')
+```
+
+Our first method is a data `simulator` which will only simulate data. 
+
+```{r}
+generatorS3.simulatorS3 <- function(object){
+  simulatorS3(object)        
+}
+```
+
+Second method is a validator, a call to this method will have one object as `S3` is a `single method dispatcher`. However, this object is expected to have two elements that is `simulation inputs and a meta data object` or `real data and a meta data object`. Validation will ensure object meets set requirements like variable names.  
+
+```{r}
+generatorS3.validatorS3 <- function(object){
+  classes <- class(object)
+  # Validate data frames (existing data) validate 
+  if(class(object[[1]]) == "data.frame"){
+    validatorS3(object)
+  # Validation for simulated data
+  } else { 
+    obj <- NextMethod() # Simulate
+    object <- list(obj, object$metaData) # return list with simulated and meta data
+    class(object) <- classes # Add original class attribute
+    validatorS3(object)
+    # Output for simulated data:
+  if(length(classes) > 2){ 
+    # 1. Output: Results and meta data for either results or report generation 
+    return(object)
+  } else{
+    # 2. Output: Simulated data only 
+    return(object[[1]])
+  }
+  }
+}
+```
+
+Third is an analysis method called `epidemiologistS3`, it's the core method.
+
+```{r}
+# Analysis method to produce results only
+generatorS3.epidemiologistS3 <- function(object){
+  # For real data
+  if(class(object[[1]]) == "data.frame"){
+    NextMethod()# Send data for validation
+    results <- epidemiologistS3(object[[1]])# Analyse validated data
+    # For simulated data
+  } else {  
+    obj <- NextMethod()# Simulate data then validate
+    results <- return(epidemiologistS3(obj[[1]]))# Analyse data
+  }
+  classes <- class(object)
+  # Output for this function:
+  if(classes[1] == "summaryReportS3"){ 
+    # 1. Output: Results and meta data for report generation 
+    obj <- list(output = results, metaData = object[[2]])
+    return(obj)
+  } else{
+    # 2. Output: Results only 
+    return(results)
+  }
+}# Not run: Amended the object set to analyst to be just the first element of the list  
+```
+
+Our fourth method is a summary and report function.  
+
+```{r}
+generatorS3.summaryReportS3 <- function(object){
+  metaData <- object$metaData
+  # For real data
+  if(class(object[[1]]) == "data.frame"){
+    obj <- NextMethod()# Send data for validation and analysis
+    summaryReportS3(obj)# If validated, analyse  
+  # For simulated data
+  } else {  
+    results <- NextMethod() # Simulate, validate and analyse
+    results <- list(results, metaData)
+    summaryReportS3(results)# Analyse data
+  }
+}
+```
+
+Finally and in line with good programming we add a default method
+
+```{r}
+generatorS3.default <- function(object){
+  cat("No method found")
+}
+```
+
+We can confirm that these methods are in our generic function `generatorS3`.
+
+```{r}
+methods(generic.function = "generatorS3")
+```
+
+
+#### Generating outputs
 
 We have everything set, now we can run our program with the various objects. 
 
@@ -861,7 +1528,7 @@ a). Real Data
 ```{r}
 generatorS3(realDataS3.2)
 # Preview the report
-file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
+#file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
 ```
 
 b). Simulated Data
@@ -869,23 +1536,21 @@ b). Simulated Data
 ```{r}
 generatorS3(simulatorInputsS3.3)
 # Preview output
-file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
+#file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
 ```
 
 
 With that, we have successfully implemented `S3` OO system and as we have seen, creating `S3` objects is not hard, you create them in the usual way with an `assignment` operator or the `structure` function and add a `class attribute`. However, these classes are not defined and one can add or amend them without describing what the classes are or should do. This very nature is not in line with good programming and therefore a more descriptive method was called for, this is the `S4` OO system.
 
-#### Creating S4 objects
+#### S4 Case Study Implementation: Automation of a monitoring system 
 
-`S4` works the same way as `S3` as they both add a class attribute to objects and methods belong to generic functions. However, their classes are defined with consistency checks and have a different dispatching mechanism. In addition, `S4` are contained in the pre-loaded `methods` package and not the `base` package as `S3`.
+To implement this system, we need to amend our design as we no loger need a validator method and we want to take advantage of the multiple dispatching mechanism of `S4`. We can now have the dispatcher dispatching  methods for both data and meta data; that is, dispatch on two objects. The second input object will be used to control the output produced, that is, presencence of a meta data object indicates a summary report is required, if it is not, then simulated data or analysis results is required. 
 
-`Class definition` is a meta data object with information on what an object of that class is: it is the `blueprint`. Objects in `S4` can only be created from defined classes unlike in `S3` where objects are created from just the name of a class. 
+With this in mind, lets amend the design by looking at it from a  class inheritance perspective, that is, `what object classes will meet our objective`. Recall our interests are:
 
-As far as methods dispatch is concerned, dispatch can occur on type of more than one argument or object (multi-dispatch system) and not just the first argument (single-dispatch mechanism) as was the case in `S3`. Also in this system, validity is included as part of class definition. So unlike `S3` there is really no need to have a validator method. 
-
-Okay, lets go to our case study and see how this system can be implemented. But before we do so, lets rethink the design as certain aspects will need to change. For example, there is no need for a validity class. We will also take advantage of the multiple dispatching mechanism of `S4` by dispatching on two objects, that is simulation input or real data and meta data. We will use the second object to control the output produced, that is, if meta data is provided, then we know report is required, is not, then it could either produce simulated data or analysis results. 
-
-With this in mind, lets amend the design by looking at it from a  class inheritance perspective, that is, `what object classes will meet our objective`. Recall our interests are producing simulated data, results and both results and report. 
+* Producing simulated data, 
+* Producing results only and
+* Producing both results and report. 
 
 Therefore we will have two types of classes, those for the first object and those for the second object. 
 
@@ -894,7 +1559,7 @@ Therefore we will have two types of classes, those for the first object and thos
 
 The combination of these classes should result in one of the specified outputs. 
 
-Class Combination Table with expected outputs
+##### Class Combination Table with expected outputs{#combinationTable}
 
 Combination                                   |   Output
 ----------------------------------------------|---------------------
@@ -906,25 +1571,23 @@ RealDataS4    |  Nothing(missing), NA or outputS4| Analysis results
 RealDataS4    |  reportS4                        | Summary report with analysis results
 
 
-### Class definition
-
-As noted, in `S4`, classes are defined with a number of descriptive information. This is done with the `setClass` function  which has numerous arguments, but the most important are,`Class`, `representation` and `contains`. Argument `Class` is for the name of the class, `represent` are variables or data that an object will have, they specify the expected type of data. `Contain` is a list of `superClasses` for which the class inherits from.
+#### Case Study: S4 Class definition
 
 Going by our `S4` design, we have six classes to define, these are
 
 ```
-\#For first object
+For first object
 DataS4
     simulatedS4
     realDataS4
 
-\#For the second object
+For the second object
 NA
   outputS4
     reportS4
 ```
 
-For the first object, we will define three classes, the first being a virtual parent class `DataS4` (included for data display methods). The second class is for data simulation and the third class is for real data sets. We will include a validator argument to the real/existing data class definition to ensure variables conform to expectations. `Protype` (default) argument is irrelevant for both `realDataS4` and `simulatorInputsS4`.
+For the first object, we will define three classes, the first being a parent class `DataS4`, the second class is for data simulation and the third class is for data sets. We will include a validator argument to the real/existing data class definition to ensure variables conform to expectations. `Protype` (default) argument is irrelevant for both `realDataS4` and `simulatorInputsS4`.
 
 ```{r}
 # Parent class for the data sets
@@ -946,7 +1609,7 @@ setClass(Class = "simulatorS4",
          )
 #
 
-# Class for real/existing data (validator is included)
+# Class for data sets (validator is included)
 setClass(Class = "realDataS4",
          # Inheriting methods
          contains = "DataS4",
@@ -965,7 +1628,7 @@ setClass(Class = "realDataS4",
          )
 ```
 
-The next group of classes are for the second object `meta data` and they will determine the output generated. First class is `NA`, it will simulate data or produce results depending on the first class. The second is `outputS4` which will produce results and third is `reportS4` for report generation.  
+The next group of classes are for the second object `meta data` and they will determine which output is generated. First class is `NA`, it will simulate data or produce results depending on the first class. The second is `outputS4` which will produce results and third is `reportS4` for report generation.  
 
 ```{r}
 # 1. Class for data simulate 
@@ -995,34 +1658,14 @@ getClass("simulatorS4")
 getClasses(globalenv())
 # Tracing a formal class
 findClass("simulatorS4")
-# see all super classes (equivalent to `inherit` in `S3`)
+# see all `superclasses` (equivalent to `inherit` in `S3`)
 is("simulatorS4")
 ```
 
 
-##### S4 generic functions
+##### Case Study: S4 generic function
 
-`S4` generic functions are created with the `setGeneric()`. With this function, you can change existing non-generic functions into generic functions by providing only one argument, the name of the non-generic function. By doing so, the non-generic function becomes the default method, although you can include the argument `def` if you do not want the function as the default method.
-
-```{r}
-# A non-generic function
-nonGeneric <- function(object){
-  cat("Am sorry I do not have a method for that class")
-}
-library(pryr)
-# What function is nonGeneric?
-ftype(nonGeneric)
-# Converting it into a generic function
-setGeneric("nonGeneric")
-# Now what type of function is it?
-ftype(nonGeneric)
-```
-
-In addition to converting non-generic function to generic functions, `setGeneric` is also used to create new generic functions by a call to `standardGeneric`. `standardGeneric()` is `UseMethod()` and it cannot be called outside a generic function; it is included in the `def` argument used to define the generic function. The argument to `standardGeneric` is the name of the generic function being created. 
-
-To create a new generic function, there are two important arguments to provide, these are `name` and `def`. `name` is the generic functions name as a character and `def` is the definition of the generic. The `def` argument should be a function with a call to `standardGeneric` responsible for methods dispatch. The arguments to `def` will be the same as those of it methods.  
-
-Okay, now lets create the S4 generic for our case study and call it `generatorS4`. as discussed earlier, `generatorS4` will have two argument, `object` and `MetaData` which will determine the output produced. 
+The `S4` generic for our case study will be called `generatorS4` and it will dispatch on two argument, `object` and `MetaData`. The second object will be used to determine the output produced. 
 
 ```{r creatingS4Generic}
 # Declaring a generic
@@ -1033,11 +1676,9 @@ setGeneric(name = "generatorS4",
 ```
 
 
-#### S4 Methods
+#### Case Study: S4 Methods
 
-Nice, we have a generic, now we need to add S4 methods for it. To do this we will use the `setMethod` function. It can be used to set methods for an existing generic or change non-generic functions to generic (however, the latter case is not a good programming practice). Methods are stored as metadata to its generic function which is usually at the `global environment` but in other cases this can `namespace` or a `package`. 
-
-The key arguments in `setMethod` are: `f` the name of the generic function, `signature`  named list of classes, and `definition` which defines the behavior of the method as a function. 
+Okay, we have our classes define and a generic created, now we need to add `S4` methods for it.  
 
 For our case study, we will create methods to:
 * Simulate data  
@@ -1045,7 +1686,7 @@ For our case study, we will create methods to:
 * Generate summary report and finally a
 * Show method for displaying data
 
-Define these methods, we will be guided by the class combination table we produced earlier. So to start us off is a method to simulate data, it requires only one object, simulation input but it can also simulate data if a second empty object of class `NA` is provided. The actual simulation is done by an encapsulated function `simulatorS4`.
+In defining these methods, we will be guided by the [class combination](#combinationTable) table we produced earlier. So to start us off is a method to simulate data, it requires only one object, simulation input but it can also simulate data if a second empty object of class `NA` is provided. The actual simulation is done by an encapsulated function `simulatorS4`.
 
 ```{r S4SimulatorMethod}
 source(file = "Scripts/epiProgramOOP_S4.R")
@@ -1054,7 +1695,7 @@ source(file = "Scripts/epiProgramOOP_S4.R")
 setMethod(f = "generatorS4",
           signature = c(object = "simulatorS4", MetaData = "missing"),
           definition = function(object){
-            # Calling encapsulated core function
+            # Calling encapsulated core function and returning an S4 object
             simDataS4 <- new(Class = "DataS4", data = simulatorS4(object))
             simDataS4
           })
@@ -1098,7 +1739,7 @@ setMethod(f = generatorS4,
           })
 ```
 
-Finally are methods to analyse and generate a summary report. Both simulated and real data will need to have a meta data object of the class `reportS4` which has a direct super class of `outputS4`. Once analysis is done, then a call is made to a function that does the report, `summaryReportS4`. 
+Finally are methods to analyse and generate a summary report. Both simulated and real data will need to have a meta data object of the class `reportS4` which has a direct `superclass` of `outputS4`. Once analysis is done, then a call is made to a function that does the report, `summaryReportS4`. 
 
 ```{r}
 # For simulated data
@@ -1122,7 +1763,7 @@ setMethod(f = generatorS4,
 
 As good programming practice, lets add a default methods. We will use the pre-defined class `ANY` to indicate any object with a class other than those defined and have methods in the generic `generatorS4`. 
 
-```{r s4DefaultMthod}
+```{r s4DefaultMethod}
 # When objects of any other class are supplied
 setMethod(f = generatorS4,
           signature = c(object = "ANY", MetaData = "ANY"),
@@ -1152,7 +1793,7 @@ setMethod(f = "show",
 
 #### Class Instatiation - S4 objects
 
-with the classes and methods defined, we can now instantiate the classes or create objects. `S4` objects are created with a call to `new()` and providing details for all the slots defined in the class. We shall instantiate three objects, one for simulation, real data and finally meta data.
+With the classes and methods defined, we can now instantiate the classes or create objects. We shall instantiate three objects, one for simulation, real data and finally meta data.
 
 Starting with simulator input object, we will give it a class `simulatorS4`. It will contain values for data simulation.
 
@@ -1223,48 +1864,9 @@ realDataS4_2 <- new(Class = "realDataS4", data = epiData_2)
 ```
 
 
-**Extraction methods for `S4` objects**
+### Case Study: Generating S4 outputs
 
-When you print `S4` object you will see that they resembles a `list`, however, there are two exceptions. One, extraction of a slot is through a call to `slot()` or with an `@` symbol using names but not positions; two, there is no partial matching as with lists.
-
-```{r s4SlotExtraction1}
-slot(simulatorInputsS4, "site")
-simulatorInputsS4@site
-```
-
-These extraction methods will not work
-
-```{r s4SlotExtraction2, eval=FALSE}
-slot(simulatorInputsS4, 1)
-# Error in slot(simulatorInputsS4, 1) : 
-# invalid type or length for slot name
-simulatorInputsS4[[1]]
-# Error in simulatorInputsS4[[1]] : this S4 class is not subsettable
-myList <- list(site = 11,
-               patients = 670,
-               dates = c("01-03-2016", "31-03-2016"),
-               period = 1,
-               exposed = 62,
-               prevalence = 15,
-               incidence = 40,
-               mortality = 25,
-               cost = 19)
-myList$si
-# [1] 1
-simulatorInputsS4@si
-# Error: no slot of name "si" for this object of class "simulatorS4"
-```
-
-
-### Generating outputs
-
-We set out to produce three types of outputs using `S4 OO system`. These are, simulated data, results and summary report. 
-# Simulate data
-head(generatorS4(simulatorInputsS4), 2)
-# Preview the simulated data
-head(epiDataS4)
-# Confirm it's S4
-isS4(simulatorInputsS4)
+We set out to produce three types of outputs using `S4 OO system`. These are, simulated data, results and summary report. We can now the program to produce these outputs.
 
 1. To simulate data, we need simulator inputs
 
@@ -1272,7 +1874,7 @@ isS4(simulatorInputsS4)
 # Call generic function with either:
 # One object; simulator inputs 
 generatorS4(simulatorInputsS4)
-# With a second empty object of class "NA"
+# Or with a second empty object of class "NA"
 head(generatorS4(simulatorInputsS4, new("NA")), 4)
 ```
 
@@ -1296,23 +1898,15 @@ generatorS4(object = realDataS4, site17Info)
 
 And there we have done it, we have implemented an `S4` OO system. Now off to the new system in `R` called `reference classes (RC)`.
 
-## Reference Classes (RC)
+### Case Study: Reference Classes (RC)
 
-Reference classes (RC) are relatively new in R and therefore you do not expect to see `RC` objects in the base system or packages (maybe the new ones). This system is quite similar to `S4` but yet so different, similar in terms of class definitions but quite different as regards methods implementation. This is because methods in `RC` belong to classes and not `generic functions` as with`S3` and `S4`. Therefore all one needs to do in this system is to define classes, instantiate them  and then invoke them methods in the class with the objects created. Design wise, we are looking at two classes, simulated data and real data. Our guiding question is, "what do we need to ensure in order for us to get our outputs (simulated data, analysis and both analysis and summary report). Ideally this is what we want to achieve.
-
-![figure of `RC` classes without inheritance](figures/ooProgramDesign6.png)
-
-But to learn `inheritance` in `RC` we will separate the simulation process in classes that call on their super class with the function `callSuper`. 
+In this system all we need to do is to define classes, instantiate them (creating objects) and then invoke methods through the objects created. Design wise, we are looking at two classes, simulated data and real data. But to learn `inheritance` in `RC` we will separate the simulation process and call`superclass` with the function `callSuper`. Ideally this is what we want to achieve.
 
 ![figure with inheritance in `RC`](figures/ooProgramDesign7.png)
 
-With that as our focus, lets implement it by defining the classes. Classes are defined with the function `setRefClass`, the key arguments being `Class`, `fields`, `contains` and `methods`. Having defined classes in `S4`, then `Class`, `contains` and `methods` are familiar terms, the only different term is `Fields` but this just the same as representation or slots. Other than the terms, what is strikingly different in class definition as mention is the inclusion of methods. They are included as `named list` and inclusion can either be at the beginning with call to `setRefClass` or after with reference to the class method slot; `className$methods`.   
+With that as our focus, lets implement it by defining the classes.  
 
-Invoking `setRefClass()` returns a generator function (not our `generator` function in `S3` and `S4`, but the idea is the same), needs to be assigned to a variable for referencing. The generator then used to instantiate objects of that class. Methods are invoked on these objects though reference like `object$method`. If a method requires to analyse the invoking object, then `.self` variable is used.
-
-Inheritance in `S4` follows the same mechanism as the other systems, that is, the subclass will inherit the fields and class-based methods of its super classes. 
-
-Okay, lets go to our case study to better understand this system. First we will define our simulator classes; a class to simulate data only, another to analyse the data and a third one to analyse and generate a summary report. Since our program is relatively simple, we shall include the methods within the call to `setRefClass` otherwise it is recommended that you add them to the class generator after class definition to ease readability (good programming practice).  
+Okay, lets go to our case study, first we will define our simulator classes; a class to simulate data only, another to analyse the data and a third one to analyse and generate a summary report. Since our program is relatively simple, we shall include the methods within the call to `setRefClass`.  
 
 ```{r}
 # 1. Simulation Classes (Inheritance approach)
@@ -1360,7 +1954,7 @@ realDataRC <- setRefClass(Class = "realDataRC",
                           )) 
 ```
 
-Now lets instantiate the classes. This is fairly simple, just a call to the class generator
+Now lets instantiate the classes. 
 
 ```{r}
 # Inputs
@@ -1401,7 +1995,7 @@ site1Report <- reportClassRC(data = list(simInputsRC, metaDataRC))
 realDataObjRC <- realDataRC(data = list(epiData, metaDataRC))
 ```
 
-Finally, the "abracadabra" part, invoking the methods with the objects we have created.
+Finally, we invoke the methods with the objects we have created.
 
 ```{r}
 source("Scripts/epiProgramOOP_RC.R")
@@ -1413,15 +2007,17 @@ head(site1$simulater(), 4)
 outputSimRC$simulater()
 # c. Generate Summary Report
 site1Report$simulater()
-file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
+#file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
 
 # 2. Real Data Outputs
 # a) Analysis only
 realDataObjRC$output()
 # b) Analysis and Summary Report
 realDataObjRC$report()
-file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
+#file.show(paste0("SummaryReport.", Sys.Date(), ".Rmd"))
 ```
+
+
 
 
 ## What R OO system should you use?
@@ -1440,15 +2036,6 @@ TODO
 Off dates:
 1. ~10/03/2016~
 2. 16/03/2016 Postponed till all is done - But tentatively off the ~whole weekend~ 
-
-
-
-
-### Dispatch Mechanism
-
-Could add a method to an existing generic
-
-
 
 
 
@@ -1498,11 +2085,6 @@ mean
 
 Encapsulating helps to ensure consistency, more so when the internals change. That is, sometimes the function would have some updates to it's internal working but it's core or what is shown does not get affected, in this case the call to the mean remains the same.
 
-#### Inheritance{#inheritance}
-
-The other important concept in OOP is `inheritance`. As most objects have similar descriptions at least partially, then a new class can get attributes or properties from another class. For example, a mango would have a class of fruit thereby having all attributes of a fruit, the fruit class can in-turn be in the trees class thereby inheriting (some of the attributes of the class trees. This helps reduce coding as new classes get attributes and methods from existing classes therefore making coding much more efficient.
-
-Having looked at OOP in R, lets review the concepts by asking ourselves why it was important to learn it in the first place.
 
 ### Reasons for learning OOP in R
 
@@ -1539,7 +2121,7 @@ typeof(symbls)
 
 *internal non-primitive functions?
 
-[Compilers and Interpreters]{#comp.inter} 
+### Compilers and Interpreters{#comp.inter} 
 
 One of the first things you are taught when learning how to use computers is that a computer only understands `0's and 1's`, representing off and on state. This means that every action you need the computer to perform needs to be in the form of 0 and 1 or what is called `computer language`. 
 
@@ -1550,3 +2132,54 @@ Compilers pick your list of instructions and converts the whole document to comp
 Interpreters on the other hand picks one instruction, converts it until they are finished. The good thing about it is that the conversion begins immediately and one can amend the instructions as they go on. However, this method is quite slow unlike the compiler.
 
 The instructions or code given to either of the two programs would be in one of the numerous programming language of which R is one of them. R uses an interpreter in it's implementation along side `Lisp programming language`, `Dartmouth BASIC` `Perl`, `Python`, `MATLAB`, `Ruby`, `UCSD`, `Pascal` etc. Read more on this at [Wikipedia]("https://en.wikipedia.org/wiki/Interpreter_(computing)"). Examples of compilers are `c++`, `BASIC`, `COBOL`, `Fortran` and many others.
+
+
+#### Exercises
+
+**S3 Inheritance** 
+
+ For example, all computers have the same functionality, and therefore they fall under the class "computers". However, there are two types of computers, "desktops" and "laptops". You could also look at desktops as "usual desktops" or "mainframe" computers. All these are different forms of a computer and they each inherit the method specified for the class before also known as a `superclasses` (the current class is called `subclass`). 
+
+```{r eval=FALSE}
+# generic function: "computers"
+computers <- function(object){
+  UseMethod("computers", object)
+}
+# Methods
+computers.computer <- function(object){
+  print("I am a computer")
+  NextMethod()
+}
+computers.Laptop <-function(object){
+  print("specifically a laptop")
+  NextMethod()
+}
+computers.HP <- function(object){
+  print("and HP is my type")
+}
+# Object
+myComputer <- list()
+class(myComputer) <- c("computer", "Laptop", "HP")
+# Call the generic
+computers(myComputer)
+```
+
+In our example above, we have an object called `myComputer` which is a computer as well as being a laptop and a HP type, these are its various forms. It therefore inherits all the method for a computer and laptop. In this case we would expect the following output once the generic is called.
+
+```{r eval=FALSE}
+[1] "I am a computer"
+[1] "specifically a laptop"
+[1] "and HP is my type"
+```
+
+
+## References{#references}
+
+1. R Core Team (2015). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+1. John Chambers, 2006; "How `S4` Methods work"
+
+
+
+```{r}
+sessionInfo()
+```
