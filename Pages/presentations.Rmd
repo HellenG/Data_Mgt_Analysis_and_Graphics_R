@@ -2,14 +2,17 @@
 title: "Presentations"
 author: "Hellen Gakuruh"
 date: "February 4, 2016"
-output: html_document
+output: 
+  github_document:
+    toc: true
+    toc_depth: 4
 ---
 
-### Data Management, Analysis and Graphics using R
+## Data Management, Analysis and Graphics using R
 
 Please [folk](../Programming for Non-programmers/Git_and_GitHub_Simplified.html) the following documents:
 
-###Level One
+#### Level One
 
 1. [Session One](Slides/Introduction_to_R__Level_One__-_Session_One.html) Slides
     + Demo One: Downloading and Installing Base R [PDF](Slides/Demo/1.Downloading and Installing R.pdf)  [Video]()
