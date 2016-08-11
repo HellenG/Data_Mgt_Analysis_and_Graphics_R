@@ -570,6 +570,8 @@ args(read.table)
 
 It is also useful to note that there are functions called `top level` and those that are called `low level`. Top level functions are the functions that we mostly use to perform an action, while low level functions are called by the top level functions. For example, when computing the mean, you would call on the `mean()` function which in-turn calls the sum and length function to get you the mean. So in this case the mean is the `top level` function and `sum()` and `length()` functions are the low level functions or helper functions.{#top.low.functions}  
 
+Session 4
+
 ## Data Types{#data.types} 
 
 Before doing any analysis, it is important to know your data; what kind is it? In R, there are four major data types which also indicate the type of analysis to use. These are, 
@@ -788,6 +790,9 @@ In summary We are now conversant with assignment operators, data types and vecto
 
 4. Lists
 
+
+Session six
+
 ###2.3 Subsetting different data objects
 
 As you analyse your data, you may find that you need to extract a subset. R provides you with a number of ways to do so. We shall discuss them using the data objects/vector we created in the last session. I would also request you use the script rather than the console as it provides you with a means for reproducing your results for revision or practice sessions.
@@ -911,6 +916,7 @@ complete[, 9] <- ifelse(test = complete$Status == "Married", yes = "Married", no
 complete <- with(complete, data.frame(id, Age, AgeGroup = V8, Status, BinaryStatus = V9, Occupation, Assistance, Delivery, Place))
 ```
 
+Session 5
  
 ###Exporting Data to a csv and a text file
 
@@ -1028,6 +1034,8 @@ Question on structure
 
 number of observations and variables
 
+Session 7
+
 ## Working with dates and time in R
 
 Suppose you want to know today's date, and maybe what date it was 10days ago or 10 days to come. R has a way of giving you this information using a function known as `System date`. But do note that any computation with dates must be converted into numeric i.e. number of seconds. 
@@ -1042,6 +1050,8 @@ Sys.Date() - 10
 # Date 10 days from today
 Sys.Date() + 10
 ```
+
+Session eight
 
 ## Introduction to R graphics (merge with write-up in level 3)
 
@@ -1153,7 +1163,7 @@ Well, we managed to distinguish the two, but it is not that clear thought there 
 
 Now that will require knowledge on subsetting data frames which is covered in the next session. But in order to plot we look at subsetting using the square brackets.
 
-**Subsetting data frames with square brackets**
+**Subsetting data frames with square brackets** ---> move this to session 6
 
 There are a couple of ways to subset a data frame. One way is to use square bracket after the name of the data frame, for example `tips[]`. Within the brackets we specify the rows (observations) and the columns (variables) i.e. `tips[5, 2]` which refers to the fifth observation in the second column, this would be a scalar. We could also have `tips[1:10, ]` which refers to all the column but for the first ten rows. We could select a few columns of the first ten rows with `tips[1:10, c(2, 4, 7)]`.
 
@@ -1201,6 +1211,8 @@ First thing one notices is the spread of the data points particularly for smoker
 
 Also of importance is the general direction that the points are 'going toward'. In this case both plots show some diagonal upward direction meaning a positive relationship. We can therefore conclude that the higher the total bill, the higher the tip and particularly for nonsmokers.
 
+Session nine
+
 ## Seeking help and the proper way to do so
 
 As you start working on different analytical projects on your own, you might get some challenges in coding. Once you have tried your level best to find a solution but you are unable to, then you can use the following sources. Note, R is not a commercial package, so you would not expect to have staff dedicated to solve individual problems. But in the same breath, R has such an enthusiastic and dynamic community that it would be nearly impossible not to get you issue sorted.
@@ -1233,6 +1245,7 @@ As a common courtesy, it is good to post solutions to questions once you have fo
 
 Also note that posting one question in multiple sites does not increase your response rate or quality of the response. It only irritates the users who have access to the other sites and many do.
 
+Session ten
 
 ## Case Studies: An introduction to analysis in R
 

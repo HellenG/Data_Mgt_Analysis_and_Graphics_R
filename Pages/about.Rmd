@@ -2,7 +2,7 @@
 title: "ABOUT DATA MANIA INC.,"
 author: "Hellen Gakuruh"
 date: "February 4, 2016"
-output: html_document
+output: github_document
 ---
 
 ### GOAL
@@ -20,29 +20,3 @@ It is therefore the vision of Data Mania to empower all development professional
 I will introduce R and proceed to discuss quantitative analysis from an introductory level leading to an advance level. In the future, other data analysis discussions like qualitative data analysis will be added.
 
 The site will also host guest bloggers as either trainers or people interested in sharing applications or challenges needing further discussions.
-
-### About me
-
-Let me begin by saying I have come to love all things data and I like learning new methods in data analysis and programming. It is this very love for continuous learning and data analysis that I wish to share through the training blogs.
-
-### Some bit of history about me.
-
-Well, I am a trained demographer having attained an Msc in Population studies way back in 2008. Why demography or more appropriately population studies? Quite simply I ventured into this field having worked for sometime as a research assistant, coordinator and consultant for a number of project evaluations and operations research. Through these assignments, a growing need arose for me to gain further knowledge. I was quite keen on applied techniques that would enable me to analyze population and health related issues. And so it was that, for a minimum of two years, I was able to gain knowledge in population dynamics as well as research methods and an intensive session on applied statistics. I was also privileged to manage a longitudinal dataset for which I used to write my thesis.   
-
-### What is in my future?
-
-Sharing my knowledge and skills which keep growing everyday! I see a portfolio of grateful students. 
-
-My succession plan will begin early by mentoring budding teachers who teach analysis and programming in the unconventional way; they simply teach. Given the numerous online trainings I have had at no cost, and the believe one mentor had in me; this would be my way to pay forward.
-
-### Added bonus.
-
-My love for data has propelled me to both statistical as well as computer programming. Actually, having learnt R, some HTML, CSS and a bit of JavaScript in the recent past, this website, as basic as it might be, is it's fruition. 
-
-This should serve as a motivation that one is able to learn and apply whatever they put their minds to! 
-
-### Contact me
-
-For now, you can reach me through the following [email address](datamani@datamaniainc.com).
-
-I shall be adding a forum where you meet other professionals interested in learning and sharing experiences, so, look out for that one!

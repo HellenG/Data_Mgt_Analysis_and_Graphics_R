@@ -3,9 +3,9 @@ title: "Object Oriented Programming in R"
 author: "By Hellen Gakuruh"
 date: "February 11, 2016"
 output:
-  word_document: default
-  html_document:
-    toc: yes
+  github_document:
+    toc: true
+    toc_depth: 4
 ---
 
 ## About this post{#aboutPost}

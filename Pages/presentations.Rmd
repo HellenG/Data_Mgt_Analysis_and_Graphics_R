@@ -1,16 +1,13 @@
 ---
-title: "Presentations"
+title: "Data Management, Analysis and Graphics using R"
 author: "Hellen Gakuruh"
 date: "February 4, 2016"
-output: 
-  github_document:
-    toc: true
-    toc_depth: 4
+output: github_document
 ---
 
-## Data Management, Analysis and Graphics using R
+## Presentations
 
-Please [folk](../Programming for Non-programmers/Git_and_GitHub_Simplified.html) the following documents:
+Please folk the following documents:
 
 #### Level One
 

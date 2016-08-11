@@ -2,7 +2,7 @@
 title: "R Scripts"
 author: "Hellen Gakuruh"
 date: "February 4, 2016"
-output: html_document
+output: github_document
 ---
 
 Script      | Topic | Date | Version

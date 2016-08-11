@@ -1,8 +1,38 @@
 ---
 title: "Blogs"
 author: "By Hellen Gakuruh"
-output: html_document
+output: github_document
 ---
+
+### Blog4:
+
+"There is so much to basic base R"
+
+Base R offers so much it only require knowledge of what is there and how you can fine tune it, more so as regards plotting.
+
+As you embark on this session, I want you to think of three scenerios, first an analyst who has presented a very good report with graphs; second, an analyst who presents a good report along side a very long script, third an analyst who presents a well written report, a well thought out, adequately commented and reproducible script along with data used. Given your introduction to R knowledge, whose work would you prefer and why?  
+
+
+### Blog3: Thursday, May 26, 2016
+
+Well, I experienced what they call "a technical glitch" while trying to build my site (https://github.com/HellenG/HellenG.github.io.). For some reason I am not getting the pages to work: I wonder where my "html" knowledge went to.
+
+Anyway, I intend to address this very soon, but for now, the notes (for session one, two and four) can be folked from the tutorial's repo "https://github.com/HellenG//Data_Mgt_Analysis_and_Graphics_R"
+
+Good reading
+
+
+
+### Blog2: Saturday, May 21, 2016
+
+### Session One of Level One Released
+
+The long wait is finally over; first session of the "Data Analysis using R" is now ready and uploaded. Please check my tutorial site https://github.com/HellenG/HellenG.github.io.
+
+Still working on the demo's and other links, but they will up and running in no time.
+
+Enjoy
+
 
 ### Blog1: Friday, January 22, 2016
 
