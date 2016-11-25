@@ -1,0 +1,717 @@
+# Web Scrapping Functions
+
+### 1. Web scraper
+
+#### Description
+
+Extracts data from the internet as a HTML document object and stores it as an R character object. 
+
+#### Usage
+
+webScraper(url, css, ..., asis = TRUE, constructTable = FALSE, withOutTags = FALSE)
+
+#### Arguments
+
+*url:*   Internet or file address to read a valid HTML document.
+*css:*   A character vector with css selectors to use for data extraction
+*...:*  Other arguments to be passed to readLine function
+*asis:*  Logical, should css pattern be matched as is (default) or permuted
+*constructTable:* Logical, should a data frame be created, defaults to FALSE
+*withOutTags:*   Logical, should HTML tags be removed, defaults to FALSE
+
+```{r "webScraper"}
+webScraper <- function(url, css, ..., constructTable = FALSE, withOutTags = FALSE) {
+   if (is.null(get0("dom", envir = globalenv()))) {
+      cat("Opening", url, "\n")
+      assign("dom", readLines(url, ...), globalenv())
+   } else {
+      if (identical(get0("dom", globalenv()), readLines(url, ...))) {
+         dom <- get0("dom", globalenv())
+      } else {
+         cat("Opening", url, "\n")
+         assign("dom", readLines(url, ...), globalenv())
+      }
+   }
+   m <- grepl("(^(\\*\\s)?\\w*$)|(^\\*$)|(^(\\*\\s)?\\w*(\\[[^]]+\\])+$)*|(^(\\*\\s)?\\w*([.](\\w*[[:punct:]]*)*)+$)+|(^(\\*\\s)?\\w*#(\\w*[[:punct:]]*)+$)+|(^(\\*\\s)?\\w*:(\\w*[[:punct:]]*)+$)*", x = css)
+   if (m) {
+      simpleSelectors(css, doc, constructTable, withOutTags)
+   }
+}
+```
+
+
+### 2. Check HTML element
+
+#### Description
+
+Check if an object is a valid HTML element.
+
+#### Usage
+
+is.htmlElement(x, doc = NULL)
+
+#### Arguments
+
+*x*    A character string with HTML tags, or matrix with indices and position to extract content.
+*doc*  R object with valid HTML elements used to extract content when "x" is a matrix otherwise NULL if "x" is a character vector.
+
+```{r "is.htmlElement"}
+is.htmlElement <- function(x, doc = NULL) {
+   if (class(x) == "matrix") {
+      if (is.null(doc)) stop("Please provide document to extract from")
+      x <- contentExtractor(x, doc)   
+   }
+   if (length(x) > 1) x <- paste0(x, collapse = "\n")
+   if (grepl("<.+/>$", x)) {
+      cat("Self-closing element\n\n")
+      return(TRUE)
+   }
+   openings <- length(gregexpr("<(?!/)[^>]+(?<!/)>", x, perl = TRUE))
+   closings <- length(gregexpr("</[^>]+>", x))
+   equalTags <- openings == closings
+   sameName <- grepl("^<(\\w+\\b)[^>]*>.*</\\1>$", x)
+   if (equalTags && sameName) {
+      return(TRUE)
+   } else {
+      return(FALSE)
+   }
+}
+```
+
+### 3. Tag Counter
+
+#### Description
+
+Count number of tags in a string
+
+#### Usage
+
+tagCounter(tag, string, start = 1, count = FALSE)
+
+#### Arguments
+
+*tag*      a character vector with tag name. Add "/" before a tag name if counting a closing tag.
+*string*   a character string used for the search    
+*start*    Integer giving exact location where "<" for the tag begins
+*count*    Logical, if TRUE returns an integer value for number of matches. If FALSE (default), return a matrix with all of matches, there positions and length. 
+
+```{r "tagCounter"}
+tagCounter <- function(tag, string, start =  1, count = FALSE) {
+   if (start != 1) {
+      string <- substr(string, start, nchar(string))
+   }
+   pattern = paste0("<", tag, "\\b[^>]*>")
+   matches = gregexpr(pattern = pattern, text = string)[[1]]
+   if (start != 1) {
+      position <- as.vector(matches) + (start - 1)
+   } else {
+      position <- as.vector(matches)
+   }
+   if (length(position) == 1 && position < 0) { 
+      return(0)
+   }
+   length <- attr(matches, "match.length")
+   tagMat <- matrix(c(position, length), ncol = 2, dimnames = list(1:length(position), c("Position", "Length")))
+   if (count) {
+      return(nrow(tagMat))
+   } else {
+      return(tagMat)
+   }
+}
+```
+
+
+### 4. Closing tag Locator Functions
+
+#### Description
+
+"clsTagLocator" locates closing tags given position and name of an opening tag. "multiClsTagLocator" locates closing tags for multiple opening tags. 
+
+#### Usage
+
+clsTagLocator(tagName, doc, index = 1, startPos = 1)
+multiClsTagLocator(tagNames, doc, indices = 1, startPos = 1)
+
+#### Arguments
+
+*tagName(s)*    A character string for clsTagLocator and a character vector for multiClsTagLocator.
+*doc*           A valid HTML document object 
+*index/indices* integer for clsTagLocator or an integer vector of length greater than one for multiClsTagLocator. These give index/indices of opening tags when "doc" is a multi string object     
+*startPos*    an integer vector of length one or more giving start position for opening tag(s)
+
+```{r "clsTagLocator"}
+clsTagLocator <- function(tagName, doc, index = 1, startPos = 1) {
+   lengthtagName <- nchar(tagName)
+   if (length(doc) == 1) {
+      multi <- FALSE
+      if (index != 1) warning("index > 1 when length(doc) = 1 is not useful")
+      tag <- substr(doc, startPos, startPos + lengthtagName)
+      if (tag != paste0("<", tagName)) stop('There is no "<', tagName, '" starting at position ', startPos, '. Start position must be at angle "<" bracket and not the tag name.')
+   } else if (length(doc) > 1) {
+      if (grepl(paste0("<", tagName), doc[index])) {
+         locations <- as.vector(gregexpr(paste0("<", tagName), doc[index])[[1]])
+         if (!any(locations == startPos)) {
+            warning('There is no "', tagName, '" at position ', startPos, ". 'startPos' has been set to ", locations[1])
+            startPos <- locations[1]
+         }
+      } else stop('Closing tag error: There is no match for <"', tagName, '" at index ', index)
+      openingPos <- startPos
+      multi <- TRUE
+      multiDoc <- doc
+      doc <- paste0(doc, collapse = "\n")
+      startPos <- (as.vector(gregexpr("\n", doc)[[1]])[index - 1] + 1) + (startPos - 1)
+   }
+   nCharDoc <- nchar(doc)
+   docSub <- substr(doc, startPos, nCharDoc)
+   pattern1 <- paste0("<", tagName, "\\b[^>]*/>")
+   pattern2 <- paste0("<", tagName, "\\b[^>]*>[^<]*</", tagName, ">")
+   pattern3 <- paste0("<", tagName, "\\b[^>]*>([^<]*<(?!/", tagName, ")[^>]+>)*?<", tagName, "[^>]*>")
+   if (as.vector(regexpr(pattern1, docSub)) == 1) { 
+      cat("A self-closing element\n\n")
+      if (multi) {
+         data <- c(index, index, openingPos, 0)
+         clsTagMat <- matrix(data, ncol = 4, byrow = TRUE, dimnames = list("Single", c("OpeningIndex", "ClosingIndex", "OpeningPos", "ClosingPos")))
+      } else {
+         data <- c(index, index, startPos, 0)
+         clsTagMat <- matrix(data, ncol = 4, byrow = TRUE, dimnames = list("Single", c("OpeningIndex", "ClosingIndex","StartPos", "ClosingPos")))
+      }
+      return(clsTagMat)
+     } else if (as.vector(regexpr(pattern2, docSub)) == 1) {
+      m <- regexpr(pattern2, docSub)
+     } else if (as.vector(regexpr(pattern3, docSub, perl = TRUE)) == 1) {
+      pattern <-  paste0("<", tagName, "\\b[^>]*>([^<]*<[^>]+>)*?</", tagName, ">")
+      m <- regexpr(pattern, docSub)
+   } else {
+      pattern <- paste0("<", tagName, "\\b[^>]*>([^<]*(<[^>]+>)*)*?</", tagName, ">")
+      m <- regexpr(pattern, docSub)
+   }
+   elementLength <- attr(m, "match.length")
+   closingPos <- startPos + (elementLength - 1)
+   if (multi) {
+      closingIndex <- length(gregexpr("\n", substr(doc, 1, closingPos))[[1]]) + 1
+      if (index == closingIndex) {
+         closingPos <- elementLength + (openingPos - 1) 
+         clsTagMat <- matrix(c(index, index, openingPos, closingPos), ncol = 4, byrow = TRUE, dimnames = list("Single", c("OpeningIndex", "ClosingIndex", "OpeningPos", "ClosingPos")))
+      } else {
+      clsChars <- closingPos - (lengthtagName + 2)
+      pos <- gregexpr(paste0("</", tagName, ">"), substr(doc, clsChars, closingPos))[[1]]
+      if (grepl("^\n", substr(doc, clsChars, closingPos))) {
+         closingPos <- (as.vector(pos) - 1) + (attr(pos, "match.length") - 1) 
+      } else {
+         closingPos <- as.vector(pos) + (attr(pos, "match.length") - 1)
+      }
+      clsTagMat <- matrix(c(index, closingIndex, openingPos, closingPos), ncol = 4, dimnames = list("Multi", c("OpeningIndex", "ClosingIndex", "OpeningPos", "ClosingPos")))
+      }
+   } else {
+      clsTagMat <- matrix(c(index, index, startPos, closingPos), ncol = 4, byrow = TRUE, dimnames = list("Single", c("OpeningIndex", "ClosingIndex", "OpeningPos", "ClosingPos")))
+   }
+   clsTagMat
+}
+```
+
+
+```{r "multiClsTagLocator"}
+multiClsTagLocator <- function(tagNames, doc, indices = 1, startPos = 1) {
+   nTagNames <- length(tagNames)
+   nIndices <- length(indices)
+   nStartPos <- length(startPos)
+   if (length(doc) == 1) {
+      if (nTagNames != nStartPos && nStartPos > 1) {
+         tagNames <- rep(tagNames, length.out = nStartPos)
+      }
+      clsTagList <- lapply(1:nStartPos, function(i) clsTagLocator(tagNames[i], doc, startPos = startPos[i]))
+   } else {
+      if (nIndices == 1 && nStartPos > 1) {
+         if (nTagNames != nStartPos) tagNames <- rep(tagNames, length.out = nStartPos)
+         indices <- rep(indices, length.out = nStartPos)
+      } else {
+         if (nTagNames != nIndices &&  nIndices > 1) {
+            tagNames <- rep(tagNames, length.out = nIndices)
+         } 
+         if (nStartPos != nIndices && nIndices > 1) {
+            startPos <- rep(startPos, length.out = nIndices)
+         }
+      }
+      nIndices <- length(indices)
+      clsTagList <- lapply(1:nIndices, function(i) clsTagLocator(tagNames[i], doc, indices[i], startPos[i]))
+   }
+   Reduce("rbind", clsTagList)
+}
+```
+
+### 5. Content extractor
+
+#### Description
+
+Given indices and location of opening and closing tags, it extracts HTML elements and can either produce a data frame or remove HTML tags.
+
+#### Usage
+
+contentExtractor(x, doc, constructTable = FALSE, withOutTags = FALSE, encoding = "UTF-8")
+
+#### Arguments
+
+*x*   a matrix with indices and position of opeining and closing tags
+*doc* a valid HTML document object
+*constructTable* logical; whether a data frame should be created. Defaults to FALSE.
+*withOutTags*  logical; should HTML tags be removed. Defaults to FALSE.
+
+```{r "contentExtractor"}
+contentExtractor <- function(x, doc, constructTable = FALSE, withOutTags = FALSE, encoding = "UTF-8") {
+   if (class(x) != "matrix") stop('"x" must be a matrix')
+   if (is.null(rownames(x))) stop("'rownames(x)' must be either 'Multi' or 'Single'")
+   rows <- nrow(x)
+   content <- lapply(1:rows, function(i) {
+      if (rownames(x)[i] == "Multi") {
+         multi <- doc[x[i, "OpeningIndex"]:x[i, "ClosingIndex"]]
+         multi[[1]] <- substr(multi[[1]], x[i, "OpeningPos"], nchar(multi[[1]]))
+         multi[[length(multi)]] <- substr(multi[[length(multi)]], 1, x[i, "ClosingPos"])
+         multi
+      } else {
+         substr(doc[x[i, "OpeningIndex"]], x[i, "OpeningPos"], x[i, "ClosingPos"])
+      }
+   })
+   for (i in 1:rows) {
+      Encoding(content[[i]]) <- encoding
+   }
+   if (length(content) == 1) {
+      content <- content[[1]]
+   }
+   if (constructTable) {
+      if (rows == 1) {
+         return(tableConstructor(content))
+      } else {
+         return(multiTableConstructor(content))
+      }
+   } else if (withOutTags) {
+      content <- as.vector(sapply(content, gsub, pattern = '</?[^>]*>', replacement = ""))
+      logi <- sapply(1:length(content), function(i) grepl(pattern = "\\w+", x = content[[i]]))
+      return(lapply(1:length(logi), function(i) content[[i]][which(logi[[i]])]))
+   } else {
+      return(content)
+   }
+}
+```
+
+
+### 6. Table Constructor
+
+#### Description
+
+Creates a data frame from a html table element.
+
+#### Usage
+
+tableConstructor(x, encoding = "UTF-8")
+
+#### Arguments
+
+*x*         A table element
+*encoding*  Encoding to be set for all variables
+
+
+```{r "tableConstructor"}
+tableConstructor <- function(x, encoding = "UTF-8") {
+   indices <- grep("<tr", x)
+   nIndices <- length(indices) 
+   trOpCls <- multiClsTagLocator("tr", doc = x, indices = indices)
+   rawTr  <- contentExtractor(trOpCls, x)
+   nRows <- if (any(grepl("th", rawTr[[1]]))) {
+      nIndices - 1
+   } else {
+         nIndices
+      } 
+   nCols <- sapply(seq(rawTr), function(i) length(grep("<t(h|d)", rawTr[[i]])))
+   uniqCol = unique(nCols)
+   nCols = nCols[which.max(nCols)]
+   if (length(uniqCol) > 1) {
+      warning("There are cell data spanning more than one column")
+   }
+   
+   df = data.frame(matrix(nrow = nRows, ncol = nCols))
+   
+   if (any(grepl("th", rawTr[[1]]))) {
+      th = grep("<[^>]*th", rawTr[[1]])
+      colNams = gsub("<\\s*/?[^>]*>", "", rawTr[[1]][th])
+      if (length(colNams) != nCols) {
+         names(df) = paste0("Var", seq(nCols))
+      } else { 
+           names(df) = colNams
+           rawTr = rawTr[-1]
+           }
+   } else {
+         names(df) = paste0("Var", seq(nCols))
+   }
+   
+   for (i in 1:length(rawTr)) {
+      ind <- grep("<t(h|d)", rawTr[[i]])
+      for (j in 1:length(ind)) {
+         tag <- sub("<(t(h|d))[^>]*>.*", "\\1", rawTr[[i]][ind[j]])
+         element <- clsTagLocator(tag, rawTr[[i]], ind[j])
+         ij = paste(contentExtractor(element, rawTr[[i]], withOutTags = TRUE), collapse = "; ")
+         Encoding(ij) = encoding
+         df[i, j] = gsub("&#160;", " ", ij)
+         } 
+   }
+   df
+}
+```
+
+
+```{r "multiTableConstructor"}
+multiTableConstructor <- function(x, encoding = "UTF-8") {
+   tables <- vector("list", length(x))
+   for (i in 1:length(x)) {
+      tables[[i]] <- tableConstructor(x[[i]], encoding = "UTF-8")
+   } 
+   tables
+}
+```
+
+
+
+### 7. Content Remover
+
+#### Description
+
+Removes unwanted content from outputs of content extractor or from columns in created data frames. 
+
+#### Usage
+
+contentRemover(x, content, column = NULL)
+
+#### Arguments
+
+*x* a charcter string, a data frame or a list with data frames.
+*content* charcter string with any regular expression including literals and special characters targeting content to be removed
+*column* integer vector indicating one or more columns for which specified content will be removed.
+
+*Value*
+
+If "x" is a data frame, then a data frame is returned, if it is a list, a list with data frames will be outputed.
+
+```{r "contentRemover"}
+contentRemover <- function(x, content, column = NULL) {
+   
+   removeContent <- function(x, content, column = NULL) {
+      if (length(column) == 1) {
+         x[, column] <- gsub(content, "", x[, column])
+      } else {
+         for (i in seq(column)) {
+            x[, column[i]] <- gsub(content, "", x[, column[i]])
+         }
+      }
+      x
+   }
+   
+   if (class(x) == "data.frame") {
+      return(removeContent(x, column, content))
+   } else if (class(x) == "list") {
+      elements <- vector("list", length(x))
+      for (i in seq(x)) {
+         if (class(x[[i]]) == "data.frame") {
+            elements[[i]] <- removeContent(x = x[[i]], column, content)
+         } else {
+            elements[[i]] <- gsub(pattern = content, replacement = "", x = x[[i]])
+         }
+      }
+      if (class(elements[[1]]) != "data.frame") {
+         elements <- sapply(seq(elements), function(i) elements[[i]][which(nchar(elements[[i]]) > 0)])
+      }
+      return(elements)
+   } else {
+      return(gsub(pattern = content, replacement = "", x = x))
+   }
+}
+```
+
+
+### 8. Attribute pattern constructor
+
+#### Description
+
+Constructs a search pattern for attributes based on given css.
+
+#### Usage
+
+attrPatternConstructor(css, asis = TRUE)
+
+#### Arguments
+
+*css*  character string with cascading styling sheet selector for which an attibute pattern will be constructed.
+*asis* logical; if TRUE (default), it will construct a pattern using the given order of attributes. If FALSE, an alternating pattern will be constructed out of all permutations of listed attributes.
+
+```{r "attrPatternConstructor"}
+attrPatternConstructor <- function(css, asis = TRUE) {
+   if (!grepl("[.[#]", css)) {
+      if (grepl("\\w+", css)) cat("Detecting tag name only\n")
+      stop("No attributes listed")
+   }
+   cssAttributes <- vector("list")
+   counter <- 0
+   pattern1 <- "(?<=[.])[^.[#]+"
+   pattern2 <- "(?<=#)[^.[#]+"
+   pattern3 <- "(?<=\\[)(.+?)(?=\\])"
+   if (grepl(pattern1, css, perl = TRUE)) {
+      counter <- counter + 1
+      classes <- regmatches(css, gregexpr(pattern1, css, perl = TRUE))[[1]]
+      classes <- sub(pattern1, "\\1", classes, perl = TRUE)
+      withClass <- TRUE
+      cssAttributes[[counter]] <- paste0('class="', paste(classes, collapse = " "), '"')
+   } else withClass <- FALSE 
+   if (grepl(pattern2, css, perl = TRUE)) {
+      counter <- counter + 1
+      if (length(gregexpr(pattern2, css, perl = TRUE)[[1]]) > 1) warning("Elements can only have one 'id' attribute, hence only the first is matched")
+      id <- regmatches(css, regexpr(pattern2, css, perl = TRUE))
+      withId <- TRUE
+      cssAttributes[[counter]] <- paste0('id="', sub(pattern2, "\\1", id, perl = TRUE), '"')
+   } else withId <- FALSE 
+   if (grepl(pattern3, css, perl = TRUE)) {
+      pattn1 <- '\\[class(="([[:graph:]]+)")?\\]'
+      pattn2 <- '\\[id(="[[:graph:]]+")?\\]'
+      if (withClass && grepl(pattn1, css)) {
+         additionalClasses <- regmatches(css, regexpr(pattn1, css))[[1]]
+         pattn <- '\\[class="([^"]*)"\\]'
+         if (grepl(pattn, additionalClasses)) {
+            additionalClasses <- sub('\\[class="([^"]*)"\\]', "\\1", additionalClasses)
+         }
+         cssAttributes[[1]] <- paste0('class="', paste(classes, additionalClasses, collapse = " "), '"')
+         css <- regmatches(css, regexpr(pattn1, css), invert = TRUE)[[1]]
+         css <- paste(css, collapse = "")
+      }
+      if (withId && grepl(pattn2, css)) {
+         warning("More than one version of element 'id' given, only the first with '#' is used")
+         css <- regmatches(css, regexpr(pattn2, css), invert = TRUE)[[1]]
+         css <- paste(css, collapse = "")
+      }
+   }
+   if (grepl(pattern3, css, perl = TRUE)) {
+      attrb <- regmatches(css, gregexpr(pattern3, css, perl = TRUE))[[1]]
+      if (length(grep("=", attrb, invert = TRUE))) {
+         counter <- counter + 1
+         ind <- grep("=", attrb, invert = TRUE)
+         cssAttributes[[counter]] <- paste0(attrb[ind], '="[^"]+"')
+      }  
+      pattern4 <- '([^=~|^$*]+)([~|^$*]?)="(.+)"'
+      if (any(grepl(pattern4, attrb))) {
+         ind <- grep(pattern4, attrb)
+         componentTwo <- sub(pattern4, "\\1", attrb[ind])
+         extra <- sub(pattern4, "\\2", attrb[ind])
+         nExtra <- length(extra)
+         value <- sub(pattern4, "\\3", attrb[ind])
+         val <- rep(NA, length(extra))
+         if (any(extra == "")) {
+            ind <- which(extra == "")
+            val[ind] <- paste0('"', value[ind], '"')
+         } 
+         if (any(extra == "~")) {
+            ind <- which(extra == "~")
+            val[ind] <- paste0('"([[:graph:]]*\\s)*?', value[ind], '(\\s[[:graph:]]*)*"')
+         } 
+         if (any(extra == "|")) {
+            ind <- which(extra == "|")
+            val[ind] <- paste0('"', value[ind], '(-[[:graph:]]+)?"')
+         }
+         if (any(extra == "^")) {
+            ind <- which(extra == "^")
+            val[ind] <- paste0('"', value[ind], '[[:graph:]]+"')
+         }
+         if (any(extra == "$")) {
+            ind <- which(extra == "$")
+            val[ind] <- paste0('"[[:graph:]]+', value[ind], '"')
+         } 
+         if (any(extra == "*")) {
+            ind <- which(extra == "*")
+            val[ind] <- paste0('"[[:graph:]]*', value[ind], '([[:graph:]]*"')
+         } 
+         counter <- counter + 1
+         cssAttributes[[counter]] <- paste(componentTwo, val, sep = "=")
+      } 
+   } 
+   cssAttributes <- unlist(cssAttributes)
+   if (is.null(cssAttributes)) {
+      return(cssAttributes)
+   }
+   n <- length(cssAttributes)
+   f <- factorial(n)
+   cl <- "\\s([^\\s]+\\s)*?"
+   if (n == 1 | asis) {
+      pattern <- cssAttributes
+      if (length(pattern) > 1) {
+         pattern <- paste(pattern, collapse = " ")
+      }
+   } else {
+      indMatrix <- permutationTuples(n)
+      patternList <- lapply(1:f, function(i) paste(cssAttributes[indMatrix[i,]], collapse = cl))
+      pattern <- unlist(patternList)
+      pattern <-paste(pattern, collapse = "|")
+   }
+   pattern
+}
+```
+
+### 9. Permutation Tuples
+
+#### Description
+
+Generates a matrix with all permutation tuples given an integer.
+
+#### Usage
+
+permutationTuples(n)
+
+#### Arguments
+
+*n*  integer vector of length one from which permutation tuples will be generated.  
+
+```{r "permutationTuples"}
+permutationTuples <- function(n) {
+   if (!is.numeric(n) | length(n) > 1) stop('"n" must be a numeric vector of length one')
+   if (grepl("[.]", n)) {
+      warning('"n" is a float point number, it has be rounded up to ', ceiling(n))
+      n <- ceiling(n)
+   }
+   permMat <- matrix(0,nrow = factorial(n), ncol = n)
+   i <- 0
+   repeat {
+      perm <- sample(n)
+      logi <- sapply(1:factorial(n), function(i) !all(permMat[i,] == perm))
+      if (all(logi)) {
+         i <- i + 1
+         permMat[i,] <- perm 
+      }
+      if (i == factorial(n)) {break}
+   }
+   permMat
+}
+```
+
+
+### 10. Simple Selector
+
+#### Description
+
+Based on simple selectors (part of css selectors), it produced targeted content as is or without HTML tags or if a table element, can create a data frame.
+
+#### Usage
+
+simpleSelectors(css, doc, asis = TRUE, content = TRUE, constructTable = FALSE, withOutTags = FALSE, encoding = "UTF-8")
+
+#### Arguments
+
+*css*   character string with simple selector which include, type, universal, class, id and attributes. Pseudo classes are currently (pre-aplha version: 0.0.0) not supported (but underdevelopment).
+*doc*   a HTML valid document object from which data will be extracted
+*asis* logical; should css be used as is (default) or attributes permuted 
+*content*   logical; should content of matched selector be returned (default) or tag names and indices of their match  
+*constructTable* logical; should a table be constructed if it is a valid HTML table element, defaults to FALSE 
+*withOutTags* logical; should HTML tags be removed, defaults to FALSE
+*encoding*  character string giving encoding to be applied to content.
+
+```{r "simpleSelectors"}
+simpleSelectors <-  function(css, doc, asis = TRUE, content = TRUE, constructTable = FALSE, withOutTags = FALSE, encoding = "UTF-8") {
+   if (grepl("^\\*$", css)) return(doc)
+   pattern <- "([^:]+):(\\w+$|\\w+-\\w+(-\\w+-?\\w*(\\([^)]+\\))?)?)"
+   if (grepl(pattern, css)) {
+      withPseudo <- TRUE
+      css <- sub(pattern, "\\1", css)
+      pseudoClass <- sub(pattern, "\\2", css)
+   } else withPseudo <- FALSE
+   if (grepl("^(\\*\\s)?\\w+$", css)) {
+      tagName <- sub("^(\\*\\s)?(\\w+)$", "\\2", css)
+      if (all(grepl(paste0("<", tagName), doc) == FALSE)) stop("No match found for <", tagName)
+      indices <- grep(paste0("<", tagName), doc)
+      if (!content) return(list(tagNames = tagName, indices = indices))
+      stp <- sapply(indices, function(i) regexpr(paste0("<", tagName), text = doc[i]))
+      clsTagMat <- multiClsTagLocator(tagNames = tagName, doc = doc, indices = indices, startPos = stp)
+   } else {
+      if (grepl("^\\w", css)) {
+         pattn <- "^(\\w+)([.[#].*)"
+         tagNames <- sub(pattn, "\\1", css)
+         pattern <- attrPatternConstructor(sub(pattn, "\\2", css), asis)
+         pattern <- paste0("<", tagNames, "\\b[^>]*?", pattern, "[^>]*>")
+         if (all(grepl(pattern, doc) == FALSE)) stop("No match for ", pattern)
+         indices <- grep(pattern, doc)
+         stp <- sapply(indices, function(i) regexpr(pattern, doc[i]))
+      } else {
+         pattern <- attrPatternConstructor(css, asis)
+         if (all(grepl(pattern, doc) == FALSE)) stop("No match for ", pattern)
+         pattn <- paste0('<(\\w+\\b)[^>]*?', pattern, "[^>]*>.+$")
+         indices <-grep(pattn, doc)
+         tagNames <- sub(pattn, "\\1", doc[indices])
+         if (!all(sapply(tagNames, grepl, pattern = "\\b\\w+\\b"))) {
+            stop("Pattern does not match tag names, instead matches ", tagNames)
+         }
+         stp <- sapply(indices, function(i) regexpr(pattn, doc[i]))
+      }
+      if (!content) return(list(tagNames = tagNames, indices = indices))
+      clsTagMat <- multiClsTagLocator(tagName = tagNames, doc = doc, indices = indices, startPos = stp)
+   }
+   contentExtractor(x = clsTagMat, doc = doc, constructTable = constructTable, withOutTags = withOutTags, encoding = encoding)
+}
+```
+
+### 11. nth interpreter
+
+#### Description
+
+Used to compute "an+b" algebra in pseudo-class selector.
+
+#### Usage
+
+nthInterpreter(nth, nDoc, fromLast = FALSE)
+
+#### Arguments
+
+*nth*   character vector with details of "an+b". Essentially what is in brackets when pseudo-class selector begins with "nth".
+*nDoc*  integer; total number of from which nth will be compted 
+*fromLast* logical; should selection be done in reverse as is the case with pseudo-class selectors with "from-last". Default is FALSE.
+
+```{r "nthInterpreter"}
+nthInterpreter <- function(nth, nDoc, fromLast = FALSE) {
+   if (grepl("^\\d+$", nth)) {
+      return(as.integer(nth))
+   }
+   pattern <- "([+-]?)(\\d*)([+-]?)(n?)([+-]?)(\\d*)"  
+   if (!grepl(pattern, nth) | nth == "") stop("nth is not interpretable")
+   if (grepl("^[+-]?n[+-]?\\d+", nth)) nth <- paste0("+1", nth)
+   a <- sub(pattern, "\\2", nth)
+   n <- sub(pattern, "\\4", nth)
+   b <- sub(pattern, "\\6", nth)
+   if (a != "" && n == "" && b != "") stop("nth not interpretable")
+   if (a != "" && n != "" && b == "") b <- 0
+   if (a == "" && n != "" && b == "") stop('"a" and "b" missing')
+   if (a == b && n != "") b <- 0
+   if (nth == "even") {
+      a <- "2"
+      n <- "n"
+      b <- "0"
+   }
+   if (nth == "odd") {
+      a <- "2"
+      n <- "n"
+      b <- "1"
+   }
+   if (!(a != "" && n != "" && b != "")) stop("nth not interpretable")
+   aSign <- sub(pattern, "\\1", nth)
+   nSign <- sub(pattern, "\\3", nth)
+   bSign <- sub(pattern, "\\5", nth)
+   if (all(c(aSign != "+", aSign != "-"))) aSign <- "+"
+   if (all(c(nSign != "+", nSign != "-"))) nSign <- "+"
+   if (all(c(bSign != "+", bSign != "-"))) bSign <- "+"
+   a <- as.numeric(paste0(aSign, a)); b <- as.numeric(paste0(bSign, b))
+   if (fromLast) {
+      n <- ceiling(as.numeric(paste0(nSign, (nDoc/a - b):0))) 
+   } else { 
+      n <- ceiling(as.numeric(paste0(nSign, 0:(nDoc/a - b))))
+   }
+   nthIndices <- a * n + b
+   nthIndices <- nthIndices[which(nthIndices > 0)]
+   if (length(nthIndices) == 1 && nDoc != 1 && fromLast) {
+      nthIndices <- (nDoc:1)[nthIndices]
+   } 
+   nthIndices
+}
+```
+
+
+

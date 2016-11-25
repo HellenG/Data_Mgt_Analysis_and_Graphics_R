@@ -1,80 +1,14 @@
-<!DOCTYPE HTML>
-  <html lang = "en">
-    <head>
-      <title>My Olympics 2016 Web Update Page</title>
-      
-<!-- Internal Styling sheet -->	  
-	  <style>
-	    #body { 
-		  border: 2px solid rgb(236, 236, 236);
-          height:670px;
-		  width:65%;
-		  background: rgb(255, 238, 243);
-		}
-		.center {
-		  margin: auto;
-		  padding: 0;
-		}
-	    .centerText {
-		  text-align:center;
-		}
-		#header {
-		  font: 20px Georgia, serif;
-		}
-		#table {
-		  margin-top:7%;
-		}
-		table, th, td {
-		  border:2px solid #000;		  
-		}
-		table {
-		  border-collapse: collapse;
-		  width:90%;
-		  height:300px;
-		}
-		caption {
-		  caption-side:bottom;
-		  text-align:right;
-		}
-		th {
-		  background:rgb(195, 195, 195);
-		}
-		tbody > tr:nth-of-type(even) {
-		  background: rgb(255, 255, 255);
-		}
-		tbody > tr:nth-of-type(odd) {
-		  background:rgb(236, 236, 236);
-		}
-		th, td {
-		  padding:8px;
-		}	
-		td {
-		  vertical-align:center;
-		}
-		#image {
-		  position:absolute;
-		  left:5%;
-		  top:1%;
-		  padding:0;
-		  height:250px;
-		}
-		[id=source] {
-		  margin:0;
-		  padding:0;
-	    }
-		[src~="Data"] + #source {
-		  color:blue;
-		}
-		
-      </style>
-	  
-      <base href="https://www.datamaniainc.org">
-      <meta name="keywords" content="Olympics 2016, Olympics update">
-      <meta name="author" content="Hellen Gakuruh"/>
-    </head>
+<!DOCTYPE HTML> 
+<html lang = "en-UK"> <!-- This is the root of this document, all other tags are direct children or descendants -->
+  <head>
+    <title>My Olympics 2016 Web Update Page</title>
+    <link rel="stylesheet" type="text/css" href="myOlympicsWatchTab2.css">
+	<meta name="keywords" content="Olympics 2016, Olympics update">
+    <meta name="author" content="Hellen Gakuruh">
+  </head>
     
 <!-- Start of visible sections -->
-	<body>
+  <body>
 	
 	<div id="body" class="center">
 <!--A section for header text-->
@@ -87,76 +21,49 @@
       <div id="table">
         <table class="center">
 	      <caption>Update Table</caption>
-          <tr>
-            <th>EVENT</th>
-		    <th>GENDER</th>
-            <th>DATE AND LOCAL TIME</th>
-            <th>PERFORMANCE</th>
-          </tr>
+          <thead>
+		    <tr>
+              <th>EVENT</th>
+		      <th>GENDER</th>
+              <th style="background-color:#FFD700">Gold</th>
+              <th style="background-color:#CCCCCC">Silver</th>
+			  <th style="background-color:#CC9966">Bronze</th>
+            </tr>
+		  </thead>
           <tbody class="centerText">
             <tr>
-              <td rowspan="2"><strong>Marathon</strong></td>
-              <td><strong>M</strong></td>
-		      <td>-</td>
-              <td>-</td>
+              <td rowspan="2">Marathon</td>
+              <td>M</td>
+		      <td>Eliud Kipchoge (K)</td>
+              <td>Feyisa Lelisa</td>
+			  <td>Galen Rupp</td>
             </tr>
 		    <tr>
-		      <td><strong>F</strong></td>
-		      <td>-</td>
-		      <td>-</td>
+		      <td>F</td>
+		      <td>Jemima Sumgong (K)</td>
+		      <td>Eunice Kirwa</td>
+			  <td>Mare Dibaba</td>
 		    </tr>
             <tr>
-              <td rowspan="2"><strong>800m</strong></td>
-		      <td><strong>M</strong></td>
-              <td>-</td>
-              <td>-</td>
+              <td rowspan="2">800m</td>
+		      <td>M</td>
+              <td>David Rudisha (K)</td>
+              <td>Taoufik Makhloufi</td>
+			  <td>Clayton Murphy</td>
             </tr>
 		    <tr>
-		      <td><strong>F</strong></td>
-		      <td>-</td>
-		      <td>-</td>
-		    </tr>
-            <tr>
-              <td rowspan="2"><strong>3000m</strong></td>
-              <td><strong>M</strong></td>
-		      <td>-</td>
-              <td>-</td>
-            </tr>
-		    <tr>
-		      <td><strong>F</strong></td>
-		      <td>-</td>
-		      <td>-</td>
-		    </tr>
-            <tr>
-              <td rowspan="2"><strong>400m Hurdles</strong></td>
-              <td><strong>M</strong></td>
-		      <td>-</td>
-              <td>-</td>
-            </tr>
-		    <tr>
-		      <td><strong>F</strong></td>
-		      <td>-</td>
-		      <td>-</td>
-		    </tr>
-            <tr>
-              <td rowspan="2"><strong>Javeling throw</strong></td>
-              <td><strong>M</strong></td>
-		      <td>-</td>
-              <td>-</td>
-            </tr>
-		    <tr>
-		      <td><strong>F</strong></td>
-		      <td>-</td>
-		      <td>-</td>
+		      <td>F</td>
+		      <td>Caster Semenya</td>
+		      <td>Francine Niyonsaba</td>
+			  <td>Margaret Wambui (K)</td>
 		    </tr>
           </tbody>
         </table>
-       <div>
     </div>
-	</body>
 	<div id="image">
-	  <img src="c://Users/Hellen Gakuruh/Documents/Data Mania Inc/Data_Mgt_Analysis_and_Graphics_R/Class_Notes/Level One/figures/rio2016Olympics.jpg" alt="2016 Rio Olympics flag" width=="300" height="200"/>
-	  <div class="centerText" id="source"><p>Rio2016Olympicswiki.com</p></div>
+	  <img src="c://Users/user/Documents/Data Mania Inc/Data_Mgt_Analysis_and_Graphics_R/Class_Notes/Level One/figures/olympicsRings.png" alt="2016 Rio Olympics flag"/>
+	  <div class="centerText" id="source"><a href="https://www.olympic.org/news/rio-2016">Rio 2016 Olympics Update</a></div>
 	</div>
+    </body>	
   </html>
   
