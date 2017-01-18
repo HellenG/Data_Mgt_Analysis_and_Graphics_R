@@ -1,0 +1,33 @@
+---
+title: "Data Management, Analysis and Graphics using R"
+author: "By Hellen Gakuruh"
+date: "January 18, 2017"
+output: html_document
+---
+
+## Tutorial Series 
+
+### Level One
+
+[Prelude to Level One](../Class_Notes/Level One/PreludeToLevelOne.html)
+
+**Sessions**
+
+1. [Knowing R and RStudio](../Class_Notes/Level One/SessionOne_KnowingRandRStudio.html)
+1. [Make function calls](../Class_Notes/Level One/SessionTwo_MakingFunctionCalls.html)
+1. [Introduction to Version Control Systems](../Class_Notes/Level One/SessionThree_IntroductionToVersionControlSystems.html) 
+1. [Data types and objects used in R](../Class_Notes/Level One/SessionFour_DataTypesandObjects.html)
+1. [Importing and Exporting Data in R](../Class_Notes/Level One/SessionFive_ImportingandExportingData.html)
+1. [Transform/Manipulate different data objects](../Class_Notes/Level One/SessionSix_TransformingManipulatingDataObjects.html) 
+1. [Working Date and Time in R](../Class_Notes/Level One/SessionSeven_WorkingWithDatesandTime.html)
+1. [Plotting in base R](../Class_Notes/Level One/SessionEight_PlottingInBaseR.html)
+1. [How and Where to Get Help](../Class_Notes/Level One/SessionNine_HowandWheretoGetHelp.html)
+1. [Case Studies](../Class_Notes/Level One/SessionTen_CaseStudies.html)
+
+### Additional training Notes
+
+1. [Object Oriented Programming in R](../Programming for Non-programmers/Object_Oriented_Programming_in_R.html)
+1. [Files](../Programming for Non-programmers/Files.html)
+1. [Understandind Markdowns Pandoc and YALM](../Programming for Non-programmers/Understanding_Markdowns_Pandoc_and_YALM.html)
+1. [Regular Expressions](../Programming for Non-programmers/Regular_Expressions.html)
+

@@ -1,16 +1,17 @@
 ---
-title: "R Scripts"
-author: "Hellen Gakuruh"
-date: "February 4, 2016"
-output: github_document
+title: "Source documents (R Scripts)"
+author: "By Hellen Gakuruh"
+date: "January 18, 2017"
+output: html_document
 ---
 
-Script      | Topic | Date | Version
+Script      | Session | Version
 ------------|-------|------|---------
-1. <a href="Scripts/Interactive_Session_Level_1.R" download ="Interactive_Session_Level_1"></a> | Demo | Feb 05 2016 | v1
+1. webScrapingFunctions.R | Ten | 1 
 
 
 
 
-\* You can suggest revisions or simply folk, edit and push for review.
+
+\* Fork from [Data Management Analysis and Graphics in R](https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R) Repository
 

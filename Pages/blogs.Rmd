@@ -1,8 +1,15 @@
 ---
 title: "Blogs"
 author: "By Hellen Gakuruh"
-output: github_document
+output: html_document
 ---
+
+### Blog5: January 18, 2017
+
+Truely please to say Level One is now complete, it's been quite a journey to get here, but it done and you can read it all from [notes and presentations page](presentations.html). These notes can also be downloaded from my [LinkedIn page](https://ke.linkedin.com/in/hellengakuruh).
+
+Good Reading
+
 
 ### Blog4:
 
@@ -10,7 +17,7 @@ output: github_document
 
 Base R offers so much it only require knowledge of what is there and how you can fine tune it, more so as regards plotting.
 
-As you embark on this session, I want you to think of three scenerios, first an analyst who has presented a very good report with graphs; second, an analyst who presents a good report along side a very long script, third an analyst who presents a well written report, a well thought out, adequately commented and reproducible script along with data used. Given your introduction to R knowledge, whose work would you prefer and why?  
+As you embark on this tutorial, I want you to think of three scenerios, first an analyst who has presented a very good report with graphs; second, an analyst who presents a good report along side a very long script, third an analyst who presents a well written report with communicative graphs, a well thought out, adequately commented and reproducible script along with data used. Given your introduction to R knowledge, whose work would you prefer and why?  
 
 
 ### Blog3: Thursday, May 26, 2016
@@ -27,7 +34,7 @@ Good reading
 
 ### Session One of Level One Released
 
-The long wait is finally over; first session of the "Data Analysis using R" is now ready and uploaded. Please check my tutorial site https://github.com/HellenG/HellenG.github.io.
+The long wait is finally over; first session of the "Data Analysis using R" is now ready and uploaded. Please check my [tutorial site](https://HellenG.github.io/Data_Mgt_Analysis_and_Graphics_R) and have a read.
 
 Still working on the demo's and other links, but they will up and running in no time.
 

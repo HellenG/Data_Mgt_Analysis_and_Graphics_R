@@ -1,8 +1,8 @@
 ---
 title: "ABOUT DATA MANIA INC.,"
 author: "Hellen Gakuruh"
-date: "February 4, 2016"
-output: github_document
+date: "January 18, 2017"
+output: html_document
 ---
 
 ### GOAL
