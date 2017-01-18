@@ -1,11 +1,8 @@
 ---
 title: "Session Seven - Working with Dates and Time"
 author: "By Hellen Gakuruh"
-date: "June 2, 2016"
-output:
-  word_document:
-    toc: true
-    toc_depth: 6
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r globalOptions, echo=FALSE}
@@ -277,7 +274,7 @@ We can create a sequence of dates for computation with "seq" function
 
 ```{r}
 # Weekly spaced sequence of dates
-seq(from = begining, to = end, by = -7)
+seq(from = begining, to = end, by = 7)
 ```
 
 Addition between two date objects is not possible.

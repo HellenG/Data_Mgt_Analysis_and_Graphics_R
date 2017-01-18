@@ -1,11 +1,8 @@
 ---
 title: "Session Four - Data Types and Objects"
 author: "By Hellen Gakuruh"
-date: "May 23, 2016"
-output:
-  github_document:
-    toc: TRUE
-    toc_depth: 6
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r globalOptions, include=FALSE}

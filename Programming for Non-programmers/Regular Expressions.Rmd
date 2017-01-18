@@ -1,8 +1,8 @@
 ---
 title: "Basics of Regular Expressions in R"
-author: "Hellen Gakuruh"
-date: "January 5, 2017"
-output: word_document
+author: "By Hellen Gakuruh"
+date: "January 18, 2017"
+output: html_document
 ---
 
 ## Introduction

@@ -1,11 +1,8 @@
 ---
 title: "Session Six - Transforming Manipulating Data Objects"
 author: "By Hellen Gakuruh"
-date: "June 2, 2016"
-output:
-  word_document:
-    toc: true
-    toc_depth: 6
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r globalOptions, echo=FALSE}

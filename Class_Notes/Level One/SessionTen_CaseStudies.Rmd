@@ -1,8 +1,8 @@
 ---
 title: "Session Ten - Case Studies"
 author: "By Hellen Gakuruh"
-date: "January 5, 2017"
-output: word_document
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r "globalOptions", echo=FALSE}

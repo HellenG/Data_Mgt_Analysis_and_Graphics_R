@@ -2,10 +2,7 @@
 title: "Files"
 author: "Hellen Gakuruh"
 date: "February 8, 2016"
-output: 
-  word_document:
-    toc: true
-    toc_depth: 6
+output: html_document
 ---
 
 ## Definition and file names

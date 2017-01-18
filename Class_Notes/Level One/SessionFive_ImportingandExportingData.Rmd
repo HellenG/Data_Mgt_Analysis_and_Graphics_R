@@ -1,11 +1,8 @@
 ---
 title: "Session Five - Importing and Exporting Data"
 author: "By Hellen Gakuruh"
-date: "May 26, 2016"
-output:
-  word_document:
-    toc: true
-    toc_depth: 6
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r globalOptions, echo=FALSE}
@@ -124,7 +121,7 @@ As mentioned, importing csv and text files is rather easy in R, but most often w
 
 Two of the widely used packages are "foreign" and "haven". In this session, we will have a go at haven (please install it first if you do not have it i.e. install.packages("haven").
 
-```{r}
+```{r, eval=FALSE}
 # Loading required package
 library(haven)
 ```
@@ -154,7 +151,7 @@ Small pointer, this package is dependent on Java, please install it first, then 
 # Installing package and its dependencies 
 install.packages("xlsx")
 ```
-```{r}
+```{r, eval=FALSE}
 # Load installed package
 library(xlsx)
 ```
@@ -217,11 +214,11 @@ Take for example a case where you do not know how data is stored, in particular,
 
 One possible solution is to take a peek at the data by reading in just a few rows of data to determine the delimiter then determine if it has a header.  
 
-```{r}
+```{r, eval=FALSE}
 # Reading 5 rows  of sheet 1
 read.xlsx(file = "../../Data/tipsUnknown.xlsx", sheetIndex = 1, endRow = 5)
 ```
-```{r}
+```{r, eval=FALSE}
 # Reading 5 rows of sheet 2
 read.xlsx(file = "../../Data/tipsUnknown.xlsx", sheetIndex = 2, endRow = 5)
 # Now with no header

@@ -1,13 +1,11 @@
 ---
 title: "Prelude to Level One"
 author: "By Hellen Gakuruh"
-date: "May 13, 2016"
-output: github_document
+date: "January 18, 2017"
+output: html_document
 ---
 
-## About Level One
-
-First welcome to level one of **Data Analysis using R**. This level aims to introduce both **R** the core/base program and **RStudio**, a program that makes programming easier (IDE).
+First welcome to level one of **Data Analysis using R**. This level aims to introduce both **R** - the core/base program and **RStudio** - a program that makes programming easier (Integrated Development Environment - IDE).
 
 We will begin by downloading and understanding both R and RStudio including how to work interactively using the **console** and writing **scripts** (similar to syntax in SPSS and "do-files" in STATA). We shall further discuss how to install and work with add-on programs called **packages**. 
 
@@ -25,13 +23,13 @@ It's my hope that by close of this level you will have the ability to work with 
 
 ### Session Goals
   
-* [Get to know R and RStudio](SessionOne_KnowingRandRStudio.html)
-* [Make function calls](SessionTwo_MakingFunctionCalls.html)
-* [Acquaint yourself with version control systems](SessionThree_VersionControlSystems.html) 
-* [Know data types and objects used in R](SessionFour_DataTypesandObjects.html)
-* [Learn how to import and export data](SessionFive_ImportingandExportingData.html)
-* [Be able to Transform/Manipulate different data objects including Subsetting them](SessionSix_TransformingManipulatingDataObjects.html) 
-* [Know how to working with R's date and time](SessionSeven_WorkingWithDatesandTime.html)
-* [Have a feel of base R's graphing capabilities](SessionEight_PlottingInBaseR.html)
-* [Know where and how to get help](SessionNine_HowandWheretoGetHelp.html)
-* [Apply lessons learnt through Case Studies](SessionTen_CaseStudies.html)
+* Get to know R and RStudio
+* Make function calls
+* Acquaint yourself with version control systems 
+* Know data types and objects used in R
+* Learn how to import and export data
+* Be able to Transform/Manipulate different data objects including Subsetting them 
+* Know how to working with R's date and time
+* Have a feel of base R's graphing capabilities
+* Know where and how to get help
+* Apply lessons learnt through Case Studies

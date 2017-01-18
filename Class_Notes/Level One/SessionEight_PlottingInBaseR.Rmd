@@ -1,11 +1,8 @@
 ---
 title: "Session Eight - Plotting in Base R"
 author: "By Hellen Gakuruh"
-date: "June 3, 2016"
-output: 
-    word_document:
-    toc: TRUE
-    toc_depth: 6
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r globalOptions, echo=FALSE}

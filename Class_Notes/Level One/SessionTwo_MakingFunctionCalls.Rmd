@@ -1,11 +1,8 @@
 ---
 title: "Session Two - Making Function Calls"
 author: "By Hellen Gakuruh"
-date: "May 21, 2016"
-output:
-  github_document:
-    toc: true
-    toc_depth: 4
+date: "January 18, 2017"
+output: html_document
 ---
 
 ```{r globalOptions, echo=FALSE}
