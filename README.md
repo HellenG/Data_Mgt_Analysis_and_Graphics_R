@@ -4,16 +4,21 @@ A repository for my tutorial documents (Blog posts, Notes, Slides, R Scripts, Fi
 
 This is still work in progress, but just uploaded:
 
-* [Prelude to level one (a short descriptive note on level one)](Class_Notes/Level One/PreludeToLevelOne.html)
+* [Prelude to level one (a short descriptive note on level one)](../Class_Notes/Level One/PreludeToLevelOne.html)
 * First draft of:
-      * [Session One - Get to know R and RStudio](Class_Notes/Level One/SessionOne_KnowingRandRStudio.html)
-      * [Session Two - Make function calls](Class_Notes/Level One/SessionTwo_MakingFunctionCalls.html)
-      * [Session Four - Know data types and objects used in R](Class_Notes/Level One/SessionFour_DataTypesandObjects.html)
-      * [Session Five - Readin data and exporting it](SessionFive_ImportingandExportingData.html)
-      * [Session Six - Transforming and Manipulating different data objects](SessionSix_TransformingManipulatingDataObjects.html)
-      * [Session Seven - Working with R's Date and Time Objects](SessionSeven_WorkingWithDatesandTime.html)
-      * [Session Eight - Plotting in Base R](SessionEight_PlottingInBaseR.html)
-      * [Session Nine  - Know how and where to get help](SessionNine_HowandWheretoGetHelp.html)
-      * [Session Ten - Case Studies](SessionTen_CaseStudies.html) - Not Complete, this is still work in progress.
+      *[Knowing R and RStudio](../Class_Notes/Level One/SessionOne_KnowingRandRStudio.html)
+      *[Make function calls](../Class_Notes/Level One/SessionTwo_MakingFunctionCalls.html)
+      *[Introduction to Version Control Systems](../Class_Notes/Level One/SessionThree_IntroductionToVersionControlSystems.html) 
+      *[Data types and objects used in R](../Class_Notes/Level One/SessionFour_DataTypesandObjects.html)
+      *[Importing and Exporting Data in R](../Class_Notes/Level One/SessionFive_ImportingandExportingData.html)
+      *[Transform/Manipulate different data objects](../Class_Notes/Level One/SessionSix_TransformingManipulatingDataObjects.html) 
+      *[Working Date and Time in R](../Class_Notes/Level One/SessionSeven_WorkingWithDatesandTime.html)
+      *[Plotting in base R](../Class_Notes/Level One/SessionEight_PlottingInBaseR.html)
+      *[How and Where to Get Help](../Class_Notes/Level One/SessionNine_HowandWheretoGetHelp.html)
+      *[Case Studies](../Class_Notes/Level One/SessionTen_CaseStudies.html)
 
+     *[Object Oriented Programming in R](../Programming for Non-programmers/Object_Oriented_Programming_in_R.html)
+     *[Files](../Programming for Non-programmers/Files.html)
+     *[Understandind Markdowns Pandoc and YALM](../Programming for Non-programmers/Understanding_Markdowns_Pandoc_and_YALM.html)
+     *[Regular Expressions](../Programming for Non-programmers/Regular_Expressions.html)
 Will work on the links as I prepare for the final session for this level - Introduction to Version Control Systems (Git and GitHub)
