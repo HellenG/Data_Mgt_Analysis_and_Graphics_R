@@ -2,14 +2,14 @@
 title: "Prelude to Level Three"
 author: "Hellen Gakuruh"
 date: "January 19, 2017"
-output: word_document
+output: 
+   html_document:
+      css: ../../pages.css
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-# So why learn data analysis?  
 
 Welcome to level three, this is the core of this tutorial series. It is aimed at giving you a good foundation in Statistics; that is, the fundamental concepts and methods in Statistics. In all the sessions, we will get to understand the reasoning behind the calculations including assumptions made thereby giving us the ability to make sound interpretation of results. 
 
