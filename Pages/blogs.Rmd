@@ -1,30 +1,48 @@
 ---
 title: "Blogs"
 author: "By Hellen Gakuruh"
-output: html_document
+output: 
+   html_document:
+      css: ../pages.css
 ---
+
+### Blog6: January 20, 2017
+
+<h4 style="font-weight:bold">Alternating development and release of Level Two and Three</h4>
+
+With Level One complete, we have the skills to carryout data analysis in R. Level two is meant get a bit deeper in R by learning how to develop functions and packaging them ready for GitHub/CRAN. However, it is not necessary to have these skills before doing data analysis. 
+
+Therefore we will begin with data analysis sessions in Level Three but stop every after one session to introduce some concept in level two. That way we have both level two and level three tutorials moving in tandem.
+
+Our next session is "Introduction to Descriptive Statistics" (session sixteen). Look out for it.
 
 ### Blog5: January 18, 2017
 
-Truely please to say Level One is now complete, it's been quite a journey to get here, but it done and you can read it all from [notes and presentations page](presentations.html). These notes can also be downloaded from my [LinkedIn page](https://ke.linkedin.com/in/hellengakuruh).
+<h4 style="font-weight:bold">Draft version of Level One is now complete</h4>
+
+Truly please to say Level One is now complete, it's been quite a journey to get here, but it is done and you can read it all from [notes and presentations page](tutorials.html). These notes can also be downloaded from my [LinkedIn page](https://ke.linkedin.com/in/hellengakuruh).
 
 Good Reading
 
 
-### Blog4:
+### Blog4: July 13, 2016
 
-"There is so much to basic base R"
+<h4 style="font-weight:bold;">Session Eight: Plotting in Base R</h4>
 
-Base R offers so much it only require knowledge of what is there and how you can fine tune it, more so as regards plotting.
+"There is so much to basic base R".
 
-As you embark on this tutorial, I want you to think of three scenerios, first an analyst who has presented a very good report with graphs; second, an analyst who presents a good report along side a very long script, third an analyst who presents a well written report with communicative graphs, a well thought out, adequately commented and reproducible script along with data used. Given your introduction to R knowledge, whose work would you prefer and why?  
+Base R offers so much it only requires knowledge of what is there and how you can fine tune it; more so as regards plotting.
+
+As you embark on this session, I want you to think of three scenarios, first an analyst who has presented a very good report with graphs; second, an analyst who presents a good report along side a very long script, third an analyst who presents a well written report with communicative graphs, a well thought out, adequately commented and reproducible script along with data used. Given your introduction to R knowledge, whose work would you prefer and why?  
 
 
 ### Blog3: Thursday, May 26, 2016
 
-Well, I experienced what they call "a technical glitch" while trying to build my site (https://github.com/HellenG/HellenG.github.io.). For some reason I am not getting the pages to work: I wonder where my "html" knowledge went to.
+<h4 style="font-weight:bold;">Technical Glich</h4>
 
-Anyway, I intend to address this very soon, but for now, the notes (for session one, two and four) can be folked from the tutorial's repo "https://github.com/HellenG//Data_Mgt_Analysis_and_Graphics_R"
+Well, I experienced what they call "a technical glitch" while trying to build my site (https://github.com/HellenG/HellenG.github.io). For some reason I am not getting the pages to work: I wonder where my "html" knowledge went to.
+
+Anyway, I intend to address this very soon, but for now, the notes (for session one, two and four) can be forked from the tutorial's repo "https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R"
 
 Good reading
 
@@ -32,7 +50,7 @@ Good reading
 
 ### Blog2: Saturday, May 21, 2016
 
-### Session One of Level One Released
+<h4 style="font-weight:bold;">Session One of Level One Released</h4>
 
 The long wait is finally over; first session of the "Data Analysis using R" is now ready and uploaded. Please check my [tutorial site](https://HellenG.github.io/Data_Mgt_Analysis_and_Graphics_R) and have a read.
 
@@ -43,7 +61,7 @@ Enjoy
 
 ### Blog1: Friday, January 22, 2016
 
-<h3 id="Title"> My upcoming tutorial series on "Introduction to Data Analysis Using R"</h3>
+<h4 id="Title" style="font-weight:bold;"> My upcoming tutorial series on "Introduction to Data Analysis Using R"</h4>
 
 I am about to start a data analysis tutorial using R. This will be a series of gradual learning centered at introducing data analysis and R. If you have thought of learning some analysis or R, come along and learn with me. 
 
@@ -61,76 +79,45 @@ But above all, you will need a great amount of interest and an open mind.
 
 <h4> What will you learn?</h4>
 
-The main goal of this tutorial is to enable you to use R for data analysis. The tutorial is divided into two levels. The first level will give you the foundation, while the second level delves right into R's core which is programming. Level two is optional but highly recommended for effective and efficient coding in R. 
+The main goal of this tutorial is to enable you to use R for data analysis. The tutorial is divided into three levels. The first level will give you the foundation, while the second level delves right into R's core which is programming and level three will impart the core knowledge and skills of this tutorial series which is data analysis. Level two is optional but highly recommended for effective and efficient coding in R. 
 
-Each level is divided into a series of four sessions aimed at giving you a gradual learning structure. Below is the general outline: 
+Each level is divided into a series of sessions aimed at giving you a gradual learning structure. Below is the general outline: 
 
 <u> Level 1: Main goal is to introduce R and R's graphics</u>
 
-Here you will learn:
+Here is what we will learn:
 
-*Session One*
-
-*	About `base R` and `RStudio` 
-  +	How to download and install the programs
-  +	Their layout (Windows and Panes)/interface
-  +	How to interactively work with their console
-  +	What the global environment/working space and history files are
-  +	How to code using scripts
-  +	How to install R Packages
-
-*Session two*
-
-*	R's built-in functions
-  +	What they are
-  +	Calling functions
-*	Know how R handles data
-*	Data objects/structures in R
-*	Subset different data objects
-*	How to transform/manipulate data
-
-*Session three*
-
-*	Working with R's date and time
-*	How to import data into R 
-*	Know how and where to get help
-
-*Session four*
-
-*	Producing Graphs in R using 
-  +	Base R
-  +	Lattice and 
-  +	ggplot 2
+* SessionOne: Get to know R and RStudio
+* SessionTwo: Make function calls
+* SessionThree: Acquaint yourself with version control systems 
+* SessionFour: Know data types and objects used in R
+* SessionFive: Learn how to import and export data
+* SessionSix: Be able to Transform/Manipulate different data objects including Subsetting them 
+* SessionSeven: Know how to working with R's date and time
+* SessionEight: Have a feel of base R's graphing capabilities
+* SessionNine: Know where and how to get help
+* SessionTen: Apply lessons learnt through Case Studies
 
 <u>Level 2: Main goal is to learn how to Programming in R</u>
 
-By the end of this level, you should be able to:
+This is what we will be learn:
 
-*Session One*
+* SessionEleven: Looping System in R
+* SessionTwelve: Environments
+* SessionThirteen: Introduction to function development
+* SessionFourteen: Reproducible Analysis in R (Rmarkdown, Bookdown and Shiny) 
+* SessionFifteen: Package Development
 
-*	Understand 
-  +	Relational or Binary Operators
-  +	Control Structures
+<u>Level 3: Main goal is to introduce principle concepts and methods of Statistics</u>
 
-*Session two*
+Here is what We will learn:
 
-*	Loop through data objects
-
-*Session three*
-
-*	Grasp the concept of environments in R
-*	Develop own functions
-
-*Session four*
-
-*	Appreciate
-  +	Scoping Rules in R
-  +	The parsing process in R
-  +	R Expressions
-  +	The evaluation process
-  +	Debugging and profiling
-  +	Some basic programming terms for non programmers
-  +	Regular Expressions in R
+* SessionSixteen: Introduction to Descriptive Statistics
+* SessionSeventeen: Introduction to Exploratory Data Analysis (EDA) 
+* SessionEighteen: Introduction to Inferential Statistics
+* SessionNineteen: Introduction to Categorical Analysis
+* SessionTwenty: Introduction to Time Series Analysis
+* SessionTwentyOne: Introduction to Survival Analysis
 
 <h4> Approach used</h4>
 
@@ -138,7 +125,7 @@ Level one is geared towards introducing R and preparing for the real application
 
 Level two is meant to impart some programming skills for those interested in going beyond simple analysis. The skills learnt in this level will aid in developing user defined functions. If your goal is to learn how to use R to do basic analysis, then you can skip the second level and only refer to it as need be.
 
-Actual application or analysis begins at level three (course outline will be share later). In this level, you get to learn data analysis from descriptive to inferential statistics using survey data. At this point the assumption is that you know how to use one of the statistical programs and more so R. So the discussion will be on the analysis rather than the codes used to do the analysis.   
+Actual application or analysis begins at level three. In this level, you get to learn data analysis from descriptive to inferential statistics using survey data. At this point the assumption is that you know how to use one of the statistical programs and more so R. So the discussion will be on the analysis rather than the codes used to do the analysis.   
 
 <h4> Becoming an R'st</h4>
 
@@ -146,7 +133,7 @@ The biggest question anyone will eventually ask you as you work with R is, 'Why 
 
 But what I can tell you, R grows on you. At first it might seem a bit different and if you are not well grounded, you might find it difficult in the beginning. As time goes by and you interact with R, learning and using its vast capabilities, you start getting used to it. I personally think its growing usage and most importantly the increasing innovations and packages (add-on), is a big indicator as to where R is headed. For example, the notes as well as the power point presentations are all done using R; there is no need to open text documents and copying your code in it. There are also web apps (applications) like Shinny that you can use to build online analytical applications. But what R is best known for, is its graphing capabilities and a lot of analysts use R for their graphs. Well, I could go on, but it would be good for you to experience R and make your recommendations.
 
-As a new user of R, my strongest advice (based on experience), is to get the basics right. The issues we shall soon be discussing like data types, objects, workingspace, getting help, etcetera, are key to becoming a good R user or programmer. In addition to this tutorial, I recommend you join some of the well known online courses like DataCamp, swirl as well as coursera's data science specialization. YouTube also has very good lecture series on R and lastly but definitely not the least, I recommend the good old fashioned way of learn anything - reading an R textbook. In addition, try and do as many exercises as you can from these resources, or go to the help pages like the R mailing group and try to figure out solutions for areas you have covered then assess your progress with solutions offered. This will gain you a substantial mileage as far as R programming is concerned.
+As a new user of R, my strongest advice (based on experience), is to get the basics right. The issues we shall soon be discussing like data types, objects, workingspace, getting help, etcetera, are key to becoming a good R user or programmer. In addition to this tutorial, I recommend you join some of the well known online courses like DataCamp, swirl as well as Coursera's data science specialization. YouTube also has very good lecture series on R and lastly but definitely not the least, I recommend the good old fashioned way of learn anything - reading an R textbook. In addition, try and do as many exercises as you can from these resources, or go to the help pages like the R mailing group and try to figure out solutions for areas you have covered then assess your progress with solutions offered. This will gain you a substantial mileage as far as R programming is concerned.
 
 Of course I cannot fail to mention that R is completely free, and maintained by passionate people. It has its shortcomings, but in every one of them, there is someone somewhere driven by sheer desire to solve the problem, so you would find that the solution to any of the shortcomings has been addressed or is on the pipeline to being solved.
 

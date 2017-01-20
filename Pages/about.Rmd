@@ -1,8 +1,9 @@
 ---
 title: "ABOUT DATA MANIA INC.,"
-author: "Hellen Gakuruh"
 date: "January 18, 2017"
-output: html_document
+output: 
+   html_document:
+      css: ../pages.css
 ---
 
 ### GOAL
