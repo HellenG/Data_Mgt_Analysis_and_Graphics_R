@@ -1,0 +1,37 @@
+---
+title: "Prelude to Level Two"
+author: "Hellen Gakuruh"
+date: "January 19, 2017"
+output: 
+   html_document:
+      css: ../../pages.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Nitty Gritty of R
+
+Welcome to level 2, in this level we delve into R programming. The assumption is that you have basic knowledge of R and can make a function call.
+
+In this session, just like it's predecessor (Level One), the approach would be non-text book and more on concept building with an aim of making the transition to programming as easy as possible.
+
+Level two is meant to impart some programming skills for those interested in going beyond R's functions. The skills learnt in this level are all geared towards developing user defined functions which can be packaged and shared on GitHub and/or CRAN. This level will also introduce a growing issue, that is, reproducible analysis. Therefore, if your goal is to learn how to use R to do basic analysis using R's functions, then you can skip the second level and only refer to it as need be.
+
+
+What we will cover:
+
+* SessionEleven: Looping System in R
+* SessionTwelve: Environments
+* SessionThirteen: Introduction to function development
+* SessionFourteen: Reproducible Analysis in R (Rmarkdown, Bookdown and Shiny) 
+* SessionFifteen: Package Development
+
+
+
+
+
+
+
+
