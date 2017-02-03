@@ -1,25 +1,13 @@
 # My-tutorial-Documents
 
-A repository for my tutorial documents (Blog posts, Notes, Slides, R Scripts, Figures and Images)
+This is a repository for three tutorial books, these are "R Essentials", "R - Beyond Essentials" and "Introduction to Data Analysis and Graphics using R".
 
-This is still work in progress, but first draft of Level One is complete:
+R Essentials is intended for new beginners in a Statistical software called R. Each chapter is written to impact a specific concept building up to a level where one is able to work with R effectively.
 
-* [Prelude to level one (a short descriptive note on level one)](../Class_Notes/Level One/PreludeToLevelOne.html)
-* [Knowing R and RStudio](../Class_Notes/Level One/SessionOne_KnowingRandRStudio.html)
-* [Make function calls](../Class_Notes/Level One/SessionTwo_MakingFunctionCalls.html)
-* [Introduction to Version Control Systems](../Class_Notes/Level One/SessionThree_IntroductionToVersionControlSystems.html) 
-* [Data types and objects used in R](../Class_Notes/Level One/SessionFour_DataTypesandObjects.html)
-* [Importing and Exporting Data in R](../Class_Notes/Level One/SessionFive_ImportingandExportingData.html)
-* [Transform/Manipulate different data objects](../Class_Notes/Level One/SessionSix_TransformingManipulatingDataObjects.html) 
-* [Working Date and Time in R](../Class_Notes/Level One/SessionSeven_WorkingWithDatesandTime.html)
-* [Plotting in base R](../Class_Notes/Level One/SessionEight_PlottingInBaseR.html)
-* [How and Where to Get Help](../Class_Notes/Level One/SessionNine_HowandWheretoGetHelp.html)
-* [Case Studies](../Class_Notes/Level One/SessionTen_CaseStudies.html)
+R- Beyond Essentials is intended for intermediate level R users interested in perfecting their skills. Core of this book is programming and specifically developing functions and programs. Ultimately, reader should be able to become an R programmer as well as a package and Shiny developer.
 
-#### Additional Notes
+Introduction to Data Analysis and Graphics using R is meant to be the highlight of this tutorial series. It will impact data analysis skills for which any statistical program can be used, however, examples will be based on R hence the need to have a basic knowledge of the program.
 
-* [Object Oriented Programming in R](../Programming for Non-programmers/Object_Oriented_Programming_in_R.html)
-* [Files](../Programming for Non-programmers/Files.html)
-* [Understandind Markdowns Pandoc and YALM](../Programming for Non-programmers/Understanding_Markdowns_Pandoc_and_YALM.html)
-* [Regular Expressions](../Programming for Non-programmers/Regular_Expressions.html)
-     
+Currently first version of "R Essentials" is released and work has began on the other two books. E-book can be accessed from this [repository's web page](http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/) (hosted by GitHub pages).
+
+Good reading
