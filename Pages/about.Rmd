@@ -1,9 +1,8 @@
 ---
 title: "ABOUT DATA MANIA INC.,"
-date: "January 18, 2017"
 output: 
    html_document:
-      css: ../pages.css
+      css: pages.css
 ---
 
 ### GOAL

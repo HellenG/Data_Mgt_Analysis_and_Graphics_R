@@ -1,10 +1,23 @@
 ---
-title: "Blogs"
-author: "By Hellen Gakuruh"
 output: 
    html_document:
-      css: ../pages.css
+      css: pages.css
 ---
+
+# Blogs
+## Hellen Gakuruh
+
+### Blog7: February 3rd, 2017
+
+<h4 style="font-weight:bold">Book Release, Web Changes and Delay in Starting Descriptive Statistics Session</h4>
+
+I am pleased to say I have managed to turn all tutorials for level one into an E-book titled ["R Essentials"](../R_Essentials/index.html) thanks to a new R package called [bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/). This transition from session notes to a book will make it easy to read and follow through each concept. Level two and three notes will also become books with level two titled "R - Beyond Essentials" and level three "Introduction to Data Analysis and Graphics using R". I intend to release each chapter of as soon as I am through with them, so look out for updates.
+
+Our E-book is hosted by [GitHub pages](https://help.github.com/articles/what-is-github-pages/) and I have been spending quite a bit of time trying to build the website. All pages are written with [Rmarkdown](http://rmarkdown.rstudio.com/) except index/first page which I decided to code. My reason for doing this is to refresh on my HTML and CSS skills; it is not perfect and I certainly don't like the background so much but it's a start and I do hope to improve it with time. Take a [look](http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/) and let me know.   
+
+With my little detour to create an e-book and improve our tutorial website, scheduled start of "Descriptive Statistics" has been pushed forward (a bit). I do however intend to have it ready in the next two weeks (if not earlier), so not to worry, it's all good and I am hard at work.
+
+One final word, I do intend to make it a habit to make a blog post every Friday just to keep you updated on progress I am making as regards tutorial notes (book chapters). This way there is an account of what is happening and if I make any necessary detour, then we will all be on the same page.
 
 ### Blog6: January 20, 2017
 
@@ -38,7 +51,7 @@ As you embark on this session, I want you to think of three scenarios, first an 
 
 ### Blog3: Thursday, May 26, 2016
 
-<h4 style="font-weight:bold;">Technical Glich</h4>
+<h4 style="font-weight:bold;">Technical Glitch</h4>
 
 Well, I experienced what they call "a technical glitch" while trying to build my site (https://github.com/HellenG/HellenG.github.io). For some reason I am not getting the pages to work: I wonder where my "html" knowledge went to.
 
