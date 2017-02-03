@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Essentials</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Essentials" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  <meta name="github-repo" content="HellenG/Data_Mgt_Analysis_and_Graphics_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Essentials" />
+  
+  <meta name="twitter:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  
+
+<meta name="author" content="Hellen Gakuruh">
+
+
+<meta name="date" content="2017-01-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap5.html">
+<link rel="next" href="chap7.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Essentials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a><ul>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#goal"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#what-we-shall-cover"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="1.1" data-path="chap1.html"><a href="chap1.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="chap1.html"><a href="chap1.html#defining-r-and-tracing-its-history"><i class="fa fa-check"></i><b>1.1.1</b> Defining R and tracing it’s history</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap1.html"><a href="chap1.html#downloading-and-installation-of-base-r"><i class="fa fa-check"></i><b>1.1.2</b> Downloading and Installation of Base R</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap1.html"><a href="chap1.html#tour-of-base-r"><i class="fa fa-check"></i><b>1.1.3</b> Tour of base R</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap1.html"><a href="chap1.html#RConsole"><i class="fa fa-check"></i><b>1.1.4</b> Base R’s console</a></li>
+<li class="chapter" data-level="1.1.5" data-path="chap1.html"><a href="chap1.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>1.1.5</b> Errors, Warnings and messages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap1.html"><a href="chap1.html#RStudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="chap1.html"><a href="chap1.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Downloading and Installing RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap1.html"><a href="chap1.html#getting-to-know-rstudio-layout"><i class="fa fa-check"></i><b>1.2.2</b> Getting to know RStudio layout</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap1.html"><a href="chap1.html#RStudioConsole"><i class="fa fa-check"></i><b>1.2.3</b> Working with RStudio’s console</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap1.html"><a href="chap1.html#packages"><i class="fa fa-check"></i><b>1.3</b> Installing and Loading Packages</a></li>
+<li class="chapter" data-level="1.4" data-path="chap1.html"><a href="chap1.html#workingDirectory"><i class="fa fa-check"></i><b>1.4</b> Working directory</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chap1.html"><a href="chap1.html#RScripting"><i class="fa fa-check"></i><b>1.4.1</b> Introduction to scripting (reproducible analysis)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#goal-1"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#what-we-shall-cover-1"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#prerequisite"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="2.1" data-path="chap2.html"><a href="chap2.html#r-functions"><i class="fa fa-check"></i><b>2.1</b> R Functions</a></li>
+<li class="chapter" data-level="2.2" data-path="chap2.html"><a href="chap2.html#making-function-calls"><i class="fa fa-check"></i><b>2.2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap2.html"><a href="chap2.html#a-functions-name"><i class="fa fa-check"></i><b>2.2.1</b> A functions name</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap2.html"><a href="chap2.html#arguments"><i class="fa fa-check"></i><b>2.2.2</b> Arguments</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap2.html"><a href="chap2.html#functionLevels"><i class="fa fa-check"></i><b>2.2.3</b> Different Function levels</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap3.html"><a href="chap3.html"><i class="fa fa-check"></i><b>3</b> Introduction to Version Control Systems</a><ul>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#preliquisite"><i class="fa fa-check"></i>Preliquisite</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#chapter-expectation"><i class="fa fa-check"></i>Chapter Expectation</a></li>
+<li class="chapter" data-level="3.1" data-path="chap3.html"><a href="chap3.html#whatvcsis"><i class="fa fa-check"></i><b>3.1</b> Introduction: What and Why Version Control System</a></li>
+<li class="chapter" data-level="3.2" data-path="chap3.html"><a href="chap3.html#introgit"><i class="fa fa-check"></i><b>3.2</b> Introduction to Git</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap3.html"><a href="chap3.html#what-is-git"><i class="fa fa-check"></i><b>3.2.1</b> What is Git?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap3.html"><a href="chap3.html#how-does-git-work"><i class="fa fa-check"></i><b>3.2.2</b> How does Git work?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap3.html"><a href="chap3.html#working-with-git"><i class="fa fa-check"></i><b>3.2.3</b> Working with Git</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap3.html"><a href="chap3.html#collaborating-with-other-r-programmersdevelopers"><i class="fa fa-check"></i><b>3.3</b> Collaborating with other R programmers/developers</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap3.html"><a href="chap3.html#working-with-remote-repositories-gitgub"><i class="fa fa-check"></i><b>3.3.1</b> Working with remote repositories: GitGub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap3.html"><a href="chap3.html#using-git-and-github-in-rstudio"><i class="fa fa-check"></i><b>3.4</b> Using Git and GitHub in RStudio</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Data Types and Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#session-goal"><i class="fa fa-check"></i>Session Goal</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#what-we-shall-cover-2"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#prerequisite-1"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="4.1" data-path="chap4.html"><a href="chap4.html#dataTypes"><i class="fa fa-check"></i><b>4.1</b> Data Types</a></li>
+<li class="chapter" data-level="4.2" data-path="chap4.html"><a href="chap4.html#vectors"><i class="fa fa-check"></i><b>4.2</b> Vectors</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="chap4.html"><a href="chap4.html#creating-vectors"><i class="fa fa-check"></i><b>4.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap4.html"><a href="chap4.html#namingObjects"><i class="fa fa-check"></i><b>4.2.2</b> Naming objects</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap4.html"><a href="chap4.html#properties-of-data-objects-vector"><i class="fa fa-check"></i><b>4.3</b> Properties of data objects (vector)</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap4.html"><a href="chap4.html#typeof"><i class="fa fa-check"></i><b>4.3.1</b> Type of a vector</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap4.html"><a href="chap4.html#attributes"><i class="fa fa-check"></i><b>4.3.2</b> Attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap5.html"><a href="chap5.html"><i class="fa fa-check"></i><b>5</b> Importing and Exporting Data</a><ul>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#chapter-goal"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#what-we-shall-cover-3"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="5.1" data-path="chap5.html"><a href="chap5.html#importing-data-into-r"><i class="fa fa-check"></i><b>5.1</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="chap5.html"><a href="chap5.html#using-gui-for-delimited-files"><i class="fa fa-check"></i><b>5.1.1</b> Using GUI for delimited files</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap5.html"><a href="chap5.html#using-command-line"><i class="fa fa-check"></i><b>5.1.2</b> Using command line</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap5.html"><a href="chap5.html#importing-challenges"><i class="fa fa-check"></i><b>5.2</b> Importing Challenges</a></li>
+<li class="chapter" data-level="5.3" data-path="chap5.html"><a href="chap5.html#exporting-data"><i class="fa fa-check"></i><b>5.3</b> Exporting Data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap5.html"><a href="chap5.html#base-r-and-utils-exporting-functions"><i class="fa fa-check"></i><b>5.3.1</b> Base R and Utils exporting functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap5.html"><a href="chap5.html#exporting-with-other-packages"><i class="fa fa-check"></i><b>5.3.2</b> Exporting with other packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap5.html"><a href="chap5.html#taking-a-glimpse"><i class="fa fa-check"></i><b>5.4</b> Taking a Glimpse</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap6.html"><a href="chap6.html"><i class="fa fa-check"></i><b>6</b> Transforming Manipulating Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#chapter-goal-1"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#what-we-shall-cover-4"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="6.1" data-path="chap6.html"><a href="chap6.html#prerequisite-2"><i class="fa fa-check"></i><b>6.1</b> Prerequisite</a></li>
+<li class="chapter" data-level="6.2" data-path="chap6.html"><a href="chap6.html#indexing"><i class="fa fa-check"></i><b>6.2</b> Indexing different data objects in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="chap6.html"><a href="chap6.html#indexing-one-dimensional-objects"><i class="fa fa-check"></i><b>6.2.1</b> Indexing one dimensional objects</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap6.html"><a href="chap6.html#indexing-two-dimensional-vectors"><i class="fa fa-check"></i><b>6.2.2</b> Indexing two dimensional vectors</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap6.html"><a href="chap6.html#atomichomogenous-vectors-with-more-than-2-dimensions-2d"><i class="fa fa-check"></i><b>6.2.3</b> Atomic/Homogenous vectors with more than 2 dimensions (&gt;2d)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap6.html"><a href="chap6.html#binary-and-vectorisation-operators"><i class="fa fa-check"></i><b>6.3</b> Binary and vectorisation Operators</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="chap6.html"><a href="chap6.html#compOps"><i class="fa fa-check"></i><b>6.3.1</b> Comparison Operators</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap6.html"><a href="chap6.html#logical-operators"><i class="fa fa-check"></i><b>6.3.2</b> Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap6.html"><a href="chap6.html#checking-conditions"><i class="fa fa-check"></i><b>6.4</b> Checking conditions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="chap6.html"><a href="chap6.html#all-function"><i class="fa fa-check"></i><b>6.4.1</b> “All” function</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap6.html"><a href="chap6.html#any-function"><i class="fa fa-check"></i><b>6.4.2</b> “Any” function</a></li>
+<li class="chapter" data-level="6.4.3" data-path="chap6.html"><a href="chap6.html#which-function"><i class="fa fa-check"></i><b>6.4.3</b> “Which” function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap6.html"><a href="chap6.html#subsetting"><i class="fa fa-check"></i><b>6.5</b> Subsetting Data Objects</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap6.html"><a href="chap6.html#subsetting-one-dimensional-atomic-vectors"><i class="fa fa-check"></i><b>6.5.1</b> Subsetting one dimensional atomic vectors</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap6.html"><a href="chap6.html#subsetting-a-matrix"><i class="fa fa-check"></i><b>6.5.2</b> Subsetting a Matrix</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap6.html"><a href="chap6.html#subsetting-a-dataframe"><i class="fa fa-check"></i><b>6.5.3</b> Subsetting a dataframe</a></li>
+<li class="chapter" data-level="6.5.4" data-path="chap6.html"><a href="chap6.html#subsetting-a-list"><i class="fa fa-check"></i><b>6.5.4</b> Subsetting a List</a></li>
+<li class="chapter" data-level="6.5.5" data-path="chap6.html"><a href="chap6.html#subsetting-character-vectors"><i class="fa fa-check"></i><b>6.5.5</b> Subsetting character vectors</a></li>
+<li class="chapter" data-level="6.5.6" data-path="chap6.html"><a href="chap6.html#subsetting-factor-vectors"><i class="fa fa-check"></i><b>6.5.6</b> Subsetting factor vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap6.html"><a href="chap6.html#transformationmanipulation-of-datasets"><i class="fa fa-check"></i><b>6.6</b> Transformation/Manipulation of datasets</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#references-1"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#quick-reference-on-functions"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#packages-to-read-further-on"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#r-manuals"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap7.html"><a href="chap7.html"><i class="fa fa-check"></i><b>7</b> Working with Dates and Time</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#goal-2"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#what-we-shall-cover-5"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#prerequisite-3"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="7.1" data-path="chap7.html"><a href="chap7.html#recognising-date-time-objects-in-r"><i class="fa fa-check"></i><b>7.1</b> Recognising date-time objects in R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap7.html"><a href="chap7.html#current-date"><i class="fa fa-check"></i><b>7.1.1</b> Current date</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap7.html"><a href="chap7.html#current-time"><i class="fa fa-check"></i><b>7.1.2</b> Current Time</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap7.html"><a href="chap7.html#creating-date-time-objects-in-base-r"><i class="fa fa-check"></i><b>7.2</b> Creating date-time objects in base R</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap7.html"><a href="chap7.html#posix"><i class="fa fa-check"></i><b>7.2.1</b> POSIX</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap7.html"><a href="chap7.html#creating-posixct-objects"><i class="fa fa-check"></i><b>7.2.2</b> Creating POSIXct objects</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap7.html"><a href="chap7.html#creating-posixlt-objects"><i class="fa fa-check"></i><b>7.2.3</b> Creating POSIXlt Objects</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap7.html"><a href="chap7.html#creating-date-time-object-using-strptime"><i class="fa fa-check"></i><b>7.2.4</b> Creating date-time Object using “strptime()”</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chap7.html"><a href="chap7.html#converting-numeric-data-to-date-and-time-object"><i class="fa fa-check"></i><b>7.2.5</b> Converting numeric data to date and time object</a></li>
+<li class="chapter" data-level="7.2.6" data-path="chap7.html"><a href="chap7.html#creating-date-and-time-factor-vectors"><i class="fa fa-check"></i><b>7.2.6</b> Creating date and time factor vectors</a></li>
+<li class="chapter" data-level="7.2.7" data-path="chap7.html"><a href="chap7.html#creating-date-objects"><i class="fa fa-check"></i><b>7.2.7</b> Creating Date objects</a></li>
+<li class="chapter" data-level="7.2.8" data-path="chap7.html"><a href="chap7.html#computationDateTime"><i class="fa fa-check"></i><b>7.2.8</b> Computation with date and time objects</a></li>
+<li class="chapter" data-level="7.2.9" data-path="chap7.html"><a href="chap7.html#extracting-parts-of-a-date-time-object"><i class="fa fa-check"></i><b>7.2.9</b> Extracting parts of a date-time object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#references-2"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#quick-reference-on-functions-1"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#other-packages-on-date-and-time"><i class="fa fa-check"></i>Other Packages on date and time</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap8.html"><a href="chap8.html"><i class="fa fa-check"></i><b>8</b> Plotting in Base R</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#goal-3"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#what-we-shall-cover-6"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#prerequisite-4"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="8.1" data-path="chap8.html"><a href="chap8.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="chap8.html"><a href="chap8.html#understanding-base-r-plotting-function"><i class="fa fa-check"></i><b>8.2</b> Understanding base R plotting function</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="chap8.html"><a href="chap8.html#some-outputs-of-plot"><i class="fa fa-check"></i><b>8.2.1</b> Some outputs of plot()</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap8.html"><a href="chap8.html#functionDefinition"><i class="fa fa-check"></i><b>8.2.2</b> plot() Internals</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap8.html"><a href="chap8.html#step-one-opening-new-window"><i class="fa fa-check"></i><b>8.2.3</b> Step one: Opening new window</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap8.html"><a href="chap8.html#step-two-setting-plotting-coordinates"><i class="fa fa-check"></i><b>8.2.4</b> Step two: Setting plotting coordinates</a></li>
+<li class="chapter" data-level="8.2.5" data-path="chap8.html"><a href="chap8.html#step-three-evaluate-and-execute-pre-post-functions"><i class="fa fa-check"></i><b>8.2.5</b> Step three: Evaluate and execute pre-post functions</a></li>
+<li class="chapter" data-level="8.2.6" data-path="chap8.html"><a href="chap8.html#step-four-plotting"><i class="fa fa-check"></i><b>8.2.6</b> Step four: Plotting</a></li>
+<li class="chapter" data-level="8.2.7" data-path="chap8.html"><a href="chap8.html#step-five-evaluation-of-post-plot-and-pre-axis-expressions"><i class="fa fa-check"></i><b>8.2.7</b> Step five: Evaluation of post-plot and pre-axis expressions</a></li>
+<li class="chapter" data-level="8.2.8" data-path="chap8.html"><a href="chap8.html#step-six-construct-axis"><i class="fa fa-check"></i><b>8.2.8</b> Step six: Construct Axis</a></li>
+<li class="chapter" data-level="8.2.9" data-path="chap8.html"><a href="chap8.html#step-seven-ploting-frame"><i class="fa fa-check"></i><b>8.2.9</b> Step Seven: Ploting frame</a></li>
+<li class="chapter" data-level="8.2.10" data-path="chap8.html"><a href="chap8.html#step-eight-annotation"><i class="fa fa-check"></i><b>8.2.10</b> Step Eight: Annotation</a></li>
+<li class="chapter" data-level="8.2.11" data-path="chap8.html"><a href="chap8.html#summary-final-output"><i class="fa fa-check"></i><b>8.2.11</b> Summary: Final output</a></li>
+<li class="chapter" data-level="8.2.12" data-path="chap8.html"><a href="chap8.html#commentedDefinition"><i class="fa fa-check"></i><b>8.2.12</b> A commented basic plot definition</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap8.html"><a href="chap8.html#par"><i class="fa fa-check"></i><b>8.3</b> Graphical Parameters and Annotating Base R Plots</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="chap8.html"><a href="chap8.html#querying-saving-and-resetting-graphical-parameters"><i class="fa fa-check"></i><b>8.3.1</b> Querying, saving and resetting graphical parameters</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chap8.html"><a href="chap8.html#settingchanging-graphical-parameters"><i class="fa fa-check"></i><b>8.3.2</b> Setting/Changing graphical parameters</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chap8.html"><a href="chap8.html#implementing-some-graphical-parameters-and-annotation"><i class="fa fa-check"></i><b>8.3.3</b> Implementing some graphical parameters and annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chap8.html"><a href="chap8.html#plotting-characters-pch"><i class="fa fa-check"></i><b>8.4</b> Plotting characters (pch)</a></li>
+<li class="chapter" data-level="8.5" data-path="chap8.html"><a href="chap8.html#plotTypes"><i class="fa fa-check"></i><b>8.5</b> Plot types</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="chap8.html"><a href="chap8.html#annotating-plots-with-lines"><i class="fa fa-check"></i><b>8.5.1</b> Annotating plots with lines</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="chap8.html"><a href="chap8.html#generating-and-annotating-mathematical-plots"><i class="fa fa-check"></i><b>8.6</b> Generating and Annotating Mathematical Plots</a></li>
+<li class="chapter" data-level="8.7" data-path="chap8.html"><a href="chap8.html#other-base-r-plots"><i class="fa fa-check"></i><b>8.7</b> Other Base R Plots</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="chap8.html"><a href="chap8.html#histDensityPlots"><i class="fa fa-check"></i><b>8.7.1</b> Histogram and Density plots</a></li>
+<li class="chapter" data-level="8.7.2" data-path="chap8.html"><a href="chap8.html#box-box-and-whisker-plots"><i class="fa fa-check"></i><b>8.7.2</b> Box (box-and-whisker) plots</a></li>
+<li class="chapter" data-level="8.7.3" data-path="chap8.html"><a href="chap8.html#strip-chartsdot-plots"><i class="fa fa-check"></i><b>8.7.3</b> Strip Charts/Dot Plots</a></li>
+<li class="chapter" data-level="8.7.4" data-path="chap8.html"><a href="chap8.html#conditional-plots-coplot"><i class="fa fa-check"></i><b>8.7.4</b> Conditional Plots (Coplot)</a></li>
+<li class="chapter" data-level="8.7.5" data-path="chap8.html"><a href="chap8.html#stem-and-leaf-plot"><i class="fa fa-check"></i><b>8.7.5</b> Stem and Leaf plot</a></li>
+<li class="chapter" data-level="8.7.6" data-path="chap8.html"><a href="chap8.html#bar-graphs-and-pie-chart"><i class="fa fa-check"></i><b>8.7.6</b> Bar graphs and pie chart</a></li>
+<li class="chapter" data-level="8.7.7" data-path="chap8.html"><a href="chap8.html#mosaic"><i class="fa fa-check"></i><b>8.7.7</b> Mosaic</a></li>
+<li class="chapter" data-level="8.7.8" data-path="chap8.html"><a href="chap8.html#fourfold-plots"><i class="fa fa-check"></i><b>8.7.8</b> Fourfold Plots</a></li>
+<li class="chapter" data-level="8.7.9" data-path="chap8.html"><a href="chap8.html#sunflower-plots"><i class="fa fa-check"></i><b>8.7.9</b> Sunflower plots</a></li>
+<li class="chapter" data-level="8.7.10" data-path="chap8.html"><a href="chap8.html#time-series-plots-line"><i class="fa fa-check"></i><b>8.7.10</b> Time series plots (line)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="chap8.html"><a href="chap8.html#colours"><i class="fa fa-check"></i><b>8.8</b> Colors</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="chap8.html"><a href="chap8.html#expected-values-for-color-based-arguments"><i class="fa fa-check"></i><b>8.8.1</b> Expected values for color-based arguments</a></li>
+<li class="chapter" data-level="8.8.2" data-path="chap8.html"><a href="chap8.html#defining-a-new-palette"><i class="fa fa-check"></i><b>8.8.2</b> Defining a new palette</a></li>
+<li class="chapter" data-level="8.8.3" data-path="chap8.html"><a href="chap8.html#palettes-makers"><i class="fa fa-check"></i><b>8.8.3</b> Palettes makers</a></li>
+<li class="chapter" data-level="8.8.4" data-path="chap8.html"><a href="chap8.html#creating-palettes-by-interpolation-colors"><i class="fa fa-check"></i><b>8.8.4</b> Creating palettes by interpolation colors</a></li>
+<li class="chapter" data-level="8.8.5" data-path="chap8.html"><a href="chap8.html#color-models-and-spaces"><i class="fa fa-check"></i><b>8.8.5</b> Color Models and Spaces</a></li>
+<li class="chapter" data-level="8.8.6" data-path="chap8.html"><a href="chap8.html#creating-new-colours"><i class="fa fa-check"></i><b>8.8.6</b> Creating New Colours</a></li>
+<li class="chapter" data-level="8.8.7" data-path="chap8.html"><a href="chap8.html#color-adjustment"><i class="fa fa-check"></i><b>8.8.7</b> Color adjustment</a></li>
+<li class="chapter" data-level="8.8.8" data-path="chap8.html"><a href="chap8.html#colorConversion"><i class="fa fa-check"></i><b>8.8.8</b> Color conversion and Transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="chap8.html"><a href="chap8.html#other-plotting-and-color-palette-packages"><i class="fa fa-check"></i><b>8.9</b> Other Plotting and Color Palette Packages</a></li>
+<li class="chapter" data-level="8.10" data-path="chap8.html"><a href="chap8.html#graphicalDevices"><i class="fa fa-check"></i><b>8.10</b> Graphical Devices</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#references-3"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#quick-reference-on-functions-2"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#packages-to-read-further-on-1"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#r-manuals-1"><i class="fa fa-check"></i>R Manuals</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#basics-of-plotting-in-r"><i class="fa fa-check"></i>Basics of plotting in R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#calling-and-changing-graphical-parameters"><i class="fa fa-check"></i>Calling and changing graphical parameters</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#annotating-plots"><i class="fa fa-check"></i>Annotating plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#producing-different-base-r-plots"><i class="fa fa-check"></i>Producing different base R plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#using-and-creating-colors-in-base-r"><i class="fa fa-check"></i>Using and creating colors in base R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#rs-graphical-devices"><i class="fa fa-check"></i>R’s graphical devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap9.html"><a href="chap9.html"><i class="fa fa-check"></i><b>9</b> Where and How to Get Help</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#goal-4"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#what-we-shall-cover-7"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#prerequisite-5"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="9.1" data-path="chap9.html"><a href="chap9.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap9.html"><a href="chap9.html#problem-identification"><i class="fa fa-check"></i><b>9.2</b> Problem Identification</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap1.html"><a href="chap1.html#errors"><i class="fa fa-check"></i><b>9.2.1</b> Errors</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap9.html"><a href="chap9.html#warning-messages"><i class="fa fa-check"></i><b>9.2.2</b> Warning Messages</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap9.html"><a href="chap9.html#unexpected-output"><i class="fa fa-check"></i><b>9.2.3</b> Unexpected Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap9.html"><a href="chap9.html#problemSolving"><i class="fa fa-check"></i><b>9.3</b> Solving (defined) coding problems</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-unknown"><i class="fa fa-check"></i><b>9.3.1</b> Problems where functions are unknown</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-known"><i class="fa fa-check"></i><b>9.3.2</b> Problems where functions are known</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap9.html"><a href="chap9.html#where-to-get-help"><i class="fa fa-check"></i><b>9.4</b> Where to get help</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap9.html"><a href="chap9.html#knowledge-and-skills"><i class="fa fa-check"></i><b>9.4.1</b> Knowledge and Skills</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap9.html"><a href="chap9.html#rs-documentations-internal-sources"><i class="fa fa-check"></i><b>9.4.2</b> R’s Documentations (Internal sources)</a></li>
+<li class="chapter" data-level="9.4.3" data-path="chap9.html"><a href="chap9.html#externalSources"><i class="fa fa-check"></i><b>9.4.3</b> External sources of help</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chap9.html"><a href="chap9.html#example-problem-statistical-mode"><i class="fa fa-check"></i><b>9.5</b> Example problem: Statistical mode</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#references-4"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#quick-reference-on-functions-3"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#r-manuals-3"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap10.html"><a href="chap10.html"><i class="fa fa-check"></i><b>10</b> Case Studies</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#goal-5"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#prerequisite-6"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="10.1" data-path="chap10.html"><a href="chap10.html#case-study-one--importing-online-data"><i class="fa fa-check"></i><b>10.1</b> Case Study One:- Importing online data</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="chap10.html"><a href="chap10.html#task"><i class="fa fa-check"></i><b>10.1.1</b> Task</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chap10.html"><a href="chap10.html#what-we-shall-cover-8"><i class="fa fa-check"></i><b>10.1.2</b> What we shall cover</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chap10.html"><a href="chap10.html#background-and-data"><i class="fa fa-check"></i><b>10.1.3</b> Background and Data</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chap10.html"><a href="chap10.html#web-scraping"><i class="fa fa-check"></i><b>10.1.4</b> Web scraping</a></li>
+<li class="chapter" data-level="10.1.5" data-path="chap10.html"><a href="chap10.html#html-documents"><i class="fa fa-check"></i><b>10.1.5</b> HTML Document’s</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#references-5"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#online-web-sites"><i class="fa fa-check"></i>Online web sites</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>A</b> Downloading and Installing R</a><ul>
+<li class="chapter" data-level="A.1" data-path="r.html"><a href="r.html#downloading-r"><i class="fa fa-check"></i><b>A.1</b> Downloading R</a></li>
+<li class="chapter" data-level="A.2" data-path="r.html"><a href="r.html#installing-r"><i class="fa fa-check"></i><b>A.2</b> Installing R</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>B</b> Downloading and Installing RStudio</a><ul>
+<li class="chapter" data-level="B.1" data-path="rstudio.html"><a href="rstudio.html#downloading-rstudio"><i class="fa fa-check"></i><b>B.1</b> Downloading RStudio</a></li>
+<li class="chapter" data-level="B.2" data-path="rstudio.html"><a href="rstudio.html#installing-rstudio"><i class="fa fa-check"></i><b>B.2</b> Installing Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>C</b> Files</a><ul>
+<li class="chapter" data-level="C.1" data-path="files.html"><a href="files.html#definition-and-file-names"><i class="fa fa-check"></i><b>C.1</b> Definition and file names</a></li>
+<li class="chapter" data-level="C.2" data-path="files.html"><a href="files.html#formats"><i class="fa fa-check"></i><b>C.2</b> File formats</a></li>
+<li class="chapter" data-level="C.3" data-path="files.html"><a href="files.html#paths"><i class="fa fa-check"></i><b>C.3</b> File Paths</a></li>
+<li class="chapter" data-level="C.4" data-path="files.html"><a href="files.html#encoding"><i class="fa fa-check"></i><b>C.4</b> Encoding</a><ul>
+<li class="chapter" data-level="C.4.1" data-path="files.html"><a href="files.html#ascii"><i class="fa fa-check"></i><b>C.4.1</b> ASCII</a></li>
+<li class="chapter" data-level="C.4.2" data-path="files.html"><a href="files.html#utf-8"><i class="fa fa-check"></i><b>C.4.2</b> UTF-8</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="files.html"><a href="files.html#types-of-files"><i class="fa fa-check"></i><b>C.5</b> Types of files</a><ul>
+<li class="chapter" data-level="C.5.1" data-path="files.html"><a href="files.html#text-files-and-binary-files"><i class="fa fa-check"></i><b>C.5.1</b> Text files and binary files</a></li>
+<li class="chapter" data-level="C.5.2" data-path="files.html"><a href="files.html#free-format"><i class="fa fa-check"></i><b>C.5.2</b> Free format</a></li>
+<li class="chapter" data-level="C.5.3" data-path="files.html"><a href="files.html#other-file-types-supported-by-base-r"><i class="fa fa-check"></i><b>C.5.3</b> Other file types supported by base R</a></li>
+</ul></li>
+<li class="chapter" data-level="C.6" data-path="files.html"><a href="files.html#summary"><i class="fa fa-check"></i><b>C.6</b> Summary</a></li>
+<li class="chapter" data-level="C.7" data-path="files.html"><a href="files.html#references-6"><i class="fa fa-check"></i><b>C.7</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Essentials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap6" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Transforming Manipulating Data Objects</h1>
+<div id="chapter-goal-1" class="section level2 unnumbered">
+<h2>Chapter Goal</h2>
+<p>The main goal of this chapter is to facilitate you to make necessary pre-analysis activities.</p>
+</div>
+<div id="what-we-shall-cover-4" class="section level2 unnumbered">
+<h2>What we shall cover</h2>
+<p>By the end of this chapter you should:</p>
+<ul>
+<li>Be able to index values/elements any R data object</li>
+<li>Know how to use binary operators to make comparison and check conditions</li>
+<li>Understand vectorisation in R</li>
+<li>Have the skills to extract and/or replace parts of any data object in R</li>
+</ul>
+</div>
+<div id="prerequisite-2" class="section level2">
+<h2><span class="header-section-number">6.1</span> Prerequisite</h2>
+<p>To appreciate this chapter, you must be conversant with:</p>
+<ul>
+<li>Making function calls</li>
+<li>Difference between errors and warnings</li>
+<li>R’s data types and objects</li>
+<li>Installing and loading packages</li>
+<li>Importing data into R</li>
+</ul>
+</div>
+<div id="indexing" class="section level2">
+<h2><span class="header-section-number">6.2</span> Indexing different data objects in R</h2>
+<p>An index is a position marker or identifier of values/elements in an object. There are two ways to specify an index, with an numerical or a character (for named values/elements). Logical value TRUE, FALSE and NA can also be used to index elements of a vector, but they eventualy become integers (1 for TRUE and 0 for FALSE).</p>
+<p>Values in a vector are indexed by the dimensions of the vector, hence, a one dimensional vector like a basic atomic vector or a list would have one index while a two dimensional vector such as a matrix or a data frame, would have two indices. Higher dimensional vectors like arrays, have indices the same length as its dimension, for example, a three dimensional array would have three indices.</p>
+<div id="indexing-one-dimensional-objects" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Indexing one dimensional objects</h3>
+<p>One dimensional vectors include basic vectors and lists. Values or elements are specified with one index.</p>
+<div id="one-dimension-1d-atomichomogenous-vectors" class="section level4">
+<h4><span class="header-section-number">6.2.1.1</span> One dimension (1d) Atomic/Homogenous vectors</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">6839</span>)
+x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dv">10</span>)
+x
+##  [1] 35 24 78 59 82  9 52 75 80 94</code></pre></div>
+<p>Vector x has 10 values, the position of each of these values gives its index as an integer.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Index</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>35</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>78</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>59</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>82</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>52</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>75</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>80</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>94</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>If this vector were named, then values can be specified with their names</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Character index</span>
+<span class="kw">names</span>(x) &lt;-<span class="st"> </span>letters[<span class="dv">1</span>:<span class="dv">10</span>]
+x
+##  a  b  c  d  e  f  g  h  i  j 
+## 35 24 78 59 82  9 52 75 80 94</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Index</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>35</td>
+<td>“a”</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>“b”</td>
+</tr>
+<tr class="odd">
+<td>78</td>
+<td>“c”</td>
+</tr>
+<tr class="even">
+<td>59</td>
+<td>“d”</td>
+</tr>
+<tr class="odd">
+<td>82</td>
+<td>“e”</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>“f”</td>
+</tr>
+<tr class="odd">
+<td>52</td>
+<td>“g”</td>
+</tr>
+<tr class="even">
+<td>75</td>
+<td>“h”</td>
+</tr>
+<tr class="odd">
+<td>80</td>
+<td>“i”</td>
+</tr>
+<tr class="even">
+<td>94</td>
+<td>“j”</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="one-dimension-1d-genericheterogeneous-vectors" class="section level4">
+<h4><span class="header-section-number">6.2.1.2</span> One dimension (1d) Generic/Heterogeneous vectors</h4>
+<p>Lists are one dimensional objects whose contents can have different types of objects (hence heterogenous). Like basic atomic vectors, they are indexed with one value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)
+aList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">data =</span> <span class="kw">head</span>(tips), <span class="dt">metaData =</span> <span class="kw">c</span>(<span class="st">&quot;This dataset is from Reshape2 package&quot;</span>))
+aList
+## $data
+##   total_bill  tip    sex smoker day   time size
+## 1      16.99 1.01 Female     No Sun Dinner    2
+## 2      10.34 1.66   Male     No Sun Dinner    3
+## 3      21.01 3.50   Male     No Sun Dinner    3
+## 4      23.68 3.31   Male     No Sun Dinner    2
+## 5      24.59 3.61 Female     No Sun Dinner    4
+## 6      25.29 4.71   Male     No Sun Dinner    4
+## 
+## $metaData
+## [1] &quot;This dataset is from Reshape2 package&quot;</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>Objects in the list</th>
+<th>Integer indexing</th>
+<th>Character indexing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First element</td>
+<td>1</td>
+<td>“data”</td>
+</tr>
+<tr class="even">
+<td>Second element</td>
+<td>2</td>
+<td>“metaData”</td>
+</tr>
+</tbody>
+</table>
+<p>Elements in a list can further be indexed per their dimension. In this case there are two elements; the first is a data frame with two dimensions and the second is a one dimesional character vector both of which can be indexed by their dimensions.</p>
+</div>
+<div id="indexing-one-dimension-character-vectors" class="section level4">
+<h4><span class="header-section-number">6.2.1.3</span> Indexing One Dimension Character vectors</h4>
+<p>Charater or string vectors are slightly different when it comes to indexing. Indices are given per character which include spaces and punctuation marks. Words can be indexed with a range of indices from its beginning to its end. This range can easily be determined by a package called “strigi”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringi)
+char &lt;-<span class="st"> &quot;This is chapter six&quot;</span>
+<span class="kw">stri_locate_all_words</span>(char)
+## [[1]]
+##      start end
+## [1,]     1   4
+## [2,]     6   7
+## [3,]     9  15
+## [4,]    17  19</code></pre></div>
+</div>
+</div>
+<div id="indexing-two-dimensional-vectors" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Indexing two dimensional vectors</h3>
+<p>There are two types of two dimensional objects commonly used in R, these are matrices which are atomic or homogeneous vectors and data frames which are generic or heterogeneous objects.</p>
+<div id="two-dimensional-2d-atomichomogenous-vectors" class="section level4">
+<h4><span class="header-section-number">6.2.2.1</span> Two dimensional (2d) Atomic/Homogenous vectors</h4>
+<p>Matrices are two dimensional objects that contain one data type (homogeneous). Since they have two dimensions, values are specified with two indices; row and column.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1038</span>)
+mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">12</span>, <span class="dv">50</span>, <span class="dv">5</span>), <span class="dv">1</span>), <span class="dt">nrow =</span> <span class="dv">4</span>)
+<span class="kw">dimnames</span>(mat) &lt;-<span class="st"> </span><span class="kw">list</span>(letters[<span class="dv">1</span>:<span class="dv">4</span>], LETTERS[<span class="dv">1</span>:<span class="dv">3</span>])
+mat
+##      A    B    C
+## a 45.7 58.6 47.7
+## b 52.9 47.2 45.0
+## c 50.5 52.7 55.2
+## d 42.2 41.5 47.6</code></pre></div>
+<p>“Mat” has twelve values. Each value can be specified by its row and column position.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Integer indices</th>
+<th>Character indicies</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>45.7</td>
+<td>1, 1</td>
+<td>“a, A”</td>
+</tr>
+<tr class="even">
+<td>52.9</td>
+<td>2, 1</td>
+<td>“b, A”</td>
+</tr>
+<tr class="odd">
+<td>50.5</td>
+<td>3, 1</td>
+<td>“c, A”</td>
+</tr>
+<tr class="even">
+<td>42.2</td>
+<td>4, 1</td>
+<td>“d, A”</td>
+</tr>
+<tr class="odd">
+<td>58.6</td>
+<td>1, 2</td>
+<td>“a, B”</td>
+</tr>
+<tr class="even">
+<td>47.2</td>
+<td>2, 2</td>
+<td>“b, B”</td>
+</tr>
+<tr class="odd">
+<td>52.7</td>
+<td>3, 2</td>
+<td>“c, B”</td>
+</tr>
+<tr class="even">
+<td>41.5</td>
+<td>4, 2</td>
+<td>“d, B”</td>
+</tr>
+<tr class="odd">
+<td>47.7</td>
+<td>1, 3</td>
+<td>“a, C”</td>
+</tr>
+<tr class="even">
+<td>45.0</td>
+<td>2, 3</td>
+<td>“b, C”</td>
+</tr>
+<tr class="odd">
+<td>55.2</td>
+<td>3, 3</td>
+<td>“c, C”</td>
+</tr>
+<tr class="even">
+<td>47.6</td>
+<td>4, 3</td>
+<td>“d, C”</td>
+</tr>
+</tbody>
+</table>
+<p>An index 1,1 means first row, first column and “a, A” means row name “a” and column name “A”. A complete row can be indexed with an integer or name of the row followed by a blank column index.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Row</th>
+<th>Integer indices</th>
+<th>Character indices</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First</td>
+<td>1,</td>
+<td>“a,”</td>
+</tr>
+<tr class="even">
+<td>Second</td>
+<td>2,</td>
+<td>“b,”</td>
+</tr>
+<tr class="odd">
+<td>Third</td>
+<td>3,</td>
+<td>“c,”</td>
+</tr>
+<tr class="even">
+<td>Fourth</td>
+<td>4,</td>
+<td>“d,”</td>
+</tr>
+</tbody>
+</table>
+<p>To index a column.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Integer indices</th>
+<th>Character indices</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First</td>
+<td>, 1</td>
+<td>&quot; , a“</td>
+</tr>
+<tr class="even">
+<td>Second</td>
+<td>, 2</td>
+<td>&quot; , b“</td>
+</tr>
+<tr class="odd">
+<td>Third</td>
+<td>, 3</td>
+<td>&quot; , c“</td>
+</tr>
+<tr class="even">
+<td>Fourth</td>
+<td>, 4</td>
+<td>&quot; , d“</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="atomichomogenous-vectors-with-more-than-2-dimensions-2d" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Atomic/Homogenous vectors with more than 2 dimensions (&gt;2d)</h3>
+<p>Arrays are atomic vectors with one or more dimensions, matrices is a special case of an array. For one dimensional array, indexing is like a basic vector while two dimensional arrays would be indexed like a matrix. In the case of arrays with more than two dimensions, values are indexed by the number of dimensions, so for a three dimensional array, values are specified with three indices.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ucbArray
+## , , Dept = A
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted  512     89
+##   Rejected  313     19
+## 
+## , , Dept = B
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted  353     17
+##   Rejected  207      8
+
+<span class="co"># Dimensions</span>
+<span class="kw">dim</span>(ucbArray)
+## [1] 2 2 2
+<span class="kw">length</span>(<span class="kw">dim</span>(ucbArray))
+## [1] 3
+
+<span class="co"># Number of values in the array</span>
+<span class="kw">length</span>(<span class="kw">as.vector</span>(ucbArray))
+## [1] 8</code></pre></div>
+<p>“ucbArray” is an array with three dimensions and 8 values. The first index is for row, the second is for columns and the third is for subsetction or layer like departments in this case.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Integer indice</th>
+<th>Character Indices</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>512</td>
+<td>1, 1, 1</td>
+<td>“Admitted, Male, A”</td>
+</tr>
+<tr class="even">
+<td>313</td>
+<td>2, 1, 1</td>
+<td>“Rejected, Male, A”</td>
+</tr>
+<tr class="odd">
+<td>89</td>
+<td>1, 2, 1</td>
+<td>“Admitted, Female, A”</td>
+</tr>
+<tr class="even">
+<td>19</td>
+<td>2, 2, 1</td>
+<td>“Rejected, Female, A”</td>
+</tr>
+<tr class="odd">
+<td>353</td>
+<td>1, 1, 2</td>
+<td>“Admitted, Male, B”</td>
+</tr>
+<tr class="even">
+<td>207</td>
+<td>2, 1, 2</td>
+<td>“Rejected, Male, B”</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>1, 2, 2</td>
+<td>“Admitted, Female, B”</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>2, 2, 2</td>
+<td>“Admitted, Female, B”</td>
+</tr>
+</tbody>
+</table>
+<p>An index of 2,2,1 means a value in the second row, second column and first layer (department).</p>
+<div id="two-dimensional-2d-genericheterogeneous-vectors" class="section level4">
+<h4><span class="header-section-number">6.2.3.1</span> Two dimensional (2d) Generic/Heterogeneous vectors</h4>
+<p>Data frames are generic or heterogeneous vectors. They are the most widely used data objects in R. Being two dimensions, data frame values are indexed as matrices; by their row and column position.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisSub
+##   Sepal.Length Petal.Length Species
+## 1          5.1          1.4  setosa
+## 2          4.9          1.4  setosa
+## 3          4.7          1.3  setosa
+## 4          4.6          1.5  setosa
+## 5          5.0          1.4  setosa
+
+<span class="co"># Dimension</span>
+<span class="kw">dim</span>(irisSub)
+## [1] 5 3
+
+<span class="co"># Number of dimensions</span>
+<span class="kw">length</span>(<span class="kw">dim</span>(iris))
+## [1] 2
+
+<span class="co"># Total number of values</span>
+<span class="kw">length</span>(irisSub) *<span class="st"> </span><span class="kw">nrow</span>(irisSub)
+## [1] 15</code></pre></div>
+<p>“irisSub” is a data frame with two dimensions (5 row and 3 columns) and 15 values. Each of these values can be indexed by their row and column position.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Integer indices</th>
+<th>Character indices</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5.1</td>
+<td>1, 1</td>
+<td>1, “Sepal.Length”</td>
+</tr>
+<tr class="even">
+<td>1.4</td>
+<td>1, 2</td>
+<td>1, “Petal.Lenght”</td>
+</tr>
+<tr class="odd">
+<td>setosa</td>
+<td>1, 3</td>
+<td>1, “Species”</td>
+</tr>
+<tr class="even">
+<td>4.9</td>
+<td>2, 1</td>
+<td>2, “Sepal.Length”</td>
+</tr>
+<tr class="odd">
+<td>1.4</td>
+<td>2, 2</td>
+<td>2, “Petal.Length”</td>
+</tr>
+<tr class="even">
+<td>setosa</td>
+<td>2, 3</td>
+<td>2, “Species”</td>
+</tr>
+<tr class="odd">
+<td>4.7</td>
+<td>3, 1</td>
+<td>3, “Sepal.Length”</td>
+</tr>
+<tr class="even">
+<td>1.3</td>
+<td>3, 2</td>
+<td>3, “Petal.Length”</td>
+</tr>
+<tr class="odd">
+<td>setosa</td>
+<td>3, 3</td>
+<td>3, “Species”</td>
+</tr>
+<tr class="even">
+<td>4.6</td>
+<td>4, 1</td>
+<td>4, “Sepal.Length”</td>
+</tr>
+<tr class="odd">
+<td>1.5</td>
+<td>4, 2</td>
+<td>4, “Petal.Length”</td>
+</tr>
+<tr class="even">
+<td>setosa</td>
+<td>4, 3</td>
+<td>4, “Species”</td>
+</tr>
+<tr class="odd">
+<td>5.0</td>
+<td>5, 1</td>
+<td>5, “Sepal.Length”</td>
+</tr>
+<tr class="even">
+<td>1.4</td>
+<td>5, 2</td>
+<td>5, “Petal.Length”</td>
+</tr>
+<tr class="odd">
+<td>setosa</td>
+<td>5, 3</td>
+<td>5, “Species”</td>
+</tr>
+</tbody>
+</table>
+<p>Notice we can mix both integers and character indices, in this case we had to mix them as rows are not named.</p>
+<p>There are two important issues that needs to be discussed before venturing into subsetting and data manipulation, these are binary operators and conditional functions useful for subsetting.</p>
+</div>
+</div>
+</div>
+<div id="binary-and-vectorisation-operators" class="section level2">
+<h2><span class="header-section-number">6.3</span> Binary and vectorisation Operators</h2>
+<div id="compOps" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Comparison Operators</h3>
+<p>Comparison operators also known as relational operators are functions for comparing values of atomic vectors (they have only one data type). R has six comparison operators, these are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>==</td>
+<td>Equal</td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td>Not Equal</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td>Less than</td>
+</tr>
+<tr class="even">
+<td>&lt;=</td>
+<td>Less than or equal to</td>
+</tr>
+<tr class="odd">
+<td>&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr class="even">
+<td>&gt;=</td>
+<td>Greater than or equal to</td>
+</tr>
+</tbody>
+</table>
+<p>These operators output/produce logical values TRUE, FALSE or NA.</p>
+<div id="equality" class="section level4">
+<h4><span class="header-section-number">6.3.1.1</span> Equality</h4>
+<p>To test equality, we will begin with length-one atomic vectors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Comparing integers</span>
+2L ==<span class="st"> </span>3L
+## [1] FALSE
+<span class="co"># Comparing doubles</span>
+<span class="fl">3.56</span> ==<span class="st"> </span><span class="fl">3.6</span>
+## [1] FALSE
+<span class="kw">round</span>(<span class="fl">3.56</span>, <span class="dv">1</span>) ==<span class="st"> </span><span class="fl">3.6</span>
+## [1] TRUE
+<span class="co"># Comparing characters (words)</span>
+<span class="st">&quot;Hellen&quot;</span> ==<span class="st"> &quot;Helen&quot;</span> 
+## [1] FALSE
+<span class="co"># Comparing Logical values</span>
+<span class="ot">TRUE</span> ==<span class="st"> </span><span class="ot">FALSE</span>       
+## [1] FALSE</code></pre></div>
+<p id="vectorization">
+<b>Vectorized Comparison</b>
+</p>
+<p>Binary operators can also be used with vectors of length greater than one. In this case comparison is carried out element by element producing a logical vector the same length as the two vectors being compared. This type of comparison; elementwise, is referred to as <strong>vectorized comparison</strong>. Therefore vectorization allows comparison to be done between elements of two (binary) vectors.</p>
+<div class="figure">
+<img src="figures/Elementwise_Objectwise.png" alt="Elemenwise and Vectorized comparison" />
+<p class="caption">Elemenwise and Vectorized comparison</p>
+</div>
+<p>Do take note, if two vectors are of different lengths, the shorter vector is recycled until it reaches the same length as the longer vector before comparison is carried out, this will result in an output and a warning.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># elementwise comparison</span>
+a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">9</span>) 
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>)
+a ==<span class="st"> </span>b
+## [1] FALSE FALSE FALSE  TRUE  TRUE
+
+<span class="co"># Comparison with a shorter vector</span>
+c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)
+a ==<span class="st"> </span>c
+## Warning in a == c: longer object length is not a multiple of shorter object
+## length
+## [1]  TRUE FALSE FALSE FALSE FALSE
+b ==<span class="st"> </span>c
+## Warning in b == c: longer object length is not a multiple of shorter object
+## length
+## [1] FALSE FALSE  TRUE FALSE FALSE</code></pre></div>
+<p>To check equality between two vectors as an objects rather that its elements only, function “identical” and “all.equal” are more appropriate. Objectwise comparison also involves checking type and attributes of the object for equality.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a ==<span class="st"> </span>b
+## [1] FALSE FALSE FALSE  TRUE  TRUE
+<span class="kw">identical</span>(a, b)
+## [1] FALSE
+<span class="kw">all.equal</span>(a, b)
+## [1] &quot;Mean relative difference: 3.33333333&quot;</code></pre></div>
+<p>There are subtle difference between “identical” and “all.equal”. All.equal checks for “nearness” but identical checks for complete equality.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">round</span>(<span class="fl">1.2938</span>), <span class="kw">round</span>(<span class="fl">3.2903</span>), <span class="kw">round</span>(<span class="fl">6.3958</span>))
+f &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 3L,  6L)
+e ==<span class="st"> </span>f
+## [1] TRUE TRUE TRUE
+<span class="kw">class</span>(e); <span class="kw">class</span>(f)
+## [1] &quot;numeric&quot;
+## [1] &quot;integer&quot;
+<span class="kw">typeof</span>(e); <span class="kw">typeof</span>(f)
+## [1] &quot;double&quot;
+## [1] &quot;integer&quot;
+<span class="kw">identical</span>(e, f)
+## [1] FALSE
+<span class="kw">all.equal</span>(e, f)
+## [1] TRUE</code></pre></div>
+<p>These two functions (identical and all.equal) will become useful when discussing control structures.</p>
+</div>
+<div id="non---equality" class="section level4">
+<h4><span class="header-section-number">6.3.1.2</span> Non - Equality</h4>
+<p>Non-equality between two (binary) objects is done using negation, that is “!=”.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Length-one vectors</span>
+<span class="dv">2</span> !=<span class="st"> </span><span class="dv">3</span>                 
+## [1] TRUE
+2L !=<span class="st"> </span>3L
+## [1] TRUE
+<span class="st">&quot;Hellen&quot;</span> !=<span class="st"> &quot;Helen&quot;</span>    
+## [1] TRUE
+<span class="ot">TRUE</span> !=<span class="st"> </span><span class="ot">FALSE</span>          
+## [1] TRUE</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Vectors with length &gt; 1</span>
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a !=<span class="st"> </span>b
+## [1]  TRUE  TRUE  TRUE FALSE FALSE
+<span class="co"># They look the same but are not the same</span>
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e !=<span class="st"> </span>f
+## [1] FALSE FALSE FALSE</code></pre></div>
+</div>
+<div id="greater-than-operator" class="section level4">
+<h4><span class="header-section-number">6.3.1.3</span> Greater than operator</h4>
+<p>This operator typically asks if value(s) on the left hand side is(are) greater than the value(s) on the right hand side.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> &gt;<span class="st"> </span><span class="dv">3</span>              
+## [1] FALSE
+2L &gt;<span class="st"> </span>3L
+## [1] FALSE
+<span class="co"># Comparison for words is by each character</span>
+<span class="st">&quot;Hellen&quot;</span> &gt;<span class="st"> &quot;Helen&quot;</span> 
+## [1] TRUE
+<span class="co"># Logical values are interally stored as 1 for TRUE and 0 for FALSE</span>
+<span class="ot">TRUE</span> &gt;<span class="st"> </span><span class="ot">FALSE</span>       
+## [1] TRUE
+<span class="co"># Element comprison for vectors &gt; 1</span>
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a &gt;<span class="st"> </span>b
+## [1] FALSE FALSE FALSE FALSE FALSE
+<span class="co"># Comparison for double and integer vectors (taking account of decimal point)</span>
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e &gt;<span class="st"> </span>f
+## [1] FALSE FALSE FALSE</code></pre></div>
+</div>
+<div id="greater-than-or-equal-operator" class="section level4">
+<h4><span class="header-section-number">6.3.1.4</span> Greater than or equal operator</h4>
+<p>This operator checks if the left value is greater than or equal to the value on the right.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> &gt;=<span class="st"> </span><span class="dv">3</span>
+## [1] FALSE
+2L &gt;=<span class="st"> </span><span class="dv">3</span>
+## [1] FALSE
+<span class="st">&quot;Hellen&quot;</span> &gt;=<span class="st"> &quot;Helen&quot;</span>
+## [1] TRUE
+<span class="ot">TRUE</span> &gt;=<span class="st"> </span><span class="ot">FALSE</span>
+## [1] TRUE
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a &gt;=<span class="st"> </span>b
+## [1] FALSE FALSE FALSE  TRUE  TRUE
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e &gt;=<span class="st"> </span>f
+## [1] TRUE TRUE TRUE</code></pre></div>
+</div>
+<div id="less-than-operator" class="section level4">
+<h4><span class="header-section-number">6.3.1.5</span> Less than operator</h4>
+<p>This operator compares two values to see if the first is smaller than the second value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> &lt;<span class="st"> </span><span class="dv">3</span>
+## [1] TRUE
+2L &lt;<span class="st"> </span><span class="dv">3</span>
+## [1] TRUE
+<span class="st">&quot;Hellen&quot;</span> &lt;<span class="st"> &quot;Helen&quot;</span>
+## [1] FALSE
+<span class="ot">TRUE</span> &lt;<span class="st"> </span><span class="ot">FALSE</span>
+## [1] FALSE
+
+<span class="co"># Vectorized</span>
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a &lt;<span class="st"> </span>b
+## [1]  TRUE  TRUE  TRUE FALSE FALSE
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e &lt;<span class="st"> </span>f
+## [1] FALSE FALSE FALSE</code></pre></div>
+</div>
+<div id="less-than-or-equal-to-operator" class="section level4">
+<h4><span class="header-section-number">6.3.1.6</span> Less than or equal to operator</h4>
+<p>Finally this operator compares the two values to see if the first is equal or less than the second value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> &lt;=<span class="st"> </span><span class="dv">3</span>
+## [1] TRUE
+2L &lt;=<span class="st"> </span><span class="dv">3</span>
+## [1] TRUE
+<span class="st">&quot;Hellen&quot;</span> &lt;=<span class="st"> &quot;Helen&quot;</span>
+## [1] FALSE
+<span class="ot">TRUE</span> &lt;=<span class="st"> </span><span class="ot">FALSE</span>
+## [1] FALSE
+
+<span class="co"># Vectorized</span>
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a &lt;=<span class="st"> </span>b
+## [1] TRUE TRUE TRUE TRUE TRUE
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e &lt;=<span class="st"> </span>f
+## [1] TRUE TRUE TRUE</code></pre></div>
+</div>
+</div>
+<div id="logical-operators" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Logical Operators</h3>
+<p>Logical operators are used to compare two values for commonality, combination or negation.</p>
+<p>In R there are two operators that test for commonality, these are “&amp;” and “&amp;&amp;” (meaning <strong>and</strong>); two for combination that is “|” and “||” (meaning <strong>or</strong>); and one operator for negation “!” (meaning not).</p>
+<p>The “&amp;” and “|” perform elementwise comparison while “&amp;&amp;”, “||” perform comparison for only the first element of each vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For length-one vectors</span>
+<span class="co">#-----------------------</span>
+<span class="co"># Is there a common value between 2 AND 8. Yes, 2</span>
+<span class="dv">2</span> &amp;<span class="st"> </span><span class="dv">8</span>
+## [1] TRUE
+<span class="co"># How about 0 AND 2? There is none</span>
+<span class="dv">0</span> &amp;<span class="st"> </span><span class="dv">2</span>
+## [1] FALSE
+
+<span class="co"># Is there a 2 OR a 5 in a vector with just 2 and another with 5? Yes</span>
+<span class="dv">2</span> |<span class="st"> </span><span class="dv">5</span>
+## [1] TRUE
+<span class="co"># How about a 0 OR a 2 in a vector with just 0 and another with just 5? Yes</span>
+<span class="dv">0</span> |<span class="st"> </span><span class="dv">2</span> 
+## [1] TRUE
+
+<span class="co"># Vectors with length &gt; 1 (Same logic as length-one vector)</span>
+<span class="co">#-----------------------------------------------------------</span>
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a &amp;<span class="st"> </span>b
+## [1]  TRUE  TRUE FALSE  TRUE  TRUE
+a |<span class="st"> </span>b
+## [1] TRUE TRUE TRUE TRUE TRUE
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e &amp;<span class="st"> </span>f
+## [1] TRUE TRUE TRUE
+e |<span class="st"> </span>f
+## [1] TRUE TRUE TRUE</code></pre></div>
+<p>To sum up, when we use <code>AND (&amp;)</code> we are checking for common value(s) and when we use <code>OR (|)</code>, then we are looking at all values on the left and on the right of the operator (a combination).</p>
+<p>To check only the first values of a vector with length greater than one, we use “&amp;&amp;” and “||”. This is mostly suitable for control structures like “if” which we will discuss later.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+a &amp;&amp;<span class="st"> </span>b
+## [1] TRUE
+a ||<span class="st"> </span>b
+## [1] TRUE
+e; f
+## [1] 1 3 6
+## [1] 1 3 6
+e &amp;&amp;<span class="st"> </span>f
+## [1] TRUE
+e ||<span class="st"> </span>f
+## [1] TRUE
+
+<span class="co"># What about this, where first values (0 and 1) have nothing in common</span>
+<span class="dv">0</span>:<span class="dv">5</span> &amp;&amp;<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span>
+## [1] FALSE</code></pre></div>
+<p>Logical statements work with all types of data except character vectors which will produce an error.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">char1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="st">&quot;vector&quot;</span>) 
+char2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Yet&quot;</span>, <span class="st">&quot;another&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="st">&quot;vector&quot;</span>)
+char1 &amp;<span class="st"> </span>char2
+## Error in c(&quot;this&quot;, &quot;is&quot;, &quot;a&quot;, &quot;chracter&quot;, &quot;vector&quot;) &amp; c(&quot;Yet&quot;, &quot;another&quot;,  : 
+##  operations are possible only for numeric, logical or complex types</code></pre></div>
+<p><strong>Negating operator</strong></p>
+<p>An exclamation mark (!) is used to get the opposite of a logical operation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># There is no common value between 2 AND 8. False there is 2</span>
+!<span class="dv">2</span> &amp;<span class="st"> </span><span class="dv">8</span>
+## [1] FALSE
+<span class="co"># There is no common value between 0 and 2. True, there is no common value</span>
+!<span class="dv">0</span> &amp;<span class="st"> </span><span class="dv">2</span>
+## [1] TRUE</code></pre></div>
+</div>
+</div>
+<div id="checking-conditions" class="section level2">
+<h2><span class="header-section-number">6.4</span> Checking conditions</h2>
+<p>There are three functions that will become quite handy when assessing or subseting data. These are the <code>all()</code>, <code>any()</code>, and <code>which()</code> functions. They are used together with comparison and logical operators.</p>
+<div id="all-function" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> “All” function</h3>
+<p>This function is used to assesses whether all values in a logical vector are TRUE.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logVec1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)
+logVec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)
+<span class="kw">all</span>(logVec1)
+## [1] TRUE
+<span class="kw">all</span>(logVec2)
+## [1] FALSE</code></pre></div>
+<p>all() is ideal when used with comparison operators to give an overall assessment of logical values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+<span class="co"># Are all values in &quot;a&quot; and &quot;b&quot; the same? No, index 1:4 are different</span>
+<span class="kw">all</span>(a ==<span class="st"> </span>b) 
+## [1] FALSE
+<span class="co"># Are all the values in &quot;a&quot; different from &quot;b&quot;? No, index 4 and 5 are the same</span>
+<span class="kw">all</span>(a !=<span class="st"> </span>b) 
+## [1] FALSE</code></pre></div>
+</div>
+<div id="any-function" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> “Any” function</h3>
+<p>“any()” is used to check if there is at least one TRUE value in a logical vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Checking if there is at least one TRUE value </span>
+<span class="kw">any</span>(logVec1)
+## [1] TRUE
+<span class="kw">any</span>(logVec2)
+## [1] TRUE
+
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+<span class="kw">any</span>(a ==<span class="st"> </span>b)  
+## [1] TRUE
+<span class="kw">any</span>(a !=<span class="st"> </span>b) 
+## [1] TRUE
+<span class="kw">any</span>(a &gt;<span class="st"> </span>b) 
+## [1] FALSE
+
+<span class="co"># Other ways to use any (As long as ... argument is a logical vector)</span>
+<span class="kw">any</span>(a ==<span class="st"> </span><span class="ot">FALSE</span>)
+## [1] TRUE
+<span class="kw">any</span>(a ==<span class="st"> </span><span class="dv">0</span>)
+## [1] TRUE
+
+<span class="co"># any() is not suitable to check for missing values directly</span>
+<span class="kw">any</span>(a ==<span class="st"> </span><span class="ot">NA</span>)
+## [1] NA
+<span class="co"># Instead use is.na() first</span>
+<span class="kw">any</span>(<span class="kw">is.na</span>(a))
+## [1] FALSE</code></pre></div>
+</div>
+<div id="which-function" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> “Which” function</h3>
+<p>This function is used to get the indices of all TRUE values in a logical vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logVec1
+## [1] TRUE TRUE TRUE TRUE
+<span class="kw">which</span>(logVec1)
+## [1] 1 2 3 4
+logVec2
+## [1]  TRUE  TRUE FALSE  TRUE
+<span class="kw">which</span>(logVec2)
+## [1] 1 2 4
+
+a; b
+## [1] 2 1 0 5 9
+## [1] 8 3 2 5 9
+<span class="kw">which</span>(a ==<span class="st"> </span>b) 
+## [1] 4 5
+<span class="kw">which</span>(a !=<span class="st"> </span>b)
+## [1] 1 2 3
+<span class="kw">which</span>(a &amp;<span class="st"> </span>b)
+## [1] 1 2 4 5
+<span class="kw">which</span>(a |<span class="st"> </span>b)
+## [1] 1 2 3 4 5</code></pre></div>
+</div>
+</div>
+<div id="subsetting" class="section level2">
+<h2><span class="header-section-number">6.5</span> Subsetting Data Objects</h2>
+<p>R provides three subsetting operators, these are single square bracker ([ ]), double square brackects ([[ ]]) and the dollar sign ($). With these operators, one can extract or replace parts of a data object. Some operators are applicable to only data object while others are applicable to all data objects though they might have different usage.</p>
+<div id="subsetting-one-dimensional-atomic-vectors" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Subsetting one dimensional atomic vectors</h3>
+<p>Single square brackets are used to subset or extract data from a one dimensional atomic vector. Within the brackets are the indices of data to be extracted or replaced. Recall indices can either be integers or characters, logical values can also be used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x
+##  a  b  c  d  e  f  g  h  i  j 
+## 35 24 78 59 82  9 52 75 80 94
+
+<span class="co"># Using integer indices</span>
+<span class="co">#----------------------</span>
+<span class="co"># Subsetting the first six values (sequenced numeric/factors use :)</span>
+x[<span class="dv">1</span>:<span class="dv">6</span>]
+##  a  b  c  d  e  f 
+## 35 24 78 59 82  9
+<span class="co"># This can also be achieved with head function</span>
+<span class="kw">head</span>(x)
+##  a  b  c  d  e  f 
+## 35 24 78 59 82  9
+<span class="co"># Geting last six values</span>
+x[(<span class="kw">length</span>(x) -<span class="st"> </span><span class="dv">5</span>):<span class="kw">length</span>(x)]
+##  e  f  g  h  i  j 
+## 82  9 52 75 80 94
+<span class="co"># This can be achieved by</span>
+<span class="kw">tail</span>(x)
+##  e  f  g  h  i  j 
+## 82  9 52 75 80 94
+<span class="co"># Subsetting unsequenced values</span>
+x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>)]
+##  a  e  i 
+## 35 82 80
+<span class="co"># Negative indices excluded them from subset vector</span>
+x[-<span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">6</span>)]
+##  g  h  i  j 
+## 52 75 80 94
+x[-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>)]
+##  b  c  d  f  g  h  j 
+## 24 78 59  9 52 75 94
+
+<span class="co"># Using character indices (names)</span>
+<span class="co">#---------------------------------</span>
+x[<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>)]
+##  a  e  i 
+## 35 82 80</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Negative indices only works for numeric values</span>
+x[-<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>)]
+## Error in -c(&quot;a&quot;, &quot;e&quot;, &quot;i&quot;) : invalid argument to unary operator</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using logical vectors</span>
+<span class="co">#-----------------------</span>
+<span class="co"># Logical vector the same length as x</span>
+x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]
+##  a  d  e  f  g  i 
+## 35 59 82  9 52 80
+<span class="co"># Logical vector with values less than length of x (it will be recycled)</span>
+x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)]
+##  a  d  e  f  i  j 
+## 35 59 82  9 80 94
+<span class="co"># Conditional logical vector</span>
+x[x &gt;<span class="st"> </span><span class="dv">50</span>]
+##  c  d  e  g  h  i  j 
+## 78 59 82 52 75 80 94
+x[x &lt;<span class="st"> </span><span class="dv">10</span>]
+## f 
+## 9
+<span class="co"># Negative logical indices works because logical values are coerced to integers</span>
+x[-<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)]
+##  b  c  d  e  f  g  h  i  j 
+## 24 78 59 82  9 52 75 80 94
+<span class="co"># For comparison operators, instead of negative values, use negation</span>
+x[!x &gt;<span class="st"> </span><span class="dv">50</span>]
+##  a  b  f 
+## 35 24  9
+x[!x &lt;<span class="st"> </span><span class="dv">10</span>]
+##  a  b  c  d  e  g  h  i  j 
+## 35 24 78 59 82 52 75 80 94
+
+<span class="co"># An empty bracket returns original vector</span>
+x[]
+##  a  b  c  d  e  f  g  h  i  j 
+## 35 24 78 59 82  9 52 75 80 94</code></pre></div>
+</div>
+<div id="subsetting-a-matrix" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> Subsetting a Matrix</h3>
+<p>A matrix is an atomic vector with dimensions, and like one dimensional atomic vectors, they use single brackets to subset elements, in addition, double square brackets are also used to subset specific values.</p>
+<p>Dimensions are used inside the brackets to index values to be extracted or replaced.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">USPersonalExpenditure
+##                       1940   1945  1950 1955  1960
+## Food and Tobacco    22.200 44.500 59.60 73.2 86.80
+## Household Operation 10.500 15.500 29.00 36.5 46.20
+## Medical and Health   3.530  5.760  9.71 14.0 21.10
+## Personal Care        1.040  1.980  2.45  3.4  5.40
+## Private Education    0.341  0.974  1.80  2.6  3.64
+
+<span class="co"># Using integers for both row and column indices</span>
+<span class="co">#------------------------------------------------</span>
+<span class="co"># Food and tobacco expenditure for 1940</span>
+USPersonalExpenditure[<span class="dv">1</span>, <span class="dv">1</span>]
+## [1] 22.2
+<span class="co"># Medical and health expenditure from 1940 upto 1960</span>
+USPersonalExpenditure[<span class="dv">3</span>, ]
+##  1940  1945  1950  1955  1960 
+##  3.53  5.76  9.71 14.00 21.10
+<span class="co"># 1950 total expenditure</span>
+USPersonalExpenditure[, <span class="dv">3</span>]
+##    Food and Tobacco Household Operation  Medical and Health 
+##               59.60               29.00                9.71 
+##       Personal Care   Private Education 
+##                2.45                1.80
+<span class="co"># All expenditure for 1940, 1950 and 1960</span>
+USPersonalExpenditure[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]
+##                       1940  1950  1960
+## Food and Tobacco    22.200 59.60 86.80
+## Household Operation 10.500 29.00 46.20
+## Medical and Health   3.530  9.71 21.10
+## Personal Care        1.040  2.45  5.40
+## Private Education    0.341  1.80  3.64
+<span class="co"># All expediture excluding 1945 and 1955</span>
+USPersonalExpenditure[, -<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]
+##                       1940  1950  1960
+## Food and Tobacco    22.200 59.60 86.80
+## Household Operation 10.500 29.00 46.20
+## Medical and Health   3.530  9.71 21.10
+## Personal Care        1.040  2.45  5.40
+## Private Education    0.341  1.80  3.64
+
+<span class="co"># Indexing using row and column names</span>
+<span class="co">#--------------------------------------</span>
+<span class="co"># Household Operation expenditure for 1940, 1950 and 1960</span>
+USPersonalExpenditure[<span class="st">&quot;Household Operation&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;1940&quot;</span>, <span class="st">&quot;1950&quot;</span>, <span class="st">&quot;1960&quot;</span>)]
+## 1940 1950 1960 
+## 10.5 29.0 46.2
+<span class="co"># Personal expenditure from 1940 through to 1960</span>
+USPersonalExpenditure[<span class="st">&quot;Personal Care&quot;</span>,]
+## 1940 1945 1950 1955 1960 
+## 1.04 1.98 2.45 3.40 5.40
+<span class="co"># All expenditure for 1940 and 1960</span>
+USPersonalExpenditure[, <span class="kw">c</span>(<span class="st">&quot;1940&quot;</span>, <span class="st">&quot;1960&quot;</span>)]
+##                       1940  1960
+## Food and Tobacco    22.200 86.80
+## Household Operation 10.500 46.20
+## Medical and Health   3.530 21.10
+## Personal Care        1.040  5.40
+## Private Education    0.341  3.64
+
+<span class="co"># Using logical vectors</span>
+<span class="co">#-----------------------</span>
+logVec3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)
+USPersonalExpenditure[logVec3, logVec3]
+##                      1940  1950  1960
+## Food and Tobacco   22.200 59.60 86.80
+## Medical and Health  3.530  9.71 21.10
+## Private Education   0.341  1.80  3.64
+<span class="co"># Expenditure above 10 billion</span>
+USPersonalExpenditure[<span class="kw">which</span>(USPersonalExpenditure &gt;<span class="st"> </span><span class="dv">10</span>)]
+##  [1] 22.2 10.5 44.5 15.5 59.6 29.0 73.2 36.5 14.0 86.8 46.2 21.1
+
+<span class="co"># Using double square brackets</span>
+<span class="co">#------------------------------</span>
+<span class="co"># Getting the first value </span>
+USPersonalExpenditure[[<span class="dv">1</span>]]
+## [1] 22.2</code></pre></div>
+</div>
+<div id="subsetting-a-dataframe" class="section level3">
+<h3><span class="header-section-number">6.5.3</span> Subsetting a dataframe</h3>
+<p>Data frames are two dimensional generic vectors. To subset a data frame, single and double square bracket as well as a dollar sign are used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)
+<span class="kw">str</span>(tips)
+## &#39;data.frame&#39;:    244 obs. of  7 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...
+
+<span class="co"># Using integer indices</span>
+<span class="co">#------------------------</span>
+<span class="co"># Subsetting first 6 rows of the first 3 columns</span>
+tips[<span class="dv">1</span>:<span class="dv">6</span>,<span class="dv">1</span>:<span class="dv">3</span>]
+##   total_bill  tip    sex
+## 1      16.99 1.01 Female
+## 2      10.34 1.66   Male
+## 3      21.01 3.50   Male
+## 4      23.68 3.31   Male
+## 5      24.59 3.61 Female
+## 6      25.29 4.71   Male
+<span class="co"># First 6 rows similar to head(tips)</span>
+tips[<span class="dv">1</span>:<span class="dv">6</span>,] 
+##   total_bill  tip    sex smoker day   time size
+## 1      16.99 1.01 Female     No Sun Dinner    2
+## 2      10.34 1.66   Male     No Sun Dinner    3
+## 3      21.01 3.50   Male     No Sun Dinner    3
+## 4      23.68 3.31   Male     No Sun Dinner    2
+## 5      24.59 3.61 Female     No Sun Dinner    4
+## 6      25.29 4.71   Male     No Sun Dinner    4
+<span class="kw">head</span>(tips)
+##   total_bill  tip    sex smoker day   time size
+## 1      16.99 1.01 Female     No Sun Dinner    2
+## 2      10.34 1.66   Male     No Sun Dinner    3
+## 3      21.01 3.50   Male     No Sun Dinner    3
+## 4      23.68 3.31   Male     No Sun Dinner    2
+## 5      24.59 3.61 Female     No Sun Dinner    4
+## 6      25.29 4.71   Male     No Sun Dinner    4</code></pre></div>
+<p>Logical vectors can be produced by checking certain conditions. Here we will combine logical and variable names indices to subset using the dollar sign.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tipping in relation to smoking habits</span>
+<span class="co">#-------------------------------------</span>
+<span class="co"># Non smoking tippers</span>
+nonSmokers &lt;-<span class="st"> </span>tips[tips$smoker ==<span class="st"> &quot;No&quot;</span>, ]
+<span class="kw">str</span>(nonSmokers)
+## &#39;data.frame&#39;:    151 obs. of  7 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...
+<span class="co"># Female Non-smoking tippers</span>
+femNonSmokers &lt;-<span class="st"> </span>tips[tips$smoker ==<span class="st"> &quot;No&quot;</span> &amp;<span class="st"> </span>tips$sex ==<span class="st"> &quot;Female&quot;</span>, ]
+<span class="kw">str</span>(femNonSmokers)
+## &#39;data.frame&#39;:    54 obs. of  7 variables:
+##  $ total_bill: num  17 24.6 35.3 14.8 10.3 ...
+##  $ tip       : num  1.01 3.61 5 3.02 1.67 3.5 2.75 2.23 3 3 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 2 2 2 2 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 4 4 2 3 3 2 2 2 2 ...
+<span class="co"># Male Non smoking tippers</span>
+malNonSmokers &lt;-<span class="st"> </span>tips[tips$smoker ==<span class="st"> &quot;No&quot;</span> &amp;<span class="st"> </span>tips$sex ==<span class="st"> &quot;Male&quot;</span>, ]
+<span class="kw">str</span>(malNonSmokers)
+## &#39;data.frame&#39;:    97 obs. of  7 variables:
+##  $ total_bill: num  10.34 21.01 23.68 25.29 8.77 ...
+##  $ tip       : num  1.66 3.5 3.31 4.71 2 3.12 1.96 3.23 1.71 1.57 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  3 3 2 4 2 4 2 2 2 2 ...
+<span class="co"># Tippers who smoked</span>
+smokers &lt;-<span class="st"> </span>tips[tips$smoker ==<span class="st"> &quot;Yes&quot;</span>, ]
+<span class="kw">str</span>(smokers)
+## &#39;data.frame&#39;:    93 obs. of  7 variables:
+##  $ total_bill: num  38 11.2 20.3 13.8 11 ...
+##  $ tip       : num  3 1.76 3.21 2 1.98 3.76 1 2.09 3.14 5 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 2 2 2 2 2 2 1 2 1 1 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  4 2 2 2 2 4 1 2 2 2 ...
+<span class="co"># Female tippers who smoked</span>
+femSmokers &lt;-<span class="st"> </span>tips[tips$smoker ==<span class="st"> &quot;Yes&quot;</span> &amp;<span class="st"> </span>tips$sex ==<span class="st"> &quot;Female&quot;</span>, ]
+<span class="kw">str</span>(femSmokers)
+## &#39;data.frame&#39;:    33 obs. of  7 variables:
+##  $ total_bill: num  3.07 26.86 25.28 5.75 16.32 ...
+##  $ tip       : num  1 3.14 5 1 4.3 2.5 3 2.5 3.48 4 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 2 2 2 1 1 1 1 2 2 2 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  1 2 2 2 2 2 2 3 2 2 ...
+<span class="co"># Male tippers who smoked</span>
+malSmokers &lt;-<span class="st"> </span>tips[tips$smoker ==<span class="st"> &quot;Yes&quot;</span> &amp;<span class="st"> </span>tips$sex ==<span class="st"> &quot;Male&quot;</span>, ]</code></pre></div>
+<p>To extract the first vector of a data frame simplified as a vector, double square brackets are appropriate.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subsetting first column (&quot;total bill&quot;)</span>
+<span class="kw">str</span>(tips[[<span class="dv">1</span>]])
+##  num [1:244] 17 10.3 21 23.7 24.6 ...
+<span class="co"># Same as</span>
+<span class="kw">str</span>(tips[, <span class="dv">1</span>])
+##  num [1:244] 17 10.3 21 23.7 24.6 ...</code></pre></div>
+<p>A function called “subset” can also be used, it is more efficient though it is based on the same notion as brackets and dollar sign.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Female tippers</span>
+fem &lt;-<span class="st"> </span><span class="kw">subset</span>(tips, sex ==<span class="st"> &quot;Female&quot;</span>)
+<span class="co"># Male tippers</span>
+mal &lt;-<span class="st"> </span><span class="kw">subset</span>(tips, sex ==<span class="st"> &quot;Male&quot;</span>)
+<span class="co"># Female tippers who smoked</span>
+fem.smoker &lt;-<span class="st"> </span><span class="kw">subset</span>(tips, smoker ==<span class="st"> &quot;Yes&quot;</span> &amp;<span class="st"> </span>sex ==<span class="st"> &quot;Female&quot;</span>)
+fem.nonsmoker &lt;-<span class="st"> </span><span class="kw">subset</span>(tips, smoker ==<span class="st"> &quot;No&quot;</span> &amp;<span class="st"> </span>sex ==<span class="st"> &quot;Female&quot;</span>)
+mal.smoker &lt;-<span class="st"> </span><span class="kw">subset</span>(tips, smoker ==<span class="st"> &quot;Yes&quot;</span> &amp;<span class="st"> </span>sex ==<span class="st"> &quot;Male&quot;</span>)
+mal.nonsmoker &lt;-<span class="st"> </span><span class="kw">subset</span>(tips, smoker ==<span class="st"> &quot;No&quot;</span> &amp;<span class="st"> </span>sex ==<span class="st"> &quot;Male&quot;</span>)
+<span class="co"># Number of female smokers and non-smokers</span>
+<span class="kw">nrow</span>(fem.smoker); <span class="kw">nrow</span>(fem.nonsmoker)
+## [1] 33
+## [1] 54
+<span class="co"># Number of male smokers and non-smokers</span>
+<span class="kw">nrow</span>(mal.smoker); <span class="kw">nrow</span>(mal.nonsmoker)
+## [1] 60
+## [1] 97</code></pre></div>
+</div>
+<div id="subsetting-a-list" class="section level3">
+<h3><span class="header-section-number">6.5.4</span> Subsetting a List</h3>
+<p>List are one dimensional vectors containing one or more type of object (not necessarily data objects). Contents of a list are referred to as elements. Subsetting elements of a list can involve either a single or double bracket, or a dollar sign.</p>
+<p>Key guiding issue in subsetting lists is whether to preserve original data structure or simply it, that is, return a subset as a list or in another simpler data structure (data frame, matrix, array or vector). To preserve data structure, single bracket is used, to simply double brackets or the dollar sign can be used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creating a list</span>
+subsetList &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Females =</span> fem, <span class="dt">Males =</span> mal, <span class="dt">FemaleSmokers =</span> fem.smoker, <span class="dt">MaleSmokers =</span> mal.smoker, <span class="dt">FemaleSmokers =</span> fem.nonsmoker, <span class="dt">MaleSmokers =</span> mal.nonsmoker)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subsetting first element </span>
+<span class="co">#-------------------------</span>
+<span class="co"># Returning a list (preserves data structure)</span>
+elementAsList &lt;-<span class="st"> </span>subsetList[<span class="dv">1</span>] 
+<span class="kw">class</span>(elementAsList)
+## [1] &quot;list&quot;
+<span class="co"># Returning a dataframe (simplifies data structure)</span>
+elementAsDf &lt;-<span class="st"> </span>subsetList[[<span class="dv">1</span>]] 
+<span class="kw">class</span>(elementAsDf)
+## [1] &quot;data.frame&quot;
+<span class="co"># $ is the same as using [[]]</span>
+elementAsDf2 &lt;-<span class="st"> </span>subsetList$Females 
+<span class="kw">class</span>(elementAsDf2)
+## [1] &quot;data.frame&quot;</code></pre></div>
+<p>Elements of lists can also be subset depending on the type of object returned after simplification.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First column of female tippers subset as a data frame (preserving)</span>
+subElementAsDf &lt;-<span class="st"> </span>subsetList[[<span class="dv">1</span>]][<span class="dv">2</span>]
+<span class="co"># First column of female tippers subset as a vector</span>
+subsetList[[<span class="dv">1</span>]][[<span class="dv">2</span>]] 
+##  [1] 1.01 3.61 5.00 3.02 1.67 3.50 2.75 2.23 3.00 3.00 2.45 3.07 2.60 5.20
+## [15] 1.50 2.47 1.00 3.00 3.14 5.00 2.20 1.83 5.17 1.00 4.30 3.25 2.50 3.00
+## [29] 2.50 3.48 4.08 4.00 1.00 4.00 3.50 1.50 1.80 2.92 1.68 2.52 4.20 2.00
+## [43] 2.00 2.83 1.50 2.00 3.25 1.25 2.00 2.00 2.75 3.50 5.00 2.30 1.50 1.36
+## [57] 1.63 5.14 3.75 2.61 2.00 3.00 1.61 2.00 4.00 3.50 3.50 4.19 5.00 2.00
+## [71] 2.01 2.00 2.50 3.23 2.23 2.50 6.50 1.10 3.09 3.48 3.00 2.50 2.00 2.88
+## [85] 4.67 2.00 3.00</code></pre></div>
+<p>For named lists, it is much easier to subset using names of the list and if the components are also named, then they can also be used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Female tippers who tipped above average</span>
+femTipsHigh &lt;-<span class="st"> </span>subsetList$Females[subsetList$Females$tip &gt;<span class="st"> </span><span class="kw">mean</span>(subsetList$Females$tip), ]
+<span class="co"># Male tippers who tipped above average</span>
+malTipsHigh &lt;-<span class="st"> </span>subsetList$Males[subsetList$Males$tip &gt;<span class="st"> </span><span class="kw">mean</span>(subsetList$Males$tip), ]
+
+<span class="co"># Comparison</span>
+<span class="kw">nrow</span>(femTipsHigh)/<span class="kw">nrow</span>(subsetList$Females) *<span class="st"> </span><span class="dv">100</span>
+## [1] 47.1264368
+<span class="kw">nrow</span>(malTipsHigh)/<span class="kw">nrow</span>(subsetList$Males)  *<span class="st"> </span><span class="dv">100</span>
+## [1] 40.7643312</code></pre></div>
+<p>There are two special cases of one dimensional objects we should discuss further, these are character and factor vectors.</p>
+</div>
+<div id="subsetting-character-vectors" class="section level3">
+<h3><span class="header-section-number">6.5.5</span> Subsetting character vectors</h3>
+<p>To subset words in a sentense or line, we need to extract the content of “stri_locate_all_words()” which comes in a form of a list.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">char
+## [1] &quot;This is chapter six&quot;
+
+<span class="co"># Extracting first (and only) element of the list </span>
+charMat &lt;-<span class="st"> </span><span class="kw">stri_locate_all_words</span>(char)[[<span class="dv">1</span>]]
+<span class="kw">cat</span>(<span class="st">&quot;Extracted element simplified to a&quot;</span>, <span class="kw">class</span>(charMat), <span class="st">&quot;by using double brackets.</span><span class="ch">\n</span><span class="st">&quot;</span>)
+## Extracted element simplified to a matrix by using double brackets.
+charMat
+##      start end
+## [1,]     1   4
+## [2,]     6   7
+## [3,]     9  15
+## [4,]    17  19
+
+<span class="co"># This vector extraction method would not extract a word or a letter </span>
+char[<span class="dv">1</span>]
+## [1] &quot;This is chapter six&quot;
+
+<span class="co"># Instead use stri_sub function from package stringi </span>
+<span class="co"># Extracting the word &quot;chapter&quot;</span>
+<span class="kw">stri_sub</span>(char, <span class="dt">from =</span> 9L, <span class="dt">to =</span> 15L)
+## [1] &quot;chapter&quot;
+<span class="co"># Extracting letter &quot;a&quot; in chapter</span>
+<span class="kw">stri_sub</span>(char, <span class="dv">11</span>, <span class="dt">length =</span> <span class="dv">1</span>)
+## [1] &quot;a&quot;</code></pre></div>
+</div>
+<div id="subsetting-factor-vectors" class="section level3">
+<h3><span class="header-section-number">6.5.6</span> Subsetting factor vectors</h3>
+<p>Factor vectors can be subset like any other atomic vector but with an option of returning all the levels or only the subset levels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># A factor vector</span>
+tipsDay &lt;-<span class="st"> </span>tips$day
+
+<span class="co"># Subsetting weekend (Saturday and Sunday) but mantaining original levels</span>
+weekend1 &lt;-<span class="st"> </span>tipsDay[tipsDay ==<span class="st"> &quot;Sat&quot;</span> |<span class="st"> </span>tipsDay ==<span class="st"> &quot;Sun&quot;</span>]
+<span class="kw">str</span>(weekend1)
+##  Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+<span class="co"># Subsetting weekdays but with only relevant levels</span>
+weekend2 &lt;-<span class="st"> </span>tipsDay[tipsDay ==<span class="st"> &quot;Sat&quot;</span> |<span class="st"> </span>tipsDay ==<span class="st"> &quot;Sun&quot;</span>, drop =<span class="st"> </span><span class="ot">TRUE</span>]
+<span class="kw">str</span>(weekend2)
+##  Factor w/ 2 levels &quot;Sat&quot;,&quot;Sun&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre></div>
+</div>
+</div>
+<div id="transformationmanipulation-of-datasets" class="section level2">
+<h2><span class="header-section-number">6.6</span> Transformation/Manipulation of datasets</h2>
+<p>Before undertaking any data transformation or manipulation, the first thing to do is save a copy of raw data set in one or more different locations. This will give a backup copy of the data file in case of unexpected data transformation or manipulation.</p>
+<p>One of the first thing to do with any data set is to inspect it’s quality, in particular you would be interested in assessing completeness (no missing data).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Short description of data</span>
+<span class="kw">str</span>(tips)
+## &#39;data.frame&#39;:    244 obs. of  7 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 NA 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...</code></pre></div>
+<p>To check for missing values, we will use a function that looks at each variable for missing data, this function is called “sapply”. Sapply is part of R’s looping functions (do repetitive tasks) and we shall discuss them in our next book “R - Beyond Essentials”. But for now we will used sapply() to produce a data frame with logical values TRUE for indices with missing data and FALSE for indices with values.</p>
+<p>From sapply’s output, we will further determine which variables have any missing values using the “which” function and lastly produce its name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">varMissing &lt;-<span class="st"> </span><span class="kw">names</span>(<span class="kw">which</span>(<span class="kw">sapply</span>(tips, function(x) <span class="kw">any</span>(<span class="kw">is.na</span>(x)))))
+<span class="kw">cat</span>(<span class="st">&quot;Variable&quot;</span>, <span class="kw">paste0</span>(<span class="st">&#39;&quot;&#39;</span>, varMissing, <span class="st">&#39;&quot;&#39;</span>), <span class="st">&quot;has some missing data</span><span class="ch">\n</span><span class="st">&quot;</span>)
+## Variable &quot;tip&quot; has some missing data</code></pre></div>
+<p>Let’s determine the magnitude of missing data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">numMissing &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">which</span>(<span class="kw">is.na</span>(tips$tip)))
+percMissing &lt;-<span class="st"> </span><span class="kw">round</span>(numMissing/<span class="kw">length</span>(tips$tip) *<span class="st"> </span><span class="dv">100</span>)
+<span class="kw">cat</span>(<span class="st">&quot;Missing data accounts for&quot;</span>, <span class="kw">paste0</span>(percMissing, <span class="st">&quot;%&quot;</span>))
+## Missing data accounts for 3%</code></pre></div>
+<p>To have a complete dataset, we will impute its average.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">averageTip &lt;-<span class="st"> </span><span class="kw">mean</span>(tips$tip, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+tips[<span class="kw">is.na</span>(tips$tip), <span class="st">&quot;tip&quot;</span>] &lt;-<span class="st"> </span>averageTip
+<span class="kw">str</span>(tips)
+## &#39;data.frame&#39;:    244 obs. of  7 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 3 3.31 3.61 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...
+
+<span class="co"># Confirm no missing data</span>
+<span class="kw">names</span>(<span class="kw">which</span>(<span class="kw">sapply</span>(tips, function(x) <span class="kw">any</span>(<span class="kw">is.na</span>(x)))))
+## character(0)</code></pre></div>
+<p>One other common pre-analyis activity is handling categorical data, for example grouping numerical data or changing value labels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Categorizing varable &quot;tip&quot; as above and below average </span>
+averageTip &lt;-<span class="st"> </span><span class="kw">mean</span>(tips$tip)
+tipsCat &lt;-<span class="st"> </span><span class="kw">cut</span>(<span class="dt">x =</span> tips$tip, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, averageTip, <span class="kw">max</span>(tips$tip)), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Below average&quot;</span>, <span class="st">&quot;Above average&quot;</span>))
+tipsCat[<span class="dv">1</span>:<span class="dv">5</span>]
+## [1] Below average Below average Below average Above average Above average
+## Levels: Below average Above average
+
+<span class="co"># Converting variable day to a binary vector (re-labeling)</span>
+tipsDay &lt;-<span class="st"> </span>tips$day
+<span class="kw">levels</span>(tipsDay)[<span class="dv">2</span>:<span class="dv">3</span>] &lt;-<span class="st"> &quot;Weekend&quot;</span>
+<span class="kw">levels</span>(tipsDay)[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] &lt;-<span class="st"> &quot;Weekday&quot;</span>
+<span class="kw">str</span>(tipsDay)
+##  Factor w/ 2 levels &quot;Weekday&quot;,&quot;Weekend&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre></div>
+<p>In some instances new variables can be created from computation of existing variables. Here we will create a variable which will compute tips as a percentage of total bill.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tipsPerc &lt;-<span class="st"> </span><span class="kw">round</span>(tips$tip/tips$total_bill *<span class="st"> </span><span class="dv">100</span>)
+<span class="kw">str</span>(tipsPerc)
+##  num [1:244] 6 16 14 14 15 19 23 12 13 22 ...</code></pre></div>
+<p>Variables can also be added to data frames.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Adding grouped, re-labeled and computed variables</span>
+tips$TipAverage &lt;-<span class="st"> </span>tipsCat
+tips$TypeofDay &lt;-<span class="st"> </span>tipsDay
+tips$TipPerc &lt;-<span class="st"> </span>tipsPerc
+<span class="kw">str</span>(tips)
+## &#39;data.frame&#39;:    244 obs. of  10 variables:
+##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
+##  $ tip       : num  1.01 1.66 3 3.31 3.61 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
+##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...
+##  $ TipAverage: Factor w/ 2 levels &quot;Below average&quot;,..: 1 1 1 2 2 2 1 2 1 2 ...
+##  $ TypeofDay : Factor w/ 2 levels &quot;Weekday&quot;,&quot;Weekend&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ TipPerc   : num  6 16 14 14 15 19 23 12 13 22 ...</code></pre></div>
+<p>Finally, it might be of interest to order a data frame according to some conditions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sort data frame according to percentage of tip to total bill</span>
+tips[<span class="kw">order</span>(tips$TipPerc, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), <span class="dv">5</span>:<span class="dv">10</span>]
+<span class="co"># Sort data frame according to percentage of tip to total bill and size of party</span>
+tips[<span class="kw">order</span>(tips$TipPerc, tips$size, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]</code></pre></div>
+<p id="gaugeYourself6">
+<b>Gauge yourself</b>
+</p>
+<p><strong>Do you have the expected tools and skills from this chapter?</strong></p>
+<ol style="list-style-type: decimal">
+<li>Can you mix numerical(integer) and character indices, explain with an example</li>
+<li>Is this a valid vector of indices for a one dimensional atomic vector; c(TRUE, FALSE, TRUE, NA, TRUE)</li>
+<li>What do you expect from 2i == 2; an error, an output with a warning, or a valid comparison, explain.</li>
+<li>Why does this “x == NA” produce “NA”, how else can you get missing values?</li>
+<li>What is your understanding of vectorization</li>
+<li>What is the difference between all and any functions.</li>
+<li>How is “&amp;” and “&amp;&amp;” different</li>
+<li>Why would this produce an error for a one dimensional atomic vector; x[1, 4, 5]</li>
+<li>What do you anticipate from subsetting a matrix with “$columnname” e.g. “USPersonalExpenditure$1940”</li>
+<li>Would this “iris[[1]]” output and error, a warning with results or simply its output. If the latter, what do you expect it to produce.</li>
+<li>How are “[]”, “[[]]” and “$” different when subsetting lists?</li>
+<li>How can you subset a word in a character vector</li>
+<li>For factor variables, after subsetting specific levels, how can you ensure you get only labels for subset levels.</li>
+<li>What function is ideal for small but comprehensive inspection of an object</li>
+<li>What function would you use to convert numerical values into factors</li>
+<li>How would you change the labels of a factor variable?</li>
+<li>Between sort() and order(), which is ideal for data frames.</li>
+</ol>
+<p><strong>You are ready for the seventh chapter if you know these</strong></p>
+<ol style="list-style-type: decimal">
+<li>Yes, you can mix numerical values and character indices for example “row1, 2” for row 1, second column.</li>
+<li>Yes, it is valid, the “NA” index will output “NA”</li>
+<li>Complex numbers can be compared to any data type, output will be a result of coercion on one to another. In this case 2 was coerced to complex.</li>
+<li>x == NA will output NA because any operation involving NA will always be NA (its simply a placeholder, nothing to compare with). Instead, “is.na()” is used.</li>
+<li>Vectorization involves vectors of length &gt; 1 and operations carried out elementwise.</li>
+<li>all() is used to determing if a logical vector has all its values as TRUE while any() checks for at least one TRUE value.</li>
+<li>“&amp;” is used for elementwise comparison while “&amp;&amp;” is used to compare only the first elements.</li>
+<li>x[1, 4, 5] will produce an error as x expects one index being a one dimensional vector. If intension is to get values at index 1, 4, and 5, then these indices have to be vectorized with the function “c”.</li>
+<li>Subsetting a matrix with a “$” sign is an error as matrices can only be subset with brackets (single and double brackets)</li>
+<li>“iris[[1]]” will result in an output with no warning as it will extract the first vector simplified as an unnamed one dimensional atomic vector.</li>
+<li>“[]” will always return a list, while “[[]]” and “$” will return a simplified data object which will be the same class as the element or content being extracted.</li>
+<li>Parts of a string are best extracted or replaced with functions from other packages like “stringi”</li>
+<li>To get labels of only the subset levels, set argument “drop” to TRUE.</li>
+<li>“str()” is a handy function for quick inspection of data object.</li>
+<li>A function called “cut” is suitable for converting numerical values to categorical .</li>
+<li>Function “levels”, is used to change the labels of a factor vector</li>
+<li>Order() is suitable for data frames while sort() is appropriate for one dimensional vectors.</li>
+</ol>
+</div>
+<div id="references-1" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="quick-reference-on-functions" class="section level3 unnumbered">
+<h3>Quick reference on functions</h3>
+<ol style="list-style-type: decimal">
+<li>?logic</li>
+<li>?all</li>
+<li>?any</li>
+<li>?which</li>
+<li>?“:”</li>
+<li>?USPersonalExpenditure</li>
+<li>?subset</li>
+<li>?cut</li>
+<li>?levels</li>
+</ol>
+</div>
+<div id="packages-to-read-further-on" class="section level3 unnumbered">
+<h3>Packages to read further on</h3>
+<ol style="list-style-type: decimal">
+<li>String processing package: help(package = “stringi”)</li>
+</ol>
+</div>
+<div id="r-manuals" class="section level3 unnumbered">
+<h3>R Manuals</h3>
+<div id="an-introduction-to-r-sections" class="section level4 unnumbered">
+<h4>An Introduction to R sections:</h4>
+<ul>
+<li>2.3 Generating Regular Sequence</li>
+<li>2.4 Logical vectors</li>
+<li>2.5 Missing values</li>
+<li>2.6 Character vectors</li>
+<li>2.7 Index vectors: selecting and modifying subset of a data set</li>
+<li>5.2 Array indexing, Subsetting of array</li>
+<li>5.3 Index matrices</li>
+</ul>
+</div>
+<div id="r-language-definition-section" class="section level4 unnumbered">
+<h4>R Language Definition section</h4>
+<ul>
+<li>3.4 Indexing</li>
+</ul>
+</div>
+<div id="r-faq-sections" class="section level4 unnumbered">
+<h4>R FAQ sections</h4>
+<ul>
+<li>7.1 How can I set components of a list to NULL</li>
+<li>7.10 How do I convert factors to numeric</li>
+<li>7.21 How can I turn a string into a variable</li>
+<li>7.23 How can I sort the rows of a data frame?</li>
+<li>7.37 Why do backslash behave strangely inside strings?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL with your page's canonical URL variable
+var disqus_developer = 1;
+//this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//introduction-to-data-analysis-and-graphics-using-r.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap7.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": true,
+"weibo": false,
+"instapper": true,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+"linkedin": true
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

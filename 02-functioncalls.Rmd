@@ -1,0 +1,134 @@
+---
+output: html_document
+---
+
+# Making Function Calls{#chap2}
+
+## Goal {-}
+  
+The main goal of this chapter is to equip you with necessary skills to make function calls in R.
+
+## What we shall cover {-}
+
+By the end of this chapter you should:
+
+* Be conversant with the term function and function call
+* Know what constitutes a function and a function call
+* Be conversant with arguments 
+* Distinguish between named and unnamed arguments
+* Know how R positions arguments in a call
+* Be able to know and change default values
+* Have an understanding of what top and low level functions are
+* Know what is meant by anonymous functions
+
+## Prerequisite {-}
+
+To appreciate this chapter,
+
+* you must have R and RStudio installed and running
+* know how to use the console
+* be conversant with RStudio panes like console, help and packages
+
+
+## R Functions
+
+A function is a command you give to a computer program; basically an action you what performed like getting the sum/total, mean or determine existence of a file in your computer. There is virtually nothing that happens in R without the use of a function, for example, if you want to get data into R, or clean it (data manipulation and transformation), or analyse it, or even export its output, you must use a function.
+
+Presence of parenthesis **( )** after some word like **sum( )**, **mean( )** or **file.exist( )** indicated a function and when it is used, it is referred to as **making a function call**. 
+
+Before we discuss function calls, let's take note of the two types of functions in R; these are in-built functions and user-defined functions. Built-in functions are those functions that come with "base R" like sum, mean and file.exist. User-defined functions are those functions we develop, some of these functions are bundles into packages and shared through various R repositories like CRAN and Bioconductor. 
+
+In this chapter we will discuss in-built functions that come with base R in form of [(default) packages](#packages) and contributed user defined functions. Contributed user defined functions are functions shared as packages. User defined functions we develop will be discussed at length in our follow-up book "R- Beyond Essentials". 
+
+## Making Function Calls
+
+As noted, making a function call means using a function to perform an action. Making a good function call requires knowledge of a function's name and it's arguments. 
+ 
+Let's discuss function names and arguments.
+
+### A functions name
+
+Most functions in R are named after the actions they should perform, for example mean, median, sum, exit, ncol (number of columns), and nrow (number of rows). 
+
+However, there are numerous other functions that don't follow this kind of logic for example the function "mode". As R is a statistical program at heart, you would expect "mode" to mean the most frequently occurring observation (one measure of central tendency), however, this is not the case as mode in R gives the internal type of an object ([chapter four](#mode) ).  
+
+With this exception, it means it would not be possible to determine what an R's functions can do by it's name. It is also important to note that base R has numerous functions (not counting functions from contributed packages) and it might not be possible to know all these functions. Reading reference might help to discover some of R's functions, but it is not until we start using (calling) they that they become familiar and thus easy to recall. I can tell you for sure, as a novice in R programming nothing beats **practice**; only when we dedicate time to learn more by actually applying some functions do we become knowledgeable on R's function. Practice stems from reading help documentations (which we discuss below), **reading R manuals** and venturing into the wide world web through **online tutorials**, **discussions** and **Q and A sites**.
+
+In our follow-up book we will discuss unnamed functions called **anonymous functions**. These functions are mostly used to create quick, short and disposable (used for some specific purpose then discarded) functions. .
+
+Now let's discuss an important component in making function calls; a functions arguments. 
+
+### Arguments{#arguments}
+
+Arguments are inputs to a function used to specify how a function will carry out it's operation. They come in the form of "name-value" pair and are encased in parenthesis.
+
+All base R functions have help documentation which discusses how a function is called (name and arguments). To pull up help documentation for any function, a question mark followed by function name can be used or using "help" functions.
+
+For example, we can pull-up help documentation of "mean" function.
+
+```{r, eval=FALSE}
+?mean
+help("mean")
+```
+
+A help documentation contains name of the function as well as package it is from (first line on the left-hand side), short description of the function, how function should be called (usage), definition of arguments, expected output (value), references, some suggested reading and examples.
+
+It is important to look at the usage and arguments section to know how a function should be called in terms of inputs/arguments and what these arguments mean as well as their expected values. Usage section can provide more that one way to make a function call, it is up to us to identify the most applicable way to make a function call.
+
+For instance, for the mean function there are two ways to make a call, the first is `mean(x, ...)` and the second is `mean(x, trim = 0, na.rm = FALSE, ...)` which is an "s3 method. 
+
+In essence these two functions work in the same way, the difference is that "s3 method" has explicitly indicated two arguments "trim" and " na.rm". s3 stems from a programming concept of Object Oriented Programming(OOP) which means the first argument "x" must be an "s3" object. Since we have not discussed how to create variables/vectors or objects in R or OOP, let's just say most of the objects used to call mean (data) will be "s3" objects and therefore we can use the second way to make a function call. In other help documentation, usage section list a collection of functions each with a different name but with similar arguments like "grep". The important point here is to use correct function depending on inputs (argument) required and output expected (value section).
+
+When reading "Arguments" sections, there are three things we must take note of, these are; expected value(s), default values, and positional matching.
+
+There are a few base R functions without arguments (do not need any input), but for those that have arguments, all their values **must** be specified; names are optional. What do we mean here, recall we have said arguments come in the form of "value-pair" like "trim = 0" where trim is an argument name and 0 is it's value. It is possible to give values without names and R will understand, by understand we mean R will position match each given value with argument names on the call. For example, we can call mean with `mean(data, 0.25, TRUE)`, in this case R will match value "data" to "x", "0" to "trim" and "TRUE" to "na.rm". If this values were given in any other order, there are great chances of receiving an error or a warning. Hence, making function calls with values only has potential challenges which does not happen when calls are made with both name and value. Making a function call like this `mean(trim = 0.25, x = data, na.rm = TRUE)` is fine and less likely to generate an error or a warning, however, it a bad practice as far as readability (especially when you want to share code) is concerned. When a function call is made with argument names, then we say function call was made with "named arguments", if it was called with values only, then we say function was called with "unnamed arguments".
+
+All argument have a defined expected input, this definition is provided in the "Arguments" section. For example R expects "x" in the mean function to an "R object" and specifically a numeric/logical vector, date, date-time, or a "time interval" object. Anything other than these is bound to raise an error.
+
+Some arguments have default values, these values are the most common input given to those argument, they are meant to make efficient function calls. Example is "trim" and "na.rm" arguments in mean function, they have default values of "0" and "FALSE" respectively. When default values are provided and they are what we expect to give as values to those arguments, then it is not necessary to include them in the function call. This means we can call mean function with only value for "x" argument. Default values can be changes to suite particular computation for example, if we had data with missing data (NA), then we would want to change "na.rm" default of "FALSE" to "TRUE". 
+
+Overall, mean function has a short and straightforward list of arguments, but others might have several of arguments. For example, `read.table` function used to import data into R. This function has more than 20 listed arguments, but most arguments have default value. In most cases these default would suffice, but it is prudent to read through description of all the arguments to confirm defaults given are okay, this can pre-empt a lot of challenges (errors and warnings) faced when making function calls as well as output received.
+
+If you know a function's name but not it's arguments, function `arg` can be used.  
+
+
+```{r}
+# Mean arguments
+args(mean)
+
+# Read.table arguments
+args(read.table)
+```
+
+### Different Function levels{#functionLevels}
+
+Most R functions can be categorized as either `top level` or `low level` function. Top level functions are most of the functions we call, this include mean, plot, read.table, str and ls. Low level function are functions called by other functions, like "plot.window" or "xy.coord" functions called by plot functions. We usually do not need to call low level functions except for specific occasions. A lot of base R functions we use (high level) have lower level functions written in "C" language.
+
+This form of categorization of functions in R builds a hierarchical structure where low level functions are at the bottom and high level functions at the top. During a function call, there would be a stack of calls made from high level to low level functions. Sometimes an error can occur at a low level function thereby error message will indicate the low level function that caused the error. If stack of calls made is not known, then deciphering these kind of errors can be quite challenging. In [chapter eight](#chap8) when we discuss plotting in R, we shall see how to address these kind is issues.
+
+In our next book: R - Beyond Essentials, we will learn how to develop **user defined functions** and discuss functions in terms of arguments, body and environment. This one of R's biggest advantages; extensibility.
+
+
+<p id="gaugeYourself2"><b>Gauge yourself</b></p>
+
+1. What are functions?
+1. How can you tell an object is a function?
+1. What is meant by a function call?
+1. What constitutes a function call?
+1. What are arguments? 
+1. Distinguish between named and unnamed arguments
+1. What do you expect would happen if I made a function call with all the necessary argument but only the second argument is named and distort the position of the other arguments?
+
+**You are ready for the third chapter if you know these**
+
+1. Functions are commands issued for an action to be performed
+1. In R an object name followed by parenthesis indicates a function
+1. A function call occurs when a function is used or run
+1. A function call constitutes a name of a function and it's arguments
+1. Arguments give details or input for function execution
+1. A function call with arguments and their values are referred to as named arguments while a call with values only is referred to as unnamed arguments.
+1. Since all the arguments are provided, then you will not receive an error, however, due to distortion of position, if the value given does not meet the expected value, a warning will be issued and output generated will be questionable.
+
+**Note**
+
+This write-up has used non programming definition as much as possible with the intent of being useful to non-programmers and imparting concepts and skills necessary for analysis.

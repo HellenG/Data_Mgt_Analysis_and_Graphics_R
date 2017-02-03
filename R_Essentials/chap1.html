@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Essentials</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Essentials" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  <meta name="github-repo" content="HellenG/Data_Mgt_Analysis_and_Graphics_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Essentials" />
+  
+  <meta name="twitter:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  
+
+<meta name="author" content="Hellen Gakuruh">
+
+
+<meta name="date" content="2017-01-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="chap2.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Essentials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a><ul>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#goal"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#what-we-shall-cover"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="1.1" data-path="chap1.html"><a href="chap1.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="chap1.html"><a href="chap1.html#defining-r-and-tracing-its-history"><i class="fa fa-check"></i><b>1.1.1</b> Defining R and tracing it’s history</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap1.html"><a href="chap1.html#downloading-and-installation-of-base-r"><i class="fa fa-check"></i><b>1.1.2</b> Downloading and Installation of Base R</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap1.html"><a href="chap1.html#tour-of-base-r"><i class="fa fa-check"></i><b>1.1.3</b> Tour of base R</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap1.html"><a href="chap1.html#RConsole"><i class="fa fa-check"></i><b>1.1.4</b> Base R’s console</a></li>
+<li class="chapter" data-level="1.1.5" data-path="chap1.html"><a href="chap1.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>1.1.5</b> Errors, Warnings and messages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap1.html"><a href="chap1.html#RStudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="chap1.html"><a href="chap1.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Downloading and Installing RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap1.html"><a href="chap1.html#getting-to-know-rstudio-layout"><i class="fa fa-check"></i><b>1.2.2</b> Getting to know RStudio layout</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap1.html"><a href="chap1.html#RStudioConsole"><i class="fa fa-check"></i><b>1.2.3</b> Working with RStudio’s console</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap1.html"><a href="chap1.html#packages"><i class="fa fa-check"></i><b>1.3</b> Installing and Loading Packages</a></li>
+<li class="chapter" data-level="1.4" data-path="chap1.html"><a href="chap1.html#workingDirectory"><i class="fa fa-check"></i><b>1.4</b> Working directory</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chap1.html"><a href="chap1.html#RScripting"><i class="fa fa-check"></i><b>1.4.1</b> Introduction to scripting (reproducible analysis)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#goal-1"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#what-we-shall-cover-1"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#prerequisite"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="2.1" data-path="chap2.html"><a href="chap2.html#r-functions"><i class="fa fa-check"></i><b>2.1</b> R Functions</a></li>
+<li class="chapter" data-level="2.2" data-path="chap2.html"><a href="chap2.html#making-function-calls"><i class="fa fa-check"></i><b>2.2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap2.html"><a href="chap2.html#a-functions-name"><i class="fa fa-check"></i><b>2.2.1</b> A functions name</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap2.html"><a href="chap2.html#arguments"><i class="fa fa-check"></i><b>2.2.2</b> Arguments</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap2.html"><a href="chap2.html#functionLevels"><i class="fa fa-check"></i><b>2.2.3</b> Different Function levels</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap3.html"><a href="chap3.html"><i class="fa fa-check"></i><b>3</b> Introduction to Version Control Systems</a><ul>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#preliquisite"><i class="fa fa-check"></i>Preliquisite</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#chapter-expectation"><i class="fa fa-check"></i>Chapter Expectation</a></li>
+<li class="chapter" data-level="3.1" data-path="chap3.html"><a href="chap3.html#whatvcsis"><i class="fa fa-check"></i><b>3.1</b> Introduction: What and Why Version Control System</a></li>
+<li class="chapter" data-level="3.2" data-path="chap3.html"><a href="chap3.html#introgit"><i class="fa fa-check"></i><b>3.2</b> Introduction to Git</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap3.html"><a href="chap3.html#what-is-git"><i class="fa fa-check"></i><b>3.2.1</b> What is Git?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap3.html"><a href="chap3.html#how-does-git-work"><i class="fa fa-check"></i><b>3.2.2</b> How does Git work?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap3.html"><a href="chap3.html#working-with-git"><i class="fa fa-check"></i><b>3.2.3</b> Working with Git</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap3.html"><a href="chap3.html#collaborating-with-other-r-programmersdevelopers"><i class="fa fa-check"></i><b>3.3</b> Collaborating with other R programmers/developers</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap3.html"><a href="chap3.html#working-with-remote-repositories-gitgub"><i class="fa fa-check"></i><b>3.3.1</b> Working with remote repositories: GitGub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap3.html"><a href="chap3.html#using-git-and-github-in-rstudio"><i class="fa fa-check"></i><b>3.4</b> Using Git and GitHub in RStudio</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Data Types and Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#session-goal"><i class="fa fa-check"></i>Session Goal</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#what-we-shall-cover-2"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#prerequisite-1"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="4.1" data-path="chap4.html"><a href="chap4.html#dataTypes"><i class="fa fa-check"></i><b>4.1</b> Data Types</a></li>
+<li class="chapter" data-level="4.2" data-path="chap4.html"><a href="chap4.html#vectors"><i class="fa fa-check"></i><b>4.2</b> Vectors</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="chap4.html"><a href="chap4.html#creating-vectors"><i class="fa fa-check"></i><b>4.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap4.html"><a href="chap4.html#namingObjects"><i class="fa fa-check"></i><b>4.2.2</b> Naming objects</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap4.html"><a href="chap4.html#properties-of-data-objects-vector"><i class="fa fa-check"></i><b>4.3</b> Properties of data objects (vector)</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap4.html"><a href="chap4.html#typeof"><i class="fa fa-check"></i><b>4.3.1</b> Type of a vector</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap4.html"><a href="chap4.html#attributes"><i class="fa fa-check"></i><b>4.3.2</b> Attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap5.html"><a href="chap5.html"><i class="fa fa-check"></i><b>5</b> Importing and Exporting Data</a><ul>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#chapter-goal"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#what-we-shall-cover-3"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="5.1" data-path="chap5.html"><a href="chap5.html#importing-data-into-r"><i class="fa fa-check"></i><b>5.1</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="chap5.html"><a href="chap5.html#using-gui-for-delimited-files"><i class="fa fa-check"></i><b>5.1.1</b> Using GUI for delimited files</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap5.html"><a href="chap5.html#using-command-line"><i class="fa fa-check"></i><b>5.1.2</b> Using command line</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap5.html"><a href="chap5.html#importing-challenges"><i class="fa fa-check"></i><b>5.2</b> Importing Challenges</a></li>
+<li class="chapter" data-level="5.3" data-path="chap5.html"><a href="chap5.html#exporting-data"><i class="fa fa-check"></i><b>5.3</b> Exporting Data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap5.html"><a href="chap5.html#base-r-and-utils-exporting-functions"><i class="fa fa-check"></i><b>5.3.1</b> Base R and Utils exporting functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap5.html"><a href="chap5.html#exporting-with-other-packages"><i class="fa fa-check"></i><b>5.3.2</b> Exporting with other packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap5.html"><a href="chap5.html#taking-a-glimpse"><i class="fa fa-check"></i><b>5.4</b> Taking a Glimpse</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap6.html"><a href="chap6.html"><i class="fa fa-check"></i><b>6</b> Transforming Manipulating Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#chapter-goal-1"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#what-we-shall-cover-4"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="6.1" data-path="chap6.html"><a href="chap6.html#prerequisite-2"><i class="fa fa-check"></i><b>6.1</b> Prerequisite</a></li>
+<li class="chapter" data-level="6.2" data-path="chap6.html"><a href="chap6.html#indexing"><i class="fa fa-check"></i><b>6.2</b> Indexing different data objects in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="chap6.html"><a href="chap6.html#indexing-one-dimensional-objects"><i class="fa fa-check"></i><b>6.2.1</b> Indexing one dimensional objects</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap6.html"><a href="chap6.html#indexing-two-dimensional-vectors"><i class="fa fa-check"></i><b>6.2.2</b> Indexing two dimensional vectors</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap6.html"><a href="chap6.html#atomichomogenous-vectors-with-more-than-2-dimensions-2d"><i class="fa fa-check"></i><b>6.2.3</b> Atomic/Homogenous vectors with more than 2 dimensions (&gt;2d)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap6.html"><a href="chap6.html#binary-and-vectorisation-operators"><i class="fa fa-check"></i><b>6.3</b> Binary and vectorisation Operators</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="chap6.html"><a href="chap6.html#compOps"><i class="fa fa-check"></i><b>6.3.1</b> Comparison Operators</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap6.html"><a href="chap6.html#logical-operators"><i class="fa fa-check"></i><b>6.3.2</b> Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap6.html"><a href="chap6.html#checking-conditions"><i class="fa fa-check"></i><b>6.4</b> Checking conditions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="chap6.html"><a href="chap6.html#all-function"><i class="fa fa-check"></i><b>6.4.1</b> “All” function</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap6.html"><a href="chap6.html#any-function"><i class="fa fa-check"></i><b>6.4.2</b> “Any” function</a></li>
+<li class="chapter" data-level="6.4.3" data-path="chap6.html"><a href="chap6.html#which-function"><i class="fa fa-check"></i><b>6.4.3</b> “Which” function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap6.html"><a href="chap6.html#subsetting"><i class="fa fa-check"></i><b>6.5</b> Subsetting Data Objects</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap6.html"><a href="chap6.html#subsetting-one-dimensional-atomic-vectors"><i class="fa fa-check"></i><b>6.5.1</b> Subsetting one dimensional atomic vectors</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap6.html"><a href="chap6.html#subsetting-a-matrix"><i class="fa fa-check"></i><b>6.5.2</b> Subsetting a Matrix</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap6.html"><a href="chap6.html#subsetting-a-dataframe"><i class="fa fa-check"></i><b>6.5.3</b> Subsetting a dataframe</a></li>
+<li class="chapter" data-level="6.5.4" data-path="chap6.html"><a href="chap6.html#subsetting-a-list"><i class="fa fa-check"></i><b>6.5.4</b> Subsetting a List</a></li>
+<li class="chapter" data-level="6.5.5" data-path="chap6.html"><a href="chap6.html#subsetting-character-vectors"><i class="fa fa-check"></i><b>6.5.5</b> Subsetting character vectors</a></li>
+<li class="chapter" data-level="6.5.6" data-path="chap6.html"><a href="chap6.html#subsetting-factor-vectors"><i class="fa fa-check"></i><b>6.5.6</b> Subsetting factor vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap6.html"><a href="chap6.html#transformationmanipulation-of-datasets"><i class="fa fa-check"></i><b>6.6</b> Transformation/Manipulation of datasets</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#references-1"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#quick-reference-on-functions"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#packages-to-read-further-on"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#r-manuals"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap7.html"><a href="chap7.html"><i class="fa fa-check"></i><b>7</b> Working with Dates and Time</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#goal-2"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#what-we-shall-cover-5"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#prerequisite-3"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="7.1" data-path="chap7.html"><a href="chap7.html#recognising-date-time-objects-in-r"><i class="fa fa-check"></i><b>7.1</b> Recognising date-time objects in R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap7.html"><a href="chap7.html#current-date"><i class="fa fa-check"></i><b>7.1.1</b> Current date</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap7.html"><a href="chap7.html#current-time"><i class="fa fa-check"></i><b>7.1.2</b> Current Time</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap7.html"><a href="chap7.html#creating-date-time-objects-in-base-r"><i class="fa fa-check"></i><b>7.2</b> Creating date-time objects in base R</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap7.html"><a href="chap7.html#posix"><i class="fa fa-check"></i><b>7.2.1</b> POSIX</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap7.html"><a href="chap7.html#creating-posixct-objects"><i class="fa fa-check"></i><b>7.2.2</b> Creating POSIXct objects</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap7.html"><a href="chap7.html#creating-posixlt-objects"><i class="fa fa-check"></i><b>7.2.3</b> Creating POSIXlt Objects</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap7.html"><a href="chap7.html#creating-date-time-object-using-strptime"><i class="fa fa-check"></i><b>7.2.4</b> Creating date-time Object using “strptime()”</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chap7.html"><a href="chap7.html#converting-numeric-data-to-date-and-time-object"><i class="fa fa-check"></i><b>7.2.5</b> Converting numeric data to date and time object</a></li>
+<li class="chapter" data-level="7.2.6" data-path="chap7.html"><a href="chap7.html#creating-date-and-time-factor-vectors"><i class="fa fa-check"></i><b>7.2.6</b> Creating date and time factor vectors</a></li>
+<li class="chapter" data-level="7.2.7" data-path="chap7.html"><a href="chap7.html#creating-date-objects"><i class="fa fa-check"></i><b>7.2.7</b> Creating Date objects</a></li>
+<li class="chapter" data-level="7.2.8" data-path="chap7.html"><a href="chap7.html#computationDateTime"><i class="fa fa-check"></i><b>7.2.8</b> Computation with date and time objects</a></li>
+<li class="chapter" data-level="7.2.9" data-path="chap7.html"><a href="chap7.html#extracting-parts-of-a-date-time-object"><i class="fa fa-check"></i><b>7.2.9</b> Extracting parts of a date-time object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#references-2"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#quick-reference-on-functions-1"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#other-packages-on-date-and-time"><i class="fa fa-check"></i>Other Packages on date and time</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap8.html"><a href="chap8.html"><i class="fa fa-check"></i><b>8</b> Plotting in Base R</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#goal-3"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#what-we-shall-cover-6"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#prerequisite-4"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="8.1" data-path="chap8.html"><a href="chap8.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="chap8.html"><a href="chap8.html#understanding-base-r-plotting-function"><i class="fa fa-check"></i><b>8.2</b> Understanding base R plotting function</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="chap8.html"><a href="chap8.html#some-outputs-of-plot"><i class="fa fa-check"></i><b>8.2.1</b> Some outputs of plot()</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap8.html"><a href="chap8.html#functionDefinition"><i class="fa fa-check"></i><b>8.2.2</b> plot() Internals</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap8.html"><a href="chap8.html#step-one-opening-new-window"><i class="fa fa-check"></i><b>8.2.3</b> Step one: Opening new window</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap8.html"><a href="chap8.html#step-two-setting-plotting-coordinates"><i class="fa fa-check"></i><b>8.2.4</b> Step two: Setting plotting coordinates</a></li>
+<li class="chapter" data-level="8.2.5" data-path="chap8.html"><a href="chap8.html#step-three-evaluate-and-execute-pre-post-functions"><i class="fa fa-check"></i><b>8.2.5</b> Step three: Evaluate and execute pre-post functions</a></li>
+<li class="chapter" data-level="8.2.6" data-path="chap8.html"><a href="chap8.html#step-four-plotting"><i class="fa fa-check"></i><b>8.2.6</b> Step four: Plotting</a></li>
+<li class="chapter" data-level="8.2.7" data-path="chap8.html"><a href="chap8.html#step-five-evaluation-of-post-plot-and-pre-axis-expressions"><i class="fa fa-check"></i><b>8.2.7</b> Step five: Evaluation of post-plot and pre-axis expressions</a></li>
+<li class="chapter" data-level="8.2.8" data-path="chap8.html"><a href="chap8.html#step-six-construct-axis"><i class="fa fa-check"></i><b>8.2.8</b> Step six: Construct Axis</a></li>
+<li class="chapter" data-level="8.2.9" data-path="chap8.html"><a href="chap8.html#step-seven-ploting-frame"><i class="fa fa-check"></i><b>8.2.9</b> Step Seven: Ploting frame</a></li>
+<li class="chapter" data-level="8.2.10" data-path="chap8.html"><a href="chap8.html#step-eight-annotation"><i class="fa fa-check"></i><b>8.2.10</b> Step Eight: Annotation</a></li>
+<li class="chapter" data-level="8.2.11" data-path="chap8.html"><a href="chap8.html#summary-final-output"><i class="fa fa-check"></i><b>8.2.11</b> Summary: Final output</a></li>
+<li class="chapter" data-level="8.2.12" data-path="chap8.html"><a href="chap8.html#commentedDefinition"><i class="fa fa-check"></i><b>8.2.12</b> A commented basic plot definition</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap8.html"><a href="chap8.html#par"><i class="fa fa-check"></i><b>8.3</b> Graphical Parameters and Annotating Base R Plots</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="chap8.html"><a href="chap8.html#querying-saving-and-resetting-graphical-parameters"><i class="fa fa-check"></i><b>8.3.1</b> Querying, saving and resetting graphical parameters</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chap8.html"><a href="chap8.html#settingchanging-graphical-parameters"><i class="fa fa-check"></i><b>8.3.2</b> Setting/Changing graphical parameters</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chap8.html"><a href="chap8.html#implementing-some-graphical-parameters-and-annotation"><i class="fa fa-check"></i><b>8.3.3</b> Implementing some graphical parameters and annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chap8.html"><a href="chap8.html#plotting-characters-pch"><i class="fa fa-check"></i><b>8.4</b> Plotting characters (pch)</a></li>
+<li class="chapter" data-level="8.5" data-path="chap8.html"><a href="chap8.html#plotTypes"><i class="fa fa-check"></i><b>8.5</b> Plot types</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="chap8.html"><a href="chap8.html#annotating-plots-with-lines"><i class="fa fa-check"></i><b>8.5.1</b> Annotating plots with lines</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="chap8.html"><a href="chap8.html#generating-and-annotating-mathematical-plots"><i class="fa fa-check"></i><b>8.6</b> Generating and Annotating Mathematical Plots</a></li>
+<li class="chapter" data-level="8.7" data-path="chap8.html"><a href="chap8.html#other-base-r-plots"><i class="fa fa-check"></i><b>8.7</b> Other Base R Plots</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="chap8.html"><a href="chap8.html#histDensityPlots"><i class="fa fa-check"></i><b>8.7.1</b> Histogram and Density plots</a></li>
+<li class="chapter" data-level="8.7.2" data-path="chap8.html"><a href="chap8.html#box-box-and-whisker-plots"><i class="fa fa-check"></i><b>8.7.2</b> Box (box-and-whisker) plots</a></li>
+<li class="chapter" data-level="8.7.3" data-path="chap8.html"><a href="chap8.html#strip-chartsdot-plots"><i class="fa fa-check"></i><b>8.7.3</b> Strip Charts/Dot Plots</a></li>
+<li class="chapter" data-level="8.7.4" data-path="chap8.html"><a href="chap8.html#conditional-plots-coplot"><i class="fa fa-check"></i><b>8.7.4</b> Conditional Plots (Coplot)</a></li>
+<li class="chapter" data-level="8.7.5" data-path="chap8.html"><a href="chap8.html#stem-and-leaf-plot"><i class="fa fa-check"></i><b>8.7.5</b> Stem and Leaf plot</a></li>
+<li class="chapter" data-level="8.7.6" data-path="chap8.html"><a href="chap8.html#bar-graphs-and-pie-chart"><i class="fa fa-check"></i><b>8.7.6</b> Bar graphs and pie chart</a></li>
+<li class="chapter" data-level="8.7.7" data-path="chap8.html"><a href="chap8.html#mosaic"><i class="fa fa-check"></i><b>8.7.7</b> Mosaic</a></li>
+<li class="chapter" data-level="8.7.8" data-path="chap8.html"><a href="chap8.html#fourfold-plots"><i class="fa fa-check"></i><b>8.7.8</b> Fourfold Plots</a></li>
+<li class="chapter" data-level="8.7.9" data-path="chap8.html"><a href="chap8.html#sunflower-plots"><i class="fa fa-check"></i><b>8.7.9</b> Sunflower plots</a></li>
+<li class="chapter" data-level="8.7.10" data-path="chap8.html"><a href="chap8.html#time-series-plots-line"><i class="fa fa-check"></i><b>8.7.10</b> Time series plots (line)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="chap8.html"><a href="chap8.html#colours"><i class="fa fa-check"></i><b>8.8</b> Colors</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="chap8.html"><a href="chap8.html#expected-values-for-color-based-arguments"><i class="fa fa-check"></i><b>8.8.1</b> Expected values for color-based arguments</a></li>
+<li class="chapter" data-level="8.8.2" data-path="chap8.html"><a href="chap8.html#defining-a-new-palette"><i class="fa fa-check"></i><b>8.8.2</b> Defining a new palette</a></li>
+<li class="chapter" data-level="8.8.3" data-path="chap8.html"><a href="chap8.html#palettes-makers"><i class="fa fa-check"></i><b>8.8.3</b> Palettes makers</a></li>
+<li class="chapter" data-level="8.8.4" data-path="chap8.html"><a href="chap8.html#creating-palettes-by-interpolation-colors"><i class="fa fa-check"></i><b>8.8.4</b> Creating palettes by interpolation colors</a></li>
+<li class="chapter" data-level="8.8.5" data-path="chap8.html"><a href="chap8.html#color-models-and-spaces"><i class="fa fa-check"></i><b>8.8.5</b> Color Models and Spaces</a></li>
+<li class="chapter" data-level="8.8.6" data-path="chap8.html"><a href="chap8.html#creating-new-colours"><i class="fa fa-check"></i><b>8.8.6</b> Creating New Colours</a></li>
+<li class="chapter" data-level="8.8.7" data-path="chap8.html"><a href="chap8.html#color-adjustment"><i class="fa fa-check"></i><b>8.8.7</b> Color adjustment</a></li>
+<li class="chapter" data-level="8.8.8" data-path="chap8.html"><a href="chap8.html#colorConversion"><i class="fa fa-check"></i><b>8.8.8</b> Color conversion and Transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="chap8.html"><a href="chap8.html#other-plotting-and-color-palette-packages"><i class="fa fa-check"></i><b>8.9</b> Other Plotting and Color Palette Packages</a></li>
+<li class="chapter" data-level="8.10" data-path="chap8.html"><a href="chap8.html#graphicalDevices"><i class="fa fa-check"></i><b>8.10</b> Graphical Devices</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#references-3"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#quick-reference-on-functions-2"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#packages-to-read-further-on-1"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#r-manuals-1"><i class="fa fa-check"></i>R Manuals</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#basics-of-plotting-in-r"><i class="fa fa-check"></i>Basics of plotting in R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#calling-and-changing-graphical-parameters"><i class="fa fa-check"></i>Calling and changing graphical parameters</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#annotating-plots"><i class="fa fa-check"></i>Annotating plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#producing-different-base-r-plots"><i class="fa fa-check"></i>Producing different base R plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#using-and-creating-colors-in-base-r"><i class="fa fa-check"></i>Using and creating colors in base R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#rs-graphical-devices"><i class="fa fa-check"></i>R’s graphical devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap9.html"><a href="chap9.html"><i class="fa fa-check"></i><b>9</b> Where and How to Get Help</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#goal-4"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#what-we-shall-cover-7"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#prerequisite-5"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="9.1" data-path="chap9.html"><a href="chap9.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap9.html"><a href="chap9.html#problem-identification"><i class="fa fa-check"></i><b>9.2</b> Problem Identification</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap1.html"><a href="chap1.html#errors"><i class="fa fa-check"></i><b>9.2.1</b> Errors</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap9.html"><a href="chap9.html#warning-messages"><i class="fa fa-check"></i><b>9.2.2</b> Warning Messages</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap9.html"><a href="chap9.html#unexpected-output"><i class="fa fa-check"></i><b>9.2.3</b> Unexpected Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap9.html"><a href="chap9.html#problemSolving"><i class="fa fa-check"></i><b>9.3</b> Solving (defined) coding problems</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-unknown"><i class="fa fa-check"></i><b>9.3.1</b> Problems where functions are unknown</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-known"><i class="fa fa-check"></i><b>9.3.2</b> Problems where functions are known</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap9.html"><a href="chap9.html#where-to-get-help"><i class="fa fa-check"></i><b>9.4</b> Where to get help</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap9.html"><a href="chap9.html#knowledge-and-skills"><i class="fa fa-check"></i><b>9.4.1</b> Knowledge and Skills</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap9.html"><a href="chap9.html#rs-documentations-internal-sources"><i class="fa fa-check"></i><b>9.4.2</b> R’s Documentations (Internal sources)</a></li>
+<li class="chapter" data-level="9.4.3" data-path="chap9.html"><a href="chap9.html#externalSources"><i class="fa fa-check"></i><b>9.4.3</b> External sources of help</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chap9.html"><a href="chap9.html#example-problem-statistical-mode"><i class="fa fa-check"></i><b>9.5</b> Example problem: Statistical mode</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#references-4"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#quick-reference-on-functions-3"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#r-manuals-3"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap10.html"><a href="chap10.html"><i class="fa fa-check"></i><b>10</b> Case Studies</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#goal-5"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#prerequisite-6"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="10.1" data-path="chap10.html"><a href="chap10.html#case-study-one--importing-online-data"><i class="fa fa-check"></i><b>10.1</b> Case Study One:- Importing online data</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="chap10.html"><a href="chap10.html#task"><i class="fa fa-check"></i><b>10.1.1</b> Task</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chap10.html"><a href="chap10.html#what-we-shall-cover-8"><i class="fa fa-check"></i><b>10.1.2</b> What we shall cover</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chap10.html"><a href="chap10.html#background-and-data"><i class="fa fa-check"></i><b>10.1.3</b> Background and Data</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chap10.html"><a href="chap10.html#web-scraping"><i class="fa fa-check"></i><b>10.1.4</b> Web scraping</a></li>
+<li class="chapter" data-level="10.1.5" data-path="chap10.html"><a href="chap10.html#html-documents"><i class="fa fa-check"></i><b>10.1.5</b> HTML Document’s</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#references-5"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#online-web-sites"><i class="fa fa-check"></i>Online web sites</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>A</b> Downloading and Installing R</a><ul>
+<li class="chapter" data-level="A.1" data-path="r.html"><a href="r.html#downloading-r"><i class="fa fa-check"></i><b>A.1</b> Downloading R</a></li>
+<li class="chapter" data-level="A.2" data-path="r.html"><a href="r.html#installing-r"><i class="fa fa-check"></i><b>A.2</b> Installing R</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>B</b> Downloading and Installing RStudio</a><ul>
+<li class="chapter" data-level="B.1" data-path="rstudio.html"><a href="rstudio.html#downloading-rstudio"><i class="fa fa-check"></i><b>B.1</b> Downloading RStudio</a></li>
+<li class="chapter" data-level="B.2" data-path="rstudio.html"><a href="rstudio.html#installing-rstudio"><i class="fa fa-check"></i><b>B.2</b> Installing Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>C</b> Files</a><ul>
+<li class="chapter" data-level="C.1" data-path="files.html"><a href="files.html#definition-and-file-names"><i class="fa fa-check"></i><b>C.1</b> Definition and file names</a></li>
+<li class="chapter" data-level="C.2" data-path="files.html"><a href="files.html#formats"><i class="fa fa-check"></i><b>C.2</b> File formats</a></li>
+<li class="chapter" data-level="C.3" data-path="files.html"><a href="files.html#paths"><i class="fa fa-check"></i><b>C.3</b> File Paths</a></li>
+<li class="chapter" data-level="C.4" data-path="files.html"><a href="files.html#encoding"><i class="fa fa-check"></i><b>C.4</b> Encoding</a><ul>
+<li class="chapter" data-level="C.4.1" data-path="files.html"><a href="files.html#ascii"><i class="fa fa-check"></i><b>C.4.1</b> ASCII</a></li>
+<li class="chapter" data-level="C.4.2" data-path="files.html"><a href="files.html#utf-8"><i class="fa fa-check"></i><b>C.4.2</b> UTF-8</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="files.html"><a href="files.html#types-of-files"><i class="fa fa-check"></i><b>C.5</b> Types of files</a><ul>
+<li class="chapter" data-level="C.5.1" data-path="files.html"><a href="files.html#text-files-and-binary-files"><i class="fa fa-check"></i><b>C.5.1</b> Text files and binary files</a></li>
+<li class="chapter" data-level="C.5.2" data-path="files.html"><a href="files.html#free-format"><i class="fa fa-check"></i><b>C.5.2</b> Free format</a></li>
+<li class="chapter" data-level="C.5.3" data-path="files.html"><a href="files.html#other-file-types-supported-by-base-r"><i class="fa fa-check"></i><b>C.5.3</b> Other file types supported by base R</a></li>
+</ul></li>
+<li class="chapter" data-level="C.6" data-path="files.html"><a href="files.html#summary"><i class="fa fa-check"></i><b>C.6</b> Summary</a></li>
+<li class="chapter" data-level="C.7" data-path="files.html"><a href="files.html#references-6"><i class="fa fa-check"></i><b>C.7</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Essentials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap1" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Getting to know R and RStudio</h1>
+<div id="goal" class="section level2 unnumbered">
+<h2>Goal</h2>
+<p>The main goal of this chapter is to facilitate you with the necessary tools and skills needed to begin working with R and RStudio.</p>
+</div>
+<div id="what-we-shall-cover" class="section level2 unnumbered">
+<h2>What we shall cover</h2>
+<p>By the end of this chapter you should:</p>
+<ul>
+<li>know the difference between R and RStudio</li>
+<li>have R and RStudio installed on your PC</li>
+<li>have an understanding of what is meant by; R session, workspace/global environment, working directory, errors, warning and messages</li>
+<li>be able to work interactively with both R and RStudio</li>
+<li>be able to write reproducible scripts</li>
+<li>know what packages are and where to get them</li>
+<li>be conversant with R libraries and how to add them</li>
+<li>be able to install and load a package</li>
+</ul>
+<p><strong>Some Pointers on write-up</strong></p>
+<p>Blocked content (with grey/white background with grey border) are called <strong>R Chucks</strong> which are codes or commands written on a script. The <strong>#</strong> symbol indicates a comment usually used to give information about some line of code and <strong>##</strong> indicates results or output of code which has been rendered/processed.</p>
+<p>If you are not totally new to R, how about skipping to the <a href="chap1.html#gaugeYourself">Gauge yourself</a> section and see what you need to brush up on.</p>
+</div>
+<div id="what-is-r" class="section level2">
+<h2><span class="header-section-number">1.1</span> What is R?</h2>
+<div id="defining-r-and-tracing-its-history" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Defining R and tracing it’s history</h3>
+<p>R is many things, if you have never used a statistical package or are new to data analysis and indeed statistical programming (for whom these tutorials are geared towards), begin by viewing R as a calculator which can perform numerous analysis. If you have been using other statistical packages and more so if you were using the ‘drop-down-menu/click’ method, view R as your tool for reproducible analysis (a growing concern in publications and evidence based interventions in the development and humanitarian sectors).</p>
+<p>More specifically, <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R</a> is a statistical computing and graphics program. It is a dialect of <strong>S</strong> programming language developed by <a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a> and <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a> in 1993. R is partly named after these two leading founder’s first names and partly in conformity to the “one-letter” names given to other programming languages developed at the <code>Bell Laboratories</code> of which <code>S</code> is one of them. The two founders developed the program while teaching at Auckland University in New Zealand. Their main aim was to offer their students a free statistical program they could use during their statistical class.</p>
+<p>R as an implementation of the S programming language has much of the S code but with subtle difference, like lexical scoping which we shall discuss in detail in our follow-up book; <strong>R Beyond Essentials</strong>.</p>
+<p>Over the years, R has grown from the little known statistical programming language used by a few university students in Auckland, to a widely used program applicable not only in academia, but also in other industries. It is currently being maintained by <code>R's development core group</code>. <a href="https://en.wikipedia.org/wikin/John_Chambers_(statistician)">John Chambers</a>, the founder of the S language is one of the core group members. Check out <a href="http://r4stats.com/articles/popularity/">this</a> page for current ratings for most statistical programs.</p>
+<p>With the growing interest in R, there have been other programs developed with R as its base. Most of these are known as <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Intergrated Development Environment (IDE)</a> that essentially help analysts and programmers to code more efficiently (IDE’s make R more user-friendly). The most widely used IDE’s include <a href="https://www.rstudio.com/">RStudio</a> and <a href="http://www.revolutionanalytics.com/">Revolution Analystics</a>. To distinguish R from the other programs, it is often called <strong>base R</strong> as it is the base for all the other programs. Just to clarify these two terms (base and IDE), you cannot have an IDE like RStudio without base R; base R is literally the foundation.</p>
+<p>So in these tutorial series we shall refer to R as <code>base R</code> and we shall only work with <code>RStudio</code>, as it is suitable for an introductory session in R, it’s also as free as base R (but there is a commercial version).</p>
+</div>
+<div id="downloading-and-installation-of-base-r" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Downloading and Installation of Base R</h3>
+<p>R is freely available for downloading from <a href="https://cran.r-project.org/">Comprehensive R Archives Network (CRAN)</a>. CRAN is R’s repository or a web server that stores identical and up to date version of its programs, codes and documentations.</p>
+<div id="downloading-the-executable-program" class="section level4">
+<h4><span class="header-section-number">1.1.2.1</span> Downloading the executable program</h4>
+<p>Before downloading, you will need to select one of <a href="https://cran.r-project.org/mirrors.html">CRAN’s mirrors</a>. A mirror as the name suggests is a reflection (copy) of the original. In this case, there are numerous CRAN mirrors located around the world (you can select the one that is closest to you). The main purpose of these mirrors is to reduce network overload to the main server located at <a href="http://statmath.wu.ac.at/">Institute for Statistics and Mathematics of WU (Wirtschaftsuniversit?t Wien), Austria</a>.</p>
+<p>Once you have selected a mirror, go ahead and click a suitable application for your operating system: Windows, Mac, or Linux. Next click “install R for the first time” and it should start to download the most current version of R.</p>
+</div>
+<div id="installingBaseR" class="section level4">
+<h4><span class="header-section-number">1.1.2.2</span> Installing Base R</h4>
+<p>When downloading is complete, click on the executable program and then click run. This should take you through the following installation windows:</p>
+<ul>
+<li>A set-up language window where you choose the installation language you are most comfortable with.</li>
+<li>A welcome screen detailing the R version being installed. It is recommended you close all other running applications for a smooth installation.</li>
+<li>A license window which you can read before proceeding to the next installation window</li>
+<li>A window to indicate where R will be installed; the default is usually fine but you can change it if you are conversant with program installation and access.</li>
+<li>A window to select the components to be installed. The first component should be selected as it contains core files. The next two depend on your system, but R should be able to detect it.</li>
+<li>A start-up options window which you can either let R set or you can customize it. If you select to customize it, then you will get a window indicating the start up menu folder. Here you can choose the default to have it in the R folder or you can specify another location. You can also indicate that the start-up menu should not be created; however, it’s best to choose the default.</li>
+<li>Finally a window to indicate additional tasks to be performed during setup like creating a desktop icon, quick launch and registry files. If you will be using R often, you can click on the desktop or the quick launch options, but make sure to check the registry option as it is vital in R; and with that, installation should begin.</li>
+</ul>
+<p>Checkout <a href="r.html#r">appendix 1</a> for a visual/snapshots guide on how to download and install R.</p>
+</div>
+</div>
+<div id="tour-of-base-r" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Tour of base R</h3>
+<p>Now that you have installed R, let’s get to know it. First locate the installed program either from the desktop, on the start menu or if on <code>Windows</code> clicking <code>All Programs</code> and search for R. Once you have located it, click on the program to start it. The first screen you see would look like this:</p>
+<div class="figure">
+<img src="figures/BaseR.JPG" alt="Base R" />
+<p class="caption">Base R</p>
+</div>
+<div id="RAtAGlance" class="section level4">
+<h4><span class="header-section-number">1.1.3.1</span> R at a glance</h4>
+<p>The first thing you notice are two windows; the main one with a menu bar and with a grey background and another window which has only the minimize, maximize and close buttons (an embedded window).</p>
+<p>The embedded window is called the <code>R Console</code> and it’s R’s interactive platform for issuing commands (functions) which instantly produces an output similar to that of a normal calculator. The console is best suited for computations or expressions that fit in one line, something like addition, subtraction, multiplications, and divisions or any other simple computation. For multiple line computations like writing your own commands or functions, <a href="chap1.html#RScripting">scripts</a> are more suitable.</p>
+<p>But before you get to type in your commands, there is an introductory message with information on R version installed, copyright issues, platform, warranty and conditions for use, R as a collaborative package, recommended citation and some start-up commands or functions.</p>
+<div class="figure">
+<img src="figures/rIntroMsg.PNG" alt="R’s introductory message on the console" />
+<p class="caption">R’s introductory message on the console</p>
+</div>
+<p>Let’s explore some of these commands as an introduction to R’s console (interactive session) before we venture into the menu bar which discusses a number of issues about the console and other R windows. Commands are issued or typed right after the blinking cursor <code>&gt;</code> (note, this can be changed later with the <code>options</code> function).</p>
+</div>
+<div id="first-interactive-session-on-base-r" class="section level4">
+<h4><span class="header-section-number">1.1.3.2</span> First interactive session on base R</h4>
+<p>One of the commands given in the introductory message is about the names of R contributors. Since R is a free program, it is generally developed and maintained by volunteers, for this reason it would be good to see some of the good people who have given us such a wonderful program for free. To do so, type <code>contributors()</code> and don’t forget the two parentheses <code>()</code> which indicate a command or a function call (as we shall soon learn).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Type
+<span class="kw">contributors</span>()</code></pre></div>
+<p>Hoping your first line of code worked. If it did, you should see a new window with some write-up on the contributors and a bit of history and inspiration that led to R’s development. If you received an error, please check your spelling and case: <code>R is case sensitive</code>, any slight misspelling would not yield expected results.</p>
+<p>So now we can say we have written our first command on R: a great achievement. In R, writting commands is referred to as <code>making a function call</code>. We shall discussing function calls in <a href="chap2.html#chap2">chapter 2</a> but for now what you should know is that parenthesis in R indicate a function, therefore the word before the <code>()</code> is the name of a function. For example <code>mean</code> is a name and it is a function because it is followed by <code>()</code>. We say <code>function call</code> when you use a function or what you might call a command in other programs, for example when we use the mean function like this <code>mean(c(2, 5, 6, 9, 3))</code>, it means we have made a function call.</p>
+For our next function call, let’s bring up the help documentation by typing <code>help.start()</code> (please note the <code>.</code> between the two words). If you typed it correctly, then you will see a window titled <code>Statistical Data analysis</code>, below it are four subheadings namely <code>manuals</code>, <code>references</code>, <code>miscellaneous materials</code> and <code>materials specific to your operating system</code>. The help.start() function is a great reference point and you should consult it frequently as you learn R. I strongly advice you read the manual on <code>Introduction to R</code> alongside this book.
+<div class="encouragement1">
+<p>
+Word of encouragement, most of the details might not be clear right now as you have really not had a go at R, but after a few chapters you will be able to appreciate the details in these documents).
+</p>
+</div>
+<p>Two final commands that might be useful at this very early stage are clearing the console and quitting R from the command line.</p>
+<p>Our console right now has quite a bit of information (<code>introductory message</code>, <code>contributors()</code> and <code>help.start()</code>), if you would like a blank/clear screen to type on, press <code>control(Ctrl) + L</code> and you should have a blank screen. Everything that was on the console should be cleared from the screen but not from history. R by default saves commands you issue and can be recovered from the <a href="chap1.html#history">history file</a>. To quit R, you can either use the command line, click close from the menu bar or exit from file menu. To use the command line type <code>q()</code> on the console.</p>
+<p>With that, we have successfully experienced R and are ready to do more, but first, we need to acquaint ourself with two other windows. The first isis called the <code>workspace</code> or the <code>global environment</code> and the other is <code>script window</code>.</p>
+</div>
+<div id="rs-other-core-windows" class="section level4">
+<h4><span class="header-section-number">1.1.3.3</span> R’s other core windows</h4>
+<div id="workspaceWindow" class="section level5">
+<h5><span class="header-section-number">1.1.3.3.1</span> The Workspace/Global Environment Window</h5>
+<p id="objects">
+As you get to work with R, you will soon discover that every entity in is referred to as an <strong>object</strong>; from the data to the functions.
+</p>
+<p>To use any of this objects they need to be in an <code>environment</code> that R can access, this means for example that data has to be imported into R as well as functions to be used.</p>
+<p>Initially the environment to which an R object is stored is called a <code>workspace</code> or the <code>global environment</code>. Objects are stored in this environment by creating <code>variables</code> (we will soon see how to create them), for instance, if you want to work with some data located in your computer, you must first bring it into R by creating a variable which will be temporarily stored on your workspace. This vairable would have a name for which you can use to carryout your analysis. This variable an object only available from the time you start working with R to when you logoff R; something referred to as an “R session”. To make a more permanent storage of variable or objects on your workingspace, they need to be saved to an R file with a “.RData” extension, that way, each time you log into R from the same folder/directory, R will make your data/objects available alongside commands used during that session.</p>
+<p>In base R, the <code>workspace/global environment</code> is an invisible window whose content can be inspected by a call to <code>objects()</code>, or <code>ls()</code>. Try calling either of these two functions (objects/ls). At this point you should receive a <code>character(0)</code> output meaning there is no objects in your workspace. Later once we have learnt <a href="chap4.html#chap4">assignment operators</a> you will be able to see your objects with this these functions or remove them with function <code>rm()</code>.</p>
+</div>
+<div id="scriptingWindow" class="section level5">
+<h5><span class="header-section-number">1.1.3.3.2</span> The script window</h5>
+<p>When working interactively on the console, you are literally issuing commands without saving them. You can recall a function using a history file but sometimes you would want to have all the code in one prose which you can rerun some sections or all of it. R (and indeed many other programming languages) offers something called a <strong>script</strong> which is a text editor<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> where you can write commands/codes; this is usually written in a new window called “R Editor”. A script written in this editor can be saved with a <code>.R</code> extension and can be retrieved later. Read more about scripting <a href="chap1.html#RScripting">below</a>.</p>
+</div>
+</div>
+<div id="rs-menu-bar" class="section level4">
+<h4><span class="header-section-number">1.1.3.4</span> R’s menu bar</h4>
+<p>R menu items include <code>File</code>, <code>Edit</code>, <code>View</code>, <code>Misc</code>, <code>Packages</code>, <code>Windows</code> and <code>Help</code>. A number of these menu items might be recognisable like file, edit, view and help. What might be a bit new are Misc and packages.</p>
+<p>Given that this might be the first time using R, let’s not go into great discussion on each menu item as it would not be comprehensible right now, instead let’s have a quick overview and leave the rest when we start using R.</p>
+<ul>
+<li>From the <strong>file</strong> menu item, several options are provided to begin working with R, these are:
+<ul>
+<li><u>Source R Code:</u> used to open a source file. In R, source file’s are used to load functions and data. A source file differs from a regular R script in that a source script need not be opened and run in R, functions and data in a source file can all be loaded with a call to “source()”. For a regular script, functions can only be loaded by opening and running the script.</li>
+<li><U>New script:</U>Used to create new scripts. On base R, there is only one type of file that one can create, this is an R file with a “.R” extension. On RStudio there about nine other scripts one can create, two of which we will use in our follow-up book; these are “Rmarkdown” and “Shiny web app”<br />
+</li>
+<li><u>Open script:</u> used to open (regular and source) scripts</li>
+<li><u>Displaying files:</u> Similar to open script</li>
+<li><u>Load Workspace:</u> Used restore variables saved in a “.RData” file</li>
+<li><u>Save Workspace:</u> Used to store workspace variables in a “.RData” file</li>
+<li><u>Load History:</u> Used to restore previously run/rendered functions</li>
+<li><u>Save History:</u> Used to store run/rendered functions in a “.Rhistory” file</li>
+<li><u>Change dir:</u> Used to change working. A <code>Working directory</code> is a folder/directory used to store or retrieve files to be used or used in an <a href="chap1.html#Rsession">R session</a></li>
+<li><u>Print:</u> Used to send files for printing</li>
+<li><u>Save to file:</u> Used to save console activity (function calls and output) to a text file.</li>
+<li><u>Exit:</u> Used to log off R</li>
+</ul></li>
+<li><strong>Edit</strong> menu item: Most of edit menu items are used to act on code in a scipt, these include undoing, cutting, copying, deleting, pasting, selecting, and running/rendering. Other items do other things like clearing the console, editing data and changing R’s apperance (toolbar, status bar, windows, font and the like).<br />
+</li>
+<li><strong>View</strong> menu item: It used to turn toolbar and status bar on or off.</li>
+<li><strong>Misc</strong> menu item: Used to stop currently running computation (same as pressing “esc” on the keyboard), temporary holding display of initial output to enable long computation to be processed (buffering), offering word and file completing for for efficiency, list workspace variables, deleting variables and listing objects currently on R’s search path. Objects in R are virtually anything but in this case they mostly mean loaded packages.</li>
+<li><strong>Packages</strong> menu item: Used to install (download), load (make it available for use) and update packages (contributed functions).</li>
+<li><strong>Windows</strong> menu item: Used to arrange R’s windows like console and R editor (for script writting).</li>
+<li><strong>Help</strong> menu item: Offers various sources of help like R help documentations, manuals, frequently asked questions (FAQ), and online help.</li>
+</ul>
+</div>
+<div id="history" class="section level4">
+<h4><span class="header-section-number">1.1.3.5</span> R remembers</h4>
+<p>Every thing you do on the console or run from a script is temporary captured and stored by R. So if we do some computation/analysis, R will remember and retrieve it when needed. For example let’s compute the following on the console:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> +<span class="st"> </span><span class="dv">5</span>
+## [1] 6      Solution
+<span class="dv">10</span> +<span class="st"> </span><span class="dv">102</span>
+## [1] 112    Solution</code></pre></div>
+<p>To recall any computation we use the “up” arrow key on the keyboard, we can also go forward with “down” arrow key. Using this feature we rerun commad/functions as they are or edit them as need be.</p>
+<p>Commands which have been run are referred to as <strong>history</strong> and they are automatically captured by R in <strong>.Rhistory</strong> file. This history file (.Rhistory) is stored on your working directory and reloaded next time R is logged in from the same directory. Note, it is possible to tell R not to make these “.Rhistory” files, but it might not be a good idea for us right now.</p>
+</div>
+<div id="Rsession" class="section level4">
+<h4><span class="header-section-number">1.1.3.6</span> R session</h4>
+<p>Before winding up this brief tour of R, it’s important to note one useful term that you will hear quite a bit of and that an <code>R session</code>. A session in R begins when you start-up R and ends when you close the program; this is important to know as it has certain implications. For example, everything you do during an R session is recorded or documented in a history file which as noted earlier can easily be stored and retrieved.</p>
+<p>Note, quite a bit of this might not be clear right now, but it will definitely become clearer when we have defined some few variables or objects or simply when we have started working with R both at the <a href="chap1.html#RConsole">console</a> (interactively) or using a <a href="#RScripts">script</a>.</p>
+<p>Now let’s wind this section with a bit of computation on the console.</p>
+</div>
+</div>
+<div id="RConsole" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Base R’s console</h3>
+<p>Let’s use the console to do some simple computation similar to doing calculation on a standard calculator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Addition</span>
+<span class="dv">2</span> +<span class="st"> </span><span class="dv">5</span>
+## [1] 7
+<span class="co"># Subtraction</span>
+<span class="dv">4</span> -<span class="st"> </span><span class="dv">10</span>
+## [1] -6
+<span class="co"># Division</span>
+<span class="dv">30</span>/<span class="dv">2</span>
+## [1] 15
+<span class="co"># Multiplication</span>
+<span class="dv">3</span> *<span class="st"> </span><span class="dv">9</span>
+## [1] 27</code></pre></div>
+<p>Moving on, suppose we wanted to find even numbers or whether a number is divisible by another number. For example, what would you expect if you divided an even number with 2? Yes, indeed, you should get a whole number without any remainder or a point. An odd number would have a 0.5 remainder. Let’s test this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Even Numbers</span>
+<span class="co">#-------------</span>
+<span class="dv">2</span>/<span class="dv">2</span>
+## [1] 1
+<span class="dv">4</span>/<span class="dv">2</span>
+## [1] 2
+<span class="dv">6</span>/<span class="dv">2</span>
+## [1] 3
+<span class="dv">20</span>/<span class="dv">2</span>
+## [1] 10
+<span class="dv">100</span>/<span class="dv">2</span>
+## [1] 50
+<span class="dv">100000000000000000000000000</span>/<span class="dv">2</span> <span class="co"># An even long number produces an exponent</span>
+## [1] 5e+25
+
+
+<span class="co"># Odd numbers</span>
+<span class="co">#------------</span>
+<span class="dv">5</span>/<span class="dv">2</span>
+## [1] 2.5
+<span class="dv">35</span>/<span class="dv">2</span>
+## [1] 17.5
+<span class="dv">37</span>/<span class="dv">2</span>
+## [1] 18.5</code></pre></div>
+<p>We can use this same logic, to compute divisibility of any number by another. If by dividing we get a remainder, then the number is not divisible by the other number. If on the other hand we got a full number without any remainder, then the number is divisible by the other. Let’s work it out on our new calculator (R console).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Divisible numbers</span>
+<span class="co">#----------------</span>
+<span class="dv">10</span>/<span class="dv">5</span>
+## [1] 2
+<span class="dv">100</span>/<span class="dv">20</span>
+## [1] 5
+<span class="dv">1700</span>/<span class="dv">17</span>
+## [1] 100
+
+
+<span class="co"># Not divisible</span>
+<span class="co">#-------------</span>
+<span class="dv">59</span>/<span class="dv">3</span>
+## [1] 19.66667
+<span class="dv">60</span>/<span class="dv">9</span>
+## [1] 6.666667
+<span class="dv">25</span>/<span class="dv">2</span>
+## [1] 12.5
+<span class="dv">70</span>/<span class="dv">3</span>
+## [1] 23.33333
+
+<span class="co"># Try out other numbers</span></code></pre></div>
+<p>Now, that was good, but there is a way to quickly determine divisibility by using what is called <strong>modulo</strong>. Given two integers, modulo (indicated by two percentages <strong>%%</strong>) checks to see whether the integer on the left is divisible by the integer on the right. <strong>Modulo returns the remainder of the division</strong> such that if a number is divisible by another then we expect no remainder and therefore results to a zero.</p>
+<p>For example, if we have 9 and 3, we could use modulo like this, <strong>9%%3</strong>. In this case we are asking <strong>is 9 divisible by three?</strong>. So, if 9 is divisible by 3 then we expect a zero meaning there was nothing that remained after the division but if it were not the case, then we would expect to get the remainder of the division.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">9</span> %%<span class="st"> </span><span class="dv">3</span>
+## [1] 0</code></pre></div>
+<p>In Mathematics, 9 is referred to as the <strong>dividend</strong> and 3 as the <strong>divisor</strong>. If we had <strong>9%%2</strong> we expect a remainder of 1 where 9 is the dividend and 2 the divisor. When you divide 9 by 2 you get 4 and a remainder of one resulting in 4.5. In this case, the number 4 is referred to as the <strong>quotient</strong> and 1 the <strong>remainder</strong>. There is a whole discussion on this topic; but here I am merely introducing you to the concept which you could use in your programming.</p>
+<p>Now let’s test it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">9</span> %%<span class="st"> </span><span class="dv">3</span>
+## [1] 0
+
+<span class="dv">15</span> %%<span class="st"> </span><span class="dv">7</span>; <span class="dv">15</span>/<span class="dv">7</span>
+## [1] 1
+## [1] 2.142857
+
+<span class="co"># How about long numbers (at least one that you cannot figure out)</span>
+<span class="dv">69294797</span> %%<span class="st"> </span><span class="dv">8</span> <span class="co"># It says the remainder is 5</span>
+## [1] 5
+
+<span class="co"># Let&#39;s confirm this</span>
+<span class="dv">69294797</span>/<span class="dv">8</span> <span class="co"># Opps, we have a whole number, what is R up to?</span>
+## [1] 8661850
+
+<span class="co"># R has default number of digits it can print, if your output exceed it like ours, then R will round it off to its default digit (in my case it is 7). To see your default:</span>
+<span class="kw">getOption</span>(<span class="st">&quot;digits&quot;</span>)
+## [1] 7
+<span class="co"># and to change it</span>
+<span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">9</span>)
+<span class="co"># Now let&#39;s rerun our command</span>
+<span class="dv">69294797</span>/<span class="dv">8</span> <span class="co"># we have our remainder (though not exactly 5 -- discussion for another session)</span>
+## [1] 8661849.62</code></pre></div>
+<p>Now, let’s briefly compute the mean (a measure of a data’s centrality) and see the number of ways we can do it.</p>
+<p>What is the average of the following numbers?</p>
+<pre><code>        * 2, 5, 9, 3
+        
+            and
+            
+        * 5, 8, 10, 100</code></pre>
+<p>There are two ways you can do this (at least for a small amount of data), the first entails adding the values and then dividing with their totals just like a calculator, or the R way by using a function - <strong>mean()</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#The calculator way</span>
+(<span class="dv">2</span> +<span class="st"> </span><span class="dv">5</span> +<span class="st"> </span><span class="dv">9</span> +<span class="st"> </span><span class="dv">3</span>)/<span class="dv">4</span>
+## [1] 4.75
+
+<span class="co">#The R way</span>
+<span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))
+## [1] 4.75</code></pre></div>
+<p>Notice that R’s way is simpler and can handle many numbers, however we had to enclose the numbers in parenthesis and a letter <code>c</code> at the front. “c” is a function that means combine (the values), combining values this way lets R treat the values as one unit rather than individual elements. We shall discuss this concept further during the vectorisation<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> chapter.</p>
+<p>I encourage you to get hold of some useful (numerical) data like the ages of your colleages/friends, class scores, hair/eye color in your area or some budget data and compute their average on the console. That should give you a good start to interacting with R.</p>
+<p>At this point we have been able to make some few function calls, at least commands R understands and can get us results. But what if R does not understand what you are asking? Or what if R does not have the information needed, or there are either problems or other execution information? These are typical issues in any analytical program and there are ways of dealing with them. In R when these issues arise, we expect to receive an <code>error</code> a <code>warning</code> or a <code>message</code>. Let’s look at these terms as they would become quite frequent especially at this early stage.</p>
+</div>
+<div id="errors-warnings-and-messages" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> Errors, Warnings and messages</h3>
+<div id="errors" class="section level4">
+<h4><span class="header-section-number">1.1.5.1</span> Errors</h4>
+<p>Suppose you asked R to do something with a function that does not exist; like get an average of some data but you misspell the function name by typing <code>means()</code> instead of <code>mean()</code>. What do you think would happen?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">means</span>()</code></pre></div>
+<p>R would go looking for what you have typed (means) and not what you meant (mean), so unless there is another function by that name, R would not find it. When this happens R would <strong>throw and error</strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">means</span>()
+<span class="co">#Error: could not find function &quot;means&quot;</span></code></pre></div>
+<p>An error therefore appears when R cannot find what you have asked it to get. Visualize it this way, you type in a command and hit enter; R then gets hold of your command and goes on a search for the description of the command or the actions the command should do. This search begins from your <a href="#workspace">workspace</a> followed by other areas called enclosing environments <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>, the last of these environments being <strong>Base R</strong>, if the command is not found there, it hits the <strong>empty environment</strong> where no object exists and hence the error. The same process is followed by R when looking for data.</p>
+<p>Note R literally <code>stops</code> the execution of the command and then sends you the error message: it’s a <code>failure to launch</code> scenario.</p>
+</div>
+<div id="warnings" class="section level4">
+<h4><span class="header-section-number">1.1.5.2</span> Warnings</h4>
+<p>What if you gave R a command it can find, but in this case you have used it incorrectly or there is a more effective command or simply put, there are potential problems with your function call. R would execute the command but issue a <code>warning message</code> indicating execution problems faced.</p>
+<p>Key point here is that R will execute the function subject to the identified problems which it will detail as warning messages. For example, when you what to use an integer (as opposed to a numeric value), you have to tell R the value is an integer by using the letter <strong>L</strong> after the value. If you mistakenly add a decimal point before the letter L, then you will get a warning message.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Unnessary use of a decimal point </span>
+<span class="fl">1.</span>L 
+## [1] 1
+## Warning message:
+## integer literal 1.L contains unnecessary decimal point
+
+<span class="co"># Otherwise it should have been</span>
+1L</code></pre></div>
+</div>
+<div id="messages" class="section level4">
+<h4><span class="header-section-number">1.1.5.3</span> Messages</h4>
+<p>Messages are informative statements given with R output/results. They usually give information on how execution was performed, they do not signal a problem, just procedures used in execution.</p>
+<p>For example, if there are missing values or method in a call, <code>R</code> can execute the function but issue a message indicating what value or method was used.</p>
+</div>
+</div>
+</div>
+<div id="RStudio" class="section level2">
+<h2><span class="header-section-number">1.2</span> RStudio</h2>
+<p>R Studio is a more user friendly version of R, and one of R’s most growing and popular IDE’s. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management “<a href="https://www.rstudio.com/products/rstudio/" class="uri">https://www.rstudio.com/products/rstudio/</a>”.</p>
+<p>Note we will be using RStudio for the rest of these tutorial series.</p>
+<div id="downloading-and-installing-rstudio" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Downloading and Installing RStudio</h3>
+<p>To download the latest version of the program, go to <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a> and select a program suitable for your computer’s specification.</p>
+<p>There is an open source and a commercial version running on Windows, Mac, or Linux. You can also get the desktop version of Rstudio or Server version. Read more on the differences and varieties of Rstudio <a href="https://www.rstudio.com/products/rstudio/">here</a>.</p>
+<p>Read <a href="rstudio.html#rstudio">appendix 2</a> for details on how to download and install RStudio.</p>
+</div>
+<div id="getting-to-know-rstudio-layout" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Getting to know RStudio layout</h3>
+<p>Once you have installed the program and clicked to start it, you will immediately notice four windows called <strong>panes</strong>.</p>
+<p>Let’s begin with one pane you are now familiar with; the console (usually located at the bottom left, though it can be in any side).</p>
+<div class="figure">
+<img src="figures/Rstudio_interface.PNG" alt="Rstudio Interface" />
+<p class="caption">Rstudio Interface</p>
+</div>
+<p>You can start using it just as we did with <code>base R's</code> console and see if you can get the same results.</p>
+<p>Right above the console is the <code>script pane</code> which is a scripting <a href="chap1.html#scriptingWindow">window</a>. If you cannot see it, start a new script by clicking on <code>files</code>, then <code>New File</code>. For now select the first file type, R script, we shall discuss the other types of files in our next book (R - Beyond Essentials) and specifically on Chapter on Reproducible Analysis.</p>
+<div class="figure">
+<img src="figures/Rstudio_script.PNG" alt="Rstudio Script Pane" />
+<p class="caption">Rstudio Script Pane</p>
+</div>
+<p>On the top right side, is a window with two tabs, the first tab is called the <code>environment</code> and it is basically the <a href="#workspace">workspace</a> we discussed earlier. Next tab is the <a href="chap1.html#history">history</a> window which captures commands and variables created during a session. These two tabs play an important role in storage and retrieval of your data and functions.</p>
+<p>Below the workspace is a pane with five tabs. The first is the <code>files tab</code> which shows you the folders and files in the working directory. Next to it is the <code>plotting window</code> where graphs are displayed. The <code>packages tab</code> shows the packages/R extensions currently available on your system. Following the packages tab is the <code>help tab</code> where R’s help documentation is shown. Finally is the <code>viewer tab</code>, it is used to extend Rstudio to view internet local content more so related to applications such as <code>Shiny</code> which we will discuss in our second book “R - Beyond Essentials”.</p>
+<p>With that quick tour of RStudio we hold any in-depth discussion on each tab, menu item or toolbar for our practice session.</p>
+</div>
+<div id="RStudioConsole" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Working with RStudio’s console</h3>
+<p>R Studio’s console is exactly like that of base R. To prove this, try and rework the exercises done on base R.</p>
+</div>
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">1.3</span> Installing and Loading Packages</h2>
+<p>A package is like a folder that contains grouped functions and/or data, this is what <code>base R</code> uses to store its functions and data. Read more about the packages that come with <code>base R</code> from the <a href="http://cran.r-project.org/doc/FAQ/R-FAQ.html#R-Add_002dOn-Packages">FAQ</a>. Some of these packages form the core functions in R and others are recommended. You can also find information on all installed packages using the function <strong>installed.packages()</strong>. If you have more than one <a href="chap1.html#library">library</a> you can specify a particular library by adding it’s path e.g. <strong>installed.packages(lib.loc = .libPaths()[1])</strong>.</p>
+<p>In addition to the packages that come with base R, there are numerous other packages available from <a href="https://cran.r-project.org/web/packages/">CRAN</a>. These are packages with functions and data contributed by other R users: This is one of R’s distinguishing features - its extensibility. Anyone even you can add a package to R’s repository, as long as they are well coded.</p>
+<p>When you start R, not all of the packages are available for use. The basic reason for this is to make R efficient in terms of memory usage and search. The packages that are automatically loaded are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">loadedNamespaces</span>()
+##  [1] &quot;backports&quot;  &quot;bookdown&quot;   &quot;magrittr&quot;   &quot;rprojroot&quot;  &quot;graphics&quot;  
+##  [6] &quot;tools&quot;      &quot;htmltools&quot;  &quot;rstudioapi&quot; &quot;utils&quot;      &quot;yaml&quot;      
+## [11] &quot;grDevices&quot;  &quot;Rcpp&quot;       &quot;stats&quot;      &quot;datasets&quot;   &quot;stringi&quot;   
+## [16] &quot;rmarkdown&quot;  &quot;knitr&quot;      &quot;methods&quot;    &quot;stringr&quot;    &quot;digest&quot;    
+## [21] &quot;base&quot;       &quot;evaluate&quot;</code></pre></div>
+<p>These are the core functions needed to make R operational. If you need to use any of the other unloaded base R packages, you need to tell R to make them available by using the function <code>library</code>. For example, you might want to do parallel computation for efficiency purposes; in R this can be achieved using the package <code>parallel</code> which is an R’s packages but by default not loaded.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)</code></pre></div>
+<p>Now let’s see if it is listed in the loaded packages.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">loadedNamespaces</span>()
+##  [1] &quot;backports&quot;  &quot;bookdown&quot;   &quot;magrittr&quot;   &quot;rprojroot&quot;  &quot;graphics&quot;  
+##  [6] &quot;parallel&quot;   &quot;tools&quot;      &quot;htmltools&quot;  &quot;rstudioapi&quot; &quot;utils&quot;     
+## [11] &quot;yaml&quot;       &quot;grDevices&quot;  &quot;Rcpp&quot;       &quot;stats&quot;      &quot;datasets&quot;  
+## [16] &quot;stringi&quot;    &quot;rmarkdown&quot;  &quot;knitr&quot;      &quot;methods&quot;    &quot;stringr&quot;   
+## [21] &quot;digest&quot;     &quot;base&quot;       &quot;evaluate&quot;</code></pre></div>
+<p>The parallel package has been made available and can now be used. To read more about this package, make the following function call <code>help(package = parallel)</code>.</p>
+<p>If you need any of the contributed packages available on <a href="https://cran.r-project.org/web/packages/">CRAN’s</a> website, you will first need to install the package.</p>
+<p>There are two ways of installing a package on either base R or RStudio, these are, graphical user interface (GUI) and the command line.</p>
+<p><strong>GUI Approach</strong></p>
+<ul>
+<li>From <code>base R</code>, go to the <code>Package</code> tab then <code>Install package(s)...</code>. You will then be prompted to select a <a href="#mirror">mirror</a>. Once that is done, you will be presented with a list of all packages, finish by selecting the desired package. Installation should begin immediately.</li>
+<li>From RStudio, go to the <code>Packages</code> tab located in the lower right pane then click the <code>Install</code> icon. A dialogue box should open for you to specify the package needed but you will need to indicate the repository first. In addition to <code>CRAN</code> there are other R repositories like <a href="https://www.bioconductor.org/">Bioconductor</a> and <a href="http://www.omegahat.org/">Omegahat</a>. In this tutorial, we shall only deal with <code>CRAN</code>, but feel free to explore the other repositories.</li>
+</ul>
+<p><strong>Command line approach</strong></p>
+<p>From the command line, you can download a package using the function <code>install.packages()</code> specifying the name of the package inside the parenthesis with quotation marks.</p>
+<p>Before installing any package, let’s look at two issues related to loading and installation of packages, these are R search path and libraries.</p>
+<div id="searchPath" class="section level4">
+<h4><span class="header-section-number">1.3.0.1</span> Search Path</h4>
+<p>Earlier on we briefly mentioned R’s process of locating functions and data. For purposes of understanding packages available for use, let’s discuss search path some more (though not as concrete as we shall discuss it in “R- Beyond Essentials”).</p>
+<p>The first question we want to ask ourselves is what is a <code>search path</code>? And the answer is; a search path is a sequence of locations that R follows as it “looks” for an <a href="chap1.html#objects">object</a>.</p>
+<p>A subsequent question is, what is an object? Although we shall discuss this later, there is no harm knowing that everything in R is an object, from the commands or functions used, to the data and the output generated; packages are also objects. If an object is not on R’s search path, then R will throw an <a href="chap1.html#errors">error</a>, therefore, for one to use a package they need to “put” it on the search path by loading it. Loaded packages come second after the workspace/global environment. They comprise of the default packages already mentioned and any other loaded package. The <code>search()</code> function is used to determining the <code>current</code> search path.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Current search path </span>
+<span class="kw">search</span>()
+##[1] &quot;.GlobalEnv&quot;       &quot;package:parallel   &quot;tools:rstudio&quot;  &quot;package:stats&quot;
+##[5] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;&quot;package:datasets&quot; ##[9] &quot;package:methods&quot;   &quot;Autoloads&quot; &quot;package:base&quot;</code></pre></div>
+<p>Notice that the parallel package is on the search path right after the global environment and right before the other packages? Now any function or data in any of these locations is available for use.</p>
+<p>Recall, to make the package <code>parallel</code> available, we used the function <code>library()</code>, let’s expound on this.</p>
+</div>
+<div id="library" class="section level4">
+<h4><span class="header-section-number">1.3.0.2</span> Library</h4>
+<p>A library is a directory containing installed packages. Initially, there is only one library located at <code>C:/Program Files/R/[R version]/library</code>. In due time this location might become unwritable (hence cannot add more packages via install), in this case R might suggest you create another library. To do this <code>.libPaths()</code> function is used. “.libPaths” function can also be used to list the current libraries.</p>
+<p>For example, we can create a new folder/directory and tell R to include it in its list of libraries.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The current libraries</span>
+<span class="kw">.libPaths</span>()
+## [1] &quot;C:/Program Files/R/R-3.2.2/library&quot;
+
+<span class="co"># Create a new directory in R</span>
+<span class="kw">dir.create</span>(<span class="st">&quot;R/win-library/3.2&quot;</span>)
+<span class="co"># Create the new library</span>
+<span class="kw">.libPaths</span>(<span class="st">&quot;R/win-library/3.2&quot;</span>)
+
+<span class="co"># Confirm the new library is created</span>
+<span class="kw">.libPaths</span>()
+## [1] &quot;C:/Users/Hellen Gakuruh/Documents/R/win-library/3.2&quot;
+## [2] &quot;C:/Program Files/R/R-3.2.2/library&quot; </code></pre></div>
+<p>So now every time you install or load a package and you have more than one library, you can specify the library to use with the <code>lib</code> and <code>lib.loc</code> arguments. If this is not specified, then, R will automatically use the first library on the <code>.libPaths()</code>.</p>
+<p>Quite often with additional library(s), you might not know where a certain package is or which library has the package. In this case use the <code>dir()</code> function which lists files in a given directory.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Listing packages in the new library directory</span>
+<span class="kw">dir</span>(<span class="kw">.libPaths</span>()[<span class="dv">1</span>])
+##   [1] &quot;acepack&quot;          &quot;assertthat&quot;       &quot;backports&quot;       
+##   [4] &quot;base64enc&quot;        &quot;BH&quot;               &quot;bitops&quot;          
+##   [7] &quot;bookdown&quot;         &quot;brew&quot;             &quot;caTools&quot;         
+##  [10] &quot;cellranger&quot;       &quot;chron&quot;            &quot;coin&quot;            
+##  [13] &quot;colorspace&quot;       &quot;crayon&quot;           &quot;curl&quot;            
+##  [16] &quot;data.table&quot;       &quot;DBI&quot;              &quot;DescTools&quot;       
+##  [19] &quot;devtools&quot;         &quot;dichromat&quot;        &quot;digest&quot;          
+##  [22] &quot;dplyr&quot;            &quot;evaluate&quot;         &quot;file10cc591e39e2&quot;
+##  [25] &quot;file10cc7d741c3e&quot; &quot;file1a20e093962&quot;  &quot;file2dc17b843ef&quot; 
+##  [28] &quot;file2dc6c224780&quot;  &quot;fileefc5ffb3945&quot;  &quot;formatR&quot;         
+##  [31] &quot;Formula&quot;          &quot;gapminder&quot;        &quot;ggplot2&quot;         
+##  [34] &quot;ghit&quot;             &quot;git2r&quot;            &quot;gridExtra&quot;       
+##  [37] &quot;gtable&quot;           &quot;haven&quot;            &quot;highr&quot;           
+##  [40] &quot;Hmisc&quot;            &quot;htmlTable&quot;        &quot;htmltools&quot;       
+##  [43] &quot;httr&quot;             &quot;installr&quot;         &quot;ISLR&quot;            
+##  [46] &quot;jsonlite&quot;         &quot;knitr&quot;            &quot;labeling&quot;        
+##  [49] &quot;latticeExtra&quot;     &quot;lazyeval&quot;         &quot;lme4&quot;            
+##  [52] &quot;lmtest&quot;           &quot;magrittr&quot;         &quot;manipulate&quot;      
+##  [55] &quot;markdown&quot;         &quot;memoise&quot;          &quot;mgcv&quot;            
+##  [58] &quot;mime&quot;             &quot;minqa&quot;            &quot;modeltools&quot;      
+##  [61] &quot;multcomp&quot;         &quot;munsell&quot;          &quot;mvtnorm&quot;         
+##  [64] &quot;nlme&quot;             &quot;nloptr&quot;           &quot;nnet&quot;            
+##  [67] &quot;openssl&quot;          &quot;openxlsx&quot;         &quot;outbreaks&quot;       
+##  [70] &quot;packrat&quot;          &quot;PKI&quot;              &quot;plyr&quot;            
+##  [73] &quot;praise&quot;           &quot;pryr&quot;             &quot;pryr_0.1.2.zip&quot;  
+##  [76] &quot;R6&quot;               &quot;RColorBrewer&quot;     &quot;Rcpp&quot;            
+##  [79] &quot;Rcpp_0.12.3&quot;      &quot;Rcpp_0.12.3.zip&quot;  &quot;RcppEigen&quot;       
+##  [82] &quot;RCurl&quot;            &quot;readODS&quot;          &quot;readr&quot;           
+##  [85] &quot;readxl&quot;           &quot;reshape2&quot;         &quot;resumer&quot;         
+##  [88] &quot;rJava&quot;            &quot;RJSONIO&quot;          &quot;rmarkdown&quot;       
+##  [91] &quot;roxygen2&quot;         &quot;rprojroot&quot;        &quot;rsconnect&quot;       
+##  [94] &quot;rstudioapi&quot;       &quot;rvest&quot;            &quot;sandwich&quot;        
+##  [97] &quot;scales&quot;           &quot;selectr&quot;          &quot;sjmisc&quot;          
+## [100] &quot;stringdist&quot;       &quot;stringi&quot;          &quot;stringr&quot;         
+## [103] &quot;swirl&quot;            &quot;testthat&quot;         &quot;TH.data&quot;         
+## [106] &quot;tibble&quot;           &quot;tidyr&quot;            &quot;urltools&quot;        
+## [109] &quot;useful&quot;           &quot;vcd&quot;              &quot;whisker&quot;         
+## [112] &quot;withr&quot;            &quot;XLConnectJars&quot;    &quot;xlsx&quot;            
+## [115] &quot;xlsxjars&quot;         &quot;XML&quot;              &quot;xml2&quot;            
+## [118] &quot;yaml&quot;             &quot;zoo&quot;</code></pre></div>
+<p>If you are wondering about the <code>[1]</code> after the <code>.libPaths()</code> function, it simply means <em>get the first result from the output of <code>.libPaths</code></em>. This is a way of subsetting outputs which we shall be discuss later.</p>
+<div class="tmpdir">
+<p>
+A little word of advice, the more you practice and use R, the more you will use add-on packages and most often than not, some of these packages will only be used once. To avoid loading your computer with numerous unused packages, consider installing them in a temporary directory. You need not create this folder as R starts one for every session and uses it to temporary store objects for the session. You can use this directory by calling on the <code>tempdir()</code> function.
+</p>
+</div>
+<p>Okay, now let’s practically apply these concepts by installing two packages. The first is a web scraping <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> package known as <code>rvest</code> and the other is a graphing package known as <code>ggplot2</code>. Let’s assume that we need <code>rvest</code> for only one session, but we will use <code>ggplot2</code> frequently to plot graphs. Therefore, we will install <code>rvest</code> in a temporary directory and <code>ggplot2</code> in the newly created library.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Installing &quot;rvest&quot; to a temporary folder</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;rvest&quot;</span>, <span class="dt">lib =</span> <span class="kw">tempdir</span>())</code></pre></div>
+<p>Note, if you restart R, then the installation disappears and you will need to re-install the package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Installing a required package</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;Rcpp&quot;</span>)
+<span class="co"># Installing &quot;ggplot2&quot; to one of the libraries</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>, <span class="dt">lib =</span> <span class="kw">.libPaths</span>()[<span class="dv">1</span>]) <span class="co">#or install.packages(&quot;ggplot2&quot;)</span></code></pre></div>
+<p>It would be useful for you to note that some packages come with other packages referred to as Imports. There are also those packages that a package depends on and other packages it suggests.</p>
+<p>Always read the package’s documentation using <code>help(package = &quot;name&quot;)</code>to know more about the package. An example is <code>help(package = &quot;rvest&quot;, lib.loc = temp())</code>.</p>
+<p>Now that the two packages are installed, they are still not yet on R’s search path. If you tried calling a function in one of these installed but unloaded packages you will receive an <a href="#error">error</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calling a function from the installed &quot;ggplot2&quot; package which is not loaded</span>
+<span class="kw">ggplot</span>(x, <span class="kw">aes</span>(a, b)) +<span class="st"> </span><span class="kw">geom_point</span>()
+<span class="co"># Error: could not find function &quot;ggplot&quot;</span>
+
+<span class="kw">search</span>()
+[<span class="dv">1</span>] <span class="st">&quot;.GlobalEnv&quot;</span>        <span class="st">&quot;package:parallel&quot;</span>  <span class="st">&quot;tools:rstudio&quot;</span> <span class="st">&quot;package:stats&quot;</span>    
+[<span class="dv">5</span>] <span class="st">&quot;package:graphics&quot;</span>  <span class="st">&quot;package:grDevices&quot;</span> <span class="st">&quot;package:utils&quot;</span> <span class="st">&quot;package:datasets&quot;</span> 
+[<span class="dv">9</span>] <span class="st">&quot;package:methods&quot;</span>   <span class="st">&quot;Autoloads&quot;</span>         <span class="st">&quot;package:base&quot;</span></code></pre></div>
+<p>To make them accessible to R, they need to be loaded by using the <code>library()</code> function. For the <code>rvest</code> package, remember to specify the library location, otherwise R would return a “not found” message.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Loading rvest without specifying the library location</span>
+<span class="kw">library</span>(rvest)
+##Error in library(rvest) : there is no package called &#39;rvest&#39;
+
+<span class="co"># First loading a depency that was installed in the same temp directory</span>
+<span class="kw">library</span>(xml2, <span class="dt">lib.loc =</span> <span class="kw">tempdir</span>()) 
+<span class="co"># Now loading rvest by including the library location</span>
+<span class="kw">library</span>(rvest, <span class="dt">lib.loc =</span> <span class="kw">tempdir</span>())</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2, <span class="dt">lib.loc =</span> <span class="kw">.libPaths</span>()[<span class="dv">1</span>])
+<span class="co"># Checking that they are loaded</span>
+<span class="kw">search</span>()
+##  [1] &quot;.GlobalEnv&quot;        &quot;package:ggplot2&quot;   &quot;package:parallel&quot; 
+##  [4] &quot;package:knitr&quot;     &quot;package:stats&quot;     &quot;package:graphics&quot; 
+##  [7] &quot;package:grDevices&quot; &quot;package:utils&quot;     &quot;package:datasets&quot; 
+## [10] &quot;package:methods&quot;   &quot;Autoloads&quot;         &quot;package:base&quot;</code></pre></div>
+<p>For practice, install and load a package called <a href="http://swirlstats.com/">swirl</a>. <code>Swirl</code> is an interactive learning platform that uses the console to teach a number of R topics. I highly recommend you start learning from swirl as soon as you are done with “R Essentials”, it will strengthen what we have discussed in preparation for our follow-up books: “R - Beyond Essentials” and “Introduction to Data Analysis and Graphics using R”.</p>
+</div>
+</div>
+<div id="workingDirectory" class="section level2">
+<h2><span class="header-section-number">1.4</span> Working directory</h2>
+<p>The working directory is a folder in your computer used to store all the files used or created during an <a href="chap1.html#Rsession">R session</a>. They help to organize your work and avoid scattering documents and programs.</p>
+<p>For example, if you were working on different projects or tasks, like analyzing a survey at work, completing a schools assignment, or doing your household budget, then each one of these projects would have its own folder and any one of them would be your working directory whenever you are working on it. Therefore, your working directory will change depending on what project you are working on and it is best to tell R your working directory each time you start a new R session or switch projects or tasks.</p>
+<p>There are two ways to tell R your working directory. Using the command line and using graphical user interface (GUI).</p>
+<p><strong>Using GUI:</strong></p>
+<ul>
+<li>On Rstudio, go to the <code>Session</code> tab and select <code>Set Working Directory</code>. There are three possible locations: <code>to source file location</code>, <code>to files pane</code> and to <code>choose directory</code>. The first location will set the working directory to the folder containing the R script, the next location will set the working directory to the files pane location which is your home directory. Lastly you can use the <code>choose directory</code> location to select the folder to be used.</li>
+<li>On base R, go to <code>file</code>, then <code>Change Dir...</code>, this should open a window where you can select the needed folder.</li>
+</ul>
+<p><strong>Using the command line (console):</strong></p>
+<p>First establish the full <a href="files.html#paths">path</a> to your working directory, then input that path to the <code>setwd</code> (set working directory) function.</p>
+<p>But before setting the working directory, it is useful to find out your current working directory so you can know how to move to the new working directory. To do this, use the <code>getwd</code> (get the working directory) function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Current working directory</span>
+<span class="kw">getwd</span>()
+##&quot;C:/Users/Hellen Gakuruh/Documents&quot;</code></pre></div>
+<p>My current working directory is my home directory often denoted by a <code>~</code> (tilde), however, since we are working on “R Essentials” I would like to make it my current working directory. “R_Essentials” folder is located within another folder called <code>&quot;Data Mania Inc&quot;</code> in my home directory, that is <code>(&quot;~/Data Mania Inc/Data_Mgt_Analysis_and_Graphics_R&quot;)</code>. Note, folder names with spaces need to be in paranthesis (although it might be good to create folders without spaces, use “_&quot; or “-” instaead of a space)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;./Data Mania Inc/R_Essentials&quot;</span>)</code></pre></div>
+<p>Note, the easiest method for setting a working directory is using the GUI.</p>
+<div id="RScripting" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Introduction to scripting (reproducible analysis)</h3>
+<p>So far we have been using the console to produce instant outputs. This method of analysis is quick and easy when doing single line computation but it is not ideal for multiple analysis with more than one line of code. In addition, you might find it challenging later to reproduce the analysis (something that is gaining a lot of importance in publications). A good solution to this is working with scripts which are text files similar to notepad but programmed with syntax detection.</p>
+<p>The script is used to type commands (functions and expressions) just as you would on the console. The difference is that on a script, codes do not generate instant output, instaed, one must click <code>run</code> for codes to be executed.</p>
+<p>In addition to re-usability, another advantage of using scripts rather than the console is the ability to add short descriptions or explanations referred to as <code>comments</code>. Comments are added to help us understand our code in the future or guide other interested person(s) understand our code. Comments start with number sign/hash/pond sign <em>#</em> and any time R comes across it, it will disregard everything else on the same line as the hash tag.</p>
+<p>Since we have not covered <a href="#vectorisation">data object creation</a>, we will create a short script generating our data on the fly and doing some bit of analysis on it. Basically, the script should be self explanatory given the comments used.</p>
+<p>First open a new script (if none is opened), then type in the commands below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Combining the data elements</span>
+<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>)
+<span class="co"># Computing the sum</span>
+<span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))
+<span class="co"># Getting the total number of elements in the dataset</span>
+<span class="kw">length</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))
+<span class="co"># One way of computing the mean</span>
+<span class="kw">sum</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))/<span class="kw">length</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))
+<span class="co"># Another way of computing the mean</span>
+<span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))
+<span class="co"># Computing the median</span>
+<span class="kw">median</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>))
+<span class="co"># Conclusion: The median gives a better description of the average for this dataset </span></code></pre></div>
+<p>To get their output, click <code>Run Selected</code>, <code>Re-Run Previous</code> or <code>Run Region</code> from RStudio’s <code>Code</code> menu. A script can also be rendered by <code>Run</code> icon locates on the Script editor’s toolbar.</p>
+<p>To save your script, go to the <code>file</code> tab and select <code>Save As</code>, and the script will be saved with <code>.R</code> extension.</p>
+<p id="gaugeYourself">
+<b><u>Gauge yourself</u><b>
+</p>
+<p><strong>Do you have the expected tools and skills from this chapter?</strong></p>
+<ol style="list-style-type: decimal">
+<li>Where can you download <strong>base R</strong>?</li>
+<li>How many windows does default <strong>R</strong> start-up have?</li>
+<li>What is a console?</li>
+<li>What do these <strong>()</strong> mean?</li>
+<li>How can you clear the console?</li>
+<li>What is a script and why would you use it?</li>
+<li>What is <strong>RStudio</strong> and how does it differ from <strong>R</strong></li>
+<li>True or False, <strong>RStudio</strong> can be downloaded from CRAN</li>
+<li>How many panes does default <strong>RStudio</strong> have?</li>
+<li>What is your understanding of the following terms
+<ol style="list-style-type: lower-alpha">
+<li>Mirrors</li>
+<li>Workspace/Global Environment</li>
+<li>R session</li>
+<li>Working directory</li>
+<li>Search path</li>
+<li>Error</li>
+<li>Warning</li>
+<li>Message</li>
+</ol></li>
+<li>What are packages</li>
+<li>How can you determine installed packages in any library?</li>
+<li>Which of the pre-installed packages are on search path?</li>
+<li>What is meant by a library?</li>
+<li>How can you install a package</li>
+<li>Are installed packages ready for use?</li>
+</ol>
+<p><strong>You are ready for the second chapter if you know these</strong></p>
+<ol style="list-style-type: decimal">
+<li>You can download <strong>base R</strong> from <a href="%22https://cran.r-project.org/mirrors.html%22">One of CRAN’s mirrors</a></li>
+<li>Default base R has 2 windows, the main window and an embedded R console</li>
+<li>A console is an interactive platform for data analysis</li>
+<li>Parenthesis <strong>()</strong> signify a function call</li>
+<li>On windows <strong>clr+L</strong> will clear the console</li>
+<li>A script is a text editor for writing code. It’s useful for multiple line of code and it’s reproducibility (re-usability) ability</li>
+<li><strong>RStudio</strong> is an Integrated Development Environment (IDE) which makes coding in R much easy. It differs from <strong>base R</strong> in the sense that it is only functional when <strong>base R</strong> is installed, base R is it’s foundation</li>
+<li>False, the best way to download <strong>RStudio</strong> is from <a href="%22https://www.rstudio.com/products/rstudio/download/%22">RStudios website</a></li>
+<li>Default <strong>RStudio</strong> has four panes each having multiple tabs</li>
+<li>Understanding of terms
+<ol style="list-style-type: lower-alpha">
+<li>A <strong>mirror</strong> a copy of an original used to reduce network overload to the main server</li>
+<li>A <strong>workspace</strong> or global environment is a temporary storage environment</li>
+<li><strong>R session</strong> begin when you start R and ends when you close the program</li>
+<li>A <strong>working directory</strong> is a folder in the computer with documents used or saved during an R session</li>
+<li>A <strong>search path</strong> is a sequence of location <strong>R</strong> goes through to locate an object. It begins from the workspace and ends at the empty environment</li>
+<li>An <strong>error</strong> occurs when R cannot locate an object. Execution of the command is halted and no results are given only the error message; R simply cannot execute the function</li>
+<li><strong>Warning</strong> is issued to document potential problems which are numerous like using the wrong statistical method say chi-square for expected values less than five or invalid input say <code>1.L</code> instead of <code>1L</code> for integers. These messages are not fatal and R will execute the command but issue the warning message detailing problem in execution</li>
+<li><strong>Messages</strong> are used to give more information on how an execution was performed, they do not signal a problem. For example, they can be issued to show what method or value was used when if it not included in a call</li>
+</ol></li>
+<li><strong>Packages</strong> are collection of functions and data bundled together to enable certain operations like specialized analysis or performance</li>
+<li>You can determine installed packages using the <strong>installed.packages()</strong> function. You can also specify a library <strong>installed.packages(lib.loc = .Library)</strong></li>
+<li>Packages on the search path can be determined with <strong>loadedNamespaces()</strong></li>
+<li>A <strong>library</strong> is a directory containing installed packages. The default library can be accessed with <strong>.Library</strong>. You can add other libraries with <strong>.libPaths()</strong></li>
+<li>Packages are installed either through graphical user interface (GUI) or with the function <strong>install.packages()</strong>. The package name is included between the parenthesis in quotation marks e.g. <strong>install.packages(“ggplot2”)</strong></li>
+<li>No, installed packages need to be loaded with the function <strong>library()</strong>, this time the name of the package is not quoted e.g. <strong>library(ggplot2)</strong></li>
+</ol>
+<p><strong>Something Exra for you to find out on your own (not in notes)</strong></p>
+<ol style="list-style-type: decimal">
+<li>What do double quotation marks mean and do they differ from single quotation marks. Also find out when they are used. Tip read <em>?Qoutes</em></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>A text editor is a program used to write plain text for things like program source or configuration code. They differ from your usual word processors as they do not allow formating. Good example is Windows notepad.<a href="chap1.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Vectorisation is an operation carried out on an entire vector. A vector in R as we shall soon learn is an a data object containing zero or more elements. When there are more than one element, they must first be combined together so that they are treated as one object or vector for example c(2, 5, 9, 3).<a href="chap1.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>In very simple terms, an environment in R is a location it searches for objects. This is usually applied in relation to function calls which could have several environments beginning with the function itself followed by the global environment. There is some sort of hierachy to these environments in terms of how objects are searched, these form some sort of tree like structures: We shall discuss this in greater details in our follow-up book (“R - Beyond Essentials”).<a href="chap1.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Web scraping is a term used to refer to reading and importing web-based data. Web scraping is also known as web harvesting or web data extraction.<a href="chap1.html#fnref4">↩</a></p></li>
+</ol>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL with your page's canonical URL variable
+var disqus_developer = 1;
+//this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//introduction-to-data-analysis-and-graphics-using-r.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": true,
+"weibo": false,
+"instapper": true,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+"linkedin": true
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

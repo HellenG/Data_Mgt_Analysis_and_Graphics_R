@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Essentials</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Essentials" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  <meta name="github-repo" content="HellenG/Data_Mgt_Analysis_and_Graphics_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Essentials" />
+  
+  <meta name="twitter:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  
+
+<meta name="author" content="Hellen Gakuruh">
+
+
+<meta name="date" content="2017-01-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap6.html">
+<link rel="next" href="chap8.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Essentials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a><ul>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#goal"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#what-we-shall-cover"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="1.1" data-path="chap1.html"><a href="chap1.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="chap1.html"><a href="chap1.html#defining-r-and-tracing-its-history"><i class="fa fa-check"></i><b>1.1.1</b> Defining R and tracing it’s history</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap1.html"><a href="chap1.html#downloading-and-installation-of-base-r"><i class="fa fa-check"></i><b>1.1.2</b> Downloading and Installation of Base R</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap1.html"><a href="chap1.html#tour-of-base-r"><i class="fa fa-check"></i><b>1.1.3</b> Tour of base R</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap1.html"><a href="chap1.html#RConsole"><i class="fa fa-check"></i><b>1.1.4</b> Base R’s console</a></li>
+<li class="chapter" data-level="1.1.5" data-path="chap1.html"><a href="chap1.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>1.1.5</b> Errors, Warnings and messages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap1.html"><a href="chap1.html#RStudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="chap1.html"><a href="chap1.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Downloading and Installing RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap1.html"><a href="chap1.html#getting-to-know-rstudio-layout"><i class="fa fa-check"></i><b>1.2.2</b> Getting to know RStudio layout</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap1.html"><a href="chap1.html#RStudioConsole"><i class="fa fa-check"></i><b>1.2.3</b> Working with RStudio’s console</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap1.html"><a href="chap1.html#packages"><i class="fa fa-check"></i><b>1.3</b> Installing and Loading Packages</a></li>
+<li class="chapter" data-level="1.4" data-path="chap1.html"><a href="chap1.html#workingDirectory"><i class="fa fa-check"></i><b>1.4</b> Working directory</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chap1.html"><a href="chap1.html#RScripting"><i class="fa fa-check"></i><b>1.4.1</b> Introduction to scripting (reproducible analysis)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#goal-1"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#what-we-shall-cover-1"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#prerequisite"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="2.1" data-path="chap2.html"><a href="chap2.html#r-functions"><i class="fa fa-check"></i><b>2.1</b> R Functions</a></li>
+<li class="chapter" data-level="2.2" data-path="chap2.html"><a href="chap2.html#making-function-calls"><i class="fa fa-check"></i><b>2.2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap2.html"><a href="chap2.html#a-functions-name"><i class="fa fa-check"></i><b>2.2.1</b> A functions name</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap2.html"><a href="chap2.html#arguments"><i class="fa fa-check"></i><b>2.2.2</b> Arguments</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap2.html"><a href="chap2.html#functionLevels"><i class="fa fa-check"></i><b>2.2.3</b> Different Function levels</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap3.html"><a href="chap3.html"><i class="fa fa-check"></i><b>3</b> Introduction to Version Control Systems</a><ul>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#preliquisite"><i class="fa fa-check"></i>Preliquisite</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#chapter-expectation"><i class="fa fa-check"></i>Chapter Expectation</a></li>
+<li class="chapter" data-level="3.1" data-path="chap3.html"><a href="chap3.html#whatvcsis"><i class="fa fa-check"></i><b>3.1</b> Introduction: What and Why Version Control System</a></li>
+<li class="chapter" data-level="3.2" data-path="chap3.html"><a href="chap3.html#introgit"><i class="fa fa-check"></i><b>3.2</b> Introduction to Git</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap3.html"><a href="chap3.html#what-is-git"><i class="fa fa-check"></i><b>3.2.1</b> What is Git?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap3.html"><a href="chap3.html#how-does-git-work"><i class="fa fa-check"></i><b>3.2.2</b> How does Git work?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap3.html"><a href="chap3.html#working-with-git"><i class="fa fa-check"></i><b>3.2.3</b> Working with Git</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap3.html"><a href="chap3.html#collaborating-with-other-r-programmersdevelopers"><i class="fa fa-check"></i><b>3.3</b> Collaborating with other R programmers/developers</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap3.html"><a href="chap3.html#working-with-remote-repositories-gitgub"><i class="fa fa-check"></i><b>3.3.1</b> Working with remote repositories: GitGub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap3.html"><a href="chap3.html#using-git-and-github-in-rstudio"><i class="fa fa-check"></i><b>3.4</b> Using Git and GitHub in RStudio</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Data Types and Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#session-goal"><i class="fa fa-check"></i>Session Goal</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#what-we-shall-cover-2"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#prerequisite-1"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="4.1" data-path="chap4.html"><a href="chap4.html#dataTypes"><i class="fa fa-check"></i><b>4.1</b> Data Types</a></li>
+<li class="chapter" data-level="4.2" data-path="chap4.html"><a href="chap4.html#vectors"><i class="fa fa-check"></i><b>4.2</b> Vectors</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="chap4.html"><a href="chap4.html#creating-vectors"><i class="fa fa-check"></i><b>4.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap4.html"><a href="chap4.html#namingObjects"><i class="fa fa-check"></i><b>4.2.2</b> Naming objects</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap4.html"><a href="chap4.html#properties-of-data-objects-vector"><i class="fa fa-check"></i><b>4.3</b> Properties of data objects (vector)</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap4.html"><a href="chap4.html#typeof"><i class="fa fa-check"></i><b>4.3.1</b> Type of a vector</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap4.html"><a href="chap4.html#attributes"><i class="fa fa-check"></i><b>4.3.2</b> Attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap5.html"><a href="chap5.html"><i class="fa fa-check"></i><b>5</b> Importing and Exporting Data</a><ul>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#chapter-goal"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#what-we-shall-cover-3"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="5.1" data-path="chap5.html"><a href="chap5.html#importing-data-into-r"><i class="fa fa-check"></i><b>5.1</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="chap5.html"><a href="chap5.html#using-gui-for-delimited-files"><i class="fa fa-check"></i><b>5.1.1</b> Using GUI for delimited files</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap5.html"><a href="chap5.html#using-command-line"><i class="fa fa-check"></i><b>5.1.2</b> Using command line</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap5.html"><a href="chap5.html#importing-challenges"><i class="fa fa-check"></i><b>5.2</b> Importing Challenges</a></li>
+<li class="chapter" data-level="5.3" data-path="chap5.html"><a href="chap5.html#exporting-data"><i class="fa fa-check"></i><b>5.3</b> Exporting Data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap5.html"><a href="chap5.html#base-r-and-utils-exporting-functions"><i class="fa fa-check"></i><b>5.3.1</b> Base R and Utils exporting functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap5.html"><a href="chap5.html#exporting-with-other-packages"><i class="fa fa-check"></i><b>5.3.2</b> Exporting with other packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap5.html"><a href="chap5.html#taking-a-glimpse"><i class="fa fa-check"></i><b>5.4</b> Taking a Glimpse</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap6.html"><a href="chap6.html"><i class="fa fa-check"></i><b>6</b> Transforming Manipulating Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#chapter-goal-1"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#what-we-shall-cover-4"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="6.1" data-path="chap6.html"><a href="chap6.html#prerequisite-2"><i class="fa fa-check"></i><b>6.1</b> Prerequisite</a></li>
+<li class="chapter" data-level="6.2" data-path="chap6.html"><a href="chap6.html#indexing"><i class="fa fa-check"></i><b>6.2</b> Indexing different data objects in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="chap6.html"><a href="chap6.html#indexing-one-dimensional-objects"><i class="fa fa-check"></i><b>6.2.1</b> Indexing one dimensional objects</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap6.html"><a href="chap6.html#indexing-two-dimensional-vectors"><i class="fa fa-check"></i><b>6.2.2</b> Indexing two dimensional vectors</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap6.html"><a href="chap6.html#atomichomogenous-vectors-with-more-than-2-dimensions-2d"><i class="fa fa-check"></i><b>6.2.3</b> Atomic/Homogenous vectors with more than 2 dimensions (&gt;2d)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap6.html"><a href="chap6.html#binary-and-vectorisation-operators"><i class="fa fa-check"></i><b>6.3</b> Binary and vectorisation Operators</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="chap6.html"><a href="chap6.html#compOps"><i class="fa fa-check"></i><b>6.3.1</b> Comparison Operators</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap6.html"><a href="chap6.html#logical-operators"><i class="fa fa-check"></i><b>6.3.2</b> Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap6.html"><a href="chap6.html#checking-conditions"><i class="fa fa-check"></i><b>6.4</b> Checking conditions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="chap6.html"><a href="chap6.html#all-function"><i class="fa fa-check"></i><b>6.4.1</b> “All” function</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap6.html"><a href="chap6.html#any-function"><i class="fa fa-check"></i><b>6.4.2</b> “Any” function</a></li>
+<li class="chapter" data-level="6.4.3" data-path="chap6.html"><a href="chap6.html#which-function"><i class="fa fa-check"></i><b>6.4.3</b> “Which” function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap6.html"><a href="chap6.html#subsetting"><i class="fa fa-check"></i><b>6.5</b> Subsetting Data Objects</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap6.html"><a href="chap6.html#subsetting-one-dimensional-atomic-vectors"><i class="fa fa-check"></i><b>6.5.1</b> Subsetting one dimensional atomic vectors</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap6.html"><a href="chap6.html#subsetting-a-matrix"><i class="fa fa-check"></i><b>6.5.2</b> Subsetting a Matrix</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap6.html"><a href="chap6.html#subsetting-a-dataframe"><i class="fa fa-check"></i><b>6.5.3</b> Subsetting a dataframe</a></li>
+<li class="chapter" data-level="6.5.4" data-path="chap6.html"><a href="chap6.html#subsetting-a-list"><i class="fa fa-check"></i><b>6.5.4</b> Subsetting a List</a></li>
+<li class="chapter" data-level="6.5.5" data-path="chap6.html"><a href="chap6.html#subsetting-character-vectors"><i class="fa fa-check"></i><b>6.5.5</b> Subsetting character vectors</a></li>
+<li class="chapter" data-level="6.5.6" data-path="chap6.html"><a href="chap6.html#subsetting-factor-vectors"><i class="fa fa-check"></i><b>6.5.6</b> Subsetting factor vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap6.html"><a href="chap6.html#transformationmanipulation-of-datasets"><i class="fa fa-check"></i><b>6.6</b> Transformation/Manipulation of datasets</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#references-1"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#quick-reference-on-functions"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#packages-to-read-further-on"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#r-manuals"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap7.html"><a href="chap7.html"><i class="fa fa-check"></i><b>7</b> Working with Dates and Time</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#goal-2"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#what-we-shall-cover-5"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#prerequisite-3"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="7.1" data-path="chap7.html"><a href="chap7.html#recognising-date-time-objects-in-r"><i class="fa fa-check"></i><b>7.1</b> Recognising date-time objects in R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap7.html"><a href="chap7.html#current-date"><i class="fa fa-check"></i><b>7.1.1</b> Current date</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap7.html"><a href="chap7.html#current-time"><i class="fa fa-check"></i><b>7.1.2</b> Current Time</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap7.html"><a href="chap7.html#creating-date-time-objects-in-base-r"><i class="fa fa-check"></i><b>7.2</b> Creating date-time objects in base R</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap7.html"><a href="chap7.html#posix"><i class="fa fa-check"></i><b>7.2.1</b> POSIX</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap7.html"><a href="chap7.html#creating-posixct-objects"><i class="fa fa-check"></i><b>7.2.2</b> Creating POSIXct objects</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap7.html"><a href="chap7.html#creating-posixlt-objects"><i class="fa fa-check"></i><b>7.2.3</b> Creating POSIXlt Objects</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap7.html"><a href="chap7.html#creating-date-time-object-using-strptime"><i class="fa fa-check"></i><b>7.2.4</b> Creating date-time Object using “strptime()”</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chap7.html"><a href="chap7.html#converting-numeric-data-to-date-and-time-object"><i class="fa fa-check"></i><b>7.2.5</b> Converting numeric data to date and time object</a></li>
+<li class="chapter" data-level="7.2.6" data-path="chap7.html"><a href="chap7.html#creating-date-and-time-factor-vectors"><i class="fa fa-check"></i><b>7.2.6</b> Creating date and time factor vectors</a></li>
+<li class="chapter" data-level="7.2.7" data-path="chap7.html"><a href="chap7.html#creating-date-objects"><i class="fa fa-check"></i><b>7.2.7</b> Creating Date objects</a></li>
+<li class="chapter" data-level="7.2.8" data-path="chap7.html"><a href="chap7.html#computationDateTime"><i class="fa fa-check"></i><b>7.2.8</b> Computation with date and time objects</a></li>
+<li class="chapter" data-level="7.2.9" data-path="chap7.html"><a href="chap7.html#extracting-parts-of-a-date-time-object"><i class="fa fa-check"></i><b>7.2.9</b> Extracting parts of a date-time object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#references-2"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#quick-reference-on-functions-1"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#other-packages-on-date-and-time"><i class="fa fa-check"></i>Other Packages on date and time</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap8.html"><a href="chap8.html"><i class="fa fa-check"></i><b>8</b> Plotting in Base R</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#goal-3"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#what-we-shall-cover-6"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#prerequisite-4"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="8.1" data-path="chap8.html"><a href="chap8.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="chap8.html"><a href="chap8.html#understanding-base-r-plotting-function"><i class="fa fa-check"></i><b>8.2</b> Understanding base R plotting function</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="chap8.html"><a href="chap8.html#some-outputs-of-plot"><i class="fa fa-check"></i><b>8.2.1</b> Some outputs of plot()</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap8.html"><a href="chap8.html#functionDefinition"><i class="fa fa-check"></i><b>8.2.2</b> plot() Internals</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap8.html"><a href="chap8.html#step-one-opening-new-window"><i class="fa fa-check"></i><b>8.2.3</b> Step one: Opening new window</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap8.html"><a href="chap8.html#step-two-setting-plotting-coordinates"><i class="fa fa-check"></i><b>8.2.4</b> Step two: Setting plotting coordinates</a></li>
+<li class="chapter" data-level="8.2.5" data-path="chap8.html"><a href="chap8.html#step-three-evaluate-and-execute-pre-post-functions"><i class="fa fa-check"></i><b>8.2.5</b> Step three: Evaluate and execute pre-post functions</a></li>
+<li class="chapter" data-level="8.2.6" data-path="chap8.html"><a href="chap8.html#step-four-plotting"><i class="fa fa-check"></i><b>8.2.6</b> Step four: Plotting</a></li>
+<li class="chapter" data-level="8.2.7" data-path="chap8.html"><a href="chap8.html#step-five-evaluation-of-post-plot-and-pre-axis-expressions"><i class="fa fa-check"></i><b>8.2.7</b> Step five: Evaluation of post-plot and pre-axis expressions</a></li>
+<li class="chapter" data-level="8.2.8" data-path="chap8.html"><a href="chap8.html#step-six-construct-axis"><i class="fa fa-check"></i><b>8.2.8</b> Step six: Construct Axis</a></li>
+<li class="chapter" data-level="8.2.9" data-path="chap8.html"><a href="chap8.html#step-seven-ploting-frame"><i class="fa fa-check"></i><b>8.2.9</b> Step Seven: Ploting frame</a></li>
+<li class="chapter" data-level="8.2.10" data-path="chap8.html"><a href="chap8.html#step-eight-annotation"><i class="fa fa-check"></i><b>8.2.10</b> Step Eight: Annotation</a></li>
+<li class="chapter" data-level="8.2.11" data-path="chap8.html"><a href="chap8.html#summary-final-output"><i class="fa fa-check"></i><b>8.2.11</b> Summary: Final output</a></li>
+<li class="chapter" data-level="8.2.12" data-path="chap8.html"><a href="chap8.html#commentedDefinition"><i class="fa fa-check"></i><b>8.2.12</b> A commented basic plot definition</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap8.html"><a href="chap8.html#par"><i class="fa fa-check"></i><b>8.3</b> Graphical Parameters and Annotating Base R Plots</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="chap8.html"><a href="chap8.html#querying-saving-and-resetting-graphical-parameters"><i class="fa fa-check"></i><b>8.3.1</b> Querying, saving and resetting graphical parameters</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chap8.html"><a href="chap8.html#settingchanging-graphical-parameters"><i class="fa fa-check"></i><b>8.3.2</b> Setting/Changing graphical parameters</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chap8.html"><a href="chap8.html#implementing-some-graphical-parameters-and-annotation"><i class="fa fa-check"></i><b>8.3.3</b> Implementing some graphical parameters and annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chap8.html"><a href="chap8.html#plotting-characters-pch"><i class="fa fa-check"></i><b>8.4</b> Plotting characters (pch)</a></li>
+<li class="chapter" data-level="8.5" data-path="chap8.html"><a href="chap8.html#plotTypes"><i class="fa fa-check"></i><b>8.5</b> Plot types</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="chap8.html"><a href="chap8.html#annotating-plots-with-lines"><i class="fa fa-check"></i><b>8.5.1</b> Annotating plots with lines</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="chap8.html"><a href="chap8.html#generating-and-annotating-mathematical-plots"><i class="fa fa-check"></i><b>8.6</b> Generating and Annotating Mathematical Plots</a></li>
+<li class="chapter" data-level="8.7" data-path="chap8.html"><a href="chap8.html#other-base-r-plots"><i class="fa fa-check"></i><b>8.7</b> Other Base R Plots</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="chap8.html"><a href="chap8.html#histDensityPlots"><i class="fa fa-check"></i><b>8.7.1</b> Histogram and Density plots</a></li>
+<li class="chapter" data-level="8.7.2" data-path="chap8.html"><a href="chap8.html#box-box-and-whisker-plots"><i class="fa fa-check"></i><b>8.7.2</b> Box (box-and-whisker) plots</a></li>
+<li class="chapter" data-level="8.7.3" data-path="chap8.html"><a href="chap8.html#strip-chartsdot-plots"><i class="fa fa-check"></i><b>8.7.3</b> Strip Charts/Dot Plots</a></li>
+<li class="chapter" data-level="8.7.4" data-path="chap8.html"><a href="chap8.html#conditional-plots-coplot"><i class="fa fa-check"></i><b>8.7.4</b> Conditional Plots (Coplot)</a></li>
+<li class="chapter" data-level="8.7.5" data-path="chap8.html"><a href="chap8.html#stem-and-leaf-plot"><i class="fa fa-check"></i><b>8.7.5</b> Stem and Leaf plot</a></li>
+<li class="chapter" data-level="8.7.6" data-path="chap8.html"><a href="chap8.html#bar-graphs-and-pie-chart"><i class="fa fa-check"></i><b>8.7.6</b> Bar graphs and pie chart</a></li>
+<li class="chapter" data-level="8.7.7" data-path="chap8.html"><a href="chap8.html#mosaic"><i class="fa fa-check"></i><b>8.7.7</b> Mosaic</a></li>
+<li class="chapter" data-level="8.7.8" data-path="chap8.html"><a href="chap8.html#fourfold-plots"><i class="fa fa-check"></i><b>8.7.8</b> Fourfold Plots</a></li>
+<li class="chapter" data-level="8.7.9" data-path="chap8.html"><a href="chap8.html#sunflower-plots"><i class="fa fa-check"></i><b>8.7.9</b> Sunflower plots</a></li>
+<li class="chapter" data-level="8.7.10" data-path="chap8.html"><a href="chap8.html#time-series-plots-line"><i class="fa fa-check"></i><b>8.7.10</b> Time series plots (line)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="chap8.html"><a href="chap8.html#colours"><i class="fa fa-check"></i><b>8.8</b> Colors</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="chap8.html"><a href="chap8.html#expected-values-for-color-based-arguments"><i class="fa fa-check"></i><b>8.8.1</b> Expected values for color-based arguments</a></li>
+<li class="chapter" data-level="8.8.2" data-path="chap8.html"><a href="chap8.html#defining-a-new-palette"><i class="fa fa-check"></i><b>8.8.2</b> Defining a new palette</a></li>
+<li class="chapter" data-level="8.8.3" data-path="chap8.html"><a href="chap8.html#palettes-makers"><i class="fa fa-check"></i><b>8.8.3</b> Palettes makers</a></li>
+<li class="chapter" data-level="8.8.4" data-path="chap8.html"><a href="chap8.html#creating-palettes-by-interpolation-colors"><i class="fa fa-check"></i><b>8.8.4</b> Creating palettes by interpolation colors</a></li>
+<li class="chapter" data-level="8.8.5" data-path="chap8.html"><a href="chap8.html#color-models-and-spaces"><i class="fa fa-check"></i><b>8.8.5</b> Color Models and Spaces</a></li>
+<li class="chapter" data-level="8.8.6" data-path="chap8.html"><a href="chap8.html#creating-new-colours"><i class="fa fa-check"></i><b>8.8.6</b> Creating New Colours</a></li>
+<li class="chapter" data-level="8.8.7" data-path="chap8.html"><a href="chap8.html#color-adjustment"><i class="fa fa-check"></i><b>8.8.7</b> Color adjustment</a></li>
+<li class="chapter" data-level="8.8.8" data-path="chap8.html"><a href="chap8.html#colorConversion"><i class="fa fa-check"></i><b>8.8.8</b> Color conversion and Transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="chap8.html"><a href="chap8.html#other-plotting-and-color-palette-packages"><i class="fa fa-check"></i><b>8.9</b> Other Plotting and Color Palette Packages</a></li>
+<li class="chapter" data-level="8.10" data-path="chap8.html"><a href="chap8.html#graphicalDevices"><i class="fa fa-check"></i><b>8.10</b> Graphical Devices</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#references-3"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#quick-reference-on-functions-2"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#packages-to-read-further-on-1"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#r-manuals-1"><i class="fa fa-check"></i>R Manuals</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#basics-of-plotting-in-r"><i class="fa fa-check"></i>Basics of plotting in R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#calling-and-changing-graphical-parameters"><i class="fa fa-check"></i>Calling and changing graphical parameters</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#annotating-plots"><i class="fa fa-check"></i>Annotating plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#producing-different-base-r-plots"><i class="fa fa-check"></i>Producing different base R plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#using-and-creating-colors-in-base-r"><i class="fa fa-check"></i>Using and creating colors in base R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#rs-graphical-devices"><i class="fa fa-check"></i>R’s graphical devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap9.html"><a href="chap9.html"><i class="fa fa-check"></i><b>9</b> Where and How to Get Help</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#goal-4"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#what-we-shall-cover-7"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#prerequisite-5"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="9.1" data-path="chap9.html"><a href="chap9.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap9.html"><a href="chap9.html#problem-identification"><i class="fa fa-check"></i><b>9.2</b> Problem Identification</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap1.html"><a href="chap1.html#errors"><i class="fa fa-check"></i><b>9.2.1</b> Errors</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap9.html"><a href="chap9.html#warning-messages"><i class="fa fa-check"></i><b>9.2.2</b> Warning Messages</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap9.html"><a href="chap9.html#unexpected-output"><i class="fa fa-check"></i><b>9.2.3</b> Unexpected Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap9.html"><a href="chap9.html#problemSolving"><i class="fa fa-check"></i><b>9.3</b> Solving (defined) coding problems</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-unknown"><i class="fa fa-check"></i><b>9.3.1</b> Problems where functions are unknown</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-known"><i class="fa fa-check"></i><b>9.3.2</b> Problems where functions are known</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap9.html"><a href="chap9.html#where-to-get-help"><i class="fa fa-check"></i><b>9.4</b> Where to get help</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap9.html"><a href="chap9.html#knowledge-and-skills"><i class="fa fa-check"></i><b>9.4.1</b> Knowledge and Skills</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap9.html"><a href="chap9.html#rs-documentations-internal-sources"><i class="fa fa-check"></i><b>9.4.2</b> R’s Documentations (Internal sources)</a></li>
+<li class="chapter" data-level="9.4.3" data-path="chap9.html"><a href="chap9.html#externalSources"><i class="fa fa-check"></i><b>9.4.3</b> External sources of help</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chap9.html"><a href="chap9.html#example-problem-statistical-mode"><i class="fa fa-check"></i><b>9.5</b> Example problem: Statistical mode</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#references-4"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#quick-reference-on-functions-3"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#r-manuals-3"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap10.html"><a href="chap10.html"><i class="fa fa-check"></i><b>10</b> Case Studies</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#goal-5"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#prerequisite-6"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="10.1" data-path="chap10.html"><a href="chap10.html#case-study-one--importing-online-data"><i class="fa fa-check"></i><b>10.1</b> Case Study One:- Importing online data</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="chap10.html"><a href="chap10.html#task"><i class="fa fa-check"></i><b>10.1.1</b> Task</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chap10.html"><a href="chap10.html#what-we-shall-cover-8"><i class="fa fa-check"></i><b>10.1.2</b> What we shall cover</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chap10.html"><a href="chap10.html#background-and-data"><i class="fa fa-check"></i><b>10.1.3</b> Background and Data</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chap10.html"><a href="chap10.html#web-scraping"><i class="fa fa-check"></i><b>10.1.4</b> Web scraping</a></li>
+<li class="chapter" data-level="10.1.5" data-path="chap10.html"><a href="chap10.html#html-documents"><i class="fa fa-check"></i><b>10.1.5</b> HTML Document’s</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#references-5"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#online-web-sites"><i class="fa fa-check"></i>Online web sites</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>A</b> Downloading and Installing R</a><ul>
+<li class="chapter" data-level="A.1" data-path="r.html"><a href="r.html#downloading-r"><i class="fa fa-check"></i><b>A.1</b> Downloading R</a></li>
+<li class="chapter" data-level="A.2" data-path="r.html"><a href="r.html#installing-r"><i class="fa fa-check"></i><b>A.2</b> Installing R</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>B</b> Downloading and Installing RStudio</a><ul>
+<li class="chapter" data-level="B.1" data-path="rstudio.html"><a href="rstudio.html#downloading-rstudio"><i class="fa fa-check"></i><b>B.1</b> Downloading RStudio</a></li>
+<li class="chapter" data-level="B.2" data-path="rstudio.html"><a href="rstudio.html#installing-rstudio"><i class="fa fa-check"></i><b>B.2</b> Installing Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>C</b> Files</a><ul>
+<li class="chapter" data-level="C.1" data-path="files.html"><a href="files.html#definition-and-file-names"><i class="fa fa-check"></i><b>C.1</b> Definition and file names</a></li>
+<li class="chapter" data-level="C.2" data-path="files.html"><a href="files.html#formats"><i class="fa fa-check"></i><b>C.2</b> File formats</a></li>
+<li class="chapter" data-level="C.3" data-path="files.html"><a href="files.html#paths"><i class="fa fa-check"></i><b>C.3</b> File Paths</a></li>
+<li class="chapter" data-level="C.4" data-path="files.html"><a href="files.html#encoding"><i class="fa fa-check"></i><b>C.4</b> Encoding</a><ul>
+<li class="chapter" data-level="C.4.1" data-path="files.html"><a href="files.html#ascii"><i class="fa fa-check"></i><b>C.4.1</b> ASCII</a></li>
+<li class="chapter" data-level="C.4.2" data-path="files.html"><a href="files.html#utf-8"><i class="fa fa-check"></i><b>C.4.2</b> UTF-8</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="files.html"><a href="files.html#types-of-files"><i class="fa fa-check"></i><b>C.5</b> Types of files</a><ul>
+<li class="chapter" data-level="C.5.1" data-path="files.html"><a href="files.html#text-files-and-binary-files"><i class="fa fa-check"></i><b>C.5.1</b> Text files and binary files</a></li>
+<li class="chapter" data-level="C.5.2" data-path="files.html"><a href="files.html#free-format"><i class="fa fa-check"></i><b>C.5.2</b> Free format</a></li>
+<li class="chapter" data-level="C.5.3" data-path="files.html"><a href="files.html#other-file-types-supported-by-base-r"><i class="fa fa-check"></i><b>C.5.3</b> Other file types supported by base R</a></li>
+</ul></li>
+<li class="chapter" data-level="C.6" data-path="files.html"><a href="files.html#summary"><i class="fa fa-check"></i><b>C.6</b> Summary</a></li>
+<li class="chapter" data-level="C.7" data-path="files.html"><a href="files.html#references-6"><i class="fa fa-check"></i><b>C.7</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Essentials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap7" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Working with Dates and Time</h1>
+<div id="goal-2" class="section level2 unnumbered">
+<h2>Goal</h2>
+<p>The main goal of this chapter is to get you started with date and time objects which will be significant during data analysis.</p>
+</div>
+<div id="what-we-shall-cover-5" class="section level2 unnumbered">
+<h2>What we shall cover</h2>
+<p>By the end of this chapter you should:</p>
+<ul>
+<li>Be able to know what format, time zones, and origin mean in relation to date and time</li>
+<li>Know how to create date and time objects with both POSIXct and POSIXlt classes</li>
+<li>Be able to create date and time factor objects</li>
+<li>Skilled in computing and manipulating date-time objects</li>
+</ul>
+</div>
+<div id="prerequisite-3" class="section level2 unnumbered">
+<h2>Prerequisite</h2>
+<p>To appreciate this chapter, you must be conversant with:</p>
+<ul>
+<li>Making function calls</li>
+<li>Concept of object oriented programming in R particularly classes and methods</li>
+</ul>
+</div>
+<div id="recognising-date-time-objects-in-r" class="section level2">
+<h2><span class="header-section-number">7.1</span> Recognising date-time objects in R</h2>
+<p>As with every analytical program, date-time data have to be declared explicitly for the program to recognize it and treat as such. Internally, most programs store dates as numerical values from an arbitrary original date, for example “1970-01-01” for R, “0000-01-01” for Matlab, and “1900-01-01” for excel and windows, hence date can be a numerical value.</p>
+<p>R provides a number of ways of declaring or converting data into date and time. But first let’s see current date and time according to R</p>
+<div id="current-date" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Current date</h3>
+<p>In base R “Sys.Date()” can be used to get the current date.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.Date</span>()
+## [1] &quot;2017-01-30&quot;
+
+<span class="co"># Class of output</span>
+<span class="kw">class</span>(<span class="kw">Sys.Date</span>())
+## [1] &quot;Date&quot;</code></pre></div>
+<p>Sys.Date produces an output of class “Date”, and its format is year (four digits), hyphen, month (two digits), hyphen, then date (two digits). This format can be changed to any other date format using “format” function.</p>
+<div id="format" class="section level4">
+<h4><span class="header-section-number">7.1.1.1</span> Format</h4>
+<p>Format is a generic function meaning it can be used by different data objects not just date objects. Therefore it is important to give it an object of class “Date” and include a format method.</p>
+<p>A format method is a character vector that details how date will be presented. These methods are documented by “strptime” function under the “format” section. Default method is “%Y-%m-%d %H:%M:%S for an object with a time component and simply”%Y-%m-%d&quot; if it does not have a time component.</p>
+<p>As detailed by “strptime” function, formats are platform-specif but most would recognize some of the format given otherwise you may need to set LC_TIME category to an appropriate type through “Sys.setlocale” function. Notable effects are to months names and AM/PM.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Platform used</span>
+.Platform$OS.type
+## [1] &quot;windows&quot;
+.Platform$GUI
+## [1] &quot;RTerm&quot;
+<span class="kw">Sys.setlocale</span>()
+## [1] &quot;LC_COLLATE=English_United States.1252;LC_CTYPE=English_United States.1252;LC_MONETARY=English_United States.1252;LC_NUMERIC=C;LC_TIME=English_United States.1252&quot;</code></pre></div>
+<p>Conversion of specification is done through the symbol “%” followed by a single letter. Some of the conversion specifications include</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Abbreviated weekday name</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%a&quot;</span>)
+## [1] &quot;Mon&quot;
+<span class="co"># Full weekday name</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%A&quot;</span>)
+## [1] &quot;Monday&quot;
+<span class="co"># Abbreviated month name</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%b&quot;</span>)
+## [1] &quot;Jan&quot;
+<span class="co"># Full month name</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%B&quot;</span>)
+## [1] &quot;January&quot;
+<span class="co"># Day of the month as a decimal number</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%d&quot;</span>)
+## [1] &quot;30&quot;
+<span class="co"># Conversion to m/d/y * not all on systems</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%D&quot;</span>)
+## [1] &quot;01/30/17&quot;
+<span class="co"># Week of the year</span>
+<span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%W&quot;</span>)
+## [1] &quot;05&quot;</code></pre></div>
+<p>Do take note, these conversion methods can be used to manipulate date objects which will become quite handy during data analysis session in our third book “Introduction to Data Analysis and Graphics using R”.</p>
+</div>
+</div>
+<div id="current-time" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Current Time</h3>
+<p>To establish current time, “Sys.time()” from base R is appropriate.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.time</span>()
+## [1] &quot;2017-01-30 20:12:59 EAT&quot;</code></pre></div>
+<p>Notice this function gives a more comprehensive output as it contains both date and time components. The characters at the end, right after time is R’s version of your current time zone.</p>
+<p>Just like date object, time can be converted to a different format depending on a given format specification or method.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Current time</span>
+<span class="kw">Sys.time</span>()
+## [1] &quot;2017-01-30 20:12:59 EAT&quot;
+<span class="co"># Converting to a different format</span>
+<span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%c&quot;</span>)
+## [1] &quot;Mon Jan 30 20:12:59 2017&quot;
+<span class="co"># Getting the hour part</span>
+<span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%H&quot;</span>)
+## [1] &quot;20&quot;
+<span class="co"># Time in the 12-hour clock system</span>
+<span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%r&quot;</span>)
+## [1] &quot;08:13:00 PM&quot;</code></pre></div>
+<p>Sys.time() outputs an object of class “POSIXct” and “POSIXt”. We will discuss these two classes as we create some date-time objects.</p>
+</div>
+</div>
+<div id="creating-date-time-objects-in-base-r" class="section level2">
+<h2><span class="header-section-number">7.2</span> Creating date-time objects in base R</h2>
+<p>To be able to do any analysis dealing with date and or time in R, you must have an object with a date-time class. A class as discussed in <a href="#opp">object oriented programming in R</a> is important in selecting appropriate functions for data-time objects.</p>
+<p>Therefore the date-time objects we create would have classes that are recognized by R as date and time classes. These classes fall under the POSIX system.</p>
+<div id="posix" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> POSIX</h3>
+<p>Posix time also referred to as “Unix time” or “Epoch time” is a system that describes time in seconds from some origin which is 1st January 1970 in UTC <a href="#timeZone">time zone</a>. Days and dates are calculated as number of seconds that have passed since this origin, this would be in numerical form like 1.48579638110^{9} hence not comprehensible to humans (just like binary code).</p>
+<p>There are two date-time classes in base R, these are “POSIXct” and “POSIXlt”. A virtual class “POSIXt” exists for allowing operations on both POSIXct and POSIXlt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Methods (functions) avaliable for these classes</span>
+<span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;POSIXlt&quot;</span>)[<span class="dv">1</span>:<span class="dv">28</span>];
+##  [1] &quot;[.POSIXlt&quot;                   &quot;[&lt;-.POSIXlt&quot;                
+##  [3] &quot;anyNA.POSIXlt&quot;               &quot;as.data.frame.POSIXlt&quot;      
+##  [5] &quot;as.Date.POSIXlt&quot;             &quot;as.double.POSIXlt&quot;          
+##  [7] &quot;as.matrix.POSIXlt&quot;           &quot;as.POSIXct.POSIXlt&quot;         
+##  [9] &quot;c.POSIXlt&quot;                   &quot;coerce,oldClass,S3-method&quot;  
+## [11] &quot;duplicated.POSIXlt&quot;          &quot;format.POSIXlt&quot;             
+## [13] &quot;initialize,oldClass-method&quot;  &quot;is.na.POSIXlt&quot;              
+## [15] &quot;length.POSIXlt&quot;              &quot;mean.POSIXlt&quot;               
+## [17] &quot;names.POSIXlt&quot;               &quot;names&lt;-.POSIXlt&quot;            
+## [19] &quot;print.POSIXlt&quot;               &quot;rep.POSIXlt&quot;                
+## [21] &quot;show,oldClass-method&quot;        &quot;slotsFromS3,oldClass-method&quot;
+## [23] &quot;sort.POSIXlt&quot;                &quot;summary.POSIXlt&quot;            
+## [25] &quot;Summary.POSIXlt&quot;             &quot;unique.POSIXlt&quot;             
+## [27] &quot;weighted.mean.POSIXlt&quot;       &quot;xtfrm.POSIXlt&quot;
+<span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;POSIXct&quot;</span>)[<span class="dv">1</span>:<span class="dv">21</span>]
+##  [1] &quot;[.POSIXct&quot;                   &quot;[[.POSIXct&quot;                 
+##  [3] &quot;[&lt;-.POSIXct&quot;                 &quot;as.data.frame.POSIXct&quot;      
+##  [5] &quot;as.Date.POSIXct&quot;             &quot;as.list.POSIXct&quot;            
+##  [7] &quot;as.POSIXlt.POSIXct&quot;          &quot;c.POSIXct&quot;                  
+##  [9] &quot;coerce,oldClass,S3-method&quot;   &quot;format.POSIXct&quot;             
+## [11] &quot;initialize,oldClass-method&quot;  &quot;mean.POSIXct&quot;               
+## [13] &quot;print.POSIXct&quot;               &quot;rep.POSIXct&quot;                
+## [15] &quot;show,oldClass-method&quot;        &quot;slotsFromS3,oldClass-method&quot;
+## [17] &quot;split.POSIXct&quot;               &quot;summary.POSIXct&quot;            
+## [19] &quot;Summary.POSIXct&quot;             &quot;weighted.mean.POSIXct&quot;      
+## [21] &quot;xtfrm.POSIXct&quot;</code></pre></div>
+<div id="posixct" class="section level4">
+<h4><span class="header-section-number">7.2.1.1</span> POSIXct</h4>
+<p>This class is most suitable for date/time variables in a data frame. An object of class POSIXct is a numeric vector of seconds since 1970 (R’s version of original time).</p>
+</div>
+<div id="posixlt" class="section level4">
+<h4><span class="header-section-number">7.2.1.2</span> POSIXlt</h4>
+<p>An object of class POSIXlt is a list with about eleven vectors, these are; time in seconds, minutes and hour, day of the month, month, year since 1900, day of the week, day of the year, daylight saving time, time zone, and offset in seconds from GMT. The latter two are platform specific.</p>
+<p>Objects of this class are convenient for date-time manipulation.</p>
+<p>Conversion of POSIXlt to POSIXct is easily done, however, POSIXct objects may need a time zone attribute to convert them to POSIXlt. Other date objects like those from other packages like “chron” and “dates” can also be converted to either POSIXct, POSIXlt or both. Both POSIXct and POSIXlt inherit POSIXt (a virtual class).</p>
+<p>Creating date-time objects from character and numeric vectors is done with “as.POSIXct() or POSIXlt()” or with “strptime()”.</p>
+</div>
+</div>
+<div id="creating-posixct-objects" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Creating POSIXct objects</h3>
+<p>Given character vectors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Character vectors of dates and times</span>
+dates &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Aug 1, 1972&quot;</span>, <span class="st">&quot;Jan 1, 1973&quot;</span>, <span class="st">&quot;Jan 1, 1974&quot;</span>, <span class="st">&quot;Jan 1, 1975&quot;</span>)
+times &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;23:59:59&quot;</span>, <span class="st">&quot;00:00:01&quot;</span>, <span class="st">&quot;12:02:19&quot;</span>, <span class="st">&quot;12:39:50&quot;</span>)
+datesTimes &lt;-<span class="st"> </span><span class="kw">paste</span>(dates, times)
+datesTimes
+## [1] &quot;Aug 1, 1972 23:59:59&quot; &quot;Jan 1, 1973 00:00:01&quot; &quot;Jan 1, 1974 12:02:19&quot;
+## [4] &quot;Jan 1, 1975 12:39:50&quot;
+<span class="kw">class</span>(datesTimes)
+## [1] &quot;character&quot;</code></pre></div>
+<p>Creating POSIXct object is done with “as.POSIXct” function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Converting character vector with dates </span>
+dateObject1 &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(dates, <span class="dt">tz =</span> <span class="st">&quot;GMT&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%b %e, %Y&quot;</span>)
+dateObject1
+## [1] &quot;1972-08-01 GMT&quot; &quot;1973-01-01 GMT&quot; &quot;1974-01-01 GMT&quot; &quot;1975-01-01 GMT&quot;
+<span class="kw">class</span>(dateObject1)
+## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;
+
+<span class="co"># Converting times vector </span>
+timeObject1 &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(times, <span class="dt">tz =</span> <span class="st">&quot;GMT&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%H:%M:%S&quot;</span>)
+timeObject1
+## [1] &quot;2017-01-30 23:59:59 GMT&quot; &quot;2017-01-30 00:00:01 GMT&quot;
+## [3] &quot;2017-01-30 12:02:19 GMT&quot; &quot;2017-01-30 12:39:50 GMT&quot;
+<span class="kw">class</span>(timeObject1)
+## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre></div>
+<p>For the last object involving time without dates, R assigned current date to each time, if this is not what you had in mind, then include the correct dates otherwise R considers time as part of a specific day.</p>
+<p>We can use the combined date and time to create a POSIXct object but amending argument format.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dateTimeObject1 &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(datesTimes, <span class="dt">format =</span> <span class="st">&quot;%b %e, %Y %H:%M:%S&quot;</span>)
+dateTimeObject1
+## [1] &quot;1972-08-01 23:59:59 EAT&quot; &quot;1973-01-01 00:00:01 EAT&quot;
+## [3] &quot;1974-01-01 12:02:19 EAT&quot; &quot;1975-01-01 12:39:50 EAT&quot;
+<span class="kw">class</span>(dateTimeObject1)
+## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre></div>
+</div>
+<div id="creating-posixlt-objects" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Creating POSIXlt Objects</h3>
+<p>To create a POSIXlt object, we use “as.POSIXlt” function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dateTimeObject2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(datesTimes, <span class="dt">format =</span> <span class="st">&quot;%b %e, %Y %H:%M:%S&quot;</span>)
+dateTimeObject2
+## [1] &quot;1972-08-01 23:59:59 EAT&quot; &quot;1973-01-01 00:00:01 EAT&quot;
+## [3] &quot;1974-01-01 12:02:19 EAT&quot; &quot;1975-01-01 12:39:50 EAT&quot;
+<span class="kw">class</span>(dateTimeObject2)
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre></div>
+<p>When creating date-time objects, one consideration to make is “time zone”. Time zone is system and locale specif, hence you must ensure it is correct for your current setting. Use “Sys.timezone() to see your current timezone and can check”OlsonNames()“.</p>
+</div>
+<div id="creating-date-time-object-using-strptime" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Creating date-time Object using “strptime()”</h3>
+<p>“strptime()” creates POSIXlt objects just like “as.POSIXlt()”</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dateObject2 &lt;-<span class="st"> </span><span class="kw">strptime</span>(dates, <span class="dt">format =</span> <span class="st">&quot;%b %e, %Y&quot;</span>)
+dateObject2
+## [1] &quot;1972-08-01 EAT&quot; &quot;1973-01-01 EAT&quot; &quot;1974-01-01 EAT&quot; &quot;1975-01-01 EAT&quot;
+<span class="kw">class</span>(dateObject2)
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;
+
+<span class="co">#</span>
+timeObject2 &lt;-<span class="st"> </span><span class="kw">strptime</span>(times, <span class="dt">format =</span> <span class="st">&quot;%H:%M:%S&quot;</span>)
+timeObject2
+## [1] &quot;2017-01-30 23:59:59 EAT&quot; &quot;2017-01-30 00:00:01 EAT&quot;
+## [3] &quot;2017-01-30 12:02:19 EAT&quot; &quot;2017-01-30 12:39:50 EAT&quot;
+<span class="kw">class</span>(timeObject2)
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;
+
+<span class="co">#</span>
+dateTimeObject3 &lt;-<span class="st"> </span><span class="kw">strptime</span>(datesTimes, <span class="dt">format =</span> <span class="st">&quot;%b %e, %Y %H:%M:%S&quot;</span>)
+dateTimeObject3
+## [1] &quot;1972-08-01 23:59:59 EAT&quot; &quot;1973-01-01 00:00:01 EAT&quot;
+## [3] &quot;1974-01-01 12:02:19 EAT&quot; &quot;1975-01-01 12:39:50 EAT&quot;
+<span class="kw">class</span>(dateTimeObject3)
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre></div>
+</div>
+<div id="converting-numeric-data-to-date-and-time-object" class="section level3">
+<h3><span class="header-section-number">7.2.5</span> Converting numeric data to date and time object</h3>
+<p>Numerical values can be converted to either POSIXct or POSIXlt object by specifying origin (Julian time) or the beginning of time. Sometimes this might be a better option when importing data into R, as characters need to be formatted.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">numPOSIXct &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="dv">1938494958</span>, <span class="dt">origin =</span> <span class="st">&quot;1900-01-01&quot;</span>)
+numPOSIXct; <span class="kw">class</span>(numPOSIXct)
+## [1] &quot;1961-06-06 09:49:18 EAT&quot;
+## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;
+numPOSIXlt &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="dv">3859583882</span>, <span class="dt">origin =</span> <span class="st">&quot;1970-01-01&quot;</span>)
+numPOSIXlt; <span class="kw">class</span>(numPOSIXlt)
+## [1] &quot;2092-04-21 05:38:02 EAT&quot;
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre></div>
+</div>
+<div id="creating-date-and-time-factor-vectors" class="section level3">
+<h3><span class="header-section-number">7.2.6</span> Creating date and time factor vectors</h3>
+<p>Date and time objects can be converted to factor vectors with “cut” function. The “breaks” argument is used to specify the number of levels the vector will have.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Leap vector as a factor vector with years as levels</span>
+dateFactor1 &lt;-<span class="st"> </span><span class="kw">cut</span>(.leap.seconds, <span class="dt">breaks =</span> <span class="st">&quot;year&quot;</span>)
+<span class="co"># Leap vector converted to a two level factor vector</span>
+dateFactor2 &lt;-<span class="st"> </span><span class="kw">cut</span>(.leap.seconds, <span class="dt">breaks =</span> <span class="dv">2</span>)
+<span class="co"># Leap vector as binary ordinal (ordered) vector</span>
+dateFactor3 &lt;-<span class="st"> </span><span class="kw">cut</span>(.leap.seconds, <span class="dt">breaks =</span> <span class="kw">c</span>(.leap.seconds[<span class="dv">1</span>], .leap.seconds[<span class="dv">14</span>], .leap.seconds[<span class="dv">26</span>]), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Before 1990&#39;s&quot;</span>, <span class="st">&quot;After 1990s&quot;</span>), <span class="dt">include.lowest =</span> <span class="ot">TRUE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>, <span class="dt">ordered_result =</span> <span class="ot">TRUE</span>)</code></pre></div>
+</div>
+<div id="creating-date-objects" class="section level3">
+<h3><span class="header-section-number">7.2.7</span> Creating Date objects</h3>
+<p>Date objects (without time) can be created with “as.Date” function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pureDateObject &lt;-<span class="st"> </span><span class="kw">as.Date</span>(dates, <span class="dt">format =</span> <span class="st">&quot;%b %e, %Y&quot;</span>)
+pureDateObject
+## [1] &quot;1972-08-01&quot; &quot;1973-01-01&quot; &quot;1974-01-01&quot; &quot;1975-01-01&quot;
+<span class="kw">class</span>(pureDateObject)
+## [1] &quot;Date&quot;</code></pre></div>
+</div>
+<div id="computationDateTime" class="section level3">
+<h3><span class="header-section-number">7.2.8</span> Computation with date and time objects</h3>
+<p>Date and time objects can be used to carry out computation such as addition and subtraction of seconds and obtaining differences between two time objects.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Difference between two date objects</span>
+begining &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="dv">17084</span>, <span class="st">&quot;1970-01-01&quot;</span>) 
+end &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()
+end -<span class="st"> </span>begining
+## Time difference of 112 days</code></pre></div>
+<p>We can create a sequence of dates for computation with “seq” function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Weekly spaced sequence of dates</span>
+<span class="kw">seq</span>(<span class="dt">from =</span> begining, <span class="dt">to =</span> end, <span class="dt">by =</span> <span class="dv">7</span>)
+##  [1] &quot;2016-10-10&quot; &quot;2016-10-17&quot; &quot;2016-10-24&quot; &quot;2016-10-31&quot; &quot;2016-11-07&quot;
+##  [6] &quot;2016-11-14&quot; &quot;2016-11-21&quot; &quot;2016-11-28&quot; &quot;2016-12-05&quot; &quot;2016-12-12&quot;
+## [11] &quot;2016-12-19&quot; &quot;2016-12-26&quot; &quot;2017-01-02&quot; &quot;2017-01-09&quot; &quot;2017-01-16&quot;
+## [16] &quot;2017-01-23&quot; &quot;2017-01-30&quot;</code></pre></div>
+<p>Addition between two date objects is not possible.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.Date</span>(<span class="dv">29482</span>, <span class="st">&quot;1900-01-01&quot;</span>) +<span class="st"> </span><span class="kw">Sys.Date</span>()
+## Error in `+.Date`(as.Date(29482, &quot;1900-01-01&quot;), Sys.Date()) :
+##  binary + is not defined for &quot;Dates&quot; objects</code></pre></div>
+<p>Computation with numeric value is feasible</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Today&#39;s date</span>
+<span class="kw">Sys.Date</span>()
+## [1] &quot;2017-01-30&quot;
+<span class="co"># Date 10 days ago</span>
+<span class="kw">Sys.Date</span>() -<span class="st"> </span><span class="dv">10</span> 
+## [1] &quot;2017-01-20&quot;
+<span class="co"># Date 10 days from today</span>
+<span class="kw">Sys.Date</span>() +<span class="st"> </span><span class="dv">10</span>
+## [1] &quot;2017-02-09&quot;
+
+<span class="co"># Eight days ago computed with number of seconds</span>
+<span class="kw">Sys.time</span>() -<span class="st"> </span>(<span class="dv">24</span>*<span class="dv">60</span>*<span class="dv">60</span>)*<span class="dv">8</span>
+## [1] &quot;2017-01-22 20:13:11 EAT&quot;</code></pre></div>
+<p>Logical operators can also be used to manipulate date-time objects.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.leap.seconds[<span class="dv">11</span>] &gt;<span class="st"> </span>.leap.seconds[<span class="dv">8</span>]
+## [1] TRUE
+.leap.seconds &lt;=<span class="st"> </span>.leap.seconds[<span class="dv">15</span>]
+##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [12]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [23] FALSE FALSE FALSE FALSE
+.leap.seconds[.leap.seconds &gt;=<span class="st"> </span>.leap.seconds[<span class="dv">22</span>]]
+## [1] &quot;1999-01-01 03:00:00 EAT&quot; &quot;2006-01-01 03:00:00 EAT&quot;
+## [3] &quot;2009-01-01 03:00:00 EAT&quot; &quot;2012-07-01 03:00:00 EAT&quot;
+## [5] &quot;2015-07-01 03:00:00 EAT&quot;</code></pre></div>
+</div>
+<div id="extracting-parts-of-a-date-time-object" class="section level3">
+<h3><span class="header-section-number">7.2.9</span> Extracting parts of a date-time object</h3>
+<p>Specific parts of a date object can be extracted with some extractor function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Date-Time Objects</span>
+dateTimeObject1
+## [1] &quot;1972-08-01 23:59:59 EAT&quot; &quot;1973-01-01 00:00:01 EAT&quot;
+## [3] &quot;1974-01-01 12:02:19 EAT&quot; &quot;1975-01-01 12:39:50 EAT&quot;
+dateTimeObject2
+## [1] &quot;1972-08-01 23:59:59 EAT&quot; &quot;1973-01-01 00:00:01 EAT&quot;
+## [3] &quot;1974-01-01 12:02:19 EAT&quot; &quot;1975-01-01 12:39:50 EAT&quot;
+<span class="co"># Classes of the objects</span>
+<span class="kw">class</span>(dateTimeObject1)
+## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;
+<span class="kw">class</span>(dateTimeObject2)
+## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;
+<span class="co"># Day of the week</span>
+<span class="kw">weekdays</span>(dateTimeObject1)
+## [1] &quot;Tuesday&quot;   &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;
+<span class="kw">weekdays</span>(dateTimeObject2)
+## [1] &quot;Tuesday&quot;   &quot;Monday&quot;    &quot;Tuesday&quot;   &quot;Wednesday&quot;
+<span class="co"># Month</span>
+<span class="kw">months</span>(dateTimeObject1)
+## [1] &quot;August&quot;  &quot;January&quot; &quot;January&quot; &quot;January&quot;
+<span class="kw">months</span>(dateTimeObject2)
+## [1] &quot;August&quot;  &quot;January&quot; &quot;January&quot; &quot;January&quot;
+<span class="co"># Quarter (Q1:Q4)</span>
+<span class="kw">quarters</span>(dateTimeObject1)
+## [1] &quot;Q3&quot; &quot;Q1&quot; &quot;Q1&quot; &quot;Q1&quot;
+<span class="kw">quarters</span>(dateTimeObject2)
+## [1] &quot;Q3&quot; &quot;Q1&quot; &quot;Q1&quot; &quot;Q1&quot;
+<span class="co"># Number of days since origin (default is 1970-01-01)</span>
+<span class="kw">julian</span>(dateTimeObject1)
+## Time differences in days
+## [1]  943.874988 1095.875012 1461.376609 1826.402662
+## attr(,&quot;origin&quot;)
+## [1] &quot;1970-01-01 GMT&quot;
+<span class="kw">julian</span>(dateTimeObject2, <span class="dt">origin =</span> <span class="st">&quot;1900-01-01&quot;</span>)
+## Time differences in days
+## [1] 26510.9773 26662.9773 27028.4789 27393.5049
+## attr(,&quot;origin&quot;)
+## [1] &quot;1900-01-01 LMT&quot;</code></pre></div>
+<p id="gaugeYourself7">
+<b>Gauge yourself</b>
+<p>
+<p><strong>Do you have the expected tools and skills from this chapter?</strong></p>
+<ol style="list-style-type: decimal">
+<li>What is the default date format in R? Write in character form and in format method using “%”</li>
+<li>Write a code to convert “2016-06-08” into this format “Wed Jun 08”</li>
+<li>What went wrong with these conversion? a. format(Sys.Date(), “C”) a. format(Sys.time(), %H)</li>
+<li>Get your current time in the 12-hour clock system</li>
+<li>Extract the years from “.leap.seconds” object</li>
+<li>Convert “2nd June 2016” to POSIXct object</li>
+<li>Convert “9th June 2016 21:39:40” to POSIXlt object</li>
+<li>Create a factor vector from seq(from = as.Date(“2015-01-01”), to = as.Date(“2015-12-31”), by = 1) with four levels labeled “Q1”, “Q2”, “Q3”, “Q4”</li>
+<li>Why would would this computation not work as.Date(“2016-06-08”) + as.Date(“2015-06-08”)</li>
+<li>Can numeric values be converted to date-time object? If so, what is of importance in conversion.</li>
+</ol>
+<p><strong>You are ready for the eight chapter if you know these</strong></p>
+<ol style="list-style-type: decimal">
+<li>Default date format is “Year-month-date”, format method is “%Y-%m-%d” or “%F” (ISO 8601 format)</li>
+<li>This comes from R documentation, “2016-06-08” can be converted to “Wed Jun 08” with format(“2016-06-08”, “%a %b %d”)</li>
+<li>The problem with “format(Sys.Date(),”C“)” is that “%” is missing in the last part of “C”. As for “format(Sys.time(), %H)”, format is not a character vector, hence R will see as an object of which it is not.</li>
+<li>To get 12-hour clock version of current time, “format(Sys.time(), format =”%r“)”</li>
+<li>Leap years can be extracted from “.leap.seconds” object with “format(.leap.seconds,”%Y“)”</li>
+<li>“2nd June 2016” can be converted to POSIXct object by as.POSIXct(“2nd June 2016”, format = “%dnd %B %Y”)</li>
+<li>Conversion of “9th June 2016 21:39:40” to POSIXlt can be done with as.POSIXlt(“9th June 2016 21:39:40”, tz = “UTC”, “%dth %B %Y %T”)</li>
+<li>Cut function can be used to convert date-time object to a factor vector. In this case the code would be cut(x = seq(as.Date(“2015-01-01”), as.Date(“2015-12-31”), by = 1), breaks = 4, labels = c(“Q1”, “Q2”, “Q3”, “Q4”))</li>
+<li>Addition of two date-time objects is not possible as there are not methods written for the, specifically they is no method for “+”</li>
+<li>Yes, numeric values can be converted to date-time objects as long as origin is specified.</li>
+</ol>
+</div>
+</div>
+<div id="references-2" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="quick-reference-on-functions-1" class="section level3 unnumbered">
+<h3>Quick reference on functions</h3>
+<ol style="list-style-type: decimal">
+<li>?Sys.time</li>
+<li>?Sys.Date</li>
+<li>?format</li>
+<li>?“date-time”</li>
+<li>?as.POSIXct</li>
+<li>?as.POSIXlt</li>
+<li>?as.strptime</li>
+<li>?as.Date</li>
+<li>?Julian</li>
+<li>?cut</li>
+</ol>
+</div>
+<div id="other-packages-on-date-and-time" class="section level3 unnumbered">
+<h3>Other Packages on date and time</h3>
+<ol style="list-style-type: decimal">
+<li>chron</li>
+<li>POSIXct</li>
+<li>date</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL with your page's canonical URL variable
+var disqus_developer = 1;
+//this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//introduction-to-data-analysis-and-graphics-using-r.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap8.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": true,
+"weibo": false,
+"instapper": true,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+"linkedin": true
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

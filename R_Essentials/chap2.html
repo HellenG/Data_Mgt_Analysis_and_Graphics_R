@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Essentials</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Essentials" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  <meta name="github-repo" content="HellenG/Data_Mgt_Analysis_and_Graphics_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Essentials" />
+  
+  <meta name="twitter:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  
+
+<meta name="author" content="Hellen Gakuruh">
+
+
+<meta name="date" content="2017-01-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap1.html">
+<link rel="next" href="chap3.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Essentials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a><ul>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#goal"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#what-we-shall-cover"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="1.1" data-path="chap1.html"><a href="chap1.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="chap1.html"><a href="chap1.html#defining-r-and-tracing-its-history"><i class="fa fa-check"></i><b>1.1.1</b> Defining R and tracing it’s history</a></li>
+<li class="chapter" data-level="1.1.2" data-path="chap1.html"><a href="chap1.html#downloading-and-installation-of-base-r"><i class="fa fa-check"></i><b>1.1.2</b> Downloading and Installation of Base R</a></li>
+<li class="chapter" data-level="1.1.3" data-path="chap1.html"><a href="chap1.html#tour-of-base-r"><i class="fa fa-check"></i><b>1.1.3</b> Tour of base R</a></li>
+<li class="chapter" data-level="1.1.4" data-path="chap1.html"><a href="chap1.html#RConsole"><i class="fa fa-check"></i><b>1.1.4</b> Base R’s console</a></li>
+<li class="chapter" data-level="1.1.5" data-path="chap1.html"><a href="chap1.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>1.1.5</b> Errors, Warnings and messages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="chap1.html"><a href="chap1.html#RStudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="chap1.html"><a href="chap1.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Downloading and Installing RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap1.html"><a href="chap1.html#getting-to-know-rstudio-layout"><i class="fa fa-check"></i><b>1.2.2</b> Getting to know RStudio layout</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap1.html"><a href="chap1.html#RStudioConsole"><i class="fa fa-check"></i><b>1.2.3</b> Working with RStudio’s console</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap1.html"><a href="chap1.html#packages"><i class="fa fa-check"></i><b>1.3</b> Installing and Loading Packages</a></li>
+<li class="chapter" data-level="1.4" data-path="chap1.html"><a href="chap1.html#workingDirectory"><i class="fa fa-check"></i><b>1.4</b> Working directory</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="chap1.html"><a href="chap1.html#RScripting"><i class="fa fa-check"></i><b>1.4.1</b> Introduction to scripting (reproducible analysis)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#goal-1"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#what-we-shall-cover-1"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap2.html"><a href="chap2.html#prerequisite"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="2.1" data-path="chap2.html"><a href="chap2.html#r-functions"><i class="fa fa-check"></i><b>2.1</b> R Functions</a></li>
+<li class="chapter" data-level="2.2" data-path="chap2.html"><a href="chap2.html#making-function-calls"><i class="fa fa-check"></i><b>2.2</b> Making Function Calls</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="chap2.html"><a href="chap2.html#a-functions-name"><i class="fa fa-check"></i><b>2.2.1</b> A functions name</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap2.html"><a href="chap2.html#arguments"><i class="fa fa-check"></i><b>2.2.2</b> Arguments</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap2.html"><a href="chap2.html#functionLevels"><i class="fa fa-check"></i><b>2.2.3</b> Different Function levels</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap3.html"><a href="chap3.html"><i class="fa fa-check"></i><b>3</b> Introduction to Version Control Systems</a><ul>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#preliquisite"><i class="fa fa-check"></i>Preliquisite</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#chapter-expectation"><i class="fa fa-check"></i>Chapter Expectation</a></li>
+<li class="chapter" data-level="3.1" data-path="chap3.html"><a href="chap3.html#whatvcsis"><i class="fa fa-check"></i><b>3.1</b> Introduction: What and Why Version Control System</a></li>
+<li class="chapter" data-level="3.2" data-path="chap3.html"><a href="chap3.html#introgit"><i class="fa fa-check"></i><b>3.2</b> Introduction to Git</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap3.html"><a href="chap3.html#what-is-git"><i class="fa fa-check"></i><b>3.2.1</b> What is Git?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="chap3.html"><a href="chap3.html#how-does-git-work"><i class="fa fa-check"></i><b>3.2.2</b> How does Git work?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="chap3.html"><a href="chap3.html#working-with-git"><i class="fa fa-check"></i><b>3.2.3</b> Working with Git</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap3.html"><a href="chap3.html#collaborating-with-other-r-programmersdevelopers"><i class="fa fa-check"></i><b>3.3</b> Collaborating with other R programmers/developers</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap3.html"><a href="chap3.html#working-with-remote-repositories-gitgub"><i class="fa fa-check"></i><b>3.3.1</b> Working with remote repositories: GitGub</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap3.html"><a href="chap3.html#using-git-and-github-in-rstudio"><i class="fa fa-check"></i><b>3.4</b> Using Git and GitHub in RStudio</a></li>
+<li class="chapter" data-level="" data-path="chap3.html"><a href="chap3.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Data Types and Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#session-goal"><i class="fa fa-check"></i>Session Goal</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#what-we-shall-cover-2"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap4.html"><a href="chap4.html#prerequisite-1"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="4.1" data-path="chap4.html"><a href="chap4.html#dataTypes"><i class="fa fa-check"></i><b>4.1</b> Data Types</a></li>
+<li class="chapter" data-level="4.2" data-path="chap4.html"><a href="chap4.html#vectors"><i class="fa fa-check"></i><b>4.2</b> Vectors</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="chap4.html"><a href="chap4.html#creating-vectors"><i class="fa fa-check"></i><b>4.2.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap4.html"><a href="chap4.html#namingObjects"><i class="fa fa-check"></i><b>4.2.2</b> Naming objects</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap4.html"><a href="chap4.html#properties-of-data-objects-vector"><i class="fa fa-check"></i><b>4.3</b> Properties of data objects (vector)</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap4.html"><a href="chap4.html#typeof"><i class="fa fa-check"></i><b>4.3.1</b> Type of a vector</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap4.html"><a href="chap4.html#attributes"><i class="fa fa-check"></i><b>4.3.2</b> Attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap5.html"><a href="chap5.html"><i class="fa fa-check"></i><b>5</b> Importing and Exporting Data</a><ul>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#chapter-goal"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap5.html"><a href="chap5.html#what-we-shall-cover-3"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="5.1" data-path="chap5.html"><a href="chap5.html#importing-data-into-r"><i class="fa fa-check"></i><b>5.1</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="chap5.html"><a href="chap5.html#using-gui-for-delimited-files"><i class="fa fa-check"></i><b>5.1.1</b> Using GUI for delimited files</a></li>
+<li class="chapter" data-level="5.1.2" data-path="chap5.html"><a href="chap5.html#using-command-line"><i class="fa fa-check"></i><b>5.1.2</b> Using command line</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="chap5.html"><a href="chap5.html#importing-challenges"><i class="fa fa-check"></i><b>5.2</b> Importing Challenges</a></li>
+<li class="chapter" data-level="5.3" data-path="chap5.html"><a href="chap5.html#exporting-data"><i class="fa fa-check"></i><b>5.3</b> Exporting Data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap5.html"><a href="chap5.html#base-r-and-utils-exporting-functions"><i class="fa fa-check"></i><b>5.3.1</b> Base R and Utils exporting functions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap5.html"><a href="chap5.html#exporting-with-other-packages"><i class="fa fa-check"></i><b>5.3.2</b> Exporting with other packages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap5.html"><a href="chap5.html#taking-a-glimpse"><i class="fa fa-check"></i><b>5.4</b> Taking a Glimpse</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap6.html"><a href="chap6.html"><i class="fa fa-check"></i><b>6</b> Transforming Manipulating Data Objects</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#chapter-goal-1"><i class="fa fa-check"></i>Chapter Goal</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#what-we-shall-cover-4"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="6.1" data-path="chap6.html"><a href="chap6.html#prerequisite-2"><i class="fa fa-check"></i><b>6.1</b> Prerequisite</a></li>
+<li class="chapter" data-level="6.2" data-path="chap6.html"><a href="chap6.html#indexing"><i class="fa fa-check"></i><b>6.2</b> Indexing different data objects in R</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="chap6.html"><a href="chap6.html#indexing-one-dimensional-objects"><i class="fa fa-check"></i><b>6.2.1</b> Indexing one dimensional objects</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap6.html"><a href="chap6.html#indexing-two-dimensional-vectors"><i class="fa fa-check"></i><b>6.2.2</b> Indexing two dimensional vectors</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap6.html"><a href="chap6.html#atomichomogenous-vectors-with-more-than-2-dimensions-2d"><i class="fa fa-check"></i><b>6.2.3</b> Atomic/Homogenous vectors with more than 2 dimensions (&gt;2d)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap6.html"><a href="chap6.html#binary-and-vectorisation-operators"><i class="fa fa-check"></i><b>6.3</b> Binary and vectorisation Operators</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="chap6.html"><a href="chap6.html#compOps"><i class="fa fa-check"></i><b>6.3.1</b> Comparison Operators</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap6.html"><a href="chap6.html#logical-operators"><i class="fa fa-check"></i><b>6.3.2</b> Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap6.html"><a href="chap6.html#checking-conditions"><i class="fa fa-check"></i><b>6.4</b> Checking conditions</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="chap6.html"><a href="chap6.html#all-function"><i class="fa fa-check"></i><b>6.4.1</b> “All” function</a></li>
+<li class="chapter" data-level="6.4.2" data-path="chap6.html"><a href="chap6.html#any-function"><i class="fa fa-check"></i><b>6.4.2</b> “Any” function</a></li>
+<li class="chapter" data-level="6.4.3" data-path="chap6.html"><a href="chap6.html#which-function"><i class="fa fa-check"></i><b>6.4.3</b> “Which” function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="chap6.html"><a href="chap6.html#subsetting"><i class="fa fa-check"></i><b>6.5</b> Subsetting Data Objects</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap6.html"><a href="chap6.html#subsetting-one-dimensional-atomic-vectors"><i class="fa fa-check"></i><b>6.5.1</b> Subsetting one dimensional atomic vectors</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap6.html"><a href="chap6.html#subsetting-a-matrix"><i class="fa fa-check"></i><b>6.5.2</b> Subsetting a Matrix</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap6.html"><a href="chap6.html#subsetting-a-dataframe"><i class="fa fa-check"></i><b>6.5.3</b> Subsetting a dataframe</a></li>
+<li class="chapter" data-level="6.5.4" data-path="chap6.html"><a href="chap6.html#subsetting-a-list"><i class="fa fa-check"></i><b>6.5.4</b> Subsetting a List</a></li>
+<li class="chapter" data-level="6.5.5" data-path="chap6.html"><a href="chap6.html#subsetting-character-vectors"><i class="fa fa-check"></i><b>6.5.5</b> Subsetting character vectors</a></li>
+<li class="chapter" data-level="6.5.6" data-path="chap6.html"><a href="chap6.html#subsetting-factor-vectors"><i class="fa fa-check"></i><b>6.5.6</b> Subsetting factor vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap6.html"><a href="chap6.html#transformationmanipulation-of-datasets"><i class="fa fa-check"></i><b>6.6</b> Transformation/Manipulation of datasets</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#references-1"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#quick-reference-on-functions"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#packages-to-read-further-on"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap6.html"><a href="chap6.html#r-manuals"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap7.html"><a href="chap7.html"><i class="fa fa-check"></i><b>7</b> Working with Dates and Time</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#goal-2"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#what-we-shall-cover-5"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#prerequisite-3"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="7.1" data-path="chap7.html"><a href="chap7.html#recognising-date-time-objects-in-r"><i class="fa fa-check"></i><b>7.1</b> Recognising date-time objects in R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap7.html"><a href="chap7.html#current-date"><i class="fa fa-check"></i><b>7.1.1</b> Current date</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap7.html"><a href="chap7.html#current-time"><i class="fa fa-check"></i><b>7.1.2</b> Current Time</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap7.html"><a href="chap7.html#creating-date-time-objects-in-base-r"><i class="fa fa-check"></i><b>7.2</b> Creating date-time objects in base R</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap7.html"><a href="chap7.html#posix"><i class="fa fa-check"></i><b>7.2.1</b> POSIX</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap7.html"><a href="chap7.html#creating-posixct-objects"><i class="fa fa-check"></i><b>7.2.2</b> Creating POSIXct objects</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap7.html"><a href="chap7.html#creating-posixlt-objects"><i class="fa fa-check"></i><b>7.2.3</b> Creating POSIXlt Objects</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap7.html"><a href="chap7.html#creating-date-time-object-using-strptime"><i class="fa fa-check"></i><b>7.2.4</b> Creating date-time Object using “strptime()”</a></li>
+<li class="chapter" data-level="7.2.5" data-path="chap7.html"><a href="chap7.html#converting-numeric-data-to-date-and-time-object"><i class="fa fa-check"></i><b>7.2.5</b> Converting numeric data to date and time object</a></li>
+<li class="chapter" data-level="7.2.6" data-path="chap7.html"><a href="chap7.html#creating-date-and-time-factor-vectors"><i class="fa fa-check"></i><b>7.2.6</b> Creating date and time factor vectors</a></li>
+<li class="chapter" data-level="7.2.7" data-path="chap7.html"><a href="chap7.html#creating-date-objects"><i class="fa fa-check"></i><b>7.2.7</b> Creating Date objects</a></li>
+<li class="chapter" data-level="7.2.8" data-path="chap7.html"><a href="chap7.html#computationDateTime"><i class="fa fa-check"></i><b>7.2.8</b> Computation with date and time objects</a></li>
+<li class="chapter" data-level="7.2.9" data-path="chap7.html"><a href="chap7.html#extracting-parts-of-a-date-time-object"><i class="fa fa-check"></i><b>7.2.9</b> Extracting parts of a date-time object</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#references-2"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#quick-reference-on-functions-1"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap7.html"><a href="chap7.html#other-packages-on-date-and-time"><i class="fa fa-check"></i>Other Packages on date and time</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="chap8.html"><a href="chap8.html"><i class="fa fa-check"></i><b>8</b> Plotting in Base R</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#goal-3"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#what-we-shall-cover-6"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#prerequisite-4"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="8.1" data-path="chap8.html"><a href="chap8.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="chap8.html"><a href="chap8.html#understanding-base-r-plotting-function"><i class="fa fa-check"></i><b>8.2</b> Understanding base R plotting function</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="chap8.html"><a href="chap8.html#some-outputs-of-plot"><i class="fa fa-check"></i><b>8.2.1</b> Some outputs of plot()</a></li>
+<li class="chapter" data-level="8.2.2" data-path="chap8.html"><a href="chap8.html#functionDefinition"><i class="fa fa-check"></i><b>8.2.2</b> plot() Internals</a></li>
+<li class="chapter" data-level="8.2.3" data-path="chap8.html"><a href="chap8.html#step-one-opening-new-window"><i class="fa fa-check"></i><b>8.2.3</b> Step one: Opening new window</a></li>
+<li class="chapter" data-level="8.2.4" data-path="chap8.html"><a href="chap8.html#step-two-setting-plotting-coordinates"><i class="fa fa-check"></i><b>8.2.4</b> Step two: Setting plotting coordinates</a></li>
+<li class="chapter" data-level="8.2.5" data-path="chap8.html"><a href="chap8.html#step-three-evaluate-and-execute-pre-post-functions"><i class="fa fa-check"></i><b>8.2.5</b> Step three: Evaluate and execute pre-post functions</a></li>
+<li class="chapter" data-level="8.2.6" data-path="chap8.html"><a href="chap8.html#step-four-plotting"><i class="fa fa-check"></i><b>8.2.6</b> Step four: Plotting</a></li>
+<li class="chapter" data-level="8.2.7" data-path="chap8.html"><a href="chap8.html#step-five-evaluation-of-post-plot-and-pre-axis-expressions"><i class="fa fa-check"></i><b>8.2.7</b> Step five: Evaluation of post-plot and pre-axis expressions</a></li>
+<li class="chapter" data-level="8.2.8" data-path="chap8.html"><a href="chap8.html#step-six-construct-axis"><i class="fa fa-check"></i><b>8.2.8</b> Step six: Construct Axis</a></li>
+<li class="chapter" data-level="8.2.9" data-path="chap8.html"><a href="chap8.html#step-seven-ploting-frame"><i class="fa fa-check"></i><b>8.2.9</b> Step Seven: Ploting frame</a></li>
+<li class="chapter" data-level="8.2.10" data-path="chap8.html"><a href="chap8.html#step-eight-annotation"><i class="fa fa-check"></i><b>8.2.10</b> Step Eight: Annotation</a></li>
+<li class="chapter" data-level="8.2.11" data-path="chap8.html"><a href="chap8.html#summary-final-output"><i class="fa fa-check"></i><b>8.2.11</b> Summary: Final output</a></li>
+<li class="chapter" data-level="8.2.12" data-path="chap8.html"><a href="chap8.html#commentedDefinition"><i class="fa fa-check"></i><b>8.2.12</b> A commented basic plot definition</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="chap8.html"><a href="chap8.html#par"><i class="fa fa-check"></i><b>8.3</b> Graphical Parameters and Annotating Base R Plots</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="chap8.html"><a href="chap8.html#querying-saving-and-resetting-graphical-parameters"><i class="fa fa-check"></i><b>8.3.1</b> Querying, saving and resetting graphical parameters</a></li>
+<li class="chapter" data-level="8.3.2" data-path="chap8.html"><a href="chap8.html#settingchanging-graphical-parameters"><i class="fa fa-check"></i><b>8.3.2</b> Setting/Changing graphical parameters</a></li>
+<li class="chapter" data-level="8.3.3" data-path="chap8.html"><a href="chap8.html#implementing-some-graphical-parameters-and-annotation"><i class="fa fa-check"></i><b>8.3.3</b> Implementing some graphical parameters and annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="chap8.html"><a href="chap8.html#plotting-characters-pch"><i class="fa fa-check"></i><b>8.4</b> Plotting characters (pch)</a></li>
+<li class="chapter" data-level="8.5" data-path="chap8.html"><a href="chap8.html#plotTypes"><i class="fa fa-check"></i><b>8.5</b> Plot types</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="chap8.html"><a href="chap8.html#annotating-plots-with-lines"><i class="fa fa-check"></i><b>8.5.1</b> Annotating plots with lines</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="chap8.html"><a href="chap8.html#generating-and-annotating-mathematical-plots"><i class="fa fa-check"></i><b>8.6</b> Generating and Annotating Mathematical Plots</a></li>
+<li class="chapter" data-level="8.7" data-path="chap8.html"><a href="chap8.html#other-base-r-plots"><i class="fa fa-check"></i><b>8.7</b> Other Base R Plots</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="chap8.html"><a href="chap8.html#histDensityPlots"><i class="fa fa-check"></i><b>8.7.1</b> Histogram and Density plots</a></li>
+<li class="chapter" data-level="8.7.2" data-path="chap8.html"><a href="chap8.html#box-box-and-whisker-plots"><i class="fa fa-check"></i><b>8.7.2</b> Box (box-and-whisker) plots</a></li>
+<li class="chapter" data-level="8.7.3" data-path="chap8.html"><a href="chap8.html#strip-chartsdot-plots"><i class="fa fa-check"></i><b>8.7.3</b> Strip Charts/Dot Plots</a></li>
+<li class="chapter" data-level="8.7.4" data-path="chap8.html"><a href="chap8.html#conditional-plots-coplot"><i class="fa fa-check"></i><b>8.7.4</b> Conditional Plots (Coplot)</a></li>
+<li class="chapter" data-level="8.7.5" data-path="chap8.html"><a href="chap8.html#stem-and-leaf-plot"><i class="fa fa-check"></i><b>8.7.5</b> Stem and Leaf plot</a></li>
+<li class="chapter" data-level="8.7.6" data-path="chap8.html"><a href="chap8.html#bar-graphs-and-pie-chart"><i class="fa fa-check"></i><b>8.7.6</b> Bar graphs and pie chart</a></li>
+<li class="chapter" data-level="8.7.7" data-path="chap8.html"><a href="chap8.html#mosaic"><i class="fa fa-check"></i><b>8.7.7</b> Mosaic</a></li>
+<li class="chapter" data-level="8.7.8" data-path="chap8.html"><a href="chap8.html#fourfold-plots"><i class="fa fa-check"></i><b>8.7.8</b> Fourfold Plots</a></li>
+<li class="chapter" data-level="8.7.9" data-path="chap8.html"><a href="chap8.html#sunflower-plots"><i class="fa fa-check"></i><b>8.7.9</b> Sunflower plots</a></li>
+<li class="chapter" data-level="8.7.10" data-path="chap8.html"><a href="chap8.html#time-series-plots-line"><i class="fa fa-check"></i><b>8.7.10</b> Time series plots (line)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="chap8.html"><a href="chap8.html#colours"><i class="fa fa-check"></i><b>8.8</b> Colors</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="chap8.html"><a href="chap8.html#expected-values-for-color-based-arguments"><i class="fa fa-check"></i><b>8.8.1</b> Expected values for color-based arguments</a></li>
+<li class="chapter" data-level="8.8.2" data-path="chap8.html"><a href="chap8.html#defining-a-new-palette"><i class="fa fa-check"></i><b>8.8.2</b> Defining a new palette</a></li>
+<li class="chapter" data-level="8.8.3" data-path="chap8.html"><a href="chap8.html#palettes-makers"><i class="fa fa-check"></i><b>8.8.3</b> Palettes makers</a></li>
+<li class="chapter" data-level="8.8.4" data-path="chap8.html"><a href="chap8.html#creating-palettes-by-interpolation-colors"><i class="fa fa-check"></i><b>8.8.4</b> Creating palettes by interpolation colors</a></li>
+<li class="chapter" data-level="8.8.5" data-path="chap8.html"><a href="chap8.html#color-models-and-spaces"><i class="fa fa-check"></i><b>8.8.5</b> Color Models and Spaces</a></li>
+<li class="chapter" data-level="8.8.6" data-path="chap8.html"><a href="chap8.html#creating-new-colours"><i class="fa fa-check"></i><b>8.8.6</b> Creating New Colours</a></li>
+<li class="chapter" data-level="8.8.7" data-path="chap8.html"><a href="chap8.html#color-adjustment"><i class="fa fa-check"></i><b>8.8.7</b> Color adjustment</a></li>
+<li class="chapter" data-level="8.8.8" data-path="chap8.html"><a href="chap8.html#colorConversion"><i class="fa fa-check"></i><b>8.8.8</b> Color conversion and Transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="chap8.html"><a href="chap8.html#other-plotting-and-color-palette-packages"><i class="fa fa-check"></i><b>8.9</b> Other Plotting and Color Palette Packages</a></li>
+<li class="chapter" data-level="8.10" data-path="chap8.html"><a href="chap8.html#graphicalDevices"><i class="fa fa-check"></i><b>8.10</b> Graphical Devices</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#references-3"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#quick-reference-on-functions-2"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#packages-to-read-further-on-1"><i class="fa fa-check"></i>Packages to read further on</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#r-manuals-1"><i class="fa fa-check"></i>R Manuals</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#basics-of-plotting-in-r"><i class="fa fa-check"></i>Basics of plotting in R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#calling-and-changing-graphical-parameters"><i class="fa fa-check"></i>Calling and changing graphical parameters</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#annotating-plots"><i class="fa fa-check"></i>Annotating plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#producing-different-base-r-plots"><i class="fa fa-check"></i>Producing different base R plots</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#using-and-creating-colors-in-base-r"><i class="fa fa-check"></i>Using and creating colors in base R</a></li>
+<li class="chapter" data-level="" data-path="chap8.html"><a href="chap8.html#rs-graphical-devices"><i class="fa fa-check"></i>R’s graphical devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap9.html"><a href="chap9.html"><i class="fa fa-check"></i><b>9</b> Where and How to Get Help</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#goal-4"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#what-we-shall-cover-7"><i class="fa fa-check"></i>What we shall cover</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#prerequisite-5"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="9.1" data-path="chap9.html"><a href="chap9.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="chap9.html"><a href="chap9.html#problem-identification"><i class="fa fa-check"></i><b>9.2</b> Problem Identification</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap1.html"><a href="chap1.html#errors"><i class="fa fa-check"></i><b>9.2.1</b> Errors</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap9.html"><a href="chap9.html#warning-messages"><i class="fa fa-check"></i><b>9.2.2</b> Warning Messages</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap9.html"><a href="chap9.html#unexpected-output"><i class="fa fa-check"></i><b>9.2.3</b> Unexpected Output</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap9.html"><a href="chap9.html#problemSolving"><i class="fa fa-check"></i><b>9.3</b> Solving (defined) coding problems</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-unknown"><i class="fa fa-check"></i><b>9.3.1</b> Problems where functions are unknown</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap9.html"><a href="chap9.html#problems-where-functions-are-known"><i class="fa fa-check"></i><b>9.3.2</b> Problems where functions are known</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap9.html"><a href="chap9.html#where-to-get-help"><i class="fa fa-check"></i><b>9.4</b> Where to get help</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap9.html"><a href="chap9.html#knowledge-and-skills"><i class="fa fa-check"></i><b>9.4.1</b> Knowledge and Skills</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap9.html"><a href="chap9.html#rs-documentations-internal-sources"><i class="fa fa-check"></i><b>9.4.2</b> R’s Documentations (Internal sources)</a></li>
+<li class="chapter" data-level="9.4.3" data-path="chap9.html"><a href="chap9.html#externalSources"><i class="fa fa-check"></i><b>9.4.3</b> External sources of help</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="chap9.html"><a href="chap9.html#example-problem-statistical-mode"><i class="fa fa-check"></i><b>9.5</b> Example problem: Statistical mode</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#references-4"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#quick-reference-on-functions-3"><i class="fa fa-check"></i>Quick reference on functions</a></li>
+<li class="chapter" data-level="" data-path="chap9.html"><a href="chap9.html#r-manuals-3"><i class="fa fa-check"></i>R Manuals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap10.html"><a href="chap10.html"><i class="fa fa-check"></i><b>10</b> Case Studies</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#goal-5"><i class="fa fa-check"></i>Goal</a></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#prerequisite-6"><i class="fa fa-check"></i>Prerequisite</a></li>
+<li class="chapter" data-level="10.1" data-path="chap10.html"><a href="chap10.html#case-study-one--importing-online-data"><i class="fa fa-check"></i><b>10.1</b> Case Study One:- Importing online data</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="chap10.html"><a href="chap10.html#task"><i class="fa fa-check"></i><b>10.1.1</b> Task</a></li>
+<li class="chapter" data-level="10.1.2" data-path="chap10.html"><a href="chap10.html#what-we-shall-cover-8"><i class="fa fa-check"></i><b>10.1.2</b> What we shall cover</a></li>
+<li class="chapter" data-level="10.1.3" data-path="chap10.html"><a href="chap10.html#background-and-data"><i class="fa fa-check"></i><b>10.1.3</b> Background and Data</a></li>
+<li class="chapter" data-level="10.1.4" data-path="chap10.html"><a href="chap10.html#web-scraping"><i class="fa fa-check"></i><b>10.1.4</b> Web scraping</a></li>
+<li class="chapter" data-level="10.1.5" data-path="chap10.html"><a href="chap10.html#html-documents"><i class="fa fa-check"></i><b>10.1.5</b> HTML Document’s</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#references-5"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="" data-path="chap10.html"><a href="chap10.html#online-web-sites"><i class="fa fa-check"></i>Online web sites</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>A</b> Downloading and Installing R</a><ul>
+<li class="chapter" data-level="A.1" data-path="r.html"><a href="r.html#downloading-r"><i class="fa fa-check"></i><b>A.1</b> Downloading R</a></li>
+<li class="chapter" data-level="A.2" data-path="r.html"><a href="r.html#installing-r"><i class="fa fa-check"></i><b>A.2</b> Installing R</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>B</b> Downloading and Installing RStudio</a><ul>
+<li class="chapter" data-level="B.1" data-path="rstudio.html"><a href="rstudio.html#downloading-rstudio"><i class="fa fa-check"></i><b>B.1</b> Downloading RStudio</a></li>
+<li class="chapter" data-level="B.2" data-path="rstudio.html"><a href="rstudio.html#installing-rstudio"><i class="fa fa-check"></i><b>B.2</b> Installing Rstudio</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>C</b> Files</a><ul>
+<li class="chapter" data-level="C.1" data-path="files.html"><a href="files.html#definition-and-file-names"><i class="fa fa-check"></i><b>C.1</b> Definition and file names</a></li>
+<li class="chapter" data-level="C.2" data-path="files.html"><a href="files.html#formats"><i class="fa fa-check"></i><b>C.2</b> File formats</a></li>
+<li class="chapter" data-level="C.3" data-path="files.html"><a href="files.html#paths"><i class="fa fa-check"></i><b>C.3</b> File Paths</a></li>
+<li class="chapter" data-level="C.4" data-path="files.html"><a href="files.html#encoding"><i class="fa fa-check"></i><b>C.4</b> Encoding</a><ul>
+<li class="chapter" data-level="C.4.1" data-path="files.html"><a href="files.html#ascii"><i class="fa fa-check"></i><b>C.4.1</b> ASCII</a></li>
+<li class="chapter" data-level="C.4.2" data-path="files.html"><a href="files.html#utf-8"><i class="fa fa-check"></i><b>C.4.2</b> UTF-8</a></li>
+</ul></li>
+<li class="chapter" data-level="C.5" data-path="files.html"><a href="files.html#types-of-files"><i class="fa fa-check"></i><b>C.5</b> Types of files</a><ul>
+<li class="chapter" data-level="C.5.1" data-path="files.html"><a href="files.html#text-files-and-binary-files"><i class="fa fa-check"></i><b>C.5.1</b> Text files and binary files</a></li>
+<li class="chapter" data-level="C.5.2" data-path="files.html"><a href="files.html#free-format"><i class="fa fa-check"></i><b>C.5.2</b> Free format</a></li>
+<li class="chapter" data-level="C.5.3" data-path="files.html"><a href="files.html#other-file-types-supported-by-base-r"><i class="fa fa-check"></i><b>C.5.3</b> Other file types supported by base R</a></li>
+</ul></li>
+<li class="chapter" data-level="C.6" data-path="files.html"><a href="files.html#summary"><i class="fa fa-check"></i><b>C.6</b> Summary</a></li>
+<li class="chapter" data-level="C.7" data-path="files.html"><a href="files.html#references-6"><i class="fa fa-check"></i><b>C.7</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Essentials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap2" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Making Function Calls</h1>
+<div id="goal-1" class="section level2 unnumbered">
+<h2>Goal</h2>
+<p>The main goal of this chapter is to equip you with necessary skills to make function calls in R.</p>
+</div>
+<div id="what-we-shall-cover-1" class="section level2 unnumbered">
+<h2>What we shall cover</h2>
+<p>By the end of this chapter you should:</p>
+<ul>
+<li>Be conversant with the term function and function call</li>
+<li>Know what constitutes a function and a function call</li>
+<li>Be conversant with arguments</li>
+<li>Distinguish between named and unnamed arguments</li>
+<li>Know how R positions arguments in a call</li>
+<li>Be able to know and change default values</li>
+<li>Have an understanding of what top and low level functions are</li>
+<li>Know what is meant by anonymous functions</li>
+</ul>
+</div>
+<div id="prerequisite" class="section level2 unnumbered">
+<h2>Prerequisite</h2>
+<p>To appreciate this chapter,</p>
+<ul>
+<li>you must have R and RStudio installed and running</li>
+<li>know how to use the console</li>
+<li>be conversant with RStudio panes like console, help and packages</li>
+</ul>
+</div>
+<div id="r-functions" class="section level2">
+<h2><span class="header-section-number">2.1</span> R Functions</h2>
+<p>A function is a command you give to a computer program; basically an action you what performed like getting the sum/total, mean or determine existence of a file in your computer. There is virtually nothing that happens in R without the use of a function, for example, if you want to get data into R, or clean it (data manipulation and transformation), or analyse it, or even export its output, you must use a function.</p>
+<p>Presence of parenthesis <strong>( )</strong> after some word like <strong>sum( )</strong>, <strong>mean( )</strong> or <strong>file.exist( )</strong> indicated a function and when it is used, it is referred to as <strong>making a function call</strong>.</p>
+<p>Before we discuss function calls, let’s take note of the two types of functions in R; these are in-built functions and user-defined functions. Built-in functions are those functions that come with “base R” like sum, mean and file.exist. User-defined functions are those functions we develop, some of these functions are bundles into packages and shared through various R repositories like CRAN and Bioconductor.</p>
+<p>In this chapter we will discuss in-built functions that come with base R in form of <a href="chap1.html#packages">(default) packages</a> and contributed user defined functions. Contributed user defined functions are functions shared as packages. User defined functions we develop will be discussed at length in our follow-up book “R- Beyond Essentials”.</p>
+</div>
+<div id="making-function-calls" class="section level2">
+<h2><span class="header-section-number">2.2</span> Making Function Calls</h2>
+<p>As noted, making a function call means using a function to perform an action. Making a good function call requires knowledge of a function’s name and it’s arguments.</p>
+<p>Let’s discuss function names and arguments.</p>
+<div id="a-functions-name" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> A functions name</h3>
+<p>Most functions in R are named after the actions they should perform, for example mean, median, sum, exit, ncol (number of columns), and nrow (number of rows).</p>
+<p>However, there are numerous other functions that don’t follow this kind of logic for example the function “mode”. As R is a statistical program at heart, you would expect “mode” to mean the most frequently occurring observation (one measure of central tendency), however, this is not the case as mode in R gives the internal type of an object (<a href="chap4.html#mode">chapter four</a> ).</p>
+<p>With this exception, it means it would not be possible to determine what an R’s functions can do by it’s name. It is also important to note that base R has numerous functions (not counting functions from contributed packages) and it might not be possible to know all these functions. Reading reference might help to discover some of R’s functions, but it is not until we start using (calling) they that they become familiar and thus easy to recall. I can tell you for sure, as a novice in R programming nothing beats <strong>practice</strong>; only when we dedicate time to learn more by actually applying some functions do we become knowledgeable on R’s function. Practice stems from reading help documentations (which we discuss below), <strong>reading R manuals</strong> and venturing into the wide world web through <strong>online tutorials</strong>, <strong>discussions</strong> and <strong>Q and A sites</strong>.</p>
+<p>In our follow-up book we will discuss unnamed functions called <strong>anonymous functions</strong>. These functions are mostly used to create quick, short and disposable (used for some specific purpose then discarded) functions. .</p>
+<p>Now let’s discuss an important component in making function calls; a functions arguments.</p>
+</div>
+<div id="arguments" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Arguments</h3>
+<p>Arguments are inputs to a function used to specify how a function will carry out it’s operation. They come in the form of “name-value” pair and are encased in parenthesis.</p>
+<p>All base R functions have help documentation which discusses how a function is called (name and arguments). To pull up help documentation for any function, a question mark followed by function name can be used or using “help” functions.</p>
+<p>For example, we can pull-up help documentation of “mean” function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?mean
+<span class="kw">help</span>(<span class="st">&quot;mean&quot;</span>)</code></pre></div>
+<p>A help documentation contains name of the function as well as package it is from (first line on the left-hand side), short description of the function, how function should be called (usage), definition of arguments, expected output (value), references, some suggested reading and examples.</p>
+<p>It is important to look at the usage and arguments section to know how a function should be called in terms of inputs/arguments and what these arguments mean as well as their expected values. Usage section can provide more that one way to make a function call, it is up to us to identify the most applicable way to make a function call.</p>
+<p>For instance, for the mean function there are two ways to make a call, the first is <code>mean(x, ...)</code> and the second is <code>mean(x, trim = 0, na.rm = FALSE, ...)</code> which is an “s3 method.</p>
+<p>In essence these two functions work in the same way, the difference is that “s3 method” has explicitly indicated two arguments “trim” and &quot; na.rm“. s3 stems from a programming concept of Object Oriented Programming(OOP) which means the first argument”x&quot; must be an “s3” object. Since we have not discussed how to create variables/vectors or objects in R or OOP, let’s just say most of the objects used to call mean (data) will be “s3” objects and therefore we can use the second way to make a function call. In other help documentation, usage section list a collection of functions each with a different name but with similar arguments like “grep”. The important point here is to use correct function depending on inputs (argument) required and output expected (value section).</p>
+<p>When reading “Arguments” sections, there are three things we must take note of, these are; expected value(s), default values, and positional matching.</p>
+<p>There are a few base R functions without arguments (do not need any input), but for those that have arguments, all their values <strong>must</strong> be specified; names are optional. What do we mean here, recall we have said arguments come in the form of “value-pair” like “trim = 0” where trim is an argument name and 0 is it’s value. It is possible to give values without names and R will understand, by understand we mean R will position match each given value with argument names on the call. For example, we can call mean with <code>mean(data, 0.25, TRUE)</code>, in this case R will match value “data” to “x”, “0” to “trim” and “TRUE” to “na.rm”. If this values were given in any other order, there are great chances of receiving an error or a warning. Hence, making function calls with values only has potential challenges which does not happen when calls are made with both name and value. Making a function call like this <code>mean(trim = 0.25, x = data, na.rm = TRUE)</code> is fine and less likely to generate an error or a warning, however, it a bad practice as far as readability (especially when you want to share code) is concerned. When a function call is made with argument names, then we say function call was made with “named arguments”, if it was called with values only, then we say function was called with “unnamed arguments”.</p>
+<p>All argument have a defined expected input, this definition is provided in the “Arguments” section. For example R expects “x” in the mean function to an “R object” and specifically a numeric/logical vector, date, date-time, or a “time interval” object. Anything other than these is bound to raise an error.</p>
+<p>Some arguments have default values, these values are the most common input given to those argument, they are meant to make efficient function calls. Example is “trim” and “na.rm” arguments in mean function, they have default values of “0” and “FALSE” respectively. When default values are provided and they are what we expect to give as values to those arguments, then it is not necessary to include them in the function call. This means we can call mean function with only value for “x” argument. Default values can be changes to suite particular computation for example, if we had data with missing data (NA), then we would want to change “na.rm” default of “FALSE” to “TRUE”.</p>
+<p>Overall, mean function has a short and straightforward list of arguments, but others might have several of arguments. For example, <code>read.table</code> function used to import data into R. This function has more than 20 listed arguments, but most arguments have default value. In most cases these default would suffice, but it is prudent to read through description of all the arguments to confirm defaults given are okay, this can pre-empt a lot of challenges (errors and warnings) faced when making function calls as well as output received.</p>
+<p>If you know a function’s name but not it’s arguments, function <code>arg</code> can be used.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mean arguments</span>
+<span class="kw">args</span>(mean)
+## function (x, ...) 
+## NULL
+
+<span class="co"># Read.table arguments</span>
+<span class="kw">args</span>(read.table)
+## function (file, header = FALSE, sep = &quot;&quot;, quote = &quot;\&quot;&#39;&quot;, dec = &quot;.&quot;, 
+##     numerals = c(&quot;allow.loss&quot;, &quot;warn.loss&quot;, &quot;no.loss&quot;), row.names, 
+##     col.names, as.is = !stringsAsFactors, na.strings = &quot;NA&quot;, 
+##     colClasses = NA, nrows = -1, skip = 0, check.names = TRUE, 
+##     fill = !blank.lines.skip, strip.white = FALSE, blank.lines.skip = TRUE, 
+##     comment.char = &quot;#&quot;, allowEscapes = FALSE, flush = FALSE, 
+##     stringsAsFactors = default.stringsAsFactors(), fileEncoding = &quot;&quot;, 
+##     encoding = &quot;unknown&quot;, text, skipNul = FALSE) 
+## NULL</code></pre></div>
+</div>
+<div id="functionLevels" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Different Function levels</h3>
+<p>Most R functions can be categorized as either <code>top level</code> or <code>low level</code> function. Top level functions are most of the functions we call, this include mean, plot, read.table, str and ls. Low level function are functions called by other functions, like “plot.window” or “xy.coord” functions called by plot functions. We usually do not need to call low level functions except for specific occasions. A lot of base R functions we use (high level) have lower level functions written in “C” language.</p>
+<p>This form of categorization of functions in R builds a hierarchical structure where low level functions are at the bottom and high level functions at the top. During a function call, there would be a stack of calls made from high level to low level functions. Sometimes an error can occur at a low level function thereby error message will indicate the low level function that caused the error. If stack of calls made is not known, then deciphering these kind of errors can be quite challenging. In <a href="chap8.html#chap8">chapter eight</a> when we discuss plotting in R, we shall see how to address these kind is issues.</p>
+<p>In our next book: R - Beyond Essentials, we will learn how to develop <strong>user defined functions</strong> and discuss functions in terms of arguments, body and environment. This one of R’s biggest advantages; extensibility.</p>
+<p id="gaugeYourself2">
+<b>Gauge yourself</b>
+</p>
+<ol style="list-style-type: decimal">
+<li>What are functions?</li>
+<li>How can you tell an object is a function?</li>
+<li>What is meant by a function call?</li>
+<li>What constitutes a function call?</li>
+<li>What are arguments?</li>
+<li>Distinguish between named and unnamed arguments</li>
+<li>What do you expect would happen if I made a function call with all the necessary argument but only the second argument is named and distort the position of the other arguments?</li>
+</ol>
+<p><strong>You are ready for the third chapter if you know these</strong></p>
+<ol style="list-style-type: decimal">
+<li>Functions are commands issued for an action to be performed</li>
+<li>In R an object name followed by parenthesis indicates a function</li>
+<li>A function call occurs when a function is used or run</li>
+<li>A function call constitutes a name of a function and it’s arguments</li>
+<li>Arguments give details or input for function execution</li>
+<li>A function call with arguments and their values are referred to as named arguments while a call with values only is referred to as unnamed arguments.</li>
+<li>Since all the arguments are provided, then you will not receive an error, however, due to distortion of position, if the value given does not meet the expected value, a warning will be issued and output generated will be questionable.</li>
+</ol>
+<p><strong>Note</strong></p>
+<p>This write-up has used non programming definition as much as possible with the intent of being useful to non-programmers and imparting concepts and skills necessary for analysis.</p>
+
+</div>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL with your page's canonical URL variable
+var disqus_developer = 1;
+//this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//introduction-to-data-analysis-and-graphics-using-r.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap3.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": true,
+"weibo": false,
+"instapper": true,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+"linkedin": true
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

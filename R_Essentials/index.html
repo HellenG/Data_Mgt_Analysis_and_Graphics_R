@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Essentials</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Essentials" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  <meta name="github-repo" content="HellenG/Data_Mgt_Analysis_and_Graphics_R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Essentials" />
+  
+  <meta name="twitter:description" content="R Essentials is a foundation book for an upcoming book titled ‘Introduction to Data Analysis and Graphics using R’." />
+  
+
+<meta name="author" content="Hellen Gakuruh">
+
+
+<meta name="date" content="2017-02-02">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="chap1.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Essentials</a></li>
+<li><a href="https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R">Hellen Gakuruh</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#its-a-free-e-book"><i class="fa fa-check"></i>It’s a free E-book</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a></li>
+<li class="chapter" data-level="2" data-path="chap2.html"><a href="chap2.html"><i class="fa fa-check"></i><b>2</b> Making Function Calls</a></li>
+<li class="chapter" data-level="3" data-path="chap3.html"><a href="chap3.html"><i class="fa fa-check"></i><b>3</b> Introduction to Version Control Systems</a></li>
+<li class="chapter" data-level="4" data-path="chap4.html"><a href="chap4.html"><i class="fa fa-check"></i><b>4</b> Data Types and Data Objects</a></li>
+<li class="chapter" data-level="5" data-path="chap5.html"><a href="chap5.html"><i class="fa fa-check"></i><b>5</b> Importing and Exporting Data</a></li>
+<li class="chapter" data-level="6" data-path="chap6.html"><a href="chap6.html"><i class="fa fa-check"></i><b>6</b> Transforming Manipulating Data Objects</a></li>
+<li class="chapter" data-level="7" data-path="chap7.html"><a href="chap7.html"><i class="fa fa-check"></i><b>7</b> Working with Dates and Time</a></li>
+<li class="chapter" data-level="8" data-path="chap8.html"><a href="chap8.html"><i class="fa fa-check"></i><b>8</b> Plotting in Base R</a></li>
+<li class="chapter" data-level="9" data-path="chap9.html"><a href="chap9.html"><i class="fa fa-check"></i><b>9</b> Where and How to Get Help</a></li>
+<li class="chapter" data-level="10" data-path="chap10.html"><a href="chap10.html"><i class="fa fa-check"></i><b>10</b> Case Studies</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>A</b> Downloading and Installing R</a></li>
+<li class="chapter" data-level="B" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>B</b> Downloading and Installing RStudio</a></li>
+<li class="chapter" data-level="C" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>C</b> Files</a></li>
+<li class="divider"></li>
+<li>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+       <input type="hidden" name="cmd" value="_s-xclick">
+       <input type="hidden" name="hosted_button_id" value="BJRF7JJSTFY7C">
+       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+       <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+</li>
+<li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Essentials</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R Essentials</h1>
+<h4 class="author"><em>Hellen Gakuruh</em></h4>
+<h4 class="date"><em>2017-02-02</em></h4>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p><img src="figures/cover.png" width="37.5%" height="60%" /></p>
+<p>First welcome to this book on R Essentials. This book aims to introduce both R - the core/base program and RStudio - a program that makes programming easier; basically an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated Development Environment (IDE)</a>.</p>
+<p>We will begin by downloading and understanding both R and RStudio including how to work interactively using the console and writing scripts (similar to syntax in SPSS and “do-files” in STATA). We shall further discuss how to install and work with add-on/contributed programs called packages.</p>
+<p>With the basics of how to start, work and close R and RStudio done, we shall venture into the most important knowledge or skill we need to have in order to do any data analysis in R, this is making function calls or simply issuing commands.</p>
+<p>Later we shall get to know how to manage different versions of our documents like scripts using a version control system called Git and how to freely store/share the documents online using GitHub. This shall become quite handy when we make changes on our document or collaborate with others.</p>
+<p>Next we shall explore R’s data types and objects and how to transform and manipulate them. We shall also see how to import and export data from or into various other programs.</p>
+<p>Since time series analysis is a critical data analysis technique, understanding how R works with dates and time is crucial and a chapter on this is included.</p>
+<p>As we wind-up this book, we shall have a glimpse of R’s wonderful world of graphics, something this program is revered on. We shall also discuss how and where to get help. Finally we shall conclude with case studies covering most of the areas discussed as a way to cement knowledge and skills covered.</p>
+<p>It’s my hope that by close of this series you will have the ability to work with R and be ready for data analysis.</p>
+<div id="learning-outcomes" class="section level3 unnumbered">
+<h3>Learning Outcomes</h3>
+<ul>
+<li>Know R and RStudio</li>
+<li>Know how to make function calls</li>
+<li>Get acquainted with version control systems</li>
+<li>Be informed on data types and objects used in R</li>
+<li>Know how to import and export data</li>
+<li>Have data transformation or manipulation skills</li>
+<li>Be aware of R’s date and time objects</li>
+<li>Have an understanding of base R’s plotting capabilities</li>
+<li>Know where and how to get help and</li>
+<li>Be able to apply lessons learnt in a practical session - Case Studies</li>
+</ul>
+</div>
+<div id="its-a-free-e-book" class="section level3 unnumbered">
+<h3>It’s a free E-book</h3>
+<p>This book is completely free, but feel free to make any donation toward future book development.</p>
+
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+//var disqus_config = function () {
+//this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL //with your page's canonical URL variable
+//var disqus_developer = 1;
+//this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+//};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//introduction-to-data-analysis-and-graphics-using-r.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="chap1.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": true,
+"weibo": false,
+"instapper": true,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+"linkedin": true
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

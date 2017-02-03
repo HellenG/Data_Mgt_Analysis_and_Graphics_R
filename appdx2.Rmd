@@ -1,0 +1,46 @@
+---
+output: html_document
+---
+
+# Downloading and Installing RStudio{#rstudio}
+
+## Downloading RStudio
+
+First go to https://www.rstudio.com/products/rstudio/download/
+
+![Rstudio Web address](figures/Rstudio_webaddress.JPG)
+
+Select a program suitable for your platform
+
+![RStudion for different Platforms](figures/platforms.JPG)
+
+I have selected RStudio 0.99.491 - Windows Vista/7/8/10. That's it, it will start downloading.
+
+![Rstudio Downloading](figures/platforms.JPG) 
+
+Check the status bar for the downloading progress.
+
+
+\*It might take some time depending on internet speed, so hold on.
+
+## Installing Rstudio
+
+Click on the downloaded executable file, this should bring the setup welcome screen.
+
+![Setup Welcome Screen](figures/Rstudio_setup_welcome.JPG)
+
+Next, choose the installation folder. The default is usually recommended, but you can choose another folder.
+
+![Installation Location](figures/Rstudio_installation_location.JPG)
+
+To avoid rebooting your computer, close any other application that is running. Now indicate if you want a start menu containing the programs shortcuts.  
+
+![Startup menu folder](figures/Rstudio_startmenu_folder.JPG)
+
+With that the downloading process should commence.
+
+![Installing Rstudio](figures/installing_Rstudio.JPG)
+
+The final screen should indicate that the installation is complete.
+
+![Installing Rstudio](figures/Rstudio_installed.PNG)

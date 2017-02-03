@@ -1,0 +1,58 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Downloading and Installing R{#r}
+
+## Downloading R
+
+1. Go to https://cran.r-project.org and on the left hand-side, click on `Mirrors`.
+
+![CRAN website](figures/rCran.PNG)
+
+2. Select a mirror [^8] close to you location or any other preferred mirror. Here I have selected "cloud" which is hosted by RStudio.
+
+[^8]: A mirror site is an exact copy of an original site. They are used to reduce online traffick for sites with high online visits. This not only helps speed downloading speed for users but also acts as backup for site owners.
+
+![Cloud mirror](figures/rCloud.PNG)
+
+3. Download a binary version for your platform. This is more for for Windows and Mac users, Linux users can easy download R using "Software Installation and Package Manager" GUI. Here I download R for Windows:
+
+![R for Windows](figures/r4Windows.PNG)
+
+4. Click "install R for the first time", this will take you to the download page which shows the version of R you are about to download.
+
+![Downloading R program](figures/rDownloadPage.PNG)
+
+5. Finally click "Download R [version] for Windows/Mac". Here I am downloading R 3.3.2 for Windows.
+
+![R downloading](figures/rDownloading.PNG)
+
+## Installing R
+
+1. Click the executable file and then button "run" to start installation process.
+
+![R executable file](figures/rExecutable.PNG)
+
+2. If prompted on whether you want to make changes by installing R, click Yes, then from the language dialog box that appears next, select your prefered language and click okay.
+
+![Language dialogue box](figures/rLang.PNG)
+
+3. Close all other applications and then click next.
+
+![Set-up dialog box](figures/rSetup.PNG)
+
+4. Read license and click next.
+
+![R license](figures/rLicense.PNG)
+
+5. select locatin where R should be installed (provided location is usually preferred). Make sure there is at least 1.2mb of free disk space in that location. Click next to continue with installation.
+
+![Location for R installation](figures/rLocation.PNG)
+
+6. Finally click install and R will be installed.
+

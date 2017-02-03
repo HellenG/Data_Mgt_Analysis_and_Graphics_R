@@ -1,0 +1,39 @@
+bookdown::gitbook:
+  keep.md: true
+  includes:
+    after_body: disqus.html
+  css: style.css
+  config:
+   toc:
+      collapse: subsection
+      scroll_highlight: yes
+      before: |
+        <li><a href="./">R Essentials</a></li>
+        <li><a href="https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R">Hellen Gakuruh</a></li>
+      after: |
+        <li>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+               <input type="hidden" name="cmd" value="_s-xclick">
+               <input type="hidden" name="hosted_button_id" value="BJRF7JJSTFY7C">
+               <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+               <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+        </li>
+        <li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+   toolbar:
+      position: fixed
+   edit: null
+   download: no
+   search: yes
+   fontsettings:
+      theme: white
+      family: sans
+      size: 2
+   sharing:
+      facebook: yes
+      twitter: yes
+      google: yes
+      instapper: yes
+      linkedin: yes
+      

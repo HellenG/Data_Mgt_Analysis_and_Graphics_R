@@ -1,0 +1,21 @@
+book_filename: "r_essentials.Rmd"
+language:
+  ui:
+    chapter_name: "Chapter "
+rmd_files: ["index.Rmd", 
+            "01-intro.Rmd",
+            "02-functioncalls.Rmd",
+            "03-vcs.Rmd",
+            "04-datatypes.Rmd",
+            "05-importingandexporting.Rmd",
+            "06-transformandmanipulate.Rmd",
+            "07-datesandtime.Rmd",
+            "08-plotting.Rmd",
+            "09-help.Rmd",
+            "10-casestudies.Rmd",
+            "appdx0.Rmd",
+            "appdx1.Rmd",
+            "appdx2.Rmd",
+            "appdx3.Rmd"]
+before_chapter_script: ["before.R"]
+output_dir: "R_Essentials"
