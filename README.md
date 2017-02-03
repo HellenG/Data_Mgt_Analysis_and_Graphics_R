@@ -1,6 +1,6 @@
 # My-tutorial-Documents
 
-This is a repository for three tutorial books, these are "R Essentials", "R - Beyond Essentials" and "Introduction to Data Analysis and Graphics using R".
+A repository for three tutorial books, "R Essentials", "R - Beyond Essentials" and "Introduction to Data Analysis and Graphics using R".
 
 R Essentials is intended for new beginners in a Statistical software called R. Each chapter is written to impact a specific concept building up to a level where one is able to work with R effectively.
 
