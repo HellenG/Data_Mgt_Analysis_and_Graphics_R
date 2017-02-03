@@ -48,5 +48,5 @@ It's my hope that by close of this series you will have the ability to work with
 
 ### It's a free E-book {-}
 
-This book is completely free, but feel free to make any donation toward future book development.
+This book is completely free, but feel free to make any donation towards future book development.
 
