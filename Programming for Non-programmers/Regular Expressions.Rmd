@@ -31,17 +31,17 @@ Character classes can be used to match literal meaning of metacharacters for exa
 
 Character classes have their own metacharacter, these are **caret (^)**, **hyphen (-)**. To include a caret in a character class, place it anywhere other than the beginning of the character class. To use a hyphen, place it either at the beginning or at the end of the character class. Question, why are these characters special in a character class? For a caret as mentioned earlier, it is used to negate characters in a character class. Hyphens are used in character class to list a range of characters like numerical sequence or alphabets. For example, "[1-9]" would match any digit from 1 through 9, and "[a-zA-Z]" would match any lower or upper case letter. *Do remember it can only match one character (digit or alphabet), if we what to match more than one character we will need to used a [quantifier](#quantifiers).     
 
-<dfn id="shorthandCharClassess">There are a number of short hand character classes which begin with a backslash followed by an alphabet, for example, instead of writing a character class with a range of all digit like "[0-9]", we can use "\d". Other short hand character classes include "\w" which matches any letter or digit, "\W" which is it's negation and matches any character other than a letter or a digit, "\s" matches a space and "\S" is it's negation</dfn>
+[There are a number of short hand character classes which begin with a backslash followed by an alphabet, for example, instead of writing a character class with a range of all digit like "[0-9]", we can use "\\d". Other short hand character classes include "\\w" which matches any letter or digit, "\\W" which is it's negation and matches any character other than a letter or a digit, "\\s" matches a space and "\\S" is it's negation.][#shorthandCharClassess]
 
 ### Dot
 
-As noted, a **.** is a metacharacter which means it has special meaning in regular expression. A dot is used to symbolize **any character**, that means it can be used to match any character like letters, digits, spaces, or even punctuation's.
+As noted, a **"."** is a metacharacter which means it has special meaning in regular expression. A dot is used to symbolize **any character**, it is used to match any character like letters, digits, spaces, or even punctuation's.
 
 ### Matching beginning and end of a word or string (Anchors)
 
 Outside a character class, a caret **^** is used to mark the beginning of a string. For example, if we want to match a sentence starting with an "a", then we would use the following regex **^a**. You can do this when searching for files beginning with certain letters.
 
-A dollar sign **$** is used to match characters at the end of a string, for example file ending with a ".R" can be searched with regex **[.]R$**. Remember a dot is a metacharacter hence we escape it with a character class (or double backslash).
+A dollar sign **"[$]"** is used to match characters at the end of a string, for example file ending with a ".R" can be searched with regex **"\\.R$"**. Remember a dot is a metacharacter hence we escape it with a character class (or double backslash).
 
 Both caret and dollar sign can be used for specific matches or match exact word. For example, we can look for files that begin with letters "Epi" and end with a ".R" extension. Since we have not discussed quantifiers, we can assume the files would have four other characters after the letters "Epi", hence we have **^Epi....[.]R$**.
 
