@@ -26,7 +26,7 @@
 <meta name="author" content="Hellen Gakuruh">
 
 
-<meta name="date" content="2017-01-30">
+<meta name="date" content="2017-02-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -102,10 +102,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li><a href="./">R Essentials</a></li>
+<li><a href="https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R">Hellen Gakuruh</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#its-a-free-e-book"><i class="fa fa-check"></i>It’s a free E-book</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a><ul>
 <li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#goal"><i class="fa fa-check"></i>Goal</a></li>
@@ -368,6 +370,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.7" data-path="files.html"><a href="files.html#references-6"><i class="fa fa-check"></i><b>C.7</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
+<li>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+       <input type="hidden" name="cmd" value="_s-xclick">
+       <input type="hidden" name="hosted_button_id" value="BJRF7JJSTFY7C">
+       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+       <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+</li>
 <li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
 
 </ul>
@@ -435,14 +446,14 @@ datDF
 ##    id    status
 ## 1   1   Exposed
 ## 2   2   Exposed
-## 3   3   Exposed
-## 4   4   Exposed
+## 3   3 Unexposed
+## 4   4 Unexposed
 ## 5   5   Exposed
 ## 6   6 Unexposed
 ## 7   7   Exposed
-## 8   8 Unexposed
+## 8   8   Exposed
 ## 9   9 Unexposed
-## 10 10 Unexposed</code></pre></div>
+## 10 10   Exposed</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extracting data for exposed </span>
 datDF[datDF$status ==<span class="st"> &quot;Exposed&quot;</span>]
 ## Error in `[.data.frame` (data, dat$status == &quot;Exposed&quot;) :
@@ -450,7 +461,7 @@ datDF[datDF$status ==<span class="st"> &quot;Exposed&quot;</span>]
 <p>In this problem the missing object is columns to be returned. That is is clear, but what might be puzzling is that we have used “$” to indicate column selected, or at least that is what we think we have done.</p>
 <p>But let us take a closer look; when we print the expression within extraction operators “[]” we get a logical vector where TRUE means “exposed” and FALSE means “unexposed”.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datDF$status ==<span class="st"> &quot;Exposed&quot;</span>
-##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE
+##  [1]  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE
 
 <span class="kw">class</span>(datDF$status ==<span class="st"> &quot;Exposed&quot;</span>); <span class="kw">dim</span>(datDF$status ==<span class="st"> &quot;Exposed&quot;</span>)
 ## [1] &quot;logical&quot;
@@ -612,13 +623,13 @@ alph1 %in%<span class="st"> </span>alph2; alph1[alph1 %in%<span class="st"> </sp
 <span class="kw">help</span>(<span class="st">&quot;[.data.frame&quot;</span>)</code></pre></div>
 <p>From documentation on data frame extractor function, we now know we can return all columns by adding a comma after selected rows, this would solve our first problem.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">datDF[datDF$status ==<span class="st"> &quot;Exposed&quot;</span>, ]
-##   id  status
-## 1  1 Exposed
-## 2  2 Exposed
-## 3  3 Exposed
-## 4  4 Exposed
-## 5  5 Exposed
-## 7  7 Exposed</code></pre></div>
+##    id  status
+## 1   1 Exposed
+## 2   2 Exposed
+## 5   5 Exposed
+## 7   7 Exposed
+## 8   8 Exposed
+## 10 10 Exposed</code></pre></div>
 <p>Our second problem requires us to start by knowing what “plot.new()” is and how it affects “plot()”. Hence we need to begin by pulling up its help documentation <code>?plot.new</code>.</p>
 <p>From its help documentation, it is clear that plot.new is a low level function called by all high-level plotting functions. Its main objective is to create or start a new plotting frame or window. Try calling this function without passing any values, a plotting window should be opened.</p>
 <p>It is clear what plot.new is and how it comes about and can therefore start to understand what figure margins means. When we changed graphical parameter “mfrow” we essentially added multiple figures to this new plotting window. Each of these figures is padded with some margin as documented by parameter “mar” (par(“mar”)). So the error is simply telling us that this margins are taking a lot of space thereby making it impossible to plot. We can therefore solve this problem by manipulating figure and outer text margin.</p>
@@ -788,7 +799,7 @@ mean.default
 ##     }
 ##     .Internal(mean(x))
 ## }
-## &lt;bytecode: 0x03dc5464&gt;
+## &lt;bytecode: 0x03dc960c&gt;
 ## &lt;environment: namespace:base&gt;
 
 as.Date.default
@@ -801,7 +812,7 @@ as.Date.default
 ##     stop(gettextf(&quot;do not know how to convert &#39;%s&#39; to class %s&quot;, 
 ##         deparse(substitute(x)), dQuote(&quot;Date&quot;)), domain = NA)
 ## }
-## &lt;bytecode: 0x065adb38&gt;
+## &lt;bytecode: 0x066b14dc&gt;
 ## &lt;environment: namespace:base&gt;
 <span class="co"># Reading through as.Date.default from line number 6, it is clear that all &quot;as.Date&quot; function does is to assign given character object a class &quot;Date&quot;</span></code></pre></div>
 <p>Having gone through help documentation and still cannot figure out a solution, then our next step is to read R’s manuals (though these should not be read only when there is a problem).</p>
@@ -1043,11 +1054,11 @@ Is there such a thing somewhere? </code></pre>
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
-var disqus_config = function () {
-this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL with your page's canonical URL variable
-var disqus_developer = 1;
+//var disqus_config = function () {
+//this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL //with your page's canonical URL variable
+//var disqus_developer = 1;
 //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
+//};
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');

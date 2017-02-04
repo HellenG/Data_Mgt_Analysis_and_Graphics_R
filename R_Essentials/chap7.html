@@ -26,7 +26,7 @@
 <meta name="author" content="Hellen Gakuruh">
 
 
-<meta name="date" content="2017-01-30">
+<meta name="date" content="2017-02-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -102,10 +102,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li><a href="./">R Essentials</a></li>
+<li><a href="https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R">Hellen Gakuruh</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#its-a-free-e-book"><i class="fa fa-check"></i>It’s a free E-book</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="chap1.html"><a href="chap1.html"><i class="fa fa-check"></i><b>1</b> Getting to know R and RStudio</a><ul>
 <li class="chapter" data-level="" data-path="chap1.html"><a href="chap1.html#goal"><i class="fa fa-check"></i>Goal</a></li>
@@ -368,6 +370,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.7" data-path="files.html"><a href="files.html#references-6"><i class="fa fa-check"></i><b>C.7</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
+<li>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+       <input type="hidden" name="cmd" value="_s-xclick">
+       <input type="hidden" name="hosted_button_id" value="BJRF7JJSTFY7C">
+       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+       <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+</li>
 <li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
 
 </ul>
@@ -419,7 +430,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">7.1.1</span> Current date</h3>
 <p>In base R “Sys.Date()” can be used to get the current date.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.Date</span>()
-## [1] &quot;2017-01-30&quot;
+## [1] &quot;2017-02-03&quot;
 
 <span class="co"># Class of output</span>
 <span class="kw">class</span>(<span class="kw">Sys.Date</span>())
@@ -440,22 +451,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Conversion of specification is done through the symbol “%” followed by a single letter. Some of the conversion specifications include</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Abbreviated weekday name</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%a&quot;</span>)
-## [1] &quot;Mon&quot;
+## [1] &quot;Fri&quot;
 <span class="co"># Full weekday name</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%A&quot;</span>)
-## [1] &quot;Monday&quot;
+## [1] &quot;Friday&quot;
 <span class="co"># Abbreviated month name</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%b&quot;</span>)
-## [1] &quot;Jan&quot;
+## [1] &quot;Feb&quot;
 <span class="co"># Full month name</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%B&quot;</span>)
-## [1] &quot;January&quot;
+## [1] &quot;February&quot;
 <span class="co"># Day of the month as a decimal number</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%d&quot;</span>)
-## [1] &quot;30&quot;
+## [1] &quot;03&quot;
 <span class="co"># Conversion to m/d/y * not all on systems</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%D&quot;</span>)
-## [1] &quot;01/30/17&quot;
+## [1] &quot;02/03/17&quot;
 <span class="co"># Week of the year</span>
 <span class="kw">format</span>(<span class="kw">Sys.Date</span>(), <span class="dt">format =</span> <span class="st">&quot;%W&quot;</span>)
 ## [1] &quot;05&quot;</code></pre></div>
@@ -466,21 +477,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">7.1.2</span> Current Time</h3>
 <p>To establish current time, “Sys.time()” from base R is appropriate.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.time</span>()
-## [1] &quot;2017-01-30 20:12:59 EAT&quot;</code></pre></div>
+## [1] &quot;2017-02-03 08:43:16 EAT&quot;</code></pre></div>
 <p>Notice this function gives a more comprehensive output as it contains both date and time components. The characters at the end, right after time is R’s version of your current time zone.</p>
 <p>Just like date object, time can be converted to a different format depending on a given format specification or method.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Current time</span>
 <span class="kw">Sys.time</span>()
-## [1] &quot;2017-01-30 20:12:59 EAT&quot;
+## [1] &quot;2017-02-03 08:43:16 EAT&quot;
 <span class="co"># Converting to a different format</span>
 <span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%c&quot;</span>)
-## [1] &quot;Mon Jan 30 20:12:59 2017&quot;
+## [1] &quot;Fri Feb  3 08:43:16 2017&quot;
 <span class="co"># Getting the hour part</span>
 <span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%H&quot;</span>)
-## [1] &quot;20&quot;
+## [1] &quot;08&quot;
 <span class="co"># Time in the 12-hour clock system</span>
 <span class="kw">format</span>(<span class="kw">Sys.time</span>(), <span class="st">&quot;%r&quot;</span>)
-## [1] &quot;08:13:00 PM&quot;</code></pre></div>
+## [1] &quot;08:43:16 AM&quot;</code></pre></div>
 <p>Sys.time() outputs an object of class “POSIXct” and “POSIXt”. We will discuss these two classes as we create some date-time objects.</p>
 </div>
 </div>
@@ -490,7 +501,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Therefore the date-time objects we create would have classes that are recognized by R as date and time classes. These classes fall under the POSIX system.</p>
 <div id="posix" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> POSIX</h3>
-<p>Posix time also referred to as “Unix time” or “Epoch time” is a system that describes time in seconds from some origin which is 1st January 1970 in UTC <a href="#timeZone">time zone</a>. Days and dates are calculated as number of seconds that have passed since this origin, this would be in numerical form like 1.48579638110^{9} hence not comprehensible to humans (just like binary code).</p>
+<p>Posix time also referred to as “Unix time” or “Epoch time” is a system that describes time in seconds from some origin which is 1st January 1970 in UTC <a href="#timeZone">time zone</a>. Days and dates are calculated as number of seconds that have passed since this origin, this would be in numerical form like 1.48610059710^{9} hence not comprehensible to humans (just like binary code).</p>
 <p>There are two date-time classes in base R, these are “POSIXct” and “POSIXlt”. A virtual class “POSIXt” exists for allowing operations on both POSIXct and POSIXlt.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Methods (functions) avaliable for these classes</span>
 <span class="kw">methods</span>(<span class="dt">class =</span> <span class="st">&quot;POSIXlt&quot;</span>)[<span class="dv">1</span>:<span class="dv">28</span>];
@@ -555,8 +566,8 @@ dateObject1
 <span class="co"># Converting times vector </span>
 timeObject1 &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(times, <span class="dt">tz =</span> <span class="st">&quot;GMT&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%H:%M:%S&quot;</span>)
 timeObject1
-## [1] &quot;2017-01-30 23:59:59 GMT&quot; &quot;2017-01-30 00:00:01 GMT&quot;
-## [3] &quot;2017-01-30 12:02:19 GMT&quot; &quot;2017-01-30 12:39:50 GMT&quot;
+## [1] &quot;2017-02-03 23:59:59 GMT&quot; &quot;2017-02-03 00:00:01 GMT&quot;
+## [3] &quot;2017-02-03 12:02:19 GMT&quot; &quot;2017-02-03 12:39:50 GMT&quot;
 <span class="kw">class</span>(timeObject1)
 ## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre></div>
 <p>For the last object involving time without dates, R assigned current date to each time, if this is not what you had in mind, then include the correct dates otherwise R considers time as part of a specific day.</p>
@@ -591,8 +602,8 @@ dateObject2
 <span class="co">#</span>
 timeObject2 &lt;-<span class="st"> </span><span class="kw">strptime</span>(times, <span class="dt">format =</span> <span class="st">&quot;%H:%M:%S&quot;</span>)
 timeObject2
-## [1] &quot;2017-01-30 23:59:59 EAT&quot; &quot;2017-01-30 00:00:01 EAT&quot;
-## [3] &quot;2017-01-30 12:02:19 EAT&quot; &quot;2017-01-30 12:39:50 EAT&quot;
+## [1] &quot;2017-02-03 23:59:59 EAT&quot; &quot;2017-02-03 00:00:01 EAT&quot;
+## [3] &quot;2017-02-03 12:02:19 EAT&quot; &quot;2017-02-03 12:39:50 EAT&quot;
 <span class="kw">class</span>(timeObject2)
 ## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;
 
@@ -642,7 +653,7 @@ pureDateObject
 begining &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="dv">17084</span>, <span class="st">&quot;1970-01-01&quot;</span>) 
 end &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()
 end -<span class="st"> </span>begining
-## Time difference of 112 days</code></pre></div>
+## Time difference of 116 days</code></pre></div>
 <p>We can create a sequence of dates for computation with “seq” function</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Weekly spaced sequence of dates</span>
 <span class="kw">seq</span>(<span class="dt">from =</span> begining, <span class="dt">to =</span> end, <span class="dt">by =</span> <span class="dv">7</span>)
@@ -657,17 +668,17 @@ end -<span class="st"> </span>begining
 <p>Computation with numeric value is feasible</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Today&#39;s date</span>
 <span class="kw">Sys.Date</span>()
-## [1] &quot;2017-01-30&quot;
+## [1] &quot;2017-02-03&quot;
 <span class="co"># Date 10 days ago</span>
 <span class="kw">Sys.Date</span>() -<span class="st"> </span><span class="dv">10</span> 
-## [1] &quot;2017-01-20&quot;
+## [1] &quot;2017-01-24&quot;
 <span class="co"># Date 10 days from today</span>
 <span class="kw">Sys.Date</span>() +<span class="st"> </span><span class="dv">10</span>
-## [1] &quot;2017-02-09&quot;
+## [1] &quot;2017-02-13&quot;
 
 <span class="co"># Eight days ago computed with number of seconds</span>
 <span class="kw">Sys.time</span>() -<span class="st"> </span>(<span class="dv">24</span>*<span class="dv">60</span>*<span class="dv">60</span>)*<span class="dv">8</span>
-## [1] &quot;2017-01-22 20:13:11 EAT&quot;</code></pre></div>
+## [1] &quot;2017-01-26 08:43:25 EAT&quot;</code></pre></div>
 <p>Logical operators can also be used to manipulate date-time objects.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.leap.seconds[<span class="dv">11</span>] &gt;<span class="st"> </span>.leap.seconds[<span class="dv">8</span>]
 ## [1] TRUE
@@ -787,11 +798,11 @@ dateTimeObject2
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
-var disqus_config = function () {
-this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL with your page's canonical URL variable
-var disqus_developer = 1;
+//var disqus_config = function () {
+//this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL //with your page's canonical URL variable
+//var disqus_developer = 1;
 //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
+//};
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
