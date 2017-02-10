@@ -10,12 +10,13 @@ Type  |  Title |  Status   |  Link
 ------|--------|-----------|-------
 Book  | R Essentials | First Version Released | [R Essentials Ebook](../R_Essentials/index.html)
 Book  |  R - Beyond Essentials | Not released | NA
-Book  | Introduction to Data Analysis and Graphics using R | Not Released |  NA
+Book  | Fundamentals of Data Analysis and Graphics using R | Released preface and chapter 1 |  [Fundamentals of Data Analysis and Graphics using R](../Data_Analysis/index.html)
 
-## In-person Training Workshops
+## In-person Training 
 
-Come learn from me, I will be teaching at these venues:
+Come learn from me, I will be teaching on these dates:
 
 Workshop    | Date  | Venue   | Contact
 ------------|-------|---------|---------
-To be announced soon
+Data Management Analysis and Graphics using R | 20-03-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817
+Data Management Analysis and Graphics using R | 10-04-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817
