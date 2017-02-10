@@ -17,6 +17,10 @@ While writing Chapter one, I realized there quite a number of sections that go b
 
 As a result of this (out of the blues) change, I am a tad behind schedule with Descriptive statistics. But it's all good because this new approach makes me work extra hard to deliver a good read for anyone interested in data analysis. 
 
+By the way, [Indepth Research Institute](http://www.indepthresearch.org/) is going to host a training Course on Data Management, Analysis and Graphics with R on: 20-03-17 and 10-04-17. Please visit [this](http://www.indepthresearch.org/research/project-management-monitoring-and-development-evaluation/2956-training-course-on-data-management-analysis-and-graphics-with-r) site for more details and consider attending the training, I will be facilitating.
+
+One final word, I have just created an [issues page](https://github.com/HellenG/Data_Mgt_Analysis_and_Graphics_R/issues/1) for any improvement on "R Essentials" book. I would truly appreciate any enhancement for our book.
+
 Till next Friday 
 
 ### Blog7: February 3rd, 2017
