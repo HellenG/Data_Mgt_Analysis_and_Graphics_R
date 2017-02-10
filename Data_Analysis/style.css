@@ -1,0 +1,21 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+div.encourament1 {
+	color: #FFB6C1;
+}
+form, img {
+	margin: auto;
+}
+

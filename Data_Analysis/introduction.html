@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Fundamentals of Data Analysis and Graphics using R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="‘Fundamentals of Data Analysis and Graphics using R’ is the third and final book in a three part tutorial series.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Fundamentals of Data Analysis and Graphics using R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="‘Fundamentals of Data Analysis and Graphics using R’ is the third and final book in a three part tutorial series." />
+  <meta name="github-repo" content="HellenG/Data_Analysis_Book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Fundamentals of Data Analysis and Graphics using R" />
+  
+  <meta name="twitter:description" content="‘Fundamentals of Data Analysis and Graphics using R’ is the third and final book in a three part tutorial series." />
+  
+
+<meta name="author" content="Hellen Gakuruh">
+
+
+<meta name="date" content="2017-02-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Fundamentals of Data Analysis and Graphics using R</a></li>
+<li><a href="https://github.com/HellenG/Data_Analysis_Book">Hellen Gakuruh</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-outcomes"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#its-a-free-e-book"><i class="fa fa-check"></i>It’s a free E-book</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#some-statistical-termsconcepts"><i class="fa fa-check"></i><b>1.1</b> Some statistical terms/concepts</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#variables"><i class="fa fa-check"></i><b>1.1.1</b> Variables</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#measurement-levels"><i class="fa fa-check"></i><b>1.1.2</b> Measurement Levels</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#distributions"><i class="fa fa-check"></i><b>1.1.3</b> Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#chapter-organization"><i class="fa fa-check"></i><b>1.2</b> Chapter organization</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#basic-preliquiste"><i class="fa fa-check"></i><b>1.3</b> Basic Preliquiste</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="divider"></li>
+<li>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+       <input type="hidden" name="cmd" value="_s-xclick">
+       <input type="hidden" name="hosted_button_id" value="BJRF7JJSTFY7C">
+       <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+       <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+</li>
+<li><a href="https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/tutorials" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentals of Data Analysis and Graphics using R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>The world today presents us with vast amount of data, most of it generated from everyday activity and others emanating from surveys. However, most of this data is underutilized and we often tend to organize surveys before turning available data into useful information. One of the major reasons as to why most data is underutilized is lack of data analysis skills. Having data analysis skills not only helps to identify sources of data but also convert readily available data into useful information. It’s upon this bases that this book is written; this book is geared towards imparting data analysis concepts building them from a foundation level.</p>
+<p>Data analysis is often interchanged with statistics, however, a clear distinction exists between the two terms. Data analysis is a broad area which includes statistics; statistics on the other hand is derived from mathematics where it looks at a sample to draw conclusions about a population. In a sense, data analysis can be public health analysis, population analysis, business analysis, social media analysis and so on, in all these types of data analysis, statistics is core, but it is not the only aspect.</p>
+<p>In this book we take this broad approach by looking at data analysis from different fields or specialization. Our core focus will be statistics but specifically applied statistics (using statistical concepts to understand readily available data).</p>
+<p>Below we discuss a few statistical concepts we will be using during this book and later give a snapshot of what to expect in each of the chapters.</p>
+<div id="some-statistical-termsconcepts" class="section level2">
+<h2><span class="header-section-number">1.1</span> Some statistical terms/concepts</h2>
+<p>In this section we go over some of the terms and concepts we will be using.</p>
+<div id="variables" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Variables</h3>
+<p>A variable is an element or a factor that changes (varies) depending on some condition. Variables can be independent or dependent, discrete or continuous, quantitative or qualitative.</p>
+<p>When conducting a study, a dependent variable is that variable being studied while independent variables are all variables being manipulated by study implementers (for experimental studies) or out of control by study implementers but affect study/dependent variable. For example, in an experiment to measure efficacy of a new drug, independent variables could be other drugs addressing the same condition as the new drug while dependent variable would be efficacy level. It is quite common to see independent variables referred to as predictors, or explanatory variables. Dependent variables are also referred to as response or outcome variables.</p>
+<p>Variables are classified as discrete if they are numerical variables (based on numbers as opposed to qualitative) and they are count data or their numbers can take on certain values. Example of a discrete variable is number of R packages on CRAN, there is no possibility of having 10.5 packages, it can only be 10 or 11 packages. Continuous variables on the other hand are numerical variables but their values can take on any value withing a range for example shoe size, which can be 6, 6.5, 7 and so on, however, they can not be less than 0 and more than largest recorded foot size (16 or there about).</p>
+<p>Classification of variables as either quantitative or qualitative has a great influence on type of data analysis methods used. A quantitative variable is one whose values are numerical, for example anthropometric measures like weight and height, number of something like students in a class and so on. Both discrete and continuous variables are quantitative variables. Qualitative variables are variables whose values are not numerical but text-based, these variables measure some “type” or “level” or “quantity”. For example gender type (female or male), area code (as many as area of concern), educational level (high, medium, low), and residency (urban or rural). Qualitative variables are also known as categorical variables.</p>
+</div>
+<div id="measurement-levels" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Measurement Levels</h3>
+<p>A vital concept in data analysis is measurement levels of a dependent variable. Measurement levels are classifications used to indicated type of values a variable can have and therefore inform on type of measurement to be used. There are four measurement levels, these are “nominal”, “ordinal”, “interval” and “ratio”.</p>
+<p>Nominal level is a qualitative type and variables with this measurement level have categories with no defined/natural order. A good example is gender, in analysis being male or female has no difference and therefore treated same, however, educational level categorized as high medium and low has a natural order and therefore cannot be referred to as nominal.</p>
+<p>Ordinal level are categorical variables with natural order and each level is treated differently during analysis. Our earlier example on education level is a good example of an ordinal variable as it has ordered levels. Levels have an increasing or decreasing aspect to it and therefore analytical methods chosen have to appreciate this ordering. Note, in these levels, it is easy to say there is a difference between each level, but degree of this difference is not quantifiable, for example, we know medium education level is higher than “low” education level, but we do not know by how much. if we added some numerical value to these levels like 1 for low education, 2 for medium and 3 for high education level, we still cannot tell if the difference between 1 and 2 is the same as difference between 2 and 3.</p>
+<p>Interval and ratio measurement levels are similar in that they are both numerical scales where each level has the same measured distance from the other. The best way to understand these two measurement levels is to picture them on a number line with each level representing a position on the continuous number line. By this latter fact, we can say both interval and ratio variables are continuous variables. The difference between these two scales is value of zero; for interval scales, zero is arbitrary meaning it does not indicate “lack off/absence” of the variable whereas in ratio scale zero means lack off or absence of that variable. A classic example given for interval scales are temperature measured by degrees Fahrenheit/Celsius, a zero degree does not mean temperature does not exist but if this temperature is measured by Kelvins (unit of measure for temperature based on absolute scale) <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, then zero would mean no temperature and therefore become a ratio scale.</p>
+</div>
+<div id="distributions" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Distributions</h3>
+<p>A very common term in statistics and by extent data analysis is “distribution”. Distribution is a description of relative values of observations an event/trial/experiment. For example, if we were to count the number of laptop types in a classroom, we would end up with relative values such as 10 HP’s, 9 Macs, 5 Dell, 2 Toshiba. Note, these values do not have any relationship with number of these machines in general population, they just represent “laptop distribution in a classroom”. We can also say “distribution” is a listing (or in some case a function as we shall later see), of all possible values and how often they occur.</p>
+<p>Distributions are often shown using a table or a graph. When we want to table distribution of one variable like number of laptops in a class by make, we use a “frequency table”. Frequency means number of occurrence of a certain observation like number of HP’s.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Make</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HP</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Macs</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>Dell</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Toshiba</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>When describing distribution of more than one variable, we use contingency tables (also known as cross tabulation or cross tabs). For example, if we were to table number of laptops by make and by gender (how many Female/Males had a certain type of laptop), then we would have something like this:</p>
+<pre><code>##          gender
+## laptops   Female Male
+##   Dell         3    2
+##   HP           8    2
+##   Mac          5    4
+##   Toshiba      0    2</code></pre>
+<p>Some of the graphs used to display distributions include dot plot, bar charts, histograms, box plots, tally charts, pie charts and the like. Let’s discuss this graphs as we discuss graphical representation of descriptive summaries.</p>
+</div>
+</div>
+<div id="chapter-organization" class="section level2">
+<h2><span class="header-section-number">1.2</span> Chapter organization</h2>
+<p>In this section we go through what to expect in each of the chapters in this book. Our aim here is to interlink the concepts and see how some concepts rely on knowledge of another.</p>
+<p>Following this introduction, we shall start off by discussing ways to describe univariate data. Here we shall distinguish between numerical and categorical data. We will conclude this chapter by demonstrating how to display descriptive summaries using R.</p>
+<p>A chapter on exploratory data analysis (EDA) follows descriptive statistics. This chapter introduces EDA as a technique to quickly look at data. It should be noted, in actual practice, EDA is usually performed as an initial activity and thus this chapter should have come before descriptive statistics. However, since this book also targets complete beginners in data analysis, then discussing EDA (which involves a lot of descriptive statistics) before descriptive statistics would not have been good for novice learners.</p>
+<p>Before discussing core of statistics (making inference), we will discuss probability as a prerequisite. This chapter will (re)introduce probability concepts like events, sample space, permutations and combinations (counting rules). We shall use classical examples like dice throws, playing cards and marbles an urn to just ensure we have the concepts right.</p>
+<p>With probability covered, we shall begin our discussion on inferential statistics. In this chapter, we shall discuss a critical concept in inferential statistics which is modeling assumptions (fully, non and semi parametric). We shall also discuss other concepts like central limit theorem and statistical propositions like point and interval estimates (CI). In our discussion we shall distinguish statistical propositions for means and proportions as well as difference between sample statistic and parameters. In addition we shall discuss hypothesis testing highlighting type one and type two errors as well as sensitivity analysis. We shall conclude with techniques for studying relationships between two or more variables(regression analysis).</p>
+<p>As we wind up this book, we shall have chapters discussing time and survival analysis. These chapters are included as data on time and survival issues are quite common especially in development and humanitarian sector (one of the target learners of this book).</p>
+</div>
+<div id="basic-preliquiste" class="section level2">
+<h2><span class="header-section-number">1.3</span> Basic Preliquiste</h2>
+<p>This book is intended as an introduction to data analysis and graphics, hence discussion is kept simple and concepts introduced gradually.</p>
+<p>It is however important to have basic knowledge of R (or another statistical program) for you to participate in examples and exercises.</p>
+<p>Mathematics is an inevitable prerequisite for statistics, and since a large part of data analysis relies on statistics, it is therefore important to have some basic mathematical concepts. It is advisable to go through appendix A on refresher mathematics and see what you need to refresh on. As with the rest of the book, mathematical concepts are re-introduced in a very basic and easy way. There is a list of handy and certainly (beginner friendly) resources added at the end of this chapter in case you need just a little bit more mathematics.</p>
+
+</div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Kelvin">Wikipedia</a><a href="introduction.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+//var disqus_config = function () {
+//this.page.url = http://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Pages/tutorials.html;  // Replace PAGE_URL //with your page's canonical URL variable
+//var disqus_developer = 1;
+//this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+//};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//introduction-to-data-analysis-and-graphics-using-r.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": true,
+"weibo": false,
+"instapper": true,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"],
+"linkedin": true
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>
