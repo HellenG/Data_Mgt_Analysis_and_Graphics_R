@@ -3,19 +3,22 @@
 	padding: 0;
 }
 body{
-	background-color: #FFE6E9;
 	font-family: serif, "Comic Sans MS", cursive, sans-serif;
 }
 header {
-	background-color: #FFCCD2;
+	background-color: #87CEFA;
 	padding-bottom: 0.625em;
 	margin-bottom: 1.25em;
-	border-bottom: 0.063em solid #FFB3BF;
+	border-bottom: 0.063em solid #D3D3D3;
 }
 h1 {
 	font-family: 'Tangerine', serif;
-    font-size: 48px;
-	text-shadow: 4px 4px 4px #aaa;
+	color: #FFFFFF;
+   font-size: 48px;
+	text-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+}
+h3 {
+   color: #FFFFFF;
 }
 #head {
 	display: inline-block;
@@ -27,16 +30,15 @@ h1 {
 #menu {
 	float: left;
 	position:relative;
-	display: inline-block;
 }
 .icon {
 	width: 2.1875em;
 	height: 0.3125em;
-	background-color: #FF69B4;
+	background-color: #6495ED;
 	margin:0.375em 0;
 }
 #menuicon {
-	border: 0.063em solid #FF69B4;
+	border: 0.063em solid #6495ED;
 }
 #nav {
 	display: none;
