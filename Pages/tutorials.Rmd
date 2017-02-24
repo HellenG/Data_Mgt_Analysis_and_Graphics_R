@@ -16,7 +16,7 @@ Book  | Fundamentals of Data Analysis and Graphics using R | Released preface an
 
 Come learn from me, I will be teaching on these dates:
 
-Workshop    | Date  | Venue   | Contact
-------------|-------|---------|---------
-Data Management Analysis and Graphics using R | 20-03-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817
+Workshop    | Date  | Venue   | Contact   |  Presentations
+------------|-------|---------|-----------|-----------------
+Data Management Analysis and Graphics using R | 20-03-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817 | Will start developing them after Chapter 2
 Data Management Analysis and Graphics using R | 10-04-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817
