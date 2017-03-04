@@ -9,11 +9,11 @@ output:
 
 ###  Blog11: March 4^th^, 2017
 
-<h4 style="font-weight:bold">Yap, it's Out next presentations</h4>
+<h4 style="font-weight:bold">Yap it's Out, next, presentations</h4>
 
-Truly pleased to say Descriptive statistics is finally done (except for exercises) and it's out. Had a great time refreshing on this topics and looking forward to chapter 3. 
+Truly pleased to say Descriptive statistics is finally done (except for exercises) and it's out. Had a great time refreshing on these topics and looking forward to chapter 3. 
 
-I will take sometime to prepare some slides for upcoming workshop so anticipate chapter three to come out slightly later this month, but let's see next week what I will be up to and how much needs to be done. 
+I will take sometime to prepare some slides for upcoming workshop so I anticipate chapter three to come out slightly later this month, but let's see next week what I will be up to and how much needs to be done. 
 
 ### Blog10: February 24^th^, 2017
 
