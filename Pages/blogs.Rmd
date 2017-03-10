@@ -7,6 +7,16 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog12: March 10^th^, 2017
+
+<h4 style="font-weight:bold">Making presentations and looks like a summarized R-Essentials is in progress</h4>
+
+A great week it was. I have managed to do three slides out of six and currently winding up on the fourth. I anticipate to have them out by end of next week.
+
+As I write these slides, it's occured to me I am actually writting a summarized version of "R-Essentials". This is great as I had hoped to write summarized/reference book once I am done with the three books. Guess I am up to speed on that one.
+
+Well, till next week when I share the slides and prepare for EDA chapter.
+
 ###  Blog11: March 4^th^, 2017
 
 <h4 style="font-weight:bold">Yap it's Out, next, presentations</h4>
