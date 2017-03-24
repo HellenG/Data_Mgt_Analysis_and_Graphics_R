@@ -7,6 +7,18 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog14: March 24^th^, 2017
+
+<h4 style="font-weight:bold">Going the extra mile</h4>
+
+So I am way behind schedule, but it's all good as a lot of what I am doing will shorten time spent writing chapter on inferential statistics. I am going the extra mile to ensure all the essentials are covered and covered well (I was a bit rusty). 
+
+Looking forward to creating colourful graphs during EDA chapter, so I will try to wind this up.
+
+Sadly I did not get to teach this week but will strive to get at least one in-person training this quarter. Otherwise, I am thinking of YouTube sessions and some webinar's, they are actually way overdue.
+
+Till next week (hopefully slides will be out), it's good weekend and good week from me. 
+
 ### Blog13: March 17^th^, 2017
 
 <h4 style="font-weight:bold">Almost done and might be teaching next week</h4>
