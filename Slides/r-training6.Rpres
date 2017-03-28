@@ -1,0 +1,1132 @@
+Inroduction to Data Analysis and Graphics in R
+========================================================
+author: Hellen Gakuruh
+date: `r Sys.Date()`
+autosize: true
+
+## Slide 6: Essentials of Quantitative Data Analysis
+
+Outline
+========================================================
+
+What we will cover
+
+- Planning for quantitative data analysis
+- Basic for data analysis
+- Testing for normality of data
+- Confidence intervals
+- Hypothesis testing
+- Test for statistical significance (parametric and non-parametric)
+- Hypothesis testing versus confidence intervals
+- Choosing correct statistical test
+
+```{r "source-files", echo=FALSE}
+source("~/R/Scripts/inferential-statistics-functions.R")
+```
+
+
+Planning for quantitative data analysis
+========================================================
+type: section
+
+- Begin  with data analysis plan guided by analytical question (descriptive, exploratory, inferential, predictive, causality)
+- Important issues
+    + Description of population
+    + Source (primary secondary)
+    + State of data pre-analysis (raw/clean, processed or not)
+    
+Important issues for data analysis plan
+===============================================================
+type: sub-section
+
+- cont...    
+    + Core (response/dependent) and supporting (explanatory/independent and confounding) variables
+    + Expected values for each variable (for code book)
+    + Dummy tables (univariate and multivarite) which answer analytical question 
+    + Data cleaning process checking and correcting errors and miscoding - transforming data from raw to tidy data
+
+Important issues for data analysis plan (cont...)
+==================================================================
+type: sub-section
+
+- Cont...
+    + Explain with justification how missing data will be handled e.g. case deletion and estimate (like average) substitution
+    + Conversion for some variables to log form
+    + Checking conditions
+    + Statistical tests to be performed 
+
+Basic for data analysis
+========================================================
+type: section
+
+- Starts with Exploratory Data Analysis (EDA) to mainly:
+    + Check for patterns and
+    + Model building
+- Pattern: determine presence of association and their strengths
+- Statistical models: check presence of outliers, check for nomality (symmetry, no outliers), and verify model conditions 
+
+Testing for normality of data
+==========================================================
+type: section
+
+- Well known test is "D'Agostino-Pearson" based on skewness (assymetry) and kurtosis (tailness)
+- Others are "Shapiro-Wilk test", "Jarque-Bera test", "Cramer-von-Mises criterion", "Anderson Darling test", "Lilliefors test normality", "Kolmogorov-Smirnov test" and "shapiro-Francia test for nomality" e.t.c 
+- Easiest ways of checking for symmetry is measuring skewness and kurtosis
+- A skewed distribution is assymetrical (not symmetrical) hence is not normaly distributed
+
+Testing for normality (cont...)
+=============================================================
+type: sub-section
+
+- Kurtosis is a measure of a distributions ends (length and width), a symmetrical distribution would have an excess kurtosis (kurtosis in reference to symmetry) of three
+- Normally distributed observations tend to form a bell-shaped curve; are unimodal and have equal mean and median 
+- However, not all bell-shaped curves are normal distributions e.g. t-distribution and Cauchy distribution
+- Referred to as "normal or Gaussian distribution" (for continuous distributions)
+
+Proporties of a normal distribution
+==============================================================
+type: sub-section
+
+- Symmetric about it's mean (exactly half of it's values are below mean and half are above)
+- Mean and median are at the middle and divides area into two
+- Display-wise they have a bell-shaped curve where area under curve is equal to 1
+- Completely determined by it's mean ($\mu$) and it's standard deviation ($\sigma$); that is, normal distributions are defined by $\mu$ and $\sigma$
+
+================================================================
+type: sub-section
+
+```{r "normal-dist-06", cache=TRUE, echo=FALSE, fig.align="center", fig.caption="An approximatley normal distribution", fig.width = 7, fig.height = 7}
+set.seed(6)
+norml <- rnorm(900000, mean = 69, 20)   
+ndens <- density(norml)
+plot(ndens, ann = FALSE)
+title("Approximately normal distribution", ylab = "Density")
+title(xlab = "Students Heights", line = 3.5)
+x <- ndens$x[which.max(ndens$y)]
+segments(x0 = x, y0 = 0, x1 = x, y1 = max(ndens$y), col = "#6699CC")
+mtext("Mean", 1, at = x, col = "#6699CC")
+mtext("Median", 1, line = 1, at = x, col = "#6699CC")
+mtext("Mode", 1, line = 2, at = x, col = "#6699CC")
+```
+
+
+Standard normal distribution
+================================================================
+type: sub-section
+
+- Different normal distributions have different $\mu$ and $\sigma$
+- For standardization and comparison, normal distributions are defined by $\mu$ of 0 and $\sigma$ of 1; this is called a **Standard normal distribution**
+- Normal distributions are converted to standard normal distributions by converting their values to unitless measures called **z-scores**
+- Z-scores are basically distances of each values from it's mean in terms of standard deviation (number of standard deviation away from mean) 
+
+Standard normal distribution (cont.)
+==============================================================
+type: sub-section
+
+- For example a z-score of 1.96 means a value that is 1.96 standard deviations above it's mean while -1.96 means a value that is 1.96 below it's mean
+- Therefore, a z-score for any value in a distribution can be computed as:
+
+$$Z_{score} = \frac{(x - \bar{x})}{s}$$ 
+
+
+Empirical Rule
+================================================================
+type: sub-section
+
+- For normal distribution, it been shown that:
+    + about 68% of observations lie within 1 SD
+    + about 95% lie within 2 SD and 
+    + about 99.7% lie within 3 SD from it's mean
+- This is called "Empirical rule" or the "68/95/99.7" rule
+- It used to estimate proportions of observations that fall within an interval of 1, 2 and 3 SD from mean
+
+Population parameters, sample statistic, point and interval estimates
+==========================================================
+type: sub-section
+
+- Statistical summaries based on population like mean or proportions are called **population parameters**
+- Statistics based on a sample are called **sample statistics**
+- Sample statistics are also referred to as **point estimates** as they are single (a point) values used as estimates of true population parameters
+- **Interval estimates** are point estimates plus an interval that expresses uncertainty of the estimate
+
+
+Confidence intervals
+============================================================
+type: section
+
+- In general we collect samples to inform us about a population  
+- So when we have a sample statistic like mean, we often use it as an estimate of true population parameter
+- Question is, how close is our observed sample statisitc (say $\bar{x}$) to it's (often unknown) population parameter (say $\mu$)
+- Better still; *How confident are we that our sample statistic is close or equal to it's population parameter?*
+
+Confidence intervals (cont...)
+===============================================================
+type: sub-section
+
+- To quantifying confidence, we can say full confidence is equal to 100%, but can we be that sure?
+- Since we cannot be 100% confident, then this leads us to a **level of confidence** which accounts for uncertainty
+- Given this level of confidence and uncertainty, we can only give a range of values within which we believe our true parameter lies, this is our **confidence interval**
+- Our uncertainty is called **margin of error** ($E$); it's also called **alpha** ($\alpha$) in significance setting
+
+Confidence intervals (cont...)
+================================================================
+type: sub-section
+
+- Based on this fact full confidence is 100%, then Confidence Level (CL) is 100% - $E * 100$ e.g. 100 - 5 = 95%
+- Meaning of CL: if several samples with equal "n" were drawn, 95% of samples would contain true population parameter and 5% would not.
+- So given any level of confidence (like 99%, 95% or 90%), how do we determine the range of values within which we are (say 95%) confident it contains true population parameter?
+- Answer, use sample statistic adding and subtracting margin of error (uncertainty)
+
+Confidence intervals (Cont...)
+================================================================
+type: sub-section
+
+- How do we measure margin of error (what constitutes uncertainty)?
+- Two issues:
+    + proposed confidence level, and 
+    + sample size
+- Can have any level of confidence, but it has it's implications: high confidence means lower uncertainty and lower confidence means higher uncertainty
+- Probability of capturing true population parameter is lower if sample size is small and higher when sample size is high
+
+
+Consideration for selecting a confidence level
+=================================================================
+type: sub-section
+
+- Confidence level (CL), range [0% (no confidence) 100% (complete confidence)]
+- Any CL between these 0 and 100 implies some level of uncertainty, the higher the CL the lower the level of uncertainity and the lower the CL the higher the level of uncertainty
+- Selecting a CL takes into consideration this balance (confidence to uncertainty)
+
+Confidence is to intervals and not interval selected
+==================================================================
+type: sub-section
+
+- Whichever CL is selected between 0 and 100 means there is a probability the CL will not contain true population parameter ($E * 100$) e.g. 0.05 * 100 = 5%
+- Confidence is with the intervals, for example 90% of the intervals will contain population parameter and 10% of the intervals will not 
+- This is different from saying "we are 90% confident our interval contains true parameter". This implies confidence is in an interval
+
+Why CL is to distribution of intervals rather than used interval
+====================================================================
+type: sub-section
+
+** Example**
+- Given a population with N = 900,000, draw 1000 samples with n = 100
+- From each sample, construct confidence intervals (CI) for "68%", "90%", "95%" and "99%" confidence levels
+- Establish how many CI's contain population mean ($\mu$)
+
+Histogram and density plot of population
+==================================================================
+type: sub-section
+
+```{r "population-hist1-06", fig.caption="Confirming nomal population", fig.align="center", echo=FALSE}
+# Hypothetical population (from a nomal distribution)
+population <- norml 
+mu <- mean(population)
+
+# Confirm nomality
+hist(population, 100, freq = FALSE)
+lines(density(population), lwd = 2, col = 4)
+```
+
+Code used to plot
+===============================================================
+type: sub-section
+
+```{r "population-hist2-06", ref.label="population-hist1-06", eval=FALSE}
+
+```
+
+Samples from population
+===================================================================
+type: sub-section
+
+```{r "sample-06", cache=TRUE}
+sample_100 <- vector("list", length = 1000)
+for(i in 1:1000) {
+   set.seed(i)
+   sample_100[[i]] <- sample(population, 100)
+}
+sample_means <- sapply(sample_100, mean)
+str(sample_means)
+range(sample_means)
+```
+
+Compute confidence levels ====================================================================
+type: sub-section
+
+```{r ci-4-samples-06}
+# Sample size
+n <- 100
+
+# Confidence intervals for all samples
+ci_68 <- lapply(sample_100, ci, cl = "68%")
+ci_90 <- lapply(sample_100, ci, cl = "90%")
+ci_95 <- lapply(sample_100, ci)
+ci_99 <- lapply(sample_100, ci, cl = "99%")
+```
+
+Determine samples containing "mu"
+===================================================================
+type: sub-section
+
+```{r "samples-with-mu-06"}
+# Percent of samples that included population mean (mu)
+perc_68 <- length(which(sapply(1:n, function(i) mu >= ci_68[[i]][1] & mu <= ci_68[[i]][2])))
+perc_90 <- length(which(sapply(1:n, function(i) mu >= ci_90[[i]][1] & mu <= ci_90[[i]][2])))
+perc_95 <- length(which(sapply(1:n, function(i) mu >= ci_95[[i]][1] & mu <= ci_95[[i]][2])))
+perc_99 <- length(which(sapply(1:n, function(i) mu >= ci_99[[i]][1] & mu <= ci_99[[i]][2])))
+```
+
+Outcome
+==============================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+- Taking 1000 samples of `r n` each:
+
+Confidence Level | % containing true population mean ($\mu$)
+-----------------|------------------------------------------------
+68%              | `r paste0(perc_68, "%")`
+90%              | `r paste0(perc_90, "%")` 
+95%              | `r paste0(perc_95, "%")`
+99%              | `r paste0(perc_99, "%")`
+
+***
+
+<p style=visibility:hidden;>n</p>
+- From this, it is clear why confidence is to sampling distribution of intervals rather than constructed intervals 
+- This also tells us we need to factor CL selected when computing uncertainty or margin of error
+
+Critical value (CV)
+================================================================
+type: sub-section
+
+- A point from a sample statistic beyond which any values found would be considered unlikely to contain true population parameter
+- To get CV, if sampling distribution is normal or close to normal (approximately symmetric) and has known SD, then z-scores are appropriate, if not use t-test
+- Here we make an assumption of symmetry and known SD and let you explore critical values of t
+
+Computing Critical values of z
+===============================================================
+type: sub-section
+
+- For 95% CL, we want a z-score for which any value below it or above it would indicate uncertainity
+- To get this value we need to:
+    1. Subtract CL from 100% (to get level of uncertainity) i.e. 100% - 95% = 5%
+    1. Convert level of uncertainity to a proportion i.e. 5/100 = 0.05 (this is our alpha ( $\alpha$ ))
+    1. If level of uncertainity falls on both sides of a distribution (alternate has $\neq$), then we divide by 2 e.g. 0.05/5 = `r 0.05/2` else $\alpha$ 
+
+Computing z-score (cont...)    
+================================================================
+type: sub-section
+
+- cont...
+    4. Area of interest is middle 95% (confidence) not uncertainty hence subtract part of the uncertainty from 1 i.e.
+
+        a. For two sided; 1 - $\alpha/2$ e.g `r 1 - 0.05/2`  
+        b. For one sided; 1 - $\alpha$ e.g. `r 1 - 0.05`
+   5. Finally locate critical value using z-table or R. With R, use function "qnorm" e.g qnorn(`r 1 - 0.05/2`) = `r cv <- qnorm(1 - 0.05/2); cv` or qnorm(`r 1 - 0.05`) = `r qnorm(1 - 0.05)`
+
+Computing z-scores (cont...)
+=================================================================
+type: sub-section
+
+- For two sided, uncertainty is region below or above $\pm$ CV, for one sided if "<" then region below cv, if ">" region above cv
+- Values falling in uncertainty region would most probably not contain true population parameter   
+
+Sample size
+================================================================
+type: sub-section
+
+- Sample size (n) has an impact on how close a statistic is to it's population parameter
+- A high sample size is more likely to be close it's population parameter than a lower sample size
+- Example: draw different samples (5, 50, 1000) and check how close they are to population parameter (mean)
+
+Example: effect of sample size to population parameter
+===================================================================
+type: sub-section
+
+```{r "samples-means-06"}
+# Placeholder for computed sample statistic
+sample_means10 <- rep(NA, 10)
+sample_means50 <- rep(NA, 50)
+sample_means1000 <- rep(NA, 1000)
+
+# Repetitive draw of different samples and computing their means
+for(i in 1:10) {
+   # Sample statistic
+   sample_means10[i] <- mean(sample(population, 10))
+}
+```
+
+Example (cont...)
+============================================================
+type: sub-section
+
+```{r "sample-means2-06"}
+for(i in 1:50) {
+   sample_means50[i] <- mean(sample(population, 50))
+}
+for(i in 1:1000) {
+   sample_means1000[i] <- mean(sample(population, 1000))
+}
+
+# Population mean(mu) 
+paste("Population mean =", mu)
+```
+
+Example (cont...)
+============================================================
+type: sub-section
+
+```{r "sampling-distribution2-06", echo=FALSE}
+# 10 samples of 10 element
+paste("Sample mean for n:10 =", mean(sample_means10)); paste("Difference from population mean =", mu - mean(sample_means10)); paste("Range =", diff(range(sample_means10)), "SD =", sd(sample_means10))
+```
+
+Example (cont...)
+=====================================================================
+type: sub-section
+
+```{r "sampling-distribution3-06", echo=FALSE}
+# 50 samples of 50 elements each
+paste("Sample mean for n:50 =", mean(sample_means50)); 
+paste("Difference from population mean =", mu - mean(sample_means50)); paste("Range =", diff(range(sample_means50)), "SD =", sd(sample_means50))
+```
+
+Example (cont...)
+=================================================================
+type: sub-section
+
+```{r "sampling-distribution4-06", echo=FALSE}
+# 1000 samples of 1000 elements each
+paste("Sample mean for n:1000 =", mean(sample_means1000)); paste("Difference from population mean =", mu - mean(sample_means1000)); paste("Range =", diff(range(sample_means1000)), "SD =", sd(sample_means1000))
+```
+
+Standard Error (SE)
+==================================================================
+type: sub-section
+
+- As "n" has an impact estimation of a population parameter, then  more weight should be given to smaller "n" and less weight bigger "n" - Mathematically done by dividing SD with square root of "n"
+- Square rooting means at whatever SD, value obtained would be higher when "n" is small and lower as "n" increases (actually nearing 0)  
+
+$$\therefore SE = \frac{sd}{\sqrt{n}}$$
+
+Standard Error (cont...)
+=============================================================
+type: sub-section
+
+- **Sampling distributions** shows every possible result a statistic can take in every possible sample
+- Standard error can thus be referred to as standard deviation of the sampling distribution of a statistic
+- In comparison, while standard deviation of a sample is a **descriptive statistic** of deviation of each element from it's mean, standard error is an **estimate** of how far a statistic is from a population parameter
+
+Standard Error: Example
+===============================================================
+type: sub-section
+
+- Compute SE for first sample out the 1000 samples of size 100 drawn from a hypothetical population 
+- i.e. sd(sample_100[[1]])/sqrt(length(sample_100[[1]])) which is `r se <- sd(sample_100[[1]])/sqrt(length(sample_100[[1]])); se`
+
+Margin of Error (ME)
+================================================================
+type: sub-section
+
+- Margin of error or uncertainty is a product of confidence level measured at critical value and standard error
+- That is, $ME = CV * SE$
+- For example, for first sample out of 1000 samples of 100, ME would be: cv (qnorm(1-0.05/2)) * SE (sd(sample_100[[1]])/sqrt(length(sample_100[[1]]))) = `r me <- (qnorm(1-0.05/2)) * (sd(sample_100[[1]])/sqrt(length(sample_100[[1]]))); me`
+- This means, due to CL selected and sample size, uncertainty is a range of ME * 2 - 1 i.e. `r me * 2 - 1` (times two because it's on both sides) 
+
+Computing Confidence Interval (ci)
+===================================================================
+type: sub-section
+
+- CI is "sample statistic $\pm$ ME"
+- Following our example of one of the 1000 samples drawn from a hypothetical population with mean `r xbar <- mean(sample_100[[1]]); xbar`, critical value of `r cv`,  Standard error of `r se`, and ME of `r me`, confidence interval is therefore Mean (`r xbar`) $\pm$ ME (`r me`) which is `r ci_100 <- ci(sample_100[[1]]); ci_100`.
+- Conclude by saying, **"We are 95% confident true population mean lies with `r ci_100` confidence interval"** (we have 5% uncertainty this interval will contain true population mean). Reported as about `r round(xbar, 2)` (ci = `r  round(ci_100, 2)`)
+
+
+Statistical Hypothesis
+============================================================
+type: section
+
+- Statements/conjectures made about a population parameter e.g. proportion of R data analysts/programmers in an organization  
+- Have two contradicting mutually exclusive statements/conjectures
+- Statements about a population parameter or conjecture on change/difference/effect in a population parameter are called **alternative hypothesis** denoted as $H_a or H_1$ 
+- To each alternative hypothesis is a **null hypothesis** denoted as $H_0$: it's a statement of zero or no change/difference/effect
+
+Statistical hypothesis (cont...)
+============================================================
+type: sub-section
+
+**Examples of $H_0$ and $H_a$** 
+- $H_0$: Proportion of R data analysts is 0
+- $H_a$: Proportion of R data analysts is not 0 or
+- $H_a$: Proportion of R data analysts is greater/less than zero
+
+Statistical hypothesis (cont...)
+=============================================================
+type: sub-section
+
+- Hypothesis can be based on one, two or more sample and/or groups 
+- Pre and post evaluations are good examples of two samples
+- Grouping is an assessment of a numerical variable (like height) by a categorical variable (like gender)
+
+Why null hypothesis
+==========================================================
+type: sub-section
+
+- Hypothesis of interest is alternative hypothesis (statement on a population parameter or change/effect)
+- To agree or disagree with this statement requires proof, proof that indeed population parameter is what is hypothesized or their is some change and it is not due to random chance/flux/luck
+- To provide this proof means begin from a known or current state i.e. zero proportion or no change/effect or equality when comparing more than one sample/group
+
+Test hypothesis
+=================================================================
+type: sub-section
+
+- Null hypothesis is thus put forward to be "nullified", it is the **test hypothesis** 
+- Based on proof (sample data), null hypothesis can either be "rejected" in favour of alternative hypothesis or "not rejected"
+- If proof (data) fails to show hypothesized parameter like proportion of greater than 0 or change between two proportions, it does not mean null hypothesis is true, just means data was not sufficient to prove otherwise  
+
+Alternative hypothesis
+===============================================================
+type: sub-section
+
+- Can be stated in three ways:
+    + An increase e.g. BMI in and organization has increased
+    + A decrease e.g. average time spent by employees on physical activity has decreased
+    + Non equality e.g. proportion of female to male employees attending self-development courses is not the same  
+- While null hypothesis is used for testing, alternative hypothesis determines direction of test (one or two sided test)
+
+Hypothesis is to sample 
+================================================================
+type: sub-section
+
+- Hypothesis make claims about a population parameter for which data is used to prove 
+- It's pointless to speculate on a population if population data exists 
+- Hypothesis are used to generalise sample findings to it's population
+
+
+Stating hypothesis
+=============================================================
+type: sub-section
+
+- Begin with issue or expected outcome i.e. hypothesis of interest
+- Examples:
+    + Claim: there are some R data analysts/programmers in the organization
+        * This means proportion of R data analysts/programmers is greater than zero 
+    
+Stating hypothesis (cont...)
+============================================================
+type: sub-section
+    
+- Examples (cont...)    
+    + Claim: BMI in the organization has increased
+        * This means average BMI has a positive change from a current or known state 
+    + Claim: There are more female employees attending self-development courses than their male conterparts
+        * This means proportion of female employees in this courses is higher than their male conterparts (involves two groups)
+    
+Stating null hypothesis 
+=================================================================
+type: sub-section
+
+- From above alternative hypothesis, their null hypothesis can be hypothesized as:
+    + There are no R data analysts/programmers in the organization i.e. proportion of R data analysts/programmers is zero
+    + BMI in the organization is the same/constant i.e. average BMI is the same, it has not changed (increased)
+    + Number of female and male employees attending self-development courses is the same i.e. proportion of female and male employees attending self-development courses is equal
+    
+Stating hypothesis in notation form
+================================================================
+type: sub-section
+    
+- Hypothesis are stated using relational operator 
+- For null hypothesis, "=", "$\leqslant$" and "$\geqslant$" (have some equality) are used e.g. $P_{(data analysts)} = 0$
+- For alternative hypothesis, "<", ">" and "$\neq$" are used (state of unequality) e.g. $P_{(data analysts)} > 0$ 
+
+Stating hypothesis in notation form (cont...)
+===============================================================
+type: sub-section
+
+- Pair of null and alternative hypothesis expressions are written as 
+- First example
+    + $H_0: P_{R-analysts} = 0$
+    + $H_a: P_{R-analysts} > 0$
+    
+Hypothesis in notation form (cont...)
+===============================================================
+type: sub-section
+    
+- Second example    
+    + $H_0: \mu_{BMI} = 24.1kg/m^2$
+    + $H_a: \mu_{BMI} > 24.1kg/m^2$
+- Third example    
+    + $H_0: P_{Female} = P_{Male}$
+    + $H_a: P_{Female} > P_{Male}$
+
+Pre-post (two sample) hypothesis example
+==================================================================
+type: sub-section
+incremental: true
+
+- Suppose we anticipate average number of R data analysts/programmers will **increase** if specialised automation packages were offered in addition to current training programs, how do we state it's hypothesis?
+- Null hypotheis will be $H_0: P_1 = P_0$ or $H_0: P_1 - P_0 = 0$
+- Alternate hypothesis will be $H_a: P_1 > P_0$ or $P_1 - P_0 > 0$
+
+Hypothesis testing
+============================================================
+type: sub-section
+
+- Use; confirming noted change/difference is not as a result of sheer luck or random chance
+- Logic; based on null hypothesis, change/difference is *extreme enough* not to have occured by random chance or luck
+- How is "extreme enough" established?
+- If an infinite number of samples were taken based on $H_0$, then **Central limit theory** states that means of these samples would be normally distributed i.e. $\bar{x}$ of samples would be clusted around $H_0$ test statistic 
+
+Hypothesis testing (cont...)
+=============================================================
+type: sub-section
+
+- Values around $H_0$ statistic would thus be as a result of random chance
+- Values falling below a certain point called "significance level" are considered too extreme to have happened by random chance
+- Significance level ($\alpha$) is also the rejection region; an extreme area for which values falling within could not have occured by chance
+
+Significance level (alpha)
+================================================================
+type: sub-section
+
+- $\alpha$ is usually set to a low value such as 10%, 5% or 1% though 5% proposed by "Ronald Fisher" is most often used
+- $\alpha$ level varies from study to study and set prior to data collection
+- $\alpha$ is also probability of rejecting a $H_0$ when in fact it is true, this is referred to as type 1 error
+
+Type I and type II error
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+- Type one error ($\alpha$): saying there is change when there is actually none (false positive)
+- Type two error ($\beta$): probability of "failing to reject null" when in fact it is not true (false negative)
+
+***
+<p style=visibility:hidden;>n</p>
+            |  $H_0$ is true  |  $H_0$ is false
+------------|-----------------|-------------------------
+Do not reject $H_0$ | Correct decision | **Type II error**
+Reject $H_0$ | **Type I error** | Correct decision
+
+Rejection region
+===========================================================
+type: sub-section
+
+- Dependent on direction of alternative hypothesis:
+    + Left tail if ">"
+    + Right tail if  "<"
+    + Both sides if "$\neq$"
+
+
+Visualise rejection region
+==================================================================
+type: sub-section
+
+- On the premise that $H_0$ is true:
+    + Initial step: state Null and Alternative hypothesis 
+    + Second: set $\alpha$ level 
+    + Third: provide sample statistic 
+    + Fourth: determine test direction from alternative hypothesis  
+    + Plot a sampling distribution of test statistic given it's from $H_0$, mark alpha with vertical line shading rejection region 
+    + Finally note where sample statistic lies and make decision
+
+Sampling distribution of tests statistic
+===============================================================
+type: sub-section
+
+- It's underlying distribution of all possible values a statistic can take
+- For $H_0$, sampling distribution is all the values of it's tests statisics (e.g. mean or proportion) can take when there is no change or change is due to random chance
+- It's derived from repetitive (supposedly infinite) draw of samples 
+
+Determining cut-off points
+===============================================================
+type: sub-section
+
+- Cut-off points determined by significance level
+- Sides determined by direction of alternative hypothesis, if:
+    + ">" or "<" then it's one sided (right and left respectively)
+    + $\neq$ then its both sides and $\alpha$ is divided by 2
+
+Example
+================================================================
+type: sub-section
+
+- For a $H_0: \mu = 69$ and $Ha: \mu \neq 69$, statistical significance would be tested at both end 
+- $\alpha$ would be split into two `0.05/2` (`r 0.05/2`)
+- Hence any value lower than 0.025 or higher than `r 1-(0.05/2)` would be considered too extreme to have happened by chance  
+- To determine values that fall within rejection region (above/below 0.025), we make a sampling distribution of test statistic under assumption of $H_0$ ($\mu = 69$)
+
+Example (cont...)
+===========================================================
+type: sub-section
+
+- Plot a density plot for sampling distribution of 900,000 $\bar{x}$ - Determine two cut-off point with quantiles i.e. 2.5% and `r paste0(100-2.5, "%")` (100 - 2.5) percentile
+- Assuming sample statistic ($\bar{x}$) of about 110.2, find out if it's statistically significant (falls at extreme points or rejection region)
+
+==============================================================
+type: sub-section
+
+```{r "plotvars-06"}
+# Sampling distribution
+sdh0 <- population
+xbar_sdh0 <- mean(sdh0)
+dens_sdh0 <- density(sdh0)
+
+# Using basic concepts in descriptive statistic to get upper and lower bounds (upper and lower 2.5%)
+lb_x <- as.vector(quantile(sdh0, (5/2)/100))
+ub_x <- as.vector(quantile(sdh0, 1 - (5/2)/100))
+lb_y <- which(sapply(1:(length(dens_sdh0$x) - 1), function(i) lb_x >= dens_sdh0$x[i] & lb_x <= dens_sdh0$x[i+1]))
+ub_y <- which(sapply(1:(length(dens_sdh0$x) - 1), function(i) ub_x >= dens_sdh0$x[i] & ub_x <= dens_sdh0$x[i+1]))
+xbar_post <- ub_x + 2
+y2 <- dens_sdh0$y[ub_y]
+```
+
+================================================================
+type: sub-section
+
+```{r "h0plot1-06", eval=FALSE}
+plot(dens_sdh0, ann = FALSE)
+title("Sampling distribution of test ststistic under H_0(mu=69)", x = paste("N = 20 Bandwith =", round(dens_sdh0$bw, 1)), ylab = "Density")
+
+segments(lb_x, 0, lb_x, dens_sdh0$y[lb_y], col = "#6699CC")
+segments(ub_x, 0, ub_x, dens_sdh0$y[ub_y], col = "#6699CC")
+segments(xbar_post, 0, xbar_post, y2+0.003, lty = "dashed", lwd = 2, col = "#6699CC")
+text(xbar_post, y2+0.004, labels = round(xbar_post, 1))
+```
+
+=====================================================
+type: sub-section
+
+```{r "h0plot2-06", ref.label="h0plot1-06", fig.align="center", fig.caption="Sampling distribution of Null hypothesis", fig.height=8.5, fig.width=10, echo=FALSE}
+
+```
+
+
+Visually rejecting or "failing to reject" a Null Hypothesis
+==================================================================
+type: sub-section
+
+- From plot, change (new mean) of 110.2 falls within rejection region, hence we can reject $H_0: \mu = 69$ in favour of alternate hypothesis that $H_a: \mu > 69$ 
+- Basically change noted (from 69 to 110.2) is statistically significant; did not occur as a result of random chance
+- Question: What if $alpha$ was 0.01 (1%), would it have been significant?
+
+==================================================================
+type: sub-section
+
+```{r "h0plot3-06", fig.align="center", echo=FALSE, fig.caption="Significance at alpha = 0.01"}
+# Using basic concepts in descriptive statistic to get upper and lower bounds (upper and lower 2.5%)
+lb_x <- as.vector(quantile(sdh0, (1/2)/100))
+ub_x <- as.vector(quantile(sdh0, 1 - (1/2)/100))
+lb_y <- which(sapply(1:(length(dens_sdh0$x) - 1), function(i) lb_x >= dens_sdh0$x[i] & lb_x <= dens_sdh0$x[i+1]))
+ub_y <- which(sapply(1:(length(dens_sdh0$x) - 1), function(i) ub_x >= dens_sdh0$x[i] & ub_x <= dens_sdh0$x[i+1]))
+xbar_post <- 110.2
+y2 <- dens_sdh0$y[ub_y]
+
+plot(dens_sdh0, ann = FALSE)
+title("Sampling distribution of H_0 = 69", x = paste("N = 20 Bandwith =", round(dens_sdh0$bw, 1)), ylab = "Density")
+
+segments(lb_x, 0, lb_x, dens_sdh0$y[lb_y], col = 4)
+segments(ub_x, 0, ub_x, dens_sdh0$y[ub_y], col = 4)
+segments(xbar_post, 0, xbar_post, y2+0.004, lty = "dashed", lwd = 2, col = "#6699CC")
+text(xbar_post, y2+0.005, labels = round(xbar_post, 1))
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+- This time noted change is not statisticaly significant thus $H_0$ is not rejected
+- This is why $\alpha$ has to be set prior to data analysis to prevent changing it to suite findings
+
+Significance testing (computation)
+===================================================================
+type: sub-section
+
+- There at least two approaches to significance testing; p-value approach and critical value approach
+- P-value approach involves getting a probability (p) of observing an extreme value given $H_0$ were true. If p-value is smaller than $\alpha$ then it falls in rejection region and thus unlikely to have occured due to random chance/luck
+- Critical value approch is similar to "p-value" approach only that in this case instead of getting probability for observed value, we get "critical value" for observed value (standardized value)  
+
+
+Steps in significance testing
+======================================================================
+type: sub-section
+
+1. Write $H_0$ and $H_a$ hypothesis
+1. Set $\alpha$ level and set up decision rule
+1. Compute test statistic (e.g. mean, proportion)
+1. Determine "P/Critical value" for test statistic assuming $H_0$ is true and compare to $\alpha$
+1. Make decision "reject" or "fail to reject" $H_0$
+
+Consideration for significance testing
+====================================================================
+type: sub-section
+
+- Assume null hypothesis is true
+- Sample size (n): if "n" is small, use t-test, else z-scores
+- Direction of alternate hypothesis
+- Rejection rule once $\alpha$ has been set i.e. reject if p-value > $\alpha$
+- For differences in groups, determine if groups are independent or dependent (paired). Comparison between two test statistics done with either paired (dependent) t-test or unpaired (independent) t-test
+
+Example - Difference in two proportion
+====================================================================
+type: sub-section
+
+- Women tend to invest in self development courses than their male counterparts: difference between two independent groups
+- Expectation, proportion of women enrolled in self development courses is higher than that of men
+- Comparing two independent proportions; first check conditions:
+    + If "<" or ">", minimum of 10 success and 10 failures
+    + If "$\neq$", (more robust) only 5 success and 5 failures
+
+Example (cont...)
+====================================================================
+type: sub-section
+
+- Since alternate is ">", then condition is 10 successes and 10 failures in each group
+
+```{r "two-pop-example-06", echo=FALSE}
+n <- 500; paste("n =", n)
+tab <- matrix(c(60, 240, 80, 120), nrow = 2, dimnames = list(c("No", "Yes"), c("Female", "Male"))); tab
+n1 <- colSums(tab)[["Female"]]; n2 <- colSums(tab)[["Male"]]
+prop_tab <- prop.table(tab, 2); round(prop_tab, 1)
+```
+
+Example - Step by step significance testing
+==================================================================
+type: sub-section
+
+**Step 1: Stating hypothesis**
+
+- Null hypothesis: $H_0: P_F = P_M$ and
+- Alternative hypothesis: $H_a: P_F > P_M$
+
+Step-by-step significance testing (cont...)
+=================================================================
+type: sub-section
+
+**Step 2: Alpha and Decision Rule**
+
+- $\alpha$ level set to `r alpha <- 0.01; alpha` (1%)
+- Decision rule (for right tailed test): 
+    + p-value approach - Reject $H_0$ if p-value $\leq$ $\alpha$ and fail to reject $H_0$ if p-value $\geq \alpha$
+    + Critical value approach - Reject $H_0$ if z_score is $\geq$ `r c.v <- round(qnorm(alpha, lower.tail = FALSE), 2); c.v` and fail to reject $H_0$ if z-score is less than `r c.v` 
+
+Example - Steps (cont...)
+==================================================================
+type: sub-section
+
+**Step 3: Checking conditions**
+- Sampling method for each population is simple random sampling: confirmed from sampling methodology
+- Samples are independent - They not depend each other
+- 10 success and 10 failures in each group: Confirmed (Female; success = `r tab[["Yes", "Female"]]` and Failure = `r tab[["No", "Female"]]`: Male success = `r tab[["Yes", "Male"]]` and Failure = `r tab[["No", "Male"]]`)  
+- Each population is at least 20 times as big as it's sample: Assumed to be
+    
+Step 4: Computing test statistic for two proportions
+===================================================================
+type: sub-section
+
+**Sub-steps for computing test statistic for two proportions**
+
+a. Compute sample proportion 
+
+b. Compute SE (SD of sampling distribution of proportions)
+
+c. Compute test statistic
+
+d. Estimate p-value
+
+Computing test statistic for two proportions (cont...)
+===============================================================
+type: sub-section
+
+- Follows same method as difference between two means i.e. difference/SE
+- However, proportion used would depend on $H_0$ and computation of SE is slightly different though concept is the same (penalize small "n") 
+- For $H_0: P_1 = P_2$, assumption of equality of success means both samples would have same proportion (P), this is not the case for other $H_0$
+- SE is standard deviation or sampling distribution of proportions
+
+Computing test statistic for two proportions (cont...)
+=================================================================
+type: sub-section
+
+- For $H_0: P_1 = P_2$, best estimate for variability is a **pooled** estimate of standard deviation. This gives the best estimate of variability for difference under $H_0: P_1 = P_2$ 
+- Pooling is a statistical technic used to obtain more precise estimate of variability of a sample statistic like proportion by combining the estimates given by two or more independent samples
+- Pooling is not necessary if $H_0: P_1 \geq P_2$ or $H_0: P_1 \leq P_2$
+
+===============================================================
+type: sub-section
+
+**a. Compute proportions**
+- Proportion is calculated as $\hat{p} = x/n$ where $\hat{p}$ is sample proportion, x number of successes, and n sample size
+- Two proportions is thus computed as:
+
+$\hat{p} = \frac{x_1}{n_1}$ and $\hat{p} = \frac{x_2}{n_2}$
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "proportion-06"}
+fem <- sum(tab[,1])
+tab[["Yes", "Female"]]/fem
+mal <- sum(tab[,2])
+tab[["Yes", "Male"]]/mal
+```
+
+==============================================================
+type: sub-section
+
+**b. Compute SE**
+- Mean of distribution of sample (success) proportion is "P"
+- Average distance from "P" (mean) is success * failure i.e. P(1 - P)
+- Standard error of the sample proportion is symbolized by $SE_{(\hat{p})}$ and given by:
+
+$SE_{(\hat{p})} = \sqrt{\frac{P(1-P)}{n}}$
+
+- If $p$ is unknown, then $\hat{p}$ is used
+
+================================================================
+type: sub-section
+
+- SE for two proportions is thus given by:
+
+$$\sigma_{\hat{p_1} - {\hat{p_2}}} \approx \sqrt{\frac{\hat{p_1}(1-\hat{p_1})}{n_1} + \frac{\hat{p_2}(1-\hat{p_2})}{n_2}}$$
+
+- But given $H_0: P_1 = P_2$ is true, $\hat{p_1}$ and $\hat{p_2}$ are the same hence reduce them to $p$
+
+$$\sigma_{\hat{p_1} - {\hat{p_2}}} \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n_1} + \frac{\hat{p}(1-\hat{p})}{n_2}}$$
+
+================================================================
+type: sub-section
+
+- A bit of algebraic expression gives us:
+
+$$\sigma_{\hat{p_1} - {\hat{p_2}}} \approx \sqrt{P(1-P)(\frac{1}{n_1}+\frac{1}{n_2})}$$
+
+- This thus merges two samples to obtain a **pooled estimate** of the standard deviation of distributions of proportions (SE)
+- Since $P$ is often unknown, then next best estimate is $\hat{p}$ and for two proportions it is "total number of success/total number of trials"
+
+$$\hat{p} = \frac{x_1 + x_2}{n_1+n_2} = \frac{\hat{p_1}n_1+\hat{p_2}n_2}{n_1+n_2}$$
+
+================================================================
+type: sub-type
+
+- In R, $\sigma_{\hat{p_1}-\hat{p_2}} =$ 
+
+```{r "two-proportion-SE-06"}
+# Estimated proportion for two samples
+phat <- (tab[["Yes", "Female"]]+tab[["Yes", "Male"]])/(n1+n2); phat
+
+# Pooled SE
+sigma_p1p2 <- sqrt(phat * (1 - phat) * (1/n1 + 1/n2)); sigma_p1p2 
+```
+
+=================================================================
+type: sub-section
+
+**c. Compute Test statistic**
+
+- Test statistic used to find p-value for two proportion given 10 successes and 10 failures in each group is a **z-score**
+- z-score is simply the difference between the two proportions divided by standard error
+
+$$z = \frac {\hat{p_1} - \hat{p_2}}{SE}$$
+
+=================================================================
+type: sub-section
+
+- In R, two proportion z-test can be computed as:
+
+```{r "test-statistic-proportions-06"}
+z_score <- (prop_tab[2, "Female"] - prop_tab[2, "Male"])/sigma_p1p2
+z_score
+```
+
+Step five: significance testing
+==================================================================
+type: sub-section
+
+**p-Value Approach**
+- Aim: Determine a probability of observing a more extreme test statistic in the direction of alternate hypothesis than the one observed given $H_0$ is true (i.e. $H_0: P_F = P_M$ is true)
+- Computing P-value;if n > 30 Z-test else t-test 
+- Example data has n = `r n` hence z-test specifically two-proportions z-test  
+
+Significance testing: p value (cont...)
+=================================================================
+type: sub-section
+
+- To determine p-value associated to computed z-score, we use function "pnorm" in R i.e.
+
+```{r}
+p_value <- pnorm(z_score, lower.tail = FALSE); p_value
+```
+
+Significance testing: Critical value (cont...)
+====================================================================
+type: sub-section
+
+- Critical value for a right sided test is z-score corresponding to 1 - $\alpha$
+- cv is thus z-score for `r 1 - 0.01` (1 - 0.01) 
+- In R, z-score for `r 1 - 0.01` is determined with function "pnorm" setting argument "lower.tail" to FALSE i.e. "qnorm(1 -0.99, lower.tail = FALSE)" $\approx$ `r c.v`
+
+Step 5: Make decision and conclude
+===============================================================
+type: sub-section
+
+**p-Value approach**
+- Decision rule: if p-value is $<$ than $\alpha$ "Fail to reject $H_0$"; if p-value $\leq$ $\alpha$ "Reject Null Hypothesis" 
+- Based on obtained p-value of `r p_value` at $\alpha$ of `r alpha`, we can **Reject null hypothesis** and conclude that there is statistical significant evidence that Female employees tend to attend self-development courses than their male conterparts
+
+Making decision (cont...)
+==========================================================
+type: sub-section
+
+**Critical value approach**
+- Decision rule: if z-score is > than `r c.v` Reject $H_0$ else if z-score is below `r c.v` fail to reject $H_0$
+- Since z-score is greater than cv i.e. z-score is`r z_score` and cv is `r c.v` then $H_0$ is rejected, the two proportions are not the same
+
+Parametric tests
+==================================================================
+type: sub-section
+
+- Make assumptions about population parameters a sample is drawn while non-parametric tests make no such assumptions 
+- General assumptions:
+    + Underlying source population is nomaly distribute
+    + Derived from an equal-interval scale
+- Some tests include; t-test, z-test, F-test
+
+Nonparametric tests
+=================================================================
+type: section
+
+- Also referred to as distribution free tests though debateable 
+- Have fewer and weaker assumptions hence less likely to reject $H_0$ when it is false
+- Require rephrasing hypothesis like those referencing population center, these are based on median rather than mean
+- They answer different questions from those of parametric
+
+Alternatives of parametric and non-parametric tests
+===================================================================
+type: sub-type
+
+Non-parametric |  Parametric
+---------------|-----------------------
+1-sample sign test | 1-sample z-test, 1-sample t-test
+1-sample signed test | 1-sample z-test, 1-sample t-test
+Mann-Whitney test | 2-sample t-test
+Kruskal-Wallis test | One way ANOVA
+Friedman Test | Two-way ANOVA 
+
+Hypothesis testing and confidence intervals
+=====================================================================
+type: section
+
+- Statistical significance can be done with either p-values or confidence intervals
+- Outputs of both tests will agree
+- They both agree as they both define a distance from a limit to a mean i.e. critical value * standard error
+- If confidence interval does not contain null hypothesis value, then results are statistically significant
+
+Hypothesis testing and confidence intervals (cont...)
+====================================================================
+type: sub-section
+
+**Example**
+- Average height is reported to be 158.2cm, findings from sample data shows it to be 161.7cm. Is this difference statistically significant? - Assuming sample is from a normally distributed population
+- Hypothesis:
+    + $H_0: \mu = 158.2cm$
+    + $H_a: \mu \neq 158.2cm$
+
+===================================================================
+type: sub-section
+
+- Alpha at 0.05
+- Decision rule: Reject $H_0$ if p-value is $< \alpha$; "fail to reject $H_0$" if p-value is $> \alpha$
+- Confidence level (1 - alpha) = 95%
+
+```{r "ci-hyp1-06"}
+h0_mu <- 158.2
+
+# Sample
+xbar2 <- 161.7
+n <- 100
+std <- 8.9
+# CI
+ci_heights <- ci(xbar2, stdv = std, n = n)
+round(ci_heights, 2)
+```
+
+===================================================================
+type: sub-section
+
+```{r "ci-hyp2-06"}
+# p-Value
+z_score2 <- z_sample(xbar2, h0_mu, std, n); z_score2
+p_value2 <- 1 - pnorm(z_score2); p_value2
+```
+
+- CI (`r round(ci_heights, 0)`) does not contain $H_0$ of `r h0_mu` indicating statistical significant
+- P-value (`r p_value2`) confirms   
+
+Choosing correct statistical test
+===========================================================
+type: section
+
+- Statisitcal tests used to determine how well sample findings generalise to population (e.g. noted association is a result of some random chance or not)
+- Considerations for selecting a correct statistical test:
+    + Distribution of population (normal/parametric or another)
+    + Number of samples (one, two, more than two)
+    + Are samples dependent or independent, are they paired/unpaired
+    + Sample size (n)
+    
+Choosing correct statistical test
+==================================================================
+type: sub-section
+
+- Considerations (cont...)
+    + Type of variables (numerical, categorical)
+    + For categorical, number of categories (factors) and presence of ordering
+    + Numerical summary, if based on rank then non-parametric tests
+    + Direction 
+- Following table based on [this](http://www.biochemia-medica.com/content/comparing-groups-statistical-differences-how-choose-right-statistical-test) site
+
+Table summary of statistical tests 
+=================================================================
+type: sub-section
+
+Number of samples | Paired/unpaired independent/dependent | Parametric(P)/non-parametric(NP) | Statistical tests
+------------------|--------------|---------------|----------------
+1 sample  | One sample only | Yes/P | One sample t-test
+1 sample  | One sample only | No/NP | Wilcoxon rank sum test, One sample Chi-squre test
+2 samples | Paired | Yes/P | Paired t-test
+2 samples | Paired | No/NP  | Wilcoxon matched pairs test
+2 samples | Unpaired | Yes/p | Independent sample t-test
+2 samples | Unpaired | Yes/P | Welch's corrected unpaired t-test
+
+Table summary of statistical tests (cont...)
+===============================================================
+type: sub-section
+
+No. of samples | Paired/unpaired independent/dependent | Parametric(P)/non-parametric(NP) | Statistical tests
+------------|------------------|---------------|--------------
+2 samples | Unpaired | No/NP  | Mann-Whitney U test 
+3 or more samples | Paired  | Yes/P | Repeated-measures-one-way-ANOVA
+3 or more samples | Paired  | No/NP | Friedman's test
+3 or more samples | Unpaired | Yes/P | One-way ANOVA
+3 or more samples | Unpaired | No/NP | Kruskal-Wallis test
+    
+    
+
+References
+==================================================================
+type: section
+
+Topic    |  Source
+---------|-------------------------------
+Introduction to hypothesis testing | https://faculty.southwest.tn.edu/hprovinc/content/Materials/Lecture%20Notes/Hybrid%20Statistics/Chapter%207.pdf
+Understanding Hypothesis Tests: Significance Levels (Alpha) and P values in Statistics | http://blog.minitab.com/blog/adventures-in-statistics-2/understanding-hypothesis-tests:-significance-levels-alpha-and-p-values-in-statistics
+
+References (cont...)
+=================================================================
+type: section
+
+Topic  |  Source
+-------|------------------------------------
+Parametric and non-parametric | http://vassarstats.net/textbook/parametric.html
+Hypothesis test: Difference between proportions | http://stattrek.com/hypothesis-test/difference-in-proportions.aspx?Tutorial=AP
+Correct interpretation of p-value | http://blog.minitab.com/blog/adventures-in-statistics-2/how-to-correctly-interpret-p-values
