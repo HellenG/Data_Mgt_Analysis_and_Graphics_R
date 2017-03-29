@@ -1,0 +1,423 @@
+Introduction to Data Analysis and Graphics using R
+========================================================
+author: Hellen Gakuruh
+date: `r Sys.Date()`
+autosize: true
+
+## Slide 1: Introduction to R and RStudio
+
+Outline
+========================================================
+type:section
+
+- Introduction to $Base R$ and $RStudio$ 
+- Download and Install both R and RStudio
+- Layout (Windows and Panes)
+- Interactively work with R and RStudio's console
+- Global environment/working space and history files 
+- Code using scripts
+- Install R Packages
+- Working directory and RStudio's Projects
+- Getting Help
+
+
+Introduction to base R and RStudio
+========================================================
+type: section
+
+- In this session we get to know a bit about R and Rstudio, like:
+    + what they are,
+    + how they differ and 
+    + where we can get them.
+
+About R
+==========================================================
+type: sub-section
+
+- A system for statistical computation and graphics (R Documentation)
+- A Programming Language
+- A dialect of the `S` language and started in 1983
+- Partly named after the initials of first names of the leading founders `Ross Ihaka` and `Robert Gentleman` and partly to bear similarity with `S`
+
+About R (cont...)
+===============================================================
+type: sub-section
+
+- Began as a program for teaching statistics at a university 
+- Has since grown with diverse user from all over the world  
+- A collaborative project with many contributors to the base package as well as extensions (packages)
+
+Why R?
+============================================================
+type: sub-section
+
+- It's absolutely free
+- Has magnificent graphing capabilities: R's greatest strength.
+- As a programming language, it's highly extensible; it allows user defined functions and packages (add-on)
+- Growing number of packages to facilitate documentations (Word, PDF, HTML) and reproducible analysis (Rmarkdown, bookdown, blogdown)
+- Innovative packages for interactive statistical application (apps) like [shiny]("http://shiny.rstudio.com/gallery/")
+
+Why R? (cont.)
+==============================================================
+type: sub-section
+
+- A growing number of users
+- A growing number of free and commercial IDE's (Integrated Development Environment) ^[1].
+- To distinguish R from it's IDE's, it is usually referred to as `base R`.
+- With good foundation, R is easy to work with.
+
+[1]: `IDE's` are software's which ease coding process, they include [RStudio]("https:/rstudio.com"), and [Revolution R]("http://www.revolutionanalytics.com"). 
+
+
+What is RStudio?
+=================================================================
+type: sub-section
+
+- One of R's `Integrated Development Environment(IDE)'s`
+- Core advantages over base R:
+    + Well thought out and organized layout(panes), making it easy to see all the core windows at the same time.
+    + Has syntax-highlighting editor which supports direct code execution,
+    + Workspace management like using "projects"
+    
+What is RStudio (cont)
+===================================================================
+type:sub-section    
+    
+- Core advantages of RStudio (cont...)    
+    + Makes data importation easier
+    + Easy documentation and reproducible analysis using Rmarkdown, bookdown, (upcoming) blogdown and Shiny 
+- It is available for open source and commercial editions and runs on the desktop (Windows, Mac, and Linux) or in a browser connected to RStudio Server or RStudio Server Pro (Debian/Ubuntu, RedHat/CentOS, and SUSE Linux) [RStudio]("https://www.rstudio.com/products/rstudio/").
+
+
+Downloading and installations
+========================================================
+type: section
+
+- In this sub-session we discuss and demonstrate how to 
+    + install and
+    + download 
+- both R and Rstudio.
+
+Downloading base R
+========================================================
+type: sub-section
+
+- Available from [Comprehensive R Archives Network (CRAN)]("https://cran.r-project.org/")
+- CRAN is a collection of web servers which store identical and up to date version of code and documentation of R
+- There are multiple mirrors (copies) of CRAN located across the globe. 
+- It is recommended to download from one of the mirrors closest to your area
+- Select a platform most suitable to your computer specification (OS, 32/64 bit)
+
+Downloading Base R
+========================================================
+type: sub-section
+
+- Download from [CRAN]("https://cran.r-project.org/bin/windows/base/")
+- Select platform specific version 
+- Click the executable file to begin the installation process
+
+[Demonstration](YouTube link)
+
+Layout (Windows and Panes)
+=======================================================
+type:section
+
+- In this sub-session we quickly look at R's tool bar and windows.
+
+
+Base R layout
+======================================================
+type: sub-section
+
+### Tool bar [Base R tool bar demonstration](YouTube)
+
+- <b>File:</b> Open/create script, load/save workspace and history, print and exit. Workspace and history files to be discussed later in this session
+- <b>Edit:</b> Usual edit options plus run options and GUI preference (appearance) options
+- <b>Packages:</b> selecting mirrors, loading, installing and uninstalling package. Packages are add-on's 
+- <b>Windows:</b> How to arrange the windows
+- <b>Help:</b> Manuals and help documentation
+
+Console
+=========================================================
+type: sub-section
+
+- Also called `Command Line Interface`
+- It's an interactive platform (acts just like a calculator)
+- Enter an input and it would be evaluated and results outputted immediately (interactive)
+- As a window, it can be minimize, maximize, or re-size
+- Most suitable for single lines
+
+Console (cont)
+==============================================================
+type: sub-section
+
+### Interactive session on console [Base R console demonstration](https://www.youtube.com/)
+
+```{r "console1-01"}
+# simple arithmetric
+1 + 1
+
+# Exponential
+exp(1)
+```
+
+================================================================
+type: sub-section
+
+```{r "console2-01"}
+# Some geometry  
+2 * pi * (90/360)
+```
+
+***
+
+```{r "console3-01"}
+# Some trigonometry
+cos(90 - 32)
+atan(28/63)
+```
+
+Console (cont)
+================================================================
+type: sub-section
+
+## Note:
+
+- R is case sensitive, so **Cos** and **cos** are not the same. 
+- To clear console Ctrl+L
+- Use up and down arrow to go back to a previous code
+- Console prompt "+" indicates an incomplete syntax; R is waiting for completion 
+
+R script
+=================================================================
+type: sub-section
+
+- Scripts are text files used to write code
+- They are more suitable for reproducibility and multiple line of code (like creating a program)
+- Text editor (program for writing scripts) in base R, needs to be loaded as a window from `File > New Scripts`    
+- Not interactive (don't give instant results) like console
+- To output results, must click `edit` then run all/selection, alternatively `ctrl_R`
+
+R Script (cont)
+=================================================================
+type: sub-section
+
+- [Demonstration on scripting in base R](YouTube)
+
+Global environment/workspace 
+==========================================================
+type: sub-section
+
+- Environment in R is a *place* with list of object names and location of their associated values
+- It's also a list of parent environments as environments have a hierarchical nature
+- Environments themselves do not store objects (values/data), they only point to where it's located
+- First environment is called a "global environment" or the "workspace" 
+
+Global environment/workspace (cont...)
+=============================================================
+type: sub-section
+
+- Global environment is searched first when an object name is given in a code, if not found, it's parent environment is searched (this will become clear as we create objects)
+- Global environment is not visible in base R; it's not a window like that of the script
+- To see what it contains use function `ls()`
+
+RStudio Layout
+================================================================
+type: sub-section
+
+- Very user friendly
+- Has four panes with multiple tabs
+- Tool bar is similar to base R but with some additions
+
+RStudio Panes
+============================================================
+type: sub-section
+
+- Top left usually Script/text editor and data viewer tabs
+- Top right usually global environment, history (logs) and additional tabs (like Build, Git and Presentations)
+- Bottom left usually console tab
+- Bottom right files, plots, packages, help and viewer tabs
+- However, these can be re-arranged 
+
+Interactive session on Rstudio
+============================================================
+type: section
+
+- Not different than base R's console
+- Input code click enter and output generated
+
+[RStudio's console demonstration](YouTube)
+
+Scripting in RStudio 
+==========================================================
+type: section
+
+- Also like Base R with added bonus that it has it's own tab with easily accessible `run` button.
+- There are a variety of scripts that work well in R's script editor like .R (for pure R code), .Rmd (for reproducibility, text and code), md (markdown files), html and css. 
+
+[Scripting in RStudio](https://www.youtube.com/)
+
+Functions 
+===========================================================
+type: section
+
+- Everything that happens in R is as a result of a function call
+- Functions are actions performed by R: commands
+- A function is denoted by parenthesis: `()`
+- Within parenthesis are arguments or parameters; arguments are "name-value" pair used to give input or specify how a function should be done
+
+Function (cont)
+================================================================
+type: sub-section
+
+- There two types of functions, **named functions** and **anonymous functions**
+- Named functions are like `mean()` (to compute mean), `median()` (to locate median), and `read.table()` (to import data)
+- Functions can also be considered to be **high** or **low level** (especially during plotting)
+- High level functions are core functions usually called to perform an action like make a plot
+
+Functions (cont)
+=================================================================
+type: sub-section
+
+- Low level functions are auxiliary or helper function to high level functions
+- Example of high level functions include "plot()" and "hist()", their low level functions include "points()" and "lines" 
+
+Function Calls in R
+=================================================================
+type: sub-section
+
+- "Function call" means using or invoking a function to perform and action 
+- When making a function call, arguments can be named or unnamed and it could have default values or not
+- Act of using or invoking a function is referred to as **making a function call**
+- Before making any function call, and more so for novice R users, it's important to read it's documentation 
+- Every function in R has documentation on it's usage; access with **?"function name** e.g. "?mean"
+
+Function call example: mean function
+=================================================================
+type: sub-section
+
+- Making a function call can be done with named/tagged arguments i.e. name-value pair or just value
+- Example mean(x = 1:10)
+
+Positional Matching in function calls
+==================================================================
+type: sub-section
+
+- Function calls made without argument names are referred to as **positional** 
+- Positional because they will be matched to position of arguments in a function
+- Example for function "pnorm" a normal distribution function has five arguments: q, mean, sd, lower.tail and log.p
+- A function call such as "pnorm(1.96, FALSE)" would lead to "1.96" being matched to "q", and "FALSE" to "mean"
+
+Positional matching (cont)
+===================================================================
+type: sub-section
+
+- "pnorm(q = 1.96, mean = FALSE)" would not raise an error or a warning as internally FALSE is stored as an integer 0
+- In most cases, making function calls with unnamed argument where values don't match a function's argument would result to an error or a warning
+- When both named and unnamed are used in a function call, rule of the thumb is that all arguments after unnamed arguments should be named, that means stating with unnamed arguments which will be position matched followed by named arguments
+
+Positional matching (cont) and "..." argument
+================================================================
+type: sub-section
+
+- Good practice in function call when there many arguments (especially those without defaults) is to use named argument 
+- "..." argument is called an ellipse argument, it allows specification of any number of arguments to be passed to functions called by called function
+- Example, "..." argument in "plot()" is used to pass arguments to functions such as "par()" (for graphical parameters)
+- Another rule-of-the-thumb is that any arguments after "..." must be named
+
+Errors, warnings and messages
+====================================================================
+type: sub-section
+
+- An error in R means something is not available, for example a data set is specified in a call yet it's unavailable in R; errors are fatal, they stop execution 
+- Warnings are information of possible problems, they do not stop execution, however it's good to check why it happened to pre-empt an actual problem 
+- Messages are useful information, they have nothing to do with a problem, good examples are messages to inform on installation progress
+ 
+[Demonstration of errors, warnings and messages](https://www.youtube.com/)
+
+R Packages
+==========================================================
+type: section
+
+- A package is simply a mechanism for loading optional code, data and documentation. 
+- All R functions and data sets are stored in packages and base R distribution includes about 30 packages ^[2].
+- Out of these, there those packages that are considered part of R source code and therefore automatically loaded 
+
+[2]: R Core Team (2016). R: A language and environment for statistical computation. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+R packages (cont)
+================================================================
+type:section
+
+- The others are installed (exist), but are not yet available for use, they must be `loaded` with function `library` to make them available
+- Many other contributed packages exist on CRAN (Comprehensive R Network)
+- Generally, base R packages are sufficient to perform most basic statistics, but if specialized functions are needed, then check CRAN (start with [tasks view](https://cran.r-project.org/web/view/) )
+
+R Session and Working Directory
+============================================================
+type: section
+
+- "R session" is a currently active session, it begins when R is logged in and end when logged off  
+- A working directory is a folder used during an R session to source and save files 
+- It is important to specify working directory for each R session or globally change R to start from a folder considered as a working directory
+
+Getting and setting working directory
+===============================================================
+type: sub-section
+
+- To check current working directory, call `getwd()`
+- To set another working directory call `setwd(dir)`
+- Argument `dir` is a [path (location) name](https://en-wikipedia.org/wiki/Path_(computing)), it can either be a relative or an absolute path
+- Example: `set("~/Data Mania Inc/Data_Mgt_Analysis_and_Graphics_R")`
+
+
+RStudio Projects
+=============================================================
+type: section
+
+- One of the recent feature in RStudio
+- Enables working with different yet inter-related documents each with it's own working directory (folder)
+- Can be created in a new or an existing working directory or from a [cloned version controlled repository](https://en.wikipedia.org/wiki/Repository_(version_control) ) 
+
+Getting Help
+==============================================================
+type:section
+
+- Important to initially read internal help documentation like function documentation: access with either `?function` or `help(function)` e.g. `?read.table` or `help("read.table")`. Note, later case has to be quoted ("").
+- R core team has invested a lot of time and energy to develop a number of user manual: access with `help.start()` (no arguments)
+
+Getting help (cont)
+=============================================================
+type: sub-section
+
+- Manuals to read as a beginner in R are:
+    + An introduction to R and 
+    + R Installation and Administration
+    + R Data Import/Export
+- Under references, `Search Engine & Keywords` can be handy in locating certain write-up
+
+Getting help (cont)
+==================================================================
+type: sub-section
+
+- Under `Miscellaneous Materials`, "Frequently Asked Questions is a must read"
+- Other documentation in this page can be read in bits as they become relevant
+
+Beyond R documentation 
+================================================================
+type:sub-section
+
+- Do a Google search, specifically using [R seek](http://rseek.org/)
+- Ask a knowledgeable (and helpful) friend
+- Search through [R's help mailing list](https://stat.ethz.ch/mailman/listinfo/r-help)
+- Search through [stackoverflow Q&A](http://stackoverflow.com/questions/tagged/r)
+- Finally post a question to either Stackoverflow or R's mailing list (consider the latter) but never the same question to both sites 
+
+Useful resources
+==================================================================
+type:section
+
+- RStudio's getting help: https://support.rstudio.com/hc/en-us/articles/200552336-Getting-Help-with-R) in R documentation
+- A PDF version of R-project's "An Introduction to R: https://cran.r-project.org/doc/manuals/R-intro.pdf
+- R-projects's ref-card: https://cran.r-project.org/doc/contrib/Short-refcard.pdf
+
