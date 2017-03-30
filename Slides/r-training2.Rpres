@@ -1,0 +1,545 @@
+Introduction to Data Analysis and Graphics2
+========================================================
+author: Hellen Gakuruh
+date: `r Sys.Date()`
+autosize: true
+
+## Session Two
+
+### Vector and Assignment, Data Objects and Data Importation
+
+Outline
+========================================================
+type:section
+
+By the end of this session we will have knowledge on:
+
+- Vectors and Assignment
+- Data types
+- Data structure and
+- Importing data into R
+
+Vector and Assignment
+=========================================================
+type: section
+
+- Vector is simplest data structure in R
+- It's a collection of elements of the same type like numeric values, alphabetical characters, logical, dates and time values
+- Created with function "c" which means "concatenate". e.g. a numerical vector $c(1, 5, 6, 8)$
+
+Vector and assignment (cont)
+=================================================================
+type: sub-section
+
+- Named using an assignment operator "<-" or function "assign()" e.g.
+    + num <- c(1, 5, 6, 8) or 
+    + assign("num", c(1, 5, 6, 8))
+- Recommended and often used approach is "<-", "assign()" mostly used in developing user defined functions
+- Can be of any length beginning from 0 to  about `r 2^31-1`
+
+Data types
+========================================================
+type: section
+
+- R recognizes six data types, these are:
+    + Logical
+    + Integer
+    + Real/Double
+    + String/Character
+    + Complex and
+    + Raw
+
+Data types 1: Logical
+============================================================
+type: sub-section
+
+- Vectors with only TRUE and FALSE values like c(TRUE, TRUE, FALSE, TRUE, FALSE)
+- Can be considered as binary vectors in analysis
+- Other than categorical variables with these values, these vectors are often created by binary operators like "<", ">", "<=", >=, ==, =!, "|", "||", "&", and "&&"
+
+Data types 1: Logical (cont)
+==================================================================
+type: sub-section
+
+- Internally, R stores these values as integer values where TRUE is 1 and FALSE is 0
+- Can also include value "NA" which in R means "Not Available", it's a placeholder for missing values.
+- Any operation done with a vector containing NA is bound to result to NA since NA is unknown
+
+Data types 1: Logical (cont)
+===================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "logical1-02"}
+# A logical vector
+logi <- c(TRUE, TRUE, FALSE)
+
+# Confirming it's logical
+is.logical(logi)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "logical2-02"}
+# An operation on a logical vector with NA
+mean(c(logi, NA))
+```
+
+
+Data types 2: Integer
+==============================================================
+type: sub-section
+
+- Positive and negative numbers without fractions {..., -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, ...}
+- In R, integers are denoted with letter **L** e.g. c(-3L, 0L, 2L, 5L, 6L)
+- Confirm a vector is an integer with function "is.integer" e.g. `is.integer(c(-3L, 0L, 2L, 5L, 5L))`
+- A variable considered to naturally have integers is "number of people"; can't have a fraction of a person
+- Mathematically denoted by $\mathbb{Z}$
+
+Data type 3: Real/Double
+===============================================================
+type: sub-section
+
+- A real number is any number along an infinite number line 
+- Include fractions
+- Denoted mathematically with $\mathbb{R}$
+- Numeric vectors without letter "L" are considered as double e.g. c(-3, 0, 2, 5, 6)
+- Confirm a vector is a real or double vector with function "is.double" e.g `is.double(c(-3, 0, 2, 5, 6))` 
+
+Data type 4: String/Character
+==============================================================
+type: sub-section
+
+- Composed of alphabetical letters and word/text
+- Denoted by single or double quotation marks
+- R has a special vector with alphabetical letter; this is `letters`
+- Example `c("a", "b", "c")`, `letters`, `c('cats', 'and' , 'dogs')`
+- Confirm a vector is a character vector with function `is.character` e.g. `is.character(letters)`
+
+Data type 4: String/Character (cont)
+==============================================================
+type: sub-section
+
+- A character vector in R
+
+```{r "char-02"}
+char <- "Introduction to R"
+is.character(char)
+```
+
+
+Data type 5: Complex
+==============================================================
+type: sub-section
+
+<p style="visibility:hidden">n</p>
+- Vectors with real and imaginary values
+- Mathematically used to make it possible to take square-root of negative values
+- Denoted by letter "i"
+
+***
+
+<p style="visibility:hidden;>n</p>
+```{r "complex-num-02"}
+# Example, complex vector
+comp <- 3+2i
+# Confirm it's complex
+is.complex(comp)
+```
+
+Data type 6: Raw
+==============================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+- Vectors containing computer bytes or information on data storage units
+- More of computer language than human readable language
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "raw-02"}
+rw <- charToRaw("Introduction to R")
+rw
+is.raw(rw)
+```
+
+Integers and doubles
+===================================================================
+type: sub-section
+
+- Integers and doubles are jointly referred to  as numeric 
+- The most commonly used data types are logical, numeric and characters. Complex and raw data types are rarely used 
+
+===================================================================
+type: sub-section
+
+**Integer vector**
+```{r "numeric1-02"}
+int <- c(-3L, -2L, -1L, 0L, 1L, 2L, 3L)
+is.integer(int)
+is.numeric(int)
+```
+
+***
+
+**Numeric vector**
+```{r "numeric2-02"}
+doub <- c(-3, -2, -1, 0, 1, 2, 3)
+is.double(doub)
+is.numeric(doub)
+```
+
+Function "typeof"
+=============================================================
+type: section
+
+- Other than `is.something()` functions, data type can be assessed with `typeof()` function
+- Function `typeof()` is R's implementation for checking type of an object.
+
+```{r "typeof1-02"}
+typeof(logi)
+typeof(int)
+```
+
+Function "typeof" (cont)
+================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "type2-02"}
+typeof(doub)
+typeof(char)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "type3-02"}
+typeof(comp)
+typeof(rw)
+```
+
+Data structures
+========================================================
+type:section
+
+- There two broad types of data structures in R
+    + Atomic vectors and
+    + Generic (list) vectors
+- These structures have three properties
+    + Type
+    + Length and 
+    + Attributes
+    
+Properties of data structures (cont)   
+=============================================================
+type:sub-section
+
+- `typeof()` used to establish a vector's type
+- `length()` used to determine a vector's length and 
+- `attributes()` used to get additional information about a vector  
+- Atomic vectors and lists differ in their type i.e. atomic vectors can only contain one data type while lists can contain any number of data types.
+
+Atomic Vectors
+===========================================================
+type: section
+
+- Contains only one data type
+- They include:
+    + 1 dimensional atomic vectors
+    + 2 dimensional atomic vectors called "matrices" and
+    + multi-dimensional atomic vectors called "arrays"
+    
+Atomic vectors (cont)
+============================================================
+type: sub-section
+    
+- Dimensionality can be considered as number of indices required to address any element in a vector
+- Dimension (dim) is an attribute (gives information about a variable)
+- Not all vectors of length 1 have a dim attribute
+- "dim()" can be used to check whether a vector has a dim attribute
+
+Atomic vectors (cont)
+==============================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "dim1-02"}
+# A dimensionless vector
+values <- 1:5
+dim(values)
+values
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "dim2-02"}
+# Assigning dimension
+dim(values) <- 5 # or attr(values, "dim") <- 5
+dim(values)
+values
+```
+
+
+Checking whether a vector is atomic or a list
+================================================================
+type:sub-section
+
+- To check if a vector is either atomic or list, use `is.atomic()` or `is.list()`
+- `is.vector()` can also be used but argument "mode" must be provided
+
+
+Atomic vectors: Matrices
+==============================================================
+type: sub-section
+
+- Two dimensional atomic vectors, they contain data of the same type
+- Any atomic vector can be converted to a matrix by adding a dim attribute of length 2
+
+Example: Creating matrices 
+===================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "matrix1-02"}
+# A dimensionless numeric vector
+cat <- c(1, 2, 3, 4, 5, 6, 7, 8, 9) # Same as 1:9 or seq(1, 9)
+cat
+typeof(cat)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "matrix2-02"}
+dim(cat)
+is.matrix(cat)
+```
+
+Example: Creating matrices (cont)
+===================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "matrix3-02"}
+dim(cat) <- c(3, 3)
+cat
+typeof(cat)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "matrix4-02"}
+dim(cat)
+is.matrix(cat)
+```
+
+Creating matrices (cont)
+===================================================================
+type: sub-section
+
+**Example: One of R's data sets**
+```{r "matrix5-02"}
+airmiles
+```
+
+Creating matrices: "matrix function" (cont)
+====================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "matrix6-02"}
+typeof(airmiles)
+airmiles2 <- matrix(airmiles, nrow = 8, ncol = 3)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "matrix7-02"}
+airmiles2
+```
+
+Creating matrices: "matrix function" (cont)
+====================================================================
+type: sub-section
+
+```{r "matrix8-02"}
+is.matrix(airmiles2)
+airmiles3 <- as.matrix(airmiles, nrow = 8, ncol = 3)
+is.matrix(airmiles3)
+rm(airmiles2, airmiles3)
+```
+
+Atomic vectors: Arrays
+==========================================================
+type: sub-section
+
+- Multi-dimensional atomic vectors (dim length > 1)
+- Matrices are two dimensional array (dim of length 2)
+- They are rarely used, but it's good to know they exist
+- Created like matrices; `"dim()"` e.g. `dim(a) <- c(6, 2, 2)`, or `array()` or `as.array()`
+
+Data structures: Generic vectors
+=======================================================
+type: section
+
+- They are basically lists 
+- They can contain more than one type of data (unlike atomic vectors)
+- There are two types of lists:
+    + Two dimensional lists called `"data frames"` and
+    + `"lists"`
+
+Generic vectors 1: Data frames
+==========================================================
+type: sub-section
+
+<p style="visibility:hidden">n</p>
+- Most recognizable data structure
+- A core data structure in R
+- Present data in row and columns like matrices, but in this case columns can have different data types
+
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "dataframe-02"}
+# Example
+head(faithful)
+```
+
+
+Generic vectors: Lists
+=============================================================
+type: sub-section
+
+- Special structure in R
+- Can contain any number and type of object (not just data)
+- Can contain sub-lists hence also called <u>recursive</u>
+- Created with function "list()"
+- Other structures can also be coerced into lists with function "as.list()"
+
+Creating a list: example
+==========================================================
+type: sub-section
+
+<p style=visibility:hidden;></p>
+```{r "lists1-02"}
+list1 <- list(Logical = logi, DataFrame = faithful, List = list("a", 1:10))
+```
+
+***
+
+<p style=visibility:hidden;></p>
+```{r "lists2-02", echo=FALSE}
+str(list1)
+```
+
+Importing and Exporting Data in R
+==========================================================
+type: section
+
+- Within R often referred to as "reading in" data 
+- Reading data depends on type and location of file
+
+Sub-session interest
+==============================================================
+type: sub-section
+
+- Reading in local R files
+- Text
+- Excel
+- Database and 
+- Other statistical program files
+
+Reading in .RData data files
+============================================================
+type: sub-section
+
+- Data created in R can be store in .RData file
+- This could be any data structure or a collection of data saved from an active working directory (workspace)
+- While function "save.image()" is used to store workspace
+- Function "load" is used to read in ".RData" (and .Rhistory)
+
+=============================================================
+type: sub-section
+
+```{r "importR1-02"}
+# See current objects
+ls()
+# Store in an external .RData file
+save.image()
+# Remove all object from workspace/global environment
+rm(list = ls())
+```
+
+***
+
+```{r "importR2-02"}
+ls()
+# Read in .RData
+load(".RData")
+# Check we have them back
+ls()
+```
+
+R's core importing function "read.table()"
+============================================================
+type: sub-section
+
+- "read.table()" is R's core importing function
+- Almost all other importing functions including contributed packages depend on this function
+- Reads a file and creates a data frame from it
+- It has a number of `wrapper functions` (functions which provide a convenient interface to another function)
+- Wrapper functions include `read.csv()`, `read.csv2()`, `read.delim`, `read.delim2`
+
+Delimited files (comma and tab)
+================================================================
+type: sub-section
+
+- CSV are comma separated files (delimited by commas)
+- Tab delimited files are text files delimited by tabs
+- Delimited is how data are separate in a file
+- Both cs and tab delimited files are relatively easy to read into R by using "read.table()" or their wrapper functions "read.csv" or "read.delim()"
+
+[Demonstration on how to read in csv and tab delimeted files](https://www.youtube.com/)
+
+Reading in Excel files
+=============================================================
+type: sub-section
+
+- Base R does not have a function to read in Excel based files
+- But there are many contributed packages with good functions
+- Core reference in importing this type of files is one of R-projects manuals `R Data Import/Export` specifically chapter 9.
+- Recommendation made is to try and convert Excel file in to ".csv" (comma-separated) or "delim" (tab-separated) file.
+Live demo (reading excel file)
+
+Reading in Databases data
+==============================================================
+type: sub-section
+
+- A bit of caution, database data tend to be large, R is not to good when it comes to large data, hence read in part of data or look for ways to increase memory allocated to R processes like using cloud.
+- Most Relational Database Management Systems (RDMS) have data similar to R's data frame where columns are called "fields" and rows are called "records". 
+- Extracting part of relational database requires use of database querying semantics core of which is a `SELECT` statement.
+
+Reading in Databases (cont)
+=================================================================
+type: sub-section
+
+- In general, SELECT query uses:
+    + FROM to select the table
+    + WHERE to specify a condition for inclusion and
+    + ORDER BY to sort results (this is important as RDMS do not order it's rows like R's data frames)
+- There are a number of contributed packaged on CRAN for reading RDMS data, these include RMySQL, DBI, ROracle, RPostgreSQL and RSQLite.
+
+From other statistical software's
+=============================================================
+type: sub-section
+
+- Other statistical software's often used to read in data are SPSS, SAS, Stata and EpiInfo
+- Like excel and database data, to read in these files a package must be used
+- Recommended packages are `"foreign"` and `"haven"`.
