@@ -1,0 +1,1273 @@
+Introduction to Data Analysis and Graphics in R
+========================================================
+author: Hellen Gakuruh
+date: `r Sys.Date()`
+autosize: true
+
+## Session three
+
+### Data Entry, Management and Manipulation in R
+
+Outline
+========================================================
+type: section
+
+<p style=visibility:hidden;>n</p>
+- Creating a dataset
+- Understanding datasets
+- Data input
+- Useful functions for working with datasets
+- Creating new variables
+- Recording and renaming variables
+
+***
+
+<p style=visibility:hidden; margin:0; padding:0>n</p>
+- Missing and date values
+- Type conversions
+- Sorting data
+- Merging datasets
+- Subsetting datasets
+- Using SQL statements to subset dataframes
+
+
+Creating a dataset
+=======================================================
+type: section
+
+- Data sets can be created for any of R's data structure i.e. dimensionless vector, 1 dim vector, matrix, array, data frame or list
+- There are two way to create a data set:
+    + Using spreadsheet like data editor
+    + By coding then in
+    
+Invoking spreadsheet-like data editor in R    
+==================================================    
+type: sub-section    
+    
+- R has four functions to invoke a spreadsheet-like data editor, these are:
+    + `edit()`
+    + `fix()`
+    + `data.entry()`, and
+    + `dataentry()`
+    
+Note on using spreadsheet-like data editors in R
+======================================================
+type: sub-section
+    
+- Using these function's goes against R's core functionality; programming/coding
+- Not a recommended way as it looses on documentation/reproducibility
+ 
+    
+Coding in data
+==============================================================
+type: sub-section
+
+- To code in data, function `scan()` can be quite handy in addition to calling functions for any of the data structures; `c()` for vector, `matrix()`, `array()`, `data.frame()`, and `list()` 
+- `scan()` is also not a good data entry process as it looses on reproducibility as data is entered interactively (console) 
+
+Understanding datasets
+=========================================================
+type:section
+
+- It can be a single variable or multiple variables
+- In R, a single variable can be a dimensional vector (created with "c()") or a 1 dim array
+- For multiple variables, if they are all of the same type (especially if numeric), then matrix is a better data structure other wise for multiple types with same length data frame is ideal
+
+Understanding datasets
+===========================================================
+type: sub-section
+
+- If data is of different length and type, generic lists are appropriate.
+- Lists can also be used to store different data sets for a particular project as well as accompanying source code/function
+
+Data input
+=======================================================
+type: section
+
+We will look at:
+
+- Spreadsheet data entry using `"data.entry()"` 
+- Using `"scan()"`
+- Coding in data using data structure functions `c()`, `matrix()`, `array()`, `data.frame()`, and `list()`
+
+Spreadsheet data entry
+=============================================================
+type: sub-section
+
+- First, need to have variables or list of variables for data entry 
+- Then Call data entry
+- From pop-up data editor, click on individual cell and enter data
+- Variable names can be changed from data entry
+
+[Spreadsheet data entry demonstration](https://www.youtube.com/)
+
+Data entry using "scan" function
+===============================================================
+type: sub-section
+
+- Can be used to input 1 dim atomic vectors
+- Values entered interactively (on console) if file is not give
+- For each entry, type value and click enter, after last value click enter and entry mode will be exited
+- Important to assign to variable name and specify type if it not "double"; `dataset2 <- scan(what = "character")`
+
+[Demonstration on data input using function "scan"](https://www.youtube.com/)
+
+Data entry using data structure functions
+===========================================================
+type: sub-section
+
+- Recommended way to generate data in R (ideally small data)
+- Data structure function include:
+    + `c()` for atomic vectors
+    + `matrix()` for matrices
+    + `array()` for 1 or more dimension arrays
+    + `data.frame` for data frames
+    + `list()` for lists
+
+Data entry using c()
+=============================================================
+type: sub-section
+
+- Used to create individual variables of any type as long as all elements are of the same type e.g all logical or all character
+
+```{r "cfun1-03"}
+# An integer vector
+num <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) # same as 1:10
+# A logical vector
+logi <- c(TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE)
+```
+
+Data entry using function c()
+=====================================================================
+type: sub-section
+
+```{r "cfun2-03"}
+# A character vector
+R_authours <- c("Douglas Bates", "John Chambers", "Peter Dalgaard", "Seth Falcon", "Robert Gentleman", "Kurt Hornik", "Ross Ihaka", "Michael Lawrence", "Friedrich Leisch", "Uwe Ligges", "Thomas Lumley", "Martin Morgan", "Duncan Murdoch", "Paul Murrell", "Martyn Plummer", "Brian Ripley", "Deepayan Sarkar", "Duncan Temple Lang", "Luke Tierney", "Simon Urbanek")
+```
+
+Data entry using "matrix()"
+========================================================
+type: sub-section
+
+- 2 dimensional vectors (store data as rows and columns)
+- Primarily created with function `matrix()` but `rbind()`, `cbind()` and `as.matrix()` can be used to convert other vectors to a matrix
+- Function `matrix()` can be called without any input thus creating an empty matrix
+- Argument "dimnames" can only be NULL (nothing) or a list
+
+Data entry using "matrix()"
+===========================================================
+type: sub-type
+
+```{r "matrix1-03"}
+mat1 <- matrix(data = 1:9, nrow = 3, dimnames = list(NULL, c("a", "b", "c")))
+mat1
+```
+
+Data entry using "array()"
+========================================================
+type: sub-section
+
+- Multi-dimensional structures (1 > dims), but often used for 3 dim structures
+- Can only be used with one data type
+- Matrices are special form of these data structures (have 2 dims)
+- Primarily created with function `array()` 
+
+"array()" (cont)
+===========================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "array1-03"}
+dims <- list(1:3, c("a", "b", "c"), c("Yes", "No")) 
+arry <- array(data = seq(1, 9*2), dim = c(3, 3, 2), dimnames = dims)
+```
+
+***
+
+<p style=visibility:hidden;></p>
+```{r "array2-03"}
+arry
+```
+
+
+Data entry using `data.frame()`
+===========================================================
+type: sub-section
+
+- Similar to matrices except they can contain different types of data as long as they have the same length (number of elements)
+- Though resemble matrices, they are actually list of vectors
+- Columns contain measurements on one variable and rows contain cases
+- Primarily created by `data.frame()`
+
+data.frame()
+============================================================
+type: sub-section
+
+```{r "dataframe1-03"}
+# Example of weight loss data set
+dataset3 <- data.frame(ID = 1:5, Exercise = c(TRUE, TRUE, FALSE, TRUE, FALSE), Height = c(5.2, 4.9, 5.1, 5.2, 5.4), Weight = c(69, 72, 75, 67, 77))
+dataset3
+```
+
+
+Data entry using "list()"
+=============================================================
+type: sub-section
+
+- A bit unique as not many statistical programs have similar data structure
+- A sort of "carry-all" data structure
+- Can also contain sub-list thus referred to as recursive
+- Primarily created by `list()`
+
+"lists()"
+================================================================
+type: sub-section
+
+```{r "lists1-03"}
+lst <- list(vect = 5:9, Matrix = mat1, Array = arry, Dataframe = dataset3, List = list("a", 2:3))
+```
+
+```{r "lists2-03", eval=FALSE}
+str(lst)
+```
+
+
+================================================================
+type: sub-section
+
+```{r "lists3-03", ref.label="lists2-03", echo=FALSE}
+
+```
+
+R's objects and properties
+==================================================================
+type: section
+
+- Everything in R is referred to as an **object** from data structures to functions and all objects have two types of attributes:
+    + Mode and
+    + Length
+- Mode is the basic type of an object's core constituent
+- Length is extent or number of elements in an object
+- Function `mode()` and `length()` are used to establish mode and length of an object
+
+Establishing basic composition of objects
+=================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "objproperties1-03"}
+mode(num)
+mode(mat1)
+mode(arry)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "objproperties2-03"}
+mode(dataset3)
+mode(lst)
+```
+
+Establishing length of an object
+=============================================================
+type: sub-section
+
+```{r "objproperties3-03"}
+# Atomic vector
+length(num)
+
+# Matrix
+length(mat1) 
+```
+
+Establishing length of an object
+================================================================
+type:sub-section
+
+- Length is not the best attribute for assessing a matrix or an array, "dim" is more appropriate
+
+```{r "objproperties4-03"}
+mat1; dim(mat1)
+```
+
+Establishing length of R objects (cont)
+=================================================================
+type: sub-section
+
+```{r "objproperties5-03"}
+# Data frames
+length(dataset3) # This shows number of variables not cases/rows
+
+# Lists
+length(lst)
+```
+
+Difference between typeof(), mode() and storage.mode()
+===================================================================
+type: section
+
+- There are 3 functions for checking basic constituents of an object, these are:
+    + `mode()` which is an S compatible function for checking type
+    + `storage.mode()` which is used for compatability when calling functions written in other languages (ensures data is of expected type)
+    + `typeof()` which is basically an R's implementation of S's `mode()`
+
+Selecting between typeof(), mode(), and storage.mode()
+==================================================================
+type: sub-section
+
+- Which function should be used? Depends on why,
+    + If it's just a general query, then `typeof()` is adequate
+    + If working with other S objects, use `mode()`
+    + If calling functions written in other languages, use `storage.mode()`  
+
+Other Attributes
+==================================================================
+type: section
+
+- Attributes are basically meta data about an object in R
+- All objects (except NULL) can have at least two or more attributes
+- Attributes are stored as a pairlist i.e. name=value
+- List of all attributes for an object are given by `attributes()`
+- Individual attributes are given by `attr()`
+
+Other attributes (cont)
+==================================================================
+type: sub-section
+
+- Other than `mode` and `length` other often used attributes are:
+    + Names
+    + Dimensions (dim)
+    + Dimnames
+    + Classes, and
+    + Time series
+    
+Names Attribute
+===================================================================
+type: sub-section
+    
+- Used to name individual elements of a data object
+- They are not mandatory, but quite handy when indexing element
+- Accessed with `name()` and set with `name(object) <- `
+- `colnames()` is used for matrix-like objects
+
+Querying and setting element's names
+=======================================================
+type: sub-section
+
+```{r "naming1-03"}
+# Creating an unnamed vector
+vect1 <- c(12, 54, 98)
+names(vect1)
+
+# Naming vector elements
+names(vect1) <- c("a", "b", "c")
+names(vect1)
+```
+
+Naming elements (cont)
+==============================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "naming2-03"}
+# An unnamed matrix
+mat3 <- matrix(1:9, 3)
+mat3
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "naming3-03"}
+# Naming a matrix
+colnames(mat3) <- c("a", "b", "c")
+mat3
+```
+
+
+Dimensions Attribute
+===============================================================
+type: sub-section
+
+- There at least two data structures with dimension attribute, these are arrays (including matrices) and data frames
+- Function `dim()` is used to query an objects dimension and `dim <-` used to set dimension to an object
+- There is a difference between an atomic vector and a 1 dim array; latter has a dim attribute while former does not
+- Giving a vector dimensions changes it's data structure from a vector to an array
+
+Dim attribute (cont)
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "dim1-03"}
+# An atomic vector (dimensionless)
+vect2 <- 1
+vect2
+dim(vect2)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "dim2-03"}
+# Converting to 1 dimension array
+dim(vect2) <- 1
+vect2
+dim(vect2)
+```
+
+Dimnames Attribute
+================================================================
+type: sub-section
+
+- Gives names to dimensions
+- Like "dim" attribute, "dimnames" attributes are given to vectors with dim attribute like matrices, array and data frames
+- Dimnames are given as a list of names (same lenth as "dim(x)")
+
+Quering and setting dimnames
+================================================================
+type:sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "dimnames1-03"}
+# Matrix with no dimnames
+vect3 <- matrix(1:9, 3)
+vect3
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "dimnames2-03"}
+# Adding dimnames 
+dimnames(vect3) <- list(1:3, c("a", "b", "c"))
+vect3
+```
+
+
+Classes Attribute
+================================================================
+type: sub-section
+
+- Class attribute is a special type of information used functions called "methods"
+- Used to determine how an object should be handled/acted upon
+- All objects have an intrinsic class attribute which is basically it's data type, but other classes can be added to an object
+
+Class attribute (cont)
+===============================================================
+type: sub-section
+
+- Classes are character vectors accessed and added with function `class()` and `class <-` respectively or `attr(obj, class)`
+- When a class is added to an object, that object is called an `s3` object. This makes it part of R's Object Oriented Programming (OOP)
+
+Quering and adding class attribute
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "classes1-03"}
+# Intrinsic class attribute
+vect <- 1:5; class(vect) 
+
+# (Assigned) Class attribute
+attr(vect, "class")
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "classes2-03"}
+# Add class with either
+attr(vect, which = "class") <- "myclass"
+# OR class(vect) <- "myclass"
+
+# Query class attribute
+attr(vect, "class")
+```
+
+Useful note on adding class attribute
+=============================================================
+type: sub-section
+
+- Adding classes has it's implications as far as "method dispatch" (selection of suitable function) is concerned
+- For example, changing from intrinsic class "numeric"to "myclass" means function/methods for "myclass" if found, will be applied first
+- Basically when a generic function such as "plot()" or "mean()" are called, they will look for functions suitable for first listed class in a class vector, it is not until all classes are are checked that a method for it's intrisic class is dispatched   
+
+
+Time series Attribute
+===================================================================
+type: sub-section
+
+- Used for data with time dimensionality like timely, daily, weekly, monthly, quarterly or annual data
+- Created by adding a "tsp" attribute 
+- It ensures time series parameters such as "start", "end", and "frequency" are kept and
+- For compartability with S version 2
+
+Tsp Attribute 
+===================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "timeseries1-03"}
+# Random annual data 
+set.seed(28)
+tms <- round(rnorm(12, 56))
+tms
+attributes(tms)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "timeseries2-03"}
+# Adding attribute `tsp`
+tsp(tms) <- c(start = 1, end = 12, frequency = 1)
+attributes(tms)
+```
+
+R's data sets
+======================================================
+type: section
+
+```{r "Rdatasets-03", echo=FALSE}
+datasets <- data(package = "datasets")$results[, "Item"]
+datasets <- sub("(\\S+)\\s*.*", "\\1", datasets)
+ds_classes <- sapply(datasets, function(i) class(get(i)))
+ds_classes <- as.vector(unlist(ifelse(sapply(ds_classes, length) > 1, ds_classes[length(ds_classes)], ds_classes)))
+R_datasets <- data.frame(Dataset = datasets, Class = ds_classes, stringsAsFactors = FALSE)
+ds_lengths <- tapply(R_datasets$Dataset, R_datasets$Class, FUN = length)
+len <- as.vector(ds_lengths)
+ds <- names(ds_lengths)
+```
+<p style=visibility:hidden;>n</p>
+
+- R has a number of data set 
+- Full documentation `help(package = datasets)`
+- Currently there are `r length(datasets)` data sets
+- Our of these:
+
+***
+
+Data Structure                | Number
+------------------------------|----------------
+Array                         |  1
+Character (1 dim vector)      |  2
+Data frame                    |  46
+Dist (Distance Matrix)        |  2
+Factor (1 dim integer vector) |  2
+List                          |  4
+Matrix                        |  8
+Numeric (1 dim vector)        |  6
+Table (Atomic vectors)        |  51
+ts                            |  28
+
+Conditional Statements
+=======================================================
+type: section
+
+<p style=visibility:hidden>n</p>
+- Used to certain conditions are met by some data like observation above a certain value
+- They are also called control structures. Include:
+    + if-else
+    + ifelse
+    + for
+
+Conditional Statements (cont)
+===========================================================
+type: sub-section
+
+- Others are    
+    + while
+    + repeat
+    + break 
+    + next, and
+    + switch
+- We discuss frequently used control structure, that is `if-else`, `ifelse` and `for` 
+    
+if-else()    
+=============================================================
+type: sub-section
+
+- Used to check if a condition evaluated to true, and if so an action is performed
+- It can be extended alternative action(s) with "else if" or "else" 
+- When "else statement" is given, it must be on same line as end of if statement 
+- Example, check a vector has intrisic type "character", if it does, we convert it to a factor else leave it as it is
+- Note: `if-else` can only be performed if condition evaluated to one logical value either TRUE or FALSE
+
+if-else() example
+===================================================================
+type:sub-section
+
+```{r "if"}
+x <- c("a", "b", "c")
+class(x)
+if (class(x) == "character") {
+   x <- as.factor(x)
+} else {
+   x
+}
+class(x)
+```
+
+ifelse() control structure
+=================================================================
+type: sub-section
+
+- Used when condition evaluates to a logical vector length > 1
+- Excellent for recoding variables, hence an example is done under "recoding variables"
+
+for() control structure
+=================================================================
+type: sub-section
+
+- `for()` is a looping structure used to perform repetitive tasks
+- Though in most programming programs, this is a frequently used construct, in R, there more efficient functions like apply group of functions
+- `for` iterates from a certain value through a sequence performing an action defined it's body (body of any function including for loop is what is in between {})
+- As a simple example, let's say Hello five time
+
+for() loop example
+================================================================
+type: sub-section
+
+```{r "for-03"}
+for(i in 1:5) {     # variable "i" is a counter (conting from 1 to 5)
+    cat("Hello \n") # function "cat" is used to print to console 
+}
+```
+
+Recoding variables
+======================================================
+type: section
+
+- Recoding a variable means changing it's values
+- It is often recommended to create a new variable instead of overwriting original variable
+- Example: 
+    + Create a dichotomous recoded variable of "feed" variable from "chickwts" data set
+    + This variable will have values "casein" and "others" (this is something often done during analysis) 
+
+Recoding variables (cont)
+=============================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "recoding1-03", echo=FALSE}
+# Taking a glipse of chickwts data set
+str(chickwts)
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "recoding2-03"}
+# Current categories of variable of interest (feed)
+levels(chickwts$feed)
+```
+
+Recoding variables (cont)
+==============================================================
+type: sub-section
+
+```{r "recoding3-03"}
+# Recording with function "ifelse"
+chickwts$feed2 <- ifelse(chickwts$feed == "casein", yes = "casein", no = "other")
+
+# Conveting to a factor vector
+chickwts$feed2 <- factor(chickwts$feed2)
+
+# New levels 
+levels(chickwts$feed2)
+```
+
+
+Renaming variables
+=======================================================
+type: section
+
+- using base R, renaming any variables in a data frame requires all variable names to issued to `names() <-` function
+- For example, to rename "feed2" from previous slide:
+
+```{r "renaming1-03"}
+# Current name
+names(chickwts)
+```
+
+Renaming variables (cont)
+===========================================================
+type: sub-section
+
+```{r "renaming2-03"}
+# Renaming variables (all must be proived)
+names(chickwts) <- c("weight", "feed", "casein")
+names(chickwts)
+```
+
+
+Missing values
+=======================================================
+type: section
+
+- In R, denoted with Logical value "NA"
+- Many operation can not be performed when there are missing value
+- `is.na()` used to check for missing value
+- If negated with "!" infront, it output current (non-missing) values
+- For matrices and data frames, `complete.cases()` might be more appropriate 
+
+Missing values (cont)
+=============================================================
+type: section
+
+<p style="visibility:hidden;">n</p>
+```{r "missing1-03"}
+# Vector with a missing value
+vect1 <- c(letters[1:5], NA); vect1
+
+# A logical vector checking for missing values 
+is.na(vect1)
+```
+
+Missing values: complete case for matrices
+================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "missing2-03"}
+vect2 <- letters[1:6]
+mat3 <- rbind(vect1, vect2)
+mat3
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "missing3-03"}
+complete.cases(mat3)
+```
+
+- Output indicates the first row/case is not complete but the second is complete  
+
+Date values
+=======================================================
+type: section
+
+- Initially imported or created as numeric or character vectors
+- Conversion (to class for data/time object: POSIXlt/POSIXct) depends on whether they are character or numeric
+- One way to convert character vector to date/time object is by using function `as.Date()` specifying argument <u>format</u> as detailed by `?strftime`
+- `as.Date()` can also be used to convert a numeric vector to a date object, by specifying argument <u>origin</u>; origin in R is "1970-01-01"
+
+Date values (cont)
+=============================================================
+type: sub-section
+
+```{r "dateobj1-03"}
+# Converting a character vector
+date1char <- c("3/6/2017", "3/7/2017", "4/7/2017")
+class(date1char)
+date1 <- as.Date(date1char, format = "%m/%e/%Y")
+```
+
+Date Values (cont)
+=============================================================
+type: sub-section
+
+```{r "dateobj2-03"}
+date1
+class(date1)
+```
+
+Date values (cont)
+==============================================================
+type: sub-section
+
+```{r "dateobj3-03"}
+# Converting a numeric vector
+date1num <- c(17231, 17232, 17263)
+class(date1num)
+date2 <- as.Date(date1num, origin = "1970-01-01")
+```
+
+Date values (cont)
+===============================================================
+type: sub-section
+
+```{r "dateobj4-03"}
+date2
+class(date2)
+```
+
+Conversion between data types
+=======================================================
+type: section
+
+- To convert from one data type to another, use `as.data_type` like `as.logical()`, `as.integer()`, `as.double()`, `as.character()`, `as.raw()`, and `as.complex()`
+- But it must be convertible e.g.
+    + Can convert from logical to character but if character is not "TRUE/FALSE" or "true/false" it will result in NA
+    + Cannot convert character to integer or double
+
+Sorting data
+======================================================
+type: section
+
+- Sorting an atomic vector is done with `sort()`
+- Sorting a data frame is done with `order()`    
+- Matrices are actually atomic vectors with dimensions, hence sorted with looping function `apply`
+- By default `sort` is done in an increasing manner, be nullified by setting argument "decreasing" to TRUE
+- Logical values ordered according to their integer form, i.e. TRUE = 1, FALSE = 0 (TRUE > FALSE)  
+
+Sorting vectors
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "sort1-03"}
+# An unsorted random numbers
+set.seed(58)
+tosort <- round(rnorm(10, 87, 10))
+tosort
+```
+
+***
+
+```{r "sort2-03"}
+# Sorted vector (increasing) 
+sort(tosort)        
+
+# Sorted vector (decreasing)
+sort(tosort, TRUE)  
+```
+ 
+Sorting Matrices
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "sort3-03"}
+mat2sort <- matrix(tosort[-1], 3, dimnames = list(1:3, c("a", "b", "c")))
+mat2sort
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "sort4-03"}
+# Sort by columns of a matrix
+apply(mat2sort, 2, sort)
+```
+
+
+Sorting Data frames
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden></p>
+```{r "sort5-03"}
+set.seed(3)
+v1 <- round(rnorm(9, 50, 10))
+set.seed(3)
+v2 <- round(rnorm(9, 90))
+set.seed(3)
+logi <- sample(c(TRUE, FALSE), 9, TRUE, c(0.7, 0.3))
+df1 <- data.frame(Logi = logi, V1 = v1, V2 = v2)
+```
+
+Sorting Data frames (cont)
+=================================================================
+type: sub-section
+
+<p style=visibility:hidden></p>
+```{r "sort6-03"}
+# Sorted by first variable "logi"
+df1[order(df1$Logi, decreasing = TRUE),]
+```
+
+Sorting data frames by more than one variable
+================================================================
+type: sub-section
+
+- Sorting by more than one variable is first done on first listed variable then the second and so on.
+- Example:
+    + Sort variable Logi in a decreasing manner (TRUE first)
+    + Then sort variable "V1" in a decreasing manner
+
+Sorting data frames example
+================================================================
+type: sub-section
+
+```{r "sort7-03"}
+df1[order(df1$Logi, df1$V1, decreasing = TRUE),]
+```
+
+Sorting by both decreasing and ascending order 
+==================================================================
+type: sub-section
+
+```{r "sort8-03"}
+# Negative sign used to indicate decreasing
+df1[order(-df1$Logi, df1$V1), ]
+```
+
+
+Merging data sets
+=======================================================
+type: section
+
+- Done by similar (intersecting) columns 
+- Can use database semantics
+- Core considerations for merging
+    + Default merging done by **intersect(names(x), names(y))**
+    + Otherwise specific columns in each can be given especially if they do not have same name or capitalization
+
+Merging data frames
+=========================================================
+type: sub-section
+
+```{r "merging1-03"}
+# Additional data set
+dataset4 <- data.frame(ID = 6:10, Exercise = c(TRUE, FALSE, TRUE, TRUE, FALSE), Height = c(5.4, 5.4, 5.2, 5.6, 5.4), Weight = c(77, 74, 75, 79, 82))
+
+# Similar columns to be used for merging
+intersect(names(dataset3), names(dataset4))
+```
+
+Merging data frames
+=========================================================
+type: sub-section
+
+```{r "merging2-03"}
+# Merging (adding cases)
+merge(dataset3, dataset4, all = TRUE)
+```
+
+
+Subsetting data sets
+=======================================================
+type: section
+
+Look at:
+
+- Indexing
+- Subsetting/extracting operators
+- Subsetting different data objects
+
+Indexing
+=======================================================
+type: sub-section
+
+- Indexing vectors are used to access elements from different data objects, they include:
+    + Logical vector
+    + Positive integers
+    + Negative integers and
+    + Character vectors
+- **Note**: It's possible to have 0 index (empty indexing)
+
+Indexing (cont)
+==========================================================
+type: sub-section
+    
+- Logical vectors select elements which evaluate to TRUE 
+- Positive integers select elements at given positions
+- Negative integers exclude values at given integers
+- Character indices are only appropriate for named elements
+- An empty index selects all values, used to replace all entries but at the same time keeping it's attributes
+
+Subsetting/Extracting operators
+==================================================================
+type: sub-section
+
+- There three extracting operators and one extracting function
+    + `[`
+    + `[[`
+    + `$`, and
+    + `getElement()`
+    
+Subsetting/Extracting operators
+=================================================================
+type: sub-section
+    
+- `"["` can select more than one element and keeps their names if present while `"[["` and `"$"` can only select one element without their names
+- `"$"` is only applicable for recursive objects (generic/list data structures), basically data frames and lists
+- `"getElement()"` function is similar to extracting with `"[["`
+
+Subsetting Atomic Vectors
+=====================================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+- Subsetting operator is `[`, although `[[` can also be used to select a single element without it's names attribute
+- Index vector put between subsetting operators.
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "subsetting1-03"}
+vect1
+
+# Index vector: Elements that are not NA
+!is.na(vect1)
+```
+
+Subsetting vectors (cont)
+===================================================================
+type: sub-section
+
+<p style=visibility:hidden></p>
+```{r "subsetting2-03"}
+# Subset non-na values
+vect1[!is.na(vect1)]
+# Subsetting with an empty index
+tms[]
+```
+
+***
+
+<p style=visibility:hidden></p>
+```{r "subsetting3-03"}
+# Empty index useful for replacement while keeping attributes
+set.seed(3)
+tms[] <- sample(1:100, 12)
+tms
+```
+
+Subsetting atomic elements (cont)
+===============================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+- Subsetting with "[[" returns without a names attribute
+```{r "subsetting4-03"}
+# Some of my favourite fruits
+fruits <- c(Mangoes = 50, Apples = 35, Pineapples = 20)
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "subsetting5-03"}
+fruits["Mangoes"]
+fruits[["Mangoes"]]
+```
+
+
+Subsetting Matrices and Arrays
+===================================================================
+type: sub-section
+
+- Essentially atomic vectors with dimensions hence can be subset with `[` and `[[`
+- Output is value occurring at given indices when all values are concatenated 
+- However, the best way to index these structures is by their dimension e.g. [r, c] for 2 dim matrices and [r, c, l] meaning row, column, and layer for 3 dim arrays 
+- Exampl data set: R's USPersonalExpenditure
+
+Example data set
+=================================================================
+type: sub-section
+
+```{r "subsetting6-03"}
+# One of R's data set
+USPersonalExpenditure
+```
+
+====================================================================
+type: sub-section
+
+```{r subsetting7-03}
+# Subsetting with an empty index
+USPersonalExpenditure[]
+
+# Subseting with one index
+USPersonalExpenditure[5]
+```
+
+==============================================================
+type: sub-section
+
+```{r "subsetting8-03"}
+# Subsetting with dimensions
+USPersonalExpenditure[1, ]       # Subset 1st row, all columns
+USPersonalExpenditure[1, 1]      # Subset 1st row, first column
+```
+
+================================================================
+type: sub-section
+
+```{r "subsetting9-03"}
+USPersonalExpenditure[3, "1950"] # Subset 3rd row, column 3 "1950"
+USPersonalExpenditure[, "1960"]  # Subset an entire row, drops dimension
+```
+
+=================================================================
+type: sub-section
+
+```{r "subsetting10-03"}
+# Maintaining dimension
+USPersonalExpenditure[, "1960", drop = FALSE]
+dim(USPersonalExpenditure[, "1960", drop = FALSE])
+```
+
+
+Subsetting Data frames
+===================================================================
+type: sub-section
+
+- All subsetting operators (`[`, `[[` and `$`) can be used
+- As before `[` can selects more than one element
+- Both `[[` and `$` can select one item, difference is that `$` can not be used with computed values like "i + 1" (index + 1)
+- x$name is equivalent to x[["name", exact = FALSE]]
+- Other than these operators, a much more efficient way to subset data frames is with function `subset()` 
+
+===================================================================
+type: sub-section
+
+Example data set: USArrests
+
+```{r "subsetting11-03"}
+# Vewing first 6 rows
+head(USArrests)
+```
+
+==================================================================
+type: sub-section
+
+```{r "subsetting12-03"}
+# Computing average of assault, murder and rape using "$"
+avg_murder  <- median(USArrests$Murder)
+avg_assault <- median(USArrests$Assault)
+avg_rape    <- median(USArrests$Rape)
+
+# Using "[" subset states with above average assault, murder and rape
+high_crime <- USArrests[USArrests$Murder > avg_murder & USArrests$Assault > avg_assault & USArrests$Rape > avg_rape, ]
+```
+
+================================================================
+type: sub-section
+
+```{r "subsetting13-03"}
+# Sort (by decreasing order for Murder) and output names of states
+high_crime <- high_crime[order(high_crime$Murder, decreasing = TRUE),]
+row.names(high_crime)
+```
+
+
+===================================================================
+type: sub-section
+
+```{r "subsetting14-03"}
+# Subset a column without name attribute
+high_crime[[1]]
+# Or
+USArrests[["Assault"]]
+```
+
+Subsetting with function "subset()"
+=================================================================
+type: sub-section
+
+- Function `subset` can be used to subset any vector, but most suitable for data frames
+- Here we will use it to subset high_crime states as we did before
+- We use function `with()` to access variables without making reference to data frame name
+
+===============================================================
+type: sub-section
+
+```{r "subsetting15-03"}
+high_crime2 <- with(USArrests, subset(USArrests, Murder > avg_murder & Assault > avg_assault & Rape > avg_rape, Murder:Rape))
+high_crime2 <- high_crime2[order(high_crime2$Murder, decreasing = TRUE), ]
+
+# Check both data sets are identical
+identical(high_crime, high_crime2)
+```
+
+Subsetting Lists
+=================================================================
+type: sub-section
+
+- List can be subset with all three subsetting operators
+- Rule of the thumb is, subsetting with `[` returns a list, subsetting with `[[` or `$` outputs the same type as element being subset i.e. if list has data frame, subsetting with `[[` or `$` will output a data frame
+- Example data set: R's first 10 values of "state.center" data set 
+
+Subsetting lists (cont)
+=================================================================
+type: sub-section
+
+```{r "subsetting16-03", echo=FALSE}
+state.center <- lapply(state.center, function(i) i[1:10])
+```
+
+```{r}
+# Example data
+state.center; class(state.center)
+```
+
+Subsetting lists (cont)
+==================================================================
+type: sub-section
+
+```{r "subsetting17-03"}
+# Using `[` outputs a list
+state.center[1]
+class(state.center[1])
+```
+
+Subsetting lists (cont)
+===================================================================
+type: sub-section
+
+```{r "subsetting18-03"}
+# Using `[[` outputs elements type
+state.center[[1]]
+class(state.center[[1]])
+```
+
+Subsetting lists
+=============================================================
+type: sub-section
+
+```{r "subsetting19-03"}
+# Using "$" outputs elements type
+state.center$x
+class(state.center$x)
+```
+
+
+Using SQL statements to subset data frames
+======================================================
+type: section
+
+- Database semantics can sometimes be quite handy in subsetting e.g. subset has to meet certain condition
+- Core data base statements are :
+    + SELECT
+    + FROM
+    + WHERE
+    + ORDER BY
+
+Using SQL statements to subset data frames    
+============================================================
+type: sub-section
+
+- If interested, read a small introduction to SQL statement from R's Data Import/Export manual (4.2) or go online and learn from "www.sqlcourse.com" 
+- Discussing this here might take us out scope, but it's good to know it's possible in R using contributed packages like "sqldf" and "dplyr". 
+
+Other functions useful for data sets
+=======================================================
+type: section
+
+Function    |     Description
+------------|-------------------------------------------
+str         | A compact display internals of a data frame 
+head        | Prints first part, default is first 6 rows  
+tail        | Prints last part, default is last 6 row 
+attach      | Put data frame on R's search path hence variables are accessible without reference to data frame name 
+dettach     | Remove data frame from R's search path. Recommended after completion of task
+
+Other useful functions (cont)
+============================================================
+type: sub-section
+
+Function    |     Description
+------------|-----------------------------------------------
+with        | Recommended alternative to `attach`, makes it possible to run expressions/function on a data frame's element  
+which       | Locates indices of logical value TRUE. Used for indexing data frame elements
+
+
+
+
