@@ -1,0 +1,654 @@
+Introduction to Data Analysis and Graphics in R 
+========================================================
+author: Hellen Gakuruh 
+date: `r Sys.Date()`
+autosize: true
+
+### Slide 4: Summarizing Data 
+
+Outline
+========================================================
+
+What we shall cover
+
+- Numerical summaries for discrete variables
+- Numerical summaries for continuous variables
+- Tables for dichotomous variables
+- Tables for categorical variables
+- Tables for ordinal variables
+
+Preliminaries
+===========================================================
+type: section
+
+- **Assumption**: Have a basic understanding of R or similar functions/commands in other statistical programs
+- All user defined functions can be sourced from [GitHub](https://github.com/HellenG/Scripts)
+- Once "Scripts" folder is cloned or downloaded (available locally), source these two scripts:
+    + "desc-statistics.R"
+    + "skewness-kurtosis-fun.R"
+
+
+Introduction
+=============================================================
+type: section
+
+- A variable is a quantity whose values are not constant (it changes)
+- Discrete variables have finite values (obtained by counting)
+- Continuous variables can take any value within a range (obtained by measuring)
+- Dichotomous variable have two values e.g. "Yes" and "NO"  or TRUE and FALSE
+- Categorical variables are qualitative variables whose values are non-numerical (text) with no ordering e.g. gender "Female" and "Male"
+
+Introduction cont.
+=================================================================
+type: section
+
+- Ordinal variables are qualitative variables whose values are textual (non-numeric) but with natural ordering e.g. likert scales or level of education
+- There are two way to describe a variable; numerically and graphically
+- Numerical summaries comprise measures of central tendency, measures of spread/variability and shape of distribution (latter often not reported, used to guide additional analysis)
+- All these variables (discrete, continuous, dichotomous, categorical, and ordinal) can be described by these measures, but each has it's own computation and presentation
+
+Measures of central Tendency
+==============================================================
+type: section
+
+- There three most often used/reported measures of central tendency
+   + Mean (arithmetic)
+   + Median
+   + Mode
+
+Measures of Central Tendency 
+===================================================================
+type: sub-section
+
+- Mean is average of all values, i.e. sum of observations divided by number of observation
+- Median is central value when ordered
+- Mode is most frequently occurring value
+
+Measures of dispersion
+===================================================================
+type: sub-section
+
+- There at least three measures of dispersion 
+    + Range
+    + Inter-quantile range (IQR)
+    + Variance and Standard deviation
+
+Measures of dispersion
+==================================================================
+type: sub-section
+    
+- Range is difference between minimum and maximum value
+- IQR is a range of where 50% of values lie in an ordered statistic
+- Standard deviation (SD) is average distance of values from mean
+- It is computed from variance which is squared distance from mean  
+
+Population parameters and sample statistics
+==================================================================
+type: sub-section
+
+- Distinction is made between sample and population
+- Measure for population are called <u>population parameters</u> and they are often unknown
+- Measures for a sample are called <u>sample statistics</u> 
+- Population mean is denoted as $\mu$ (pronounced as "mu")
+- Sample mean is denoted as $\bar{x}$ (pronounced as "x bar")
+
+Computing mean
+==================================================================
+type: sub-section
+
+- Since mean is sum of all values divided by number of values, then population and sample mean can be expressed as:
+$$\mu = \frac{\sum{X}}{N}$$
+<p style=visibility:hidden;></p>
+$$\bar{x} = \frac{\sum{x}}{n}$$
+respectively
+
+Example computing mean in R
+=================================================================
+type: sub-section
+
+```{r "mean-04"}
+# Data
+values <- 1:10
+values
+
+# Computing mean
+mean(values)
+```
+
+Locating median
+==================================================================
+type: sub-section
+
+- Median depends on whether number of observations are odd or even
+- For odd number of values, median is the middle value like 3 in data set {1,2,<u>3</u>,4,5}
+- For odd number of values, median is average of the two middle values like average of 3 and 4 for data set {1,2,<u>3,4</u>,5,6} which is 3.5.
+- In R, median is located with function "median" e.g. `median(1:6)` which equates to `r median(1:6)`
+
+Determining mode
+===================================================================
+type: sub-section
+
+- Mode is most frequently occurring value (observation)
+- To get mode, count number of occurrence of each unique value (observation) and select the one with most number of occurrences
+- Number of occurrences is called frequency
+- Mode for data set {4, 2, 3, 1, 3, 3} is 3
+- Mode is the only measure of central tendency which can have 0, 1, 2 or > 2 modes (no mode, uni-modal, bi-modal, or multi-modal)
+
+Locating Mode in R for discrete variables
+====================================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+- R does not have a function for locating mode in a discrete vector
+- Instead, function "table" can be used to construct a frequency table and "which.max()" used to locate value with most observations
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "mode-04"}
+values2 <- c(4, 2, 3, 1, 3, 3)
+ind <- which.max(table(values2))
+values2[ind]
+```
+
+Mode continuous data
+====================================================================
+type: sub-section
+
+```{r "mode-continuous1-04", echo=FALSE}
+set.seed(4)
+continous <- round(rnorm(100, 80, 5), 1) 
+```
+
+- Continuous variables are often categorised in order to make informative summaries
+- Categories or groups differ from one variable to the next but most used interval are 2, 5 and 10
+- In R, continuous variables are categorised with function "cut"
+- Example data: hypothetical class scores
+
+Mode continuous data
+=============================================================
+type: sub-section
+
+```{r "mode-continuous2-04"}
+# Data
+str(continous)
+
+# Range
+range(continous)
+```
+
+Mode continous data cont.
+=============================================================
+type: sub-section
+
+```{r "mode-continuous3-04"}
+# Converting continous to catgorical
+continuous_cat <- cut(continous, c(71, 76, 81, 86, 91, 96), include.lowest = TRUE)
+str(continuous_cat)
+```
+
+Mode continuous data cont.
+================================================================
+type: sub-section
+
+```{r "mode-continuous4-04"}
+# Constructing a frequency table with one of my function
+source("~/R/Scripts/desc-statistics.R")
+freq_tab <- freq_continuous(continuous_cat, breaks = c(71, 76, 81, 86, 91, 96))
+
+# Frequency table
+freq_tab
+```
+
+Mode continuous data cont.
+================================================================
+type: sub-section
+
+- Mode is group or percentage with highest number of observations or frequency
+- For this data it is:
+
+```{r "mode-continuous5-04"}
+# Modal group/category/class (has highest frequency) 
+freq_tab$Values[which.max(freq_tab$Freq)]
+```
+
+Standard deviation (SD)
+==============================================================
+type: sub-section
+
+- Used to determine how spread out values are from it's average (mean)
+- A small SD means values are clustered around it's mean and a big SD means values are spread out
+- Computation process:
+    + First starts by subtracting each value from mean, then 
+    + Deviations are squared to eliminate risk of getting zero on summation, 
+    + Summation is done for all deviations
+    + Finally summation is divided by number of values
+    
+Standard deviation (SD) cont.
+===============================================================
+type: sub-section
+    
+- Since these are squared deviation, then square root is taken
+- Squared deviations is called **variance**
+- For samples from unknown population parameters, dividing with number of observation has been proved to underestimate variance, hence divided by "n-1" i.e.. 
+
+$$s = \sqrt{\frac{\sum(x-\bar{x})^2}{(n-1)}}$$ 
+
+Computing standard deviation (SD) in R
+==============================================================
+type: sub-section
+
+- Computing SD in R is just one function call "sd()"
+- For a vector with this values `r paste(values[-10], collapse = ", ")` and `r values[10]` sd is computed as:
+
+```{r "sd in R"}
+sd(1:10)
+```
+
+Skewness 
+==============================================================
+type: sub-section
+
+- Skewness measures symmetry of values around it's mean 
+- If values are symmetrical, left and right side of it's average is a mirror image, then it's said to have **no skweness**
+- If bulk of values is to the left and has a right trail of values, then it's **positively skewed**
+- If bulk of values is to the right and has a trail of values to the left, then it's **negatively skewed**
+
+Skewness cont.
+================================================================
+type: sub-section
+
+- Measurement involves balancing values on both sides of the mean (lower and upper deviations from mean)
+- Idea, eliminate possibility if getting a zero but at the same time measuring distance from mean
+- If summation of this difference is zero, they it's symmetrical, else +ve or -ve 
+- Deviations are cubed to eliminate zero and get distance from mean
+
+Examples of skewness (non-skewed)
+=============================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "skewness1-04"}
+# A non-skewed vector
+not_skewed <- 1:5
+average <- mean(not_skewed); average
+n <- length(not_skewed)
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "skewness2-04"}
+# Average Deviations from mean
+sum((1-average)^3, (2-average)^3, (3-average)^3, (4-average)^3, (5-average)^3)/n
+```
+
+Examples of skewness (positively skewed)
+==================================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "skewness3-04"}
+pos_skewed <- c(1:5, 9, 10)
+average2 <- mean(pos_skewed); average2
+n2 <- length(pos_skewed) 
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "skewness4-04"}
+# Deviations from mean
+sum((1-average2)^3, (2-average2)^3, (3-average2)^3, (4-average2)^3, (5-average2)^3, (9-average2)^3, (10-average2)^3)/n2
+```
+
+Examples of skewness (negatively skewed)
+================================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "skewness5-04"}
+neg_skewed <- c(1, 8:10)
+average3 <- mean(neg_skewed); average3
+n3 <- length(neg_skewed)
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "skewness6-04"}
+# Deviations from mean
+sum((1-average3)^3, (8-average3)^3, (9-average3)^3, (10-average3)^3)/n3
+```
+
+
+Kurtosis
+================================================================
+type: sub-section
+
+- A measure of tailness; fat/thin or long/short
+- Not a measure of "peakness" as often discussed in older text
+- Reason: measure gives more weight to values far away from average, thus outputting how far and by how much it is from average
+- Kurtosis is described as being "Mesokurtic", "Leptokurtic" or "platykurtic". 
+
+Kurtosis cont.
+================================================================
+type: sub-section
+
+- Mesokurtic means it's symmetrical (tails are the same)
+- Leptokurtic means it is "slender" and has fatter tails, it also has a greater kurtosis than "mesokurtic" or a symmetrical distribution
+- Platykurtic means it has a lesser kurtosis than symmetric distribution and it's broad with thinner tails 
+- Symmetry is considered ideal hence kurtosis measured in reference to symmetry which has kurtosis of 3, this is called <u>Excess Kurtosis</u>
+
+Computation concept of kurtosis
+=================================================================
+type: sub-section
+
+- To determine weight and length of a distributions tail (extreme points), more weigh is given i.e. penalize extreme values
+- Mathematically, squaring does not give enough weight (exponentially), cubing does give the weights but maintains it's signs hence forth power is taken
+- Each deviation from the mean is raised to 4, summed up and divided by number of values
+- For comparison (especially for different units), it is best to standardize kurtosis by making them fractions of their standard deviations
+
+Examples of kurtosis (Aprroximately Mesokurtic/symmetry)
+===================================================================
+type: sub-section
+
+```{r "mesokurtic-04"}
+# Data
+mesokurtic <- c(2,2,3,3,3,3,3,4,4,9:10)
+
+# Average (mean)
+meso_avg <- mean(mesokurtic)
+
+# Number of elements
+n <- length(mesokurtic)
+
+# Standard deviation
+sd1 <- sd(mesokurtic)
+```
+
+
+Examples: computing kurtosis
+=================================================================
+type: sub-section
+
+```{r "kurtosis-computation-04"}
+kurtosis1 <- sum((mesokurtic[1]-meso_avg)^4, (mesokurtic[2]-meso_avg)^4, (mesokurtic[3]-meso_avg)^4, (mesokurtic[4]-meso_avg)^4, (mesokurtic[5]-meso_avg)^4, (mesokurtic[6]-meso_avg)^4, (mesokurtic[7]-meso_avg)^4, (mesokurtic[8]-meso_avg)^4, (mesokurtic[9]-meso_avg)^4, (mesokurtic[10]-meso_avg)^4, (mesokurtic[11]-meso_avg)^4)/n
+
+# Excess kurtosis
+3 - kurtosis1/(sd1^4)
+```
+
+Example of Kurtosis (Leptokurtic)
+==================================================================
+type: sub-section
+
+- Based on computation logic used above, a source script with function for computing kurtosis is used to show "leptokurtic" 
+- It has a positive excess kurtosis or kurtosis greater than three 
+
+```{r "leptokurtic1-04"}
+source("~/R/Scripts/skewness-kurtosis-fun.R")
+
+# Sample data
+lepto <- sample(1:99, 100, TRUE)
+```
+
+Example of kurtosis cont.
+================================================================
+type: sub-section
+
+```{r "leptokurtic2-04"}
+# Computing Kurtosis with function "m4_std()" and deducting from symmery kurtosis (3)
+3 - m4_std(lepto)
+```
+
+
+Example of Kurtosis (Platykurtic)
+===============================================================
+type: sub-section
+
+- Platykurtic have a kurtosis of less than three or a negative excess kurtosis 
+
+```{r "platykurtic-04"}
+set.seed(4)
+platy <- c(sample(30:58, 10), rnorm(70, 59), sample(60:98, 15))
+
+3 - m4_std(platy)
+```
+
+
+Numerical summaries for discrete variables
+========================================================
+type: section
+
+- Can be described by mean or median as its average
+- If data is skewed, median is appropriate, otherwise compute mean
+- If average is mean, then dispersion is reported as standard deviation. If average is median, then dispersion should be IQR
+- Shape of distribution as measured by skewness and kurtosis can inform on which average (mean or median) to use. It also guides inferential statistics
+- Example: Hypothetical random numbers of students scores 
+
+Frequency table
+==============================================================
+type: sub-section
+
+<p style=visibility:hidden;>n</p>
+```{r "discrete1-04"}
+# Data
+set.seed(4)
+scores <- as.integer(round(rnorm(50, 78, 1)))
+
+# Using one of my functions for printing frequency tables 
+```
+
+***
+
+<p style=visibility:hidden;>n</p>
+```{r "discrete2-04"}
+# Frequency table
+freq(scores)
+```
+
+Example: Average and range
+===================================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "discrete3-04"}
+# Mean
+mean(scores)
+
+# Median
+median(scores)
+```
+  
+***  
+
+<p style=visibility:hidden>n</p>  
+```{r "discrete4-04"}
+# Range
+cat("Range for this distribution is", diff(range(scores)), paste0("(", paste(range(scores), collapse = ", "), ")"))
+```
+
+Example: dispersion
+====================================================================
+type: sub-section
+
+```{r "discrete5-04"}
+# Where 50% of values lie
+cat("50% of values lie between score of about", round(quantile(scores, 0.25)), "and", round(quantile(scores, 0.75)), "(an IQR of about", paste0(round(IQR(scores)), ")"))
+
+# Standard deviation (spread of values around mean)
+sd(scores)
+```
+
+Example: shape of distribution
+======================================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "discrete6-04"}
+# Skewness
+m3_std(scores)
+skewness_interpreter(m3_std(scores))
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "discrete7-04"}
+# Kurtosis
+excess_kurt(scores)
+excess_interpreter(excess_kurt(scores))
+```
+
+Conclusion (discrete numerical measures)
+================================================================
+type: sub-section
+
+- From skewness and kurtosis we can tell this data set is almost centered around it's mean, hence mean is an appropriate representative value (a value to describe data)
+- Since mean is our representative value, then standard deviation is the appropriate measure for dispersion
+- SD of `r sd(scores)` indicates values are not dispersed
+- Display-wise, we expect to see an almost symmetric distribution
+
+Numerical summaries for continuous variables
+========================================================
+type: section
+
+- Continuous variables have the same numerical summaries as discrete variable
+- Exception is how to locate it's mode, since values can take on an infinite number of values within a range
+- Mode then involves grouping values into useful intervals sometimes called breaks. This is a process called "discretization"
+- Breaks can range between 2 to 10 but most often interval of five (data determines)
+
+Example
+============================================================
+type: sub-section
+
+- Random hypothetical sample of human height in inches
+
+```{r continuous1-04}
+# Example data
+set.seed(4)
+height <- round(rnorm(50, 5.4), 2)
+sort(height)
+```
+
+Example: average and dispersion
+===============================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "continuous2-04"}
+# Average
+mean(height)
+median(height)
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "continuous3-04"}
+# Dispersion
+sd(height)
+diff(range(height)); range(height)
+```
+
+Example: IQR, Modal class and Frequency table
+================================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "continuous4-04"}
+IQR(height)
+# Modal Class (interval)
+tab <- freq_continuous(height)
+as.vector(tab[which.max(tab$Perc), 1])
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "continuous5-04"}
+# Functions for generating frequency tables
+freq_continuous(height)
+```
+
+Example: Shape of distribution
+============================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "continuous6-04"}
+# Skewness
+m3_std(height)
+skewness_interpreter(m3_std(height))
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "continous7-04"}
+# Kurtosis
+excess_kurt(height)
+excess_interpreter(excess_kurt(height))
+```
+
+
+Tables for dichotomous variables
+========================================================
+type: section
+
+<p style=visibility:hidden>n</p>
+- Have two values e.g. "Yes" & "No"
+- Best presented in frequency tables
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "dichotomous1-04"}
+set.seed(4)
+dichot <- sample(c("Yes", "No"), 100, replace = TRUE)
+freq(dichot)
+```
+
+
+Tables for categorical variables
+=======================================================
+type: section
+
+- Just like dichotomous variables (which are categorical), these can be displayed in a frequency table if univariate and contingency tables for bi-variate relationships
+
+Example
+==========================================================
+type: sub-section
+
+<p style=visibility:hidden>n</p>
+```{r "categorical1-04"}
+groups <- rep(c("a", "b", "c"), 200)
+set.seed(4)
+outcome <- sample(c("improved", "same", "decreased"), length(groups), replace = TRUE, prob = c(0.7, 0.2, 0.1))
+```
+
+***
+
+<p style=visibility:hidden>n</p>
+```{r "categorical2-04"}
+freq(outcome)
+```
+
+Contingency table
+==================================================================
+type: sub-section
+
+- Used to show association between two variables
+- Tabulates one variable against another and can be further be categories by other variables
+
+Example
+=================================================================
+type: sub-section
+
+```{r "categorical3-04"}
+contigency_tab(groups, outcome)
+```
+
+
+
