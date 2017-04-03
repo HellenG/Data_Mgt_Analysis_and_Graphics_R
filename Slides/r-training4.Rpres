@@ -177,7 +177,7 @@ str(continous)
 range(continous)
 ```
 
-Mode continous data cont.
+Mode continuous data cont.
 =============================================================
 type: sub-section
 
@@ -239,7 +239,7 @@ Computing standard deviation (SD) in R
 type: sub-section
 
 - Computing SD in R is just one function call "sd()"
-- For a vector with this values `r paste(values[-10], collapse = ", ")` and `r values[10]` sd is computed as:
+- For a vector with this values `r paste(values[-10], collapse = ", ")` and `r values[10]` SD is computed as:
 
 ```{r "sd in R"}
 sd(1:10)
@@ -349,7 +349,7 @@ type: sub-section
 - Each deviation from the mean is raised to 4, summed up and divided by number of values
 - For comparison (especially for different units), it is best to standardize kurtosis by making them fractions of their standard deviations
 
-Examples of kurtosis (Aprroximately Mesokurtic/symmetry)
+Examples of kurtosis (Approximately Mesokurtic/symmetry)
 ===================================================================
 type: sub-section
 
