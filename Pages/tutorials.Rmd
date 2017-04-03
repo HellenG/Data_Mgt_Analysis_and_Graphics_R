@@ -11,6 +11,12 @@ Type  |  Title |  Status   |  Link
 Book  | R Essentials | First Version Released | [R Essentials Ebook](../R_Essentials/index.html)
 Book  |  R - Beyond Essentials | Not released | NA
 Book  | Fundamentals of Data Analysis and Graphics using R | Released preface and chapter 1 |  [Fundamentals of Data Analysis and Graphics using R](../Data_Analysis/index.html)
+Presentation | Introduction Data Analysis and Graphics using R: Slide 1 | First version Released |[Introduction to R and RStudio](~/Data_Mgt_Analysis_and_Graphics_R/r-training.html)
+Presentation | Introduction Data Analysis and Graphics using R: Slide 2 | First version Released |[Vector and Assignment, Data Objects and Data Importation](~/Data_Mgt_Analysis_and_Graphics_R/r-training2.html)
+Presentation | Introduction Data Analysis and Graphics using R: Slide 3 | First version Released |[Data Entry, Management and Manipulation in R](~/Data_Mgt_Analysis_and_Graphics_R/r-training3.html)
+Presentation | Introduction Data Analysis and Graphics using R: Slide 4 | First version Released |[Summarizing Data](~/Data_Mgt_Analysis_and_Graphics_R/r-training4.html)
+Presentation | Introduction Data Analysis and Graphics using R: Slide 5 | First version Released |[Graphics in R](~/Data_Mgt_Analysis_and_Graphics_R/r-training5.html)
+Presentation | Introduction Data Analysis and Graphics using R: Slide 6 | First version Released |[Essentials of Quantitative Analysis](~/Data_Mgt_Analysis_and_Graphics_R/r-training6.html)
 
 ## In-person Training 
 
@@ -18,5 +24,5 @@ Come learn from me, I will be teaching on these dates:
 
 Workshop    | Date  | Venue   | Contact   |  Presentations
 ------------|-------|---------|-----------|-----------------
-Data Management Analysis and Graphics using R | 20-03-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817 | Will start developing them after Chapter 2
-Data Management Analysis and Graphics using R | 10-04-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817
+~~Data Management Analysis and Graphics using R~~ | ~~20-03-2017~~ | ~~Indepth Research Institute~~ | ~~[Training officer](mailto:outreach@indepthresearch.org) +254 715077817~~ | ~~Check resources above~~
+Data Management Analysis and Graphics using R | 10-04-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817 | Check resources above
