@@ -7,6 +7,18 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog15: March 31^st^, 2017
+
+<h4 style="font-weight:bold">Slides are officially out and made first YouTube upload</h4>
+
+Good week it was, managed to complete all slides, currently I am doing final edit and pushing to GitHub. Links to html versions are listed in [tutorials page](Pages/tutorials.html), I also intend to convert these slides to PDF and share on "Slideshare".
+
+Greet achievement, did my first YouTube video, not much really, but it means I can actually do more and hopefully improve on quality.
+
+With Slides over, it's time to go back to finalizing "Essentials of Data Analysis and Graphics using R", specifically start working on chapter three "Exploratory Data Analysis (EDA)". Can't give exact time for release but anticipate it to be in two weeks from start. I should have a good idea by Friday.
+
+Till next Friday, have a fantastic week.
+
 ### Blog14: March 24^th^, 2017
 
 <h4 style="font-weight:bold">Going the extra mile</h4>
