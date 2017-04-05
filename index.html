@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en-UK">
 <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Data Mania Website</title>
    <link rel="stylesheet" type="text/css" href="index.css">
    <link rel="stylesheet" type="text/css"
@@ -10,47 +11,43 @@
    <meta name="description" content="Free tutorial on data analysis"> 
 </head>
 <body>
-<header class="center">
-	<div id="head">
-		<div id="menu">
-			<div id="menuicon">
-				<div class="icon"></div>
-				<div class="icon"></div>
-				<div class="icon"></div>
-			</div>
-			<div id="nav">
-				<a href="Pages/about.html" class="center">About</a>
-				<a href="Pages/blogs.html" class="center">Blogs</a>
-				<a href="Pages/tutorials.html" class="center">Tutorials</a>
-				<a href="Pages/rscripts.html" class="center">R Scripts</a>
-			</div>
-		</div>
-		<h1><b>Data Mania Inc.,</b></h1>
-	</div>
-	<h3>A simple way to learn</h3>
-</header>
-
-<div id="main">	
-    <div><h3>New tutorial book</h3></div>
-	<div id="pic">
-		<a target="_blank" href="R_Essentials/index.html">
-			<img src="figures/cover.png" alt="R Essentials Book Cover">
-		</a>
-	</div>
-</div>
-
-<div id="upcoming">
-	<div class="img"><img src="figures/cover2.png" alt="R - Beyond Essentials"></div>
-	<div class="img">
-	   <a target="_blank" href="Data_Analysis/index.html">
-	      <img src="figures/cover3.png" alt="Introduction to Data Analysis and Graphics using R">
-	  </a>    
-	 </div>
-</div>
-
-<footer class="center">
-   <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="hellengakuruh"><a class="LI-simple-link" href='https://ke.linkedin.com/in/hellengakuruh?trk=profile-badge'>Hellen Gakuruh</a></div>
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-	<p>Hosted by GitHub Pages</p>
-</footer>
+   <main>
+      <header>
+         <h1><b>Data Mania Inc.,</b></h1>
+	      <h3>A simple way to learn</h3>
+      </header>
+      <nav>
+         <a href="Pages/about.html" class="center">About</a>
+			<a href="Pages/blogs.html" class="center">Blogs</a>
+			<a href="Pages/tutorials.html" class="center">Tutorials</a>
+			<a href="Pages/rscripts.html" class="center">R Scripts</a>
+      </nav>
+      <section>
+         <figure id="fig1">
+            <a target="_blank" href="R_Essentials/index.html">
+               <img src="Book-covers/r-essentials.png" alt="R Essentials Book Cover">
+		      </a>
+		      <figcaption>Just out: New tutorial book</figcaption>
+		   </figure>
+      </section>
+      <section>
+         <figure id="fig2">
+            <img src="Book-covers/beyond-r-essentials.png" alt="R - Beyond Essentials">
+            <figcaption>Coming soon</figcaption>
+         </figure>
+         <figure id="fig3">
+            <a target="_blank" href="Data_Analysis/index.html">
+               <img src="Book-covers/essentials-data-analysis.png" alt="Essentials of Data Analysis and Graphics using R">
+	         </a>
+	         <figcaption>Currently being developed</figcaption>
+         </figure>
+      </section>
+      <footer>
+         <section id="social-media">
+            <a href="https://twitter.com/RData_AnalystHG" class="twitter-follow-button" data-show-count="false">Follow @RData_AnalystHG</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+         </section>
+         <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+	      <p>Hosted with ♥ by GitHub Pages</p>
+      </footer>
+   </main>
 </body>
