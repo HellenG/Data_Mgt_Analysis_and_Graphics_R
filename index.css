@@ -41,10 +41,9 @@ nav a {
 	text-decoration: none;
 	border: 0.125em solid #5396FC;
 	border-radius: 0.375em;
-	color: black;
 }
 nav a:visited {
-	color: blue;
+	font-weight: bold;
 	text-decoration: underline;
 }
 nav a:hover {
