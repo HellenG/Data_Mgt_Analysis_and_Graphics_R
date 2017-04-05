@@ -61,7 +61,7 @@ figure {
    display: table;
 }
 #fig1 {
-	margin: 5% auto 0;
+	margin: 2% auto 0;
 }
 #fig1:hover {
 	border: 0.25em solid #FF8533;
@@ -69,7 +69,7 @@ figure {
 	box-shadow: 0.625em 0.625em 0.313em #FFA366;
 }
 section:nth-of-type(2) {
-   margin: 5% 40%;
+   margin: 5% 36%;
 }
 #fig1 figcaption, #fig2 figcaption, #fig3 figcaption {
    display: table-caption;
@@ -93,3 +93,8 @@ footer {
    margin: auto;
    padding: 0.938em;
 }
+#license {
+   display: inline-block;
+}
+
+
