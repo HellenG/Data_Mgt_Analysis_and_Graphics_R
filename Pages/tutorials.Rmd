@@ -10,7 +10,7 @@ Type  |  Title |  Status   |  Link
 ------|--------|-----------|-------
 Book  | R Essentials | First Version Released | [R Essentials Ebook](../R_Essentials/index.html)
 Book  |  R - Beyond Essentials | Not released | NA
-Book  | Fundamentals of Data Analysis and Graphics using R | Released preface and chapter 1 |  [Fundamentals of Data Analysis and Graphics using R](../Data_Analysis/index.html)
+Book  | Essentials of Data Analysis and Graphics using R | Released preface, Chapter 1 and Chapter 2|  [Essentials of Data Analysis and Graphics using R](../Data_Analysis/index.html)
 Presentation | Introduction Data Analysis and Graphics using R: Slide 1 | First version Released |[Introduction to R and RStudio](../Slides/r-training.html)
 Presentation | Introduction Data Analysis and Graphics using R: Slide 2 | First version Released |[Vector and Assignment, Data Objects and Data Importation](../Slides/r-training2.html)
 Presentation | Introduction Data Analysis and Graphics using R: Slide 3 | First version Released |[Data Entry, Management and Manipulation in R](../Slides/r-training3.html)
