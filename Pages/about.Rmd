@@ -7,15 +7,15 @@ output:
 
 ### GOAL
 
-Data Mania Inc., is an organization on the process of getting registered. The idea behind this upcoming organization was borne from a desire to share knowledge and specifically the love for data and programming.
+Data Mania Inc., is an organization in the process of getting registered. The idea behind this upcoming organization was borne from a desire to share knowledge and specifically the love for data and programming.
 
 For some time now, I have heard quite a number of people say they do not either like or understand data analysis, more so as a result of years of disliking or avoiding anything mathematical or statistical. This viewpoint on matters data has seen a number of people shy away from the great impact their data can produce if well analyzed.  
 
-With this in mind, the training blogs are written with an aim of appreciating what statistical literacy can do in providing evidence based programming. The approach used in these discussions is not the classical textbook approach, but rather a laid-back-teaching approach. The idea is to maximize on the concepts and practicality rather than the strict classroom-exam-led approach which can easily be attained in any of the statistical degree courses. 
+With this in mind, tutorials are written with an aim of appreciating what statistical literacy can do in providing evidence based programming. The approach used in these discussions is not the classical textbook approach, but rather a laid-back-teaching approach. The idea is to maximize on concepts and practicality rather than strict classroom-exam-led approach which can easily be attained in any of the statistical degree courses. 
 
-It is therefore the vision of Data Mania to empower all development professionals with hands-on-skills that can be used to manage and develop evidence based sustainable development programs and projects. For us, it is not a question of what position you are in, or educational background, it's about the appreciation of what sound evidence can bring to your career development as well as the impact in your organization which ultimately transcends to the community you serve!
+It is therefore the vision of Data Mania to empower all development professionals with hands-on-skills which can be used to manage and develop evidence based sustainable development programs and projects. For us, it is not a question of what position you are in, or educational background, it's about appreciation of what sound evidence can bring to your career development as well as the impact in your organization which ultimately transcends to the community you serve!
 
-### Training blogs
+### Tutorials
 
 I will introduce R and proceed to discuss quantitative analysis from an introductory level leading to an advance level. In the future, other data analysis discussions like qualitative data analysis will be added.
 
