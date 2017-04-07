@@ -7,6 +7,18 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog16: April 4^th^, 2017
+
+<h4 style="font-weight:bold">New look and EDA is on course</h4>
+
+Yet another good but fast week; it feels like I was posting my last update yesterday. 
+
+On good progress, [Data Mania](https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/) has a refreshed look, nothing to blow the horn for, but still, it's some change. I still maintain on coding rather than using a template, hope it communicates and you can move around the site.
+
+I have started EDA though for most of this week and next, I will be refreshing my knowledge, hence anticipate to start write-up week starting 17 April 2017. Expected time for release is 23rd April 2017 all things remaining constant.
+
+Till next (good) Friday (yes I will be working), have a fantastic weekend and a good week ahead. 
+
 ### Blog15: March 31^st^, 2017
 
 <h4 style="font-weight:bold">Slides are officially out and made first YouTube upload</h4>
