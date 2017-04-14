@@ -7,6 +7,17 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog17: April 14^th^, 2017
+
+<h4 style="font-weight:bold">Holiday wishes and EDA progress</h4>
+
+Easter holiday is here, today is Good Friday a time to reflect on sacrifices made by almighty and those who care for us. I wish you good day and weekend, do take time to enjoy it if you intend to also work like me.
+
+EDA has began well, though I am still not sure I should have put it right after descriptive statistics and not after inferential statistics as some of the approaches need some basic understanding of assumptions made by inferential statistics. Anyway, I will gauge how much to present at this point and if it becomes difficult to discuss a lot of sections due to prerequisite knowledge, I will switch it with chapter four. Should be able to disclose this on next blog post. Time-wise I think I am doing okay though I feel am getting to a point where I might spend a little bit more time per sub-section.
+
+From me, have a good Friday, till next week.
+
+
 ### Blog16: April 4^th^, 2017
 
 <h4 style="font-weight:bold">New look and EDA is on course</h4>
