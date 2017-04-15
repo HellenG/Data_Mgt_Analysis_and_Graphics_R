@@ -4,16 +4,16 @@ output: html_document
 
 # Data Types and Data Objects{#chap4}
 
-## Session Goal {-}
+## ChapterGoal {-}
   
-The main goal of this chapter is to enable you to work with R data structures or objects.
+The main goal of this chapter is to enable you to work with R's data structures or objects.
 
 ## What we shall cover {-}
 
 By the end of this chapter you should:
 
 * Be able know the basic data types in R
-* Know the basic data structure in R and its types
+* Know the basic data structures in R
 * Be conversant with properties of R' data structures specifically type and attributes
 * Be acquainted with R's data structures like arrays, matrices, data frames, and lists
 * Know properties of an object in terms of how to get and set them
@@ -189,7 +189,7 @@ Now let's look at higher dimensional (atomic) vectors, specifically **matrices**
 
 #### Matrices{#matrices}
 
-A matrix is a vector with two dimensions and in R; it is indexed by its row and column. There are various ways of creating matrices (other than importing them which we will cover in [session five](#chap5) ), these include:
+A matrix is a vector with two dimensions and in R; it is indexed by its row and column. There are various ways of creating matrices (other than importing them which we will cover in [chapterfive](#chap5) ), these include:
 
 * Creating from existing objects or vectors by using **cbind (column bind)** or **rbind (row bind)** functions.
 * Using the **matrix** function or
@@ -269,7 +269,7 @@ myArray
 
 Now let's discuss generic vectors, that is, lists (one dimensional) and data frames (two dimensional). As mentioned, they differ from atomic vectors in that they can store different data types.
 
-We shall begin with data frames which might be more recognizable as they resemble excel spreadsheets or SPSS and STATA data sets. Data frames are R's fundamental data structure. 
+We shall begin with data frames which might be more recognizable as they resemble excel spreadsheets or SPSS and STATA data sets. Data frames are R's core data structure. 
 
 #### Data.Frames{#data.frames}
 
@@ -305,11 +305,20 @@ as.integer(gender2)
 as.integer(gender)
 ```
 
-It is meaningless to use levels of a factor variable as though they were numerical values. So it is wrong to compute the mean or plot with graphs meant for numeric or interval values such scatter plots.
+It is meaningless to use levels of a factor variable as though they were numerical values. So it is wrong to compute the mean or plot with graphs meant for numeric or interval values such as scatter plots and histograms.
 
-If you read documentation for data frames (?data.frame), you will see an argument called **stringsAsFactors**. By default this is set to **default.stringsAsFactors()** which in most cases would be TRUE. This means any character vector used to construct the data frame is coerced to a factor vector if this is not what you what, then ensure you pass the correct value for that argument i.e. FALSE.
+If you read documentation for data frames (?data.frame), you will see an argument called **stringsAsFactors**. By default this is set by **default.stringsAsFactors()** which in most cases would be TRUE. This means any character vector used to construct a data frame is coerced to a factor vector, if this is not what you what, then ensure you parse correct value for argument "stringsAsFactors".
 
-We will do a little bit more with data frames during the import and export session as well as the data transformation and manipulation session. And right before winding up this session, we shall see how to determine if an object is a data frame as well the [type of data](#typeof) it's variables have. For now lets discuss **lists**. 
+We will do a little bit more with data frames during our import and exportation chapters as well as the data transformation and manipulation, but right now let's find out if an object is a data frame and if so, [type of data](#typeof) it's variables have.
+
+```{r}
+# To check if object is a data frame
+is.data.frame(class_df)
+
+# Check data type of each variable (vector) in a data frame
+sapply(class_df, typeof)
+```
+
 
 #### Lists{#lists}
 
@@ -476,7 +485,7 @@ class_list3[[length(class_list3) + 1]] <- myArray
 class_list3
 ```
 
-To add an element we had to use either single or double square brackets, this is referred to as indexing which we shall explore during our sixth session on [transforming and manipulating data objects](#indexing).
+To add an element we had to use either single or double square brackets, this is referred to as indexing which we shall explore during our sixth chapteron [transforming and manipulating data objects](#indexing).
 
 #### Non-intrinsic Attributes
 
@@ -657,7 +666,7 @@ alph <- structure(letters[1:10], class = "myFactor")
 1. Which are the key non-intrinsic attributes
 1. Why are classes important in R? 
 
-**You are ready for the fifth session if you know these**
+**You are ready for the fifth chapterif you know these**
 
 1. There are six basic data types in R. These are logical, integers, double/real, characters, complex and raw
 1. Expected data type
