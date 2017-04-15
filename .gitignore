@@ -12,7 +12,6 @@ Programming for Non-programmers
 Data
 figures/
 Recordings_&_Blogs/
-Slides/.+figures/
-Slides/.+cache/
+Slides/r-training-
 Slides/.RData
-Slides/.*[.]md$
+Slides/r-training\\d+[.]md$
