@@ -12,7 +12,7 @@ Programming for Non-programmers
 Data
 figures/
 Recordings_&_Blogs/
-Slides/.+figures$
-Slides/.+cache$
+Slides/.+figures/
+Slides/.+cache/
 Slides/.RData
 Slides/.*[.]md$
