@@ -18,6 +18,16 @@ EDA has began well, though I am still not sure I should have put it right after 
 From me, have a good Friday, till next week.
 
 
+<u>Update 15th April, 2017</u>
+
+Happy Easter Saturday, it's a beautiful day to do some bit of works, woun't you agree?
+
+I have decided to pause EDA  as it has become clear it would not be possible to discuss using EDA for model building without knowledge of some basic models. Since most of the models are discussed in later chapters begining with inferential, then it's prudent to discuss these first.
+
+With that, I will embark on refresher mathematics (essential math for inferential statistics) and then proceed with Inferential Statistics Chapter. Kinda looking forward to a bit of math as I have truly become quite rusty. Our goal here is to be able to compute area under a curve using integration. 
+
+Okay, let's have some fun.
+
 ### Blog16: April 4^th^, 2017
 
 <h4 style="font-weight:bold">New look and EDA is on course</h4>
