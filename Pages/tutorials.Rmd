@@ -25,4 +25,4 @@ Come learn from me, I will be teaching on these dates:
 Workshop    | Date  | Venue   | Contact   |  Presentations
 ------------|-------|---------|-----------|-----------------
 ~~Data Management Analysis and Graphics using R~~ | ~~20-03-2017~~ | ~~Indepth Research Institute~~ | ~~[Training officer](mailto:outreach@indepthresearch.org) +254 715077817~~ | ~~Check resources above~~
-Data Management Analysis and Graphics using R | 10-04-2017 | Indepth Research Institute | [Training officer](mailto:outreach@indepthresearch.org) +254 715077817 | Check resources above or download PDF version from "https://www.slideshare.net/HellenGakuruh"
+~~Data Management Analysis and Graphics using R~~ | ~~10-04-2017~~ | ~~Indepth Research Institute~~ | ~~[Training officer](mailto:outreach@indepthresearch.org) +254 715077817~~ | ~~Check resources above or download PDF version from "https://www.slideshare.net/HellenGakuruh"~~
