@@ -7,6 +7,16 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog18: April 21^st^, 2017
+
+<h4 style="font-weight:bold">Good progress on Refresher Mathematics Chapter and doing initial "R Essentials" in-person training</h4>
+
+I have made good progress in Refresher mathematics, I am now left with three important topics: Linear and Quadratic equations as well as Calculus. 
+
+I am doing a small training tomorrow, so I have to prepare for that. However, this will not deter current development being made in mathematics.
+
+Till next week, have a wonderful weekend and week ahead.
+
 ### Blog17: April 14^th^, 2017
 
 <h4 style="font-weight:bold">Holiday wishes and EDA progress</h4>
