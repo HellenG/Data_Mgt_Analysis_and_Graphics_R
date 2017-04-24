@@ -83,7 +83,7 @@ is.logical(logi)
 <p style=visibility:hidden;>n</p>
 ```{r "logical2-02"}
 # An operation on a logical vector with NA
-mean(c(logi, NA))
+mean(c(1:10, NA))
 ```
 
 
