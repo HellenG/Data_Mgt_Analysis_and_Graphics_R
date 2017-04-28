@@ -7,6 +7,14 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog19: April 28^th^, 2017
+
+<h4 style="font-weight:bold">In-person training and Book progress</h4>
+
+This week I have been conducting an on site training on a different area (M&E). It sure has been great doing this. Saturday I managed to do my first in-person training on Introduction to R, it was quite quick but hope next time to do a full length training.
+
+Appendix one on Mathematics is progressing well though due mentioned activity, not much has been done this week. However, I pick up from where I left off (linear equations) as from tomorrow. I am not too sure what to expect when doing actual calculus but do expect it to take about two weeks hence expected time of delivery should be around the week of 12th May all things remaining constant (ceteris paribus). 
+
 ### Blog18: April 21^st^, 2017
 
 <h4 style="font-weight:bold">Good progress on Refresher Mathematics Chapter and doing initial "R Essentials" in-person training</h4>
@@ -30,9 +38,9 @@ From me, have a good Friday, till next week.
 
 <u>Update 15th April, 2017</u>
 
-Happy Easter Saturday, it's a beautiful day to do some bit of works, woun't you agree?
+Happy Easter Saturday, it's a beautiful day to do some bit of works, won't you agree?
 
-I have decided to pause EDA  as it has become clear it would not be possible to discuss using EDA for model building without knowledge of some basic models. Since most of the models are discussed in later chapters begining with inferential, then it's prudent to discuss these first.
+I have decided to pause EDA  as it has become clear it would not be possible to discuss using EDA for model building without knowledge of some basic models. Since most of the models are discussed in later chapters beginning with inferential, then it's prudent to discuss these first.
 
 With that, I will embark on refresher mathematics (essential math for inferential statistics) and then proceed with Inferential Statistics Chapter. Kinda looking forward to a bit of math as I have truly become quite rusty. Our goal here is to be able to compute area under a curve using integration. 
 
@@ -68,7 +76,7 @@ Till next Friday, have a fantastic week.
 
 So I am way behind schedule, but it's all good as a lot of what I am doing will shorten time spent writing chapter on inferential statistics. I am going the extra mile to ensure all the essentials are covered and covered well (I was a bit rusty). 
 
-Looking forward to creating colourful graphs during EDA chapter, so I will try to wind this up.
+Looking forward to creating colorful graphs during EDA chapter, so I will try to wind this up.
 
 Sadly I did not get to teach this week but will strive to get at least one in-person training this quarter. Otherwise, I am thinking of YouTube sessions and some webinar's, they are actually way overdue.
 
