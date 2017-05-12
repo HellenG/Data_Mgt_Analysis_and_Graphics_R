@@ -7,11 +7,21 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog21: May 12^th^, 2017
+
+<h4 style="font-weight:bold">Behind schedule but it's all system work</h4>
+
+For unforeseen and unavoidable circumstances, I was not able to put in some good hours last weekend, so my expectations of covering up time out was not achieved. However, I do intend to work through this weekend and see if I can get this chapter moving along some more.
+
+In my last post I did not factor in an important mathematical concept leading to calculus, that is "Elementary Functions". I have added this to our mathematics appendix and currently writing on "Graphs and Transformations". This is the last section before I begin calculus, so hopefully if all goes well, I should embark on calculus early next week. I do not intend it to be intense, just enough basics to work with probability.
+
+Till next week, do have a wonderful weekend and week ahead.
+
 ### Blog20: May 5^th^, 2017
 
 <h4 style="font-weight:bold">A tad behind schedule but making good progress</h4>
 
-As a last minute decision I decided to take last weekend off as well as Monday which was a holiday (Labour day). As it turned out, this was a great decision as I totally rested, however that meant my schedule would be altered. I had anticipated to finish pre-calculus math sometime this week but this was not to be. To address this, I intend to work through this weekend.
+As a last minute decision I decided to take last weekend off as well as Monday which was a holiday (Labor day). As it turned out, this was a great decision as I totally rested, however that meant my schedule would be altered. I had anticipated to finish pre-calculus math sometime this week but this was not to be. To address this, I intend to work through this weekend.
 
 If all goes well, I should start elements of functions this weekend or early next week and then proceed on to calculus. 
 
