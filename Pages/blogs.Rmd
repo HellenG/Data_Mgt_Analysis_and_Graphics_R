@@ -11,7 +11,7 @@ output:
 
 <h4 style="font-weight:bold">Behind schedule but it's all system work</h4>
 
-For unforeseen and unavoidable circumstances, I was not able to put in some good hours last weekend, so my expectations of covering up time out was not achieved. However, I do intend to work through this weekend and see if I can get this chapter moving along some more.
+Due to unforeseen and unavoidable circumstances, I was not able to put in some good hours last weekend, so my expectations of covering up time out was not achieved. However, I do intend to work through this weekend and see if I can get this chapter moving along some more.
 
 In my last post I did not factor in an important mathematical concept leading to calculus, that is "Elementary Functions". I have added this to our mathematics appendix and currently writing on "Graphs and Transformations". This is the last section before I begin calculus, so hopefully if all goes well, I should embark on calculus early next week. I do not intend it to be intense, just enough basics to work with probability.
 
