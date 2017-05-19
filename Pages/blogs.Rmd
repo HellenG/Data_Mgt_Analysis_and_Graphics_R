@@ -7,6 +7,14 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blogs22: May 19^th^, 2017
+
+<h4 style="font-weight:bold">Still working on pre-calculus but making progress</h4>
+
+Well I underestimated content of Elementary Functions, still finalizing this section and should embark on Calculus next week. DO intend to work though the weekend all things remaining constant.
+
+Till next week, have fantastic weekend and week ahead.
+
 ### Blog21: May 12^th^, 2017
 
 <h4 style="font-weight:bold">Behind schedule but it's all system work</h4>
