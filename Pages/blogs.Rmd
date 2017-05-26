@@ -7,13 +7,21 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
-### Blogs22: May 19^th^, 2017
+### Blog23: May 26^th^, 2017
+
+<h4 style="font-weight:bold">Pre-calculus is finally done</h4>
+
+Off to a good start after completing pre-calculus. I am currently winding up with introduction to limits and will embark on "Derivatives" early next week. Enjoying refreshing on these mathematical concepts and hope it comes across in my write-up. Still keeping my eye on our goal, "determining area under a curve" which is covered by integration.
+
+From me, do have a lovely weekend and a productive week ahead.
+
+### Blog22: May 19^th^, 2017
 
 <h4 style="font-weight:bold">Still working on pre-calculus but making progress</h4>
 
-Well I underestimated content of Elementary Functions, still finalizing this section and should embark on Calculus next week. DO intend to work though the weekend all things remaining constant.
+Well I underestimated content of Elementary Functions, still finalizing this section and should embark on Calculus next week. Do intend to work though the weekend all things remaining constant.
 
-Till next week, have fantastic weekend and week ahead.
+Till next week, have a fantastic weekend and week ahead.
 
 ### Blog21: May 12^th^, 2017
 
