@@ -7,6 +7,18 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog24: June 2^nd^, 2017
+
+<h4 style="font-weight:bold">Derivatives and all things Calculus</h4>
+
+So this week saw my start of Calculus and specifically Derivatives. I got a small bump figuring out a certain concept and how to convey it in my write-up. I have since passed it and moving along nicely. I do not intend to go into greater depth on this topic as this is only meant to serve as a foundation for Integration.
+
+Doing my best to have this section completed by next week and embark on Integration immediately.   
+
+Given yesterday was a public holiday which I allowed myself to be off, this will be a working weekend with usual weekend working hours.
+
+Here's to a fruitful weekend and a super great week ahead.
+
 ### Blog23: May 26^th^, 2017
 
 <h4 style="font-weight:bold">Pre-calculus is finally done</h4>
