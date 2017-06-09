@@ -7,6 +7,16 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog25: June 9^th^, 2017
+
+<h4 style="font-weight:bold">Eventful week leads to renewed zeal</h4>
+
+Quite an eventful week this has been. But with it, I have gained a lot of zeal and momentum to finish this chapter. I think I have not wanted something as bad as this, I am more than determined to make this happen, so watch this space, IT'S ON.
+
+As regards progress, I am still doing derivatives and really enjoying it's little bumps, like right now I am trying to graph a polynomial which has seen me go back to add a section on factoring polynomials (part of basic Algebra) which for some reason I did not include earlier. I can't wait to see this graph just like I can't wait to integrate area under a curve. But all good things come to those who persist.
+
+Do have a fun and fruitful weekend as well as a highly productive week ahead.
+
 ### Blog24: June 2^nd^, 2017
 
 <h4 style="font-weight:bold">Derivatives and all things Calculus</h4>
