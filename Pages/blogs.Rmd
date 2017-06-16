@@ -7,6 +7,16 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog26: June 16^th^, 2017
+
+<h4 style="font-weight:bold">Good week leads to good outputs</h4>
+
+It was a good week and truly appreciative even with minor glitches here and there; overall it was a great improvement. And just to show how good it has been, I was able to make some polynomials which you might recall had given me a bit of a (good) challenge.
+
+Currently I am working on derivatives and graphs, if all goes well, I should wind up with this section next week and embark on integration. 
+
+Here's to a good (working) weekend and a goal oriented week ahead.
+
 ### Blog25: June 9^th^, 2017
 
 <h4 style="font-weight:bold">Eventful week leads to renewed zeal</h4>
