@@ -11,7 +11,7 @@ output:
 
 <h4 style="font=weight:bold">Joy that is math and graphing functions in R</h4>
 
-Mathematics can be quite enjoyable especially when you do it in R. Though sometimes coding some of this graphs have been quite a (good) challenge, shear joy of seeing its final output is enough to want to do more. So looking forward to more graph development.
+Mathematics can be quite enjoyable especially when you do it in R. Though sometimes coding some of these graphs have been quite a (good) challenge, shear joy of seeing its final output is enough to want to do more. So looking forward to more graph development.
 
 I have reached second derivative and was actually hoping to clear it by tonight but this seems to take another angle. But I am eager to wind it up and move to curve sketching and just a bit more on derivatives especially on logs and exponents. Once this is done then I can embark on our topic of interest, integration.  
 
