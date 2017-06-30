@@ -7,15 +7,25 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog28: June 30^th^, 2017
+
+<h4 style="font-weight:bold">Winding down section on derivatives</h4>
+
+Quite an interesting week and again I discover how important it is for me to finish this chapter on refresher mathematics and do it well. I am up to speed with intended write-up as I am now winding up on derivatives. If all goes well I should start Integration early next week, hence I can see end in sight.
+
+Given this fact, I do expect to be working through the weekends until zero draft is out. Looking forward to a productive session until this is achieved.
+
+With that I wish you a fantastic weekend and as usual, a very productive week ahead. 
+
 ### Blog27: June 23^rd^, 2017
 
-<h4 style="font=weight:bold">Joy that is math and graphing functions in R</h4>
+<h4 style="font-weight:bold">Joy that is math and graphing functions in R</h4>
 
 Mathematics can be quite enjoyable especially when you do it in R. Though sometimes coding some of these graphs have been quite a (good) challenge, shear joy of seeing its final output is enough to want to do more. So looking forward to more graph development.
 
 I have reached second derivative and was actually hoping to clear it by tonight but this seems to take another angle. But I am eager to wind it up and move to curve sketching and just a bit more on derivatives especially on logs and exponents. Once this is done then I can embark on our topic of interest, integration.  
 
-With this past weeks I have come to realise how important it is for me to do this chapter and to do it well, events playing out right now sure indicate this is a deal changer and for that I am super geared to make it happen at whatever cost.      
+With this past weeks I have come to realize how important it is for me to do this chapter and to do it well, events playing out right now sure indicate this is a deal changer and for that I am super geared to make it happen at whatever cost.      
 
 Tomorrow I take some time off but working on Sunday as usual.
 
