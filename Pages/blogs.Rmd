@@ -9,9 +9,9 @@ output:
 
 ### Blog30: July 14^th^, 2017
 
-<h4 style="font-weight:bold">Appendix 1 now on GitHub</h4>
+<h4 style="font-weight:bold">Appendix 1 now on GitHub and on website</h4>
 
-Appendix 1 is now uploaded on GitHub. I hope it is an enjoyable read as it was an enjoyable writing process. Getting to do this mathematics has been quite fulfilling and I hope to take up a bit more algebra just to grasp it even better.
+Appendix 1 is now uploaded on [GitHub](https://github.com/HellenG/Data_Analysis_Book) and on my [website](https://helleng.github.io/Data_Mgt_Analysis_and_Graphics_R/Data_Analysis/index.html). I hope it is an enjoyable read as it was an enjoyable writing process. Getting to do this mathematics has been quite fulfilling and I hope to take up a bit more algebra just to grasp it even better.
 
 This week I got to apply a bit of that mathematics to color Venn diagrams. I have completed it and will be uploading it in a short while. 
 
