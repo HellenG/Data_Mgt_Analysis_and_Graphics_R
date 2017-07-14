@@ -7,11 +7,23 @@ output:
 # Blogs
 ## Hellen Gakuruh
 
+### Blog30: July 14^th^, 2017
+
+<h4 style="font-weight:bold">Appendix 1 now on GitHub</h4>
+
+Appendix 1 is now uploaded on GitHub. I hope it is an enjoyable read as it was an enjoyable writing process. Getting to do this mathematics has been quite fulfilling and I hope to take up a bit more algebra just to grasp it even better.
+
+This week I got to apply a bit of that mathematics to color Venn diagrams. I have completed it and will be uploading it in a short while. 
+
+Our next chapter is "Probability" which I look forward to write, so keep checking for updates on it's development.
+
+From me it is a good weekend (I will definitely be working) and a fruitful week ahead.
+
 ### Blog29: July 7^th^, 2017
 
 <h4 style="font-weight:bold">Mission accomplished</h4>
 
-In deed, I am super excited to say appendix 1 on refresher mathematics is done. Well at least zero draft which core part of writing process. What is left now is to make it draft 1 which would be ready for uploading. I am currently working on this and should be done by Monday if all things remain constant. I am sure I will be uploading this chapter as I make this blog live, so check it out. 
+In deed, I am super excited to say appendix 1 on re-introduction mathematics is done. Well at least zero draft which is core part of this writing process. What is left now is to make it draft 1 which would be ready for uploading. I am currently working on this and should be done by Monday if all things remain constant. I am sure I will be uploading this chapter as I make this blog live, so check it out. 
 
 With that, from me it is a good weekend (I know I will be working half of it) and do have an extremely productive week ahead.
 
