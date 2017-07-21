@@ -5,7 +5,15 @@ output:
 ---
 
 # Blogs
-## Hellen Gakuruh
+## By Hellen Gakuruh
+
+### Blog31: July 21^st^, 2017
+
+<h4 style="font-weight:bold">Probability is half way done</h4>
+
+It has been quite a productive week such that chapter on Probability is actually half way done. With current momentum holding all things equal, anticipated delivery of this chapter is end of this month, therefore I will be working towards meeting this deadline.
+
+As usual, I bid you an enjoyable weekend and a super productive week ahead.
 
 ### Blog30: July 14^th^, 2017
 
@@ -23,7 +31,7 @@ From me it is a good weekend (I will definitely be working) and a fruitful week 
 
 <h4 style="font-weight:bold">Mission accomplished</h4>
 
-In deed, I am super excited to say appendix 1 on re-introduction mathematics is done. Well at least zero draft which is core part of this writing process. What is left now is to make it draft 1 which would be ready for uploading. I am currently working on this and should be done by Monday if all things remain constant. I am sure I will be uploading this chapter as I make this blog live, so check it out. 
+Indeed, I am super excited to say appendix 1 on re-introduction to mathematics is done, well at least zero draft which is core part of this writing process. What is left now is to make it draft 1 which would be ready for uploading. I am currently working on this and I should be done by Monday if all things remain constant. I am sure I will be uploading this chapter as I make this blog live, so check it out. 
 
 With that, from me it is a good weekend (I know I will be working half of it) and do have an extremely productive week ahead.
 
