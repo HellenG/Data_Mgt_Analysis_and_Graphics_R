@@ -7,6 +7,19 @@ output:
 # Blogs
 ## By Hellen Gakuruh
 
+### Blog32: July 28^th^, 2017
+
+<h4 style="font-weight:bold">Just one more section to go</h4>
+
+Yet another productive week. I am currently left with one section (Specific probability functions) which I embark on immediately.
+
+It truly has been interesting going through these concepts and decided to add exercises in most sections just to get you to appreciate probability.
+
+Do expect first version on Monday as indicated earlier. I will therefore be working towards accomplishing this.
+
+As always, I wish you a pleasant weekend and a super productive week ahead. 
+
+
 ### Blog31: July 21^st^, 2017
 
 <h4 style="font-weight:bold">Probability is half way done</h4>
